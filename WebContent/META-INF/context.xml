@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	 <Resource 
+      name="jdbc/Mes"
+      auth="Container"
+      type="javax.sql.DataSource"
+      username="root"
+      password="12345"
+      driverClassName="org.mariadb.jdbc.Driver"
+      factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+      url="jdbc:mariadb://localhost:3306/mes"
+      maxActive="50"
+   />
+</Context>
