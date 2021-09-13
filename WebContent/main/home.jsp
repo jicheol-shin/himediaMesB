@@ -26,50 +26,50 @@
 <title>Himedia MES_B</title>
 </head>
 <body>
-<h1>Himedia MES  B조 입니다.     </h1>
+<h1></h1>
 <div class="container">
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
     <div class="col">
-      <div class="p-3 border bg-light">기본정보관리</div>
+      <div class="p-3 border bg-light" align="center">기본정보관리</div>
       <div> 
 	      <ul>
-			   <li><a href="#" >1</a></li>
-			   <li><a href="#" >2</a></li>
-			   <li><a href="#" >3</a></li>
-			   <li><a href="#" >4</a></li>
+			   <li><a href="#" >기본정보관리1</a></li>
+			   <li><a href="#" >기본정보관리2</a></li>
+			   <li><a href="#" >기본정보관리3</a></li>
+			   <li><a href="#" >기본정보관리4</a></li>
 	      </ul>
 	   </div>   
    	 </div>
     <div class="col">
-      <div class="p-3 border bg-light">영업관리</div>
+      <div class="p-3 border bg-light" align="center">영업관리</div>
       <div> 
 	      <ul>
-			   <li><a href="#" >1</a></li>
-			   <li><a href="#" >2</a></li>
-			   <li><a href="#" >3</a></li>
-			   <li><a href="#" >4</a></li>
+			   <li><a href="#" >영업관리1</a></li>
+			   <li><a href="#" >영업관리2</a></li>
+			   <li><a href="#" >영업관리3</a></li>
+			   <li><a href="#" >영업관리4</a></li>
 	      </ul>
 	   </div>   
    	 </div>
     <div class="col">
-      <div class="p-3 border bg-light">구매관리</div>
+      <div class="p-3 border bg-light" align="center">구매관리</div>
       <div> 
 	      <ul>
-			   <li><a href="#" >1</a></li>
-			   <li><a href="#" >2</a></li>
-			   <li><a href="#" >3</a></li>
-			   <li><a href="#" >4</a></li>
+			   <li><a href="#" >구매관리1</a></li>
+			   <li><a href="#" >구매관리2</a></li>
+			   <li><a href="#" >구매관리3</a></li>
+			   <li><a href="#" >구매관리4</a></li>
 	      </ul>
 	   </div>   
    	 </div>
     <div class="col">
-      <div class="p-3 border bg-light">생산관리</div>
+      <div class="p-3 border bg-light" align="center">생산관리</div>
       <div> 
 	      <ul>
-			   <li><a href="#" >1</a></li>
-			   <li><a href="#" >2</a></li>
-			   <li><a href="#" >3</a></li>
-			   <li><a href="#" >4</a></li>
+			   <li><a href="#" >생산관리1</a></li>
+			   <li><a href="#" >생산관리2</a></li>
+			   <li><a href="#" >생산관리3</a></li>
+			   <li><a href="#" >생산관리4</a></li>
 	      </ul>
 	   </div>   
    	 </div>
@@ -78,16 +78,16 @@
    <br />
    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
     <div class="col">
-      <div class="p-3 border bg-light">Row column</div>
+      <div class="p-3 border bg-light" align="center">Row column</div>
     </div>
     <div class="col">
-      <div class="p-3 border bg-light">Row column</div>
+      <div class="p-3 border bg-light" align="center">Row column</div>
     </div>
     <div class="col">
-      <div class="p-3 border bg-light">Row column</div>
+      <div class="p-3 border bg-light" align="center">Row column</div>
     </div>
     <div class="col">
-      <div class="p-3 border bg-light">Row column</div>
+      <div class="p-3 border bg-light" align="center">Row column</div>
     </div>
   </div>
 </div>
