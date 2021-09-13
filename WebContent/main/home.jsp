@@ -24,8 +24,8 @@
 <title>Himedia MES_B</title>
 </head>
 <body>
-	<h1>Himedia MES  B조 입니다.     </h1>
-	<div class="container">
+<h1>Himedia MES  B조 입니다.     </h1>
+<div class="container">
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
     <div class="col">
       <div class="p-3 border bg-light">Row column</div>
@@ -39,12 +39,10 @@
     <div class="col">
       <div class="p-3 border bg-light">Row column</div>
     </div>
-    <div class="col">
-      <div class="p-3 border bg-light">Row column</div>
-    </div>
-    <div class="col">
-      <div class="p-3 border bg-light">Row column</div>
-    </div>
+   </div> 
+   <br />
+   <br />
+   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
     <div class="col">
       <div class="p-3 border bg-light">Row column</div>
     </div>
