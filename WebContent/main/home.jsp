@@ -4,9 +4,6 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Book Rental</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
@@ -21,6 +18,11 @@
 	    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
 	    crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <style>
+  	ul{
+  	 list-style:none;
+  	 }
+  </style>
 <title>Himedia MES_B</title>
 </head>
 <body>
@@ -28,18 +30,50 @@
 <div class="container">
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
     <div class="col">
-      <div class="p-3 border bg-light">Row column</div>
-    </div>
+      <div class="p-3 border bg-light">기본정보관리</div>
+      <div> 
+	      <ul>
+			   <li><a href="#" >1</a></li>
+			   <li><a href="#" >2</a></li>
+			   <li><a href="#" >3</a></li>
+			   <li><a href="#" >4</a></li>
+	      </ul>
+	   </div>   
+   	 </div>
     <div class="col">
-      <div class="p-3 border bg-light">Row column</div>
-    </div>
+      <div class="p-3 border bg-light">영업관리</div>
+      <div> 
+	      <ul>
+			   <li><a href="#" >1</a></li>
+			   <li><a href="#" >2</a></li>
+			   <li><a href="#" >3</a></li>
+			   <li><a href="#" >4</a></li>
+	      </ul>
+	   </div>   
+   	 </div>
     <div class="col">
-      <div class="p-3 border bg-light">Row column</div>
-    </div>
+      <div class="p-3 border bg-light">구매관리</div>
+      <div> 
+	      <ul>
+			   <li><a href="#" >1</a></li>
+			   <li><a href="#" >2</a></li>
+			   <li><a href="#" >3</a></li>
+			   <li><a href="#" >4</a></li>
+	      </ul>
+	   </div>   
+   	 </div>
     <div class="col">
-      <div class="p-3 border bg-light">Row column</div>
-    </div>
-   </div> 
+      <div class="p-3 border bg-light">생산관리</div>
+      <div> 
+	      <ul>
+			   <li><a href="#" >1</a></li>
+			   <li><a href="#" >2</a></li>
+			   <li><a href="#" >3</a></li>
+			   <li><a href="#" >4</a></li>
+	      </ul>
+	   </div>   
+   	 </div>
+   	</div>
    <br />
    <br />
    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
