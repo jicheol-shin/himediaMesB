@@ -77,19 +77,40 @@
    <br />
    <br />
    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-    <div class="col">
-      <div class="p-3 border bg-light" align="center">Row column</div>
-    </div>
-    <div class="col">
-      <div class="p-3 border bg-light" align="center">Row column</div>
-    </div>
-    <div class="col">
-      <div class="p-3 border bg-light" align="center">Row column</div>
-    </div>
-    <div class="col">
-      <div class="p-3 border bg-light" align="center">Row column</div>
-    </div>
-  </div>
+      <div class="col">
+	      <div class="p-3 border bg-light" align="center">품질관리</div>
+	      	<div> 
+		      <ul>
+				   <li><a href="#" >품질관리1</a></li>
+				   <li><a href="#" >품질관리2</a></li>
+				   <li><a href="#" >품질관리3</a></li>
+				   <li><a href="#" >품질관리4</a></li>
+		      </ul>
+		  </div>   
+	  </div>
+      <div class="col">
+	      <div class="p-3 border bg-light" align="center">자재관리</div>
+	      	<div> 
+		      <ul>
+				   <li><a href="#" >자재관리1</a></li>
+				   <li><a href="#" >자재관리2</a></li>
+				   <li><a href="#" >자재관리3</a></li>
+				   <li><a href="#" >자재관리4</a></li>
+		      </ul>
+		  </div>   
+	  </div>
+      <div class="col">
+	      <div class="p-3 border bg-light" align="center">창고관리</div>
+	      	<div> 
+		      <ul>
+				   <li><a href="#" >창고관리1</a></li>
+				   <li><a href="#" >창고관리2</a></li>
+				   <li><a href="#" >창고관리3</a></li>
+				   <li><a href="#" >창고관리4</a></li>
+		      </ul>
+		  </div>   
+	  </div>
+   </div>
 </div>
 </body>
 </html>
