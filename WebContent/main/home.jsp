@@ -48,11 +48,10 @@
     	 <span class="navbar-toggler-icon"></span>
  	 </button>
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
-     <ul class="navbar-nav navbar-right" >
-      <li class="nav-item">
-      	<a class="nav-link" href="#" data-toggle="modal" data-target="#login">
+    	 <a class="nav-link" href="#" data-toggle="modal" data-target="#login">
         	로그인
         </a>
+     </div>  
 		<div class="modal" id="login">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
@@ -77,9 +76,6 @@
 		    </div>
 		  </div>
 		</div>
-      </li>
-     </ul>
-  	</div>
 	</nav>
 	</div>
 	<br />
