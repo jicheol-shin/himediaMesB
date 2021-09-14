@@ -163,8 +163,10 @@
 			  </div>   
 		  </div>
 	   </div>
-	</div>
-   
+	</div><br /><br />
+	
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    </nav>  
 </div>
 </body>
 </html>
