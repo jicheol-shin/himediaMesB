@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+   // MemberVO member = (MemberVO) session.getAttribute("login_info");
+   String member = null;
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,10 +52,17 @@
 	 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     	 <span class="navbar-toggler-icon"></span>
  	 </button>
-	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
-    	 <a class="nav-link" href="#" data-toggle="modal" data-target="#login">
-        	로그인
-        </a>
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+    	<c:choose>
+          <c:when test="<%=member == null %>" > 
+    	    <a class="nav-link" href="#" data-toggle="modal" data-target="#login">
+        	  로그인
+            </a>
+          </c:when>  
+  	    <c:otherwise>
+	       <li ><a href="#" class='text-primary'>xxxxx님</a></li>  
+        </c:otherwise>
+      </c:choose>	 
      </div>  
 		<div class="modal" id="login">
 		  <div class="modal-dialog">
