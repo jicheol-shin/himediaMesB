@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title></title>
+	<title>소스트리 수정</title>
 </head>
 <body>
 
