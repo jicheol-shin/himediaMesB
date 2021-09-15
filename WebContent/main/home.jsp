@@ -48,7 +48,7 @@
    <div class="bs-component">
    <br />
    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-	 <a class="navbar-brand" href="#">Himedia MES</a>
+	 <a class="navbar-brand" href="index.do">Himedia MES</a>
 	 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     	 <span class="navbar-toggler-icon"></span>
  	 </button>
@@ -156,10 +156,10 @@
 		      <div class="p-3 border bg-info" align="center">자재/창고관리</div>
 		      	<div> 
 			      <ul>
-					   <li><a href="#" >자재관리1</a></li>
-					   <li><a href="#" >자재관리2</a></li>
-					   <li><a href="#" >자재관리3</a></li>
-					   <li><a href="#" >자재관리4</a></li>
+					   <li><a href="itemstockInout.do" >자재 입출고현황</a></li>
+					   <li><a href="#" >자재 불출</a></li>
+					   <li><a href="#" >자재 재고현황</a></li>
+					   <li><a href="#" ><span></span></a></li>
 			      </ul>
 			  </div>   
 		  </div>
