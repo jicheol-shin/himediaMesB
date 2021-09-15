@@ -17,7 +17,7 @@ public class JDBCUtility {
 		try {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-			DataSource ds = (DataSource) envCtx.lookup("jdbc/Bookrental");
+			DataSource ds = (DataSource) envCtx.lookup("jdbc/Mes");
 			conn = ds.getConnection();
 			conn.setAutoCommit(false);
 		} catch (Exception e) {

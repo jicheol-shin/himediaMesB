@@ -9,6 +9,6 @@
       driverClassName="org.mariadb.jdbc.Driver"
       factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
       url="jdbc:mariadb://localhost:3306/mes"
-      maxActive="50"
+
    />
 </Context>
