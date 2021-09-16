@@ -120,10 +120,7 @@
 	      <div class="p-3 border bg-info"  align="center">구매관리</div>
 	      <div> 
 		      <ul>
-				   <li><a href="#" >구매관리1</a></li>
-				   <li><a href="#" >구매관리2</a></li>
-				   <li><a href="#" >구매관리3</a></li>
-				   <li><a href="#" >구매관리4</a></li>
+				   <li><a href="#" >구매 발주 관리</a></li>
 		      </ul>
 		   </div>   
 	   	 </div>
@@ -168,10 +165,9 @@
 		      <div class="p-3 border bg-info" align="center">물류관리</div>
 		      	<div> 
 			      <ul>
-					   <li><a href="#" >창고관리1</a></li>
-					   <li><a href="#" >창고관리2</a></li>
-					   <li><a href="#" >창고관리3</a></li>
-					   <li><a href="#" >창고관리4</a></li>
+					   <li><a href="#" >제품 재고 관리</a></li>
+					   <li><a href="#" >출고 지시</a></li>
+					   <li><a href="#" >출고 내역</a></li>
 			      </ul>
 			  </div>   
 		  </div>
