@@ -3,7 +3,6 @@ package com.mes.vo;
 public class StockPED {
 	
 	private int num;              //순번
-	private String itemCd;        //부품 코드
 	private String partNo;        //작업지시번호
 	private String finCd;         //제품코드
 	private String finName;       //제품명
@@ -18,12 +17,6 @@ public class StockPED {
 	}
 	public void setNum(int num) {
 		this.num = num;
-	}
-	public String getItemCd() {
-		return itemCd;
-	}
-	public void setItemCd(String itemCd) {
-		this.itemCd = itemCd;
 	}
 	public String getPartNo() {
 		return partNo;
