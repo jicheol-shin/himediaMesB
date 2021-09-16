@@ -97,10 +97,13 @@
 	      <div class="p-3 border bg-info" align="center">기본정보관리</div>
 	      <div> 
 		      <ul>
-				   <li><a href="#" >기본정보관리1</a></li>
-				   <li><a href="#" >기본정보관리2</a></li>
-				   <li><a href="#" >기본정보관리3</a></li>
-				   <li><a href="#" >기본정보관리4</a></li>
+				   <li><a href="item.do" >부품관리</a></li>
+				   <li><a href="#" >완제품관리</a></li>
+				   <li><a href="#" >거래처관리</a></li>
+				   <li><a href="#" >BOM관리</a></li>
+				   <li><a href="#" >라인관리</a></li>
+				   <li><a href="#" >사용자관리</a></li>
+				   <li><a href="#" >불량관리</a></li>
 		      </ul>
 		   </div>   
 	   	 </div>
@@ -108,10 +111,8 @@
 	      <div class="p-3 border bg-info" align="center">영업관리</div>
 	      <div> 
 		      <ul>
-				   <li><a href="#" >영업관리1</a></li>
-				   <li><a href="#" >영업관리2</a></li>
-				   <li><a href="#" >영업관리3</a></li>
-				   <li><a href="#" >영업관리4</a></li>
+				   <li><a href="#" >수주관리</a></li>
+				   <li><a href="#" >출하관리</a></li>
 		      </ul>
 		   </div>   
 	   	 </div>
