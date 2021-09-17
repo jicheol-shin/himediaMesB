@@ -7,7 +7,7 @@ public class Line {
 	private String lineType;// 라인분류
 	private String equipment;// 설비사용
 	private String test;// 검사유무
-	private Integer errorCnt;// 불량수
+	private int errorCnt;// 불량수
 	private String remark;// 비고
 	
 	public String getLineCd() {
@@ -40,10 +40,10 @@ public class Line {
 	public void setTest(String test) {
 		this.test = test;
 	}
-	public Integer getErrorCnt() {
+	public int getErrorCnt() {
 		return errorCnt;
 	}
-	public void setErrorCnt(Integer errorCnt) {
+	public void setErrorCnt(int errorCnt) {
 		this.errorCnt = errorCnt;
 	}
 	public String getRemark() {

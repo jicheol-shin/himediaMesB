@@ -6,10 +6,11 @@ public class TakeOrder {
 
 	private String ordCd;// 수주코드
 	private Date ordDate;// 수주일자
-	private String custCd;// 거래처코드
-	private String compCd;// 제품코드
+	private String vendorCd;// 거래처코드
+	private String productCd;// 제품코드
+	private String process; // 진행상태
 	private Date ordDelDate;// 납품예정일
-	private Integer ordCnt;// 수주수량
+	private int ordCnt;// 수주수량
 	private String remark;// 비고
 	
 	public String getOrdCd() {
@@ -24,17 +25,23 @@ public class TakeOrder {
 	public void setOrdDate(Date ordDate) {
 		this.ordDate = ordDate;
 	}
-	public String getCustCd() {
-		return custCd;
+	public String getVendorCd() {
+		return vendorCd;
 	}
-	public void setCustCd(String custCd) {
-		this.custCd = custCd;
+	public void setVendorCd(String vendorCd) {
+		this.vendorCd = vendorCd;
 	}
-	public String getCompCd() {
-		return compCd;
+	public String getProductCd() {
+		return productCd;
 	}
-	public void setCompCd(String compCd) {
-		this.compCd = compCd;
+	public void setProductCd(String productCd) {
+		this.productCd = productCd;
+	}
+	public String getProcess() {
+		return process;
+	}
+	public void setProcess(String process) {
+		this.process = process;
 	}
 	public Date getOrdDelDate() {
 		return ordDelDate;
@@ -42,10 +49,10 @@ public class TakeOrder {
 	public void setOrdDelDate(Date ordDelDate) {
 		this.ordDelDate = ordDelDate;
 	}
-	public Integer getOrdCnt() {
+	public int getOrdCnt() {
 		return ordCnt;
 	}
-	public void setOrdCnt(Integer ordCnt) {
+	public void setOrdCnt(int ordCnt) {
 		this.ordCnt = ordCnt;
 	}
 	public String getRemark() {

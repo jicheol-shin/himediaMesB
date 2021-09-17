@@ -5,9 +5,9 @@ public class Item {
 	private String itemCd;// 부품코드
 	private String itemName;// 부품명
 	private String itemType;// 구분
-	private String custCd;// 거래처코드
-	private Integer price;// 표준단가
-	private Integer leadTime;// 유통기한
+	private String vendorCd;// 거래처코드
+	private double unitPrice;// 표준단가
+	private int leadTime;// 유통기한
 	private String remark;// 비고
 	
 	public String getItemCd() {
@@ -28,22 +28,22 @@ public class Item {
 	public void setItemType(String itemType) {
 		this.itemType = itemType;
 	}
-	public String getCustCd() {
-		return custCd;
+	public String getVendorCd() {
+		return vendorCd;
 	}
-	public void setCustCd(String custCd) {
-		this.custCd = custCd;
+	public void setVendorCd(String vendorCd) {
+		this.vendorCd = vendorCd;
 	}
-	public Integer getPrice() {
-		return price;
+	public double getUnitPrice() {
+		return unitPrice;
 	}
-	public void setPrice(Integer price) {
-		this.price = price;
+	public void setUnitPrice(double unitPrice) {
+		this.unitPrice = unitPrice;
 	}
-	public Integer getLeadTime() {
+	public int getLeadTime() {
 		return leadTime;
 	}
-	public void setLeadTime(Integer leadTime) {
+	public void setLeadTime(int leadTime) {
 		this.leadTime = leadTime;
 	}
 	public String getRemark() {
