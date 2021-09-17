@@ -27,6 +27,9 @@
 		padding: 0;
 		margin:  0;
 	}
+	li {
+		list-style-type: none;
+	}
 
 	li a {
 		text-decoration: none;
@@ -48,7 +51,7 @@
 <div class="container">
    <div class="bs-component">
    <br />
-   <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+   <nav class="navbar navbar-expand-md bg-secondary navbar-dark  text-light">
 	 <a class="navbar-brand" href="index.do">Himedia MES</a>
 	 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     	 <span class="navbar-toggler-icon"></span>
@@ -56,13 +59,15 @@
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
     	<c:choose>
           <c:when test="<%=member == null %>" > 
-    	    <a class="nav-link" href="#" data-toggle="modal" data-target="#login">
+    	    <a class="nav-link text-white" href="#" data-toggle="modal" data-target="#login">
         	  로그인
             </a>
           </c:when>  
   	    <c:otherwise>
-	       <li ><a href="#" class='text-primary'><%=member.getUserName()%>님</a></li>  
-	       <li ><a href="logout.do" class='text-success'>로그아웃</a></li>  
+
+	       <li ><a href="#" class='text-white'><%=member.getUserName()%>님</a></li>  
+	       <li ><a href="logout.do" class='text-info'>로그아웃</a></li>
+
         </c:otherwise>
       </c:choose>	 
      </div>  
