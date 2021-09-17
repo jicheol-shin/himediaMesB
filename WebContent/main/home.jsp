@@ -127,7 +127,7 @@
 	      <div class="p-3 border bg-info font-weight-bold"  align="center">구매관리</div>
 	      <div> 
 		      <ul>
-				   <li><a href="#" >구매 발주 관리</a></li>
+				   <li><a href="takeOrderPurchase.do" >구매 발주 관리</a></li>
 		      </ul>
 		   </div>   
 	   	 </div>
