@@ -74,16 +74,16 @@
 		<div class="modal" id="login">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
-		      <div class="modal-header">
+		      <div class="modal-header text-info">
 		        <h4 class="modal-title">로그인</h4>
 		      </div>
 		      <div class="modal-body">
 				<form action="login.do" method="post" class="was-validated">
-					<div class="form-group">
+					<div class="form-group text-info">
 						<label for="userId">아이디  </label>
 						<input type="text" class="form-control" id="userId" placeholder="Enter ID" name="userId" required>
 					</div>
-					<div class="form-group">
+					<div class="form-group text-info">
 						<label for="userPw">비밀번호 </label>
 						<input type="password" class="form-control" id="password" placeholder="Enter Password" name="password" required>
 					</div>
