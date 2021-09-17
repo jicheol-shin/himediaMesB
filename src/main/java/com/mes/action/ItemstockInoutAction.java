@@ -1,31 +1,48 @@
 package com.mes.action;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mes.service.ItemStockInoutService;
 import com.mes.utility.Action;
 import com.mes.utility.ActionForward;
 import com.mes.vo.ItemStockInout;
+import com.mes.vo.Member;
 
 public class ItemstockInoutAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
+
+		ActionForward forward= null;
 		
-		ArrayList<ItemStockInout> itemStockList = new ArrayList<ItemStockInout>();
+		HttpSession session = req.getSession();
+		Member member = (Member) session.getAttribute("login_info");
 		
-		ItemStockInoutService itemStockInoutService = new ItemStockInoutService();
+		if(member== null) {
+			res.setContentType("text/html; charset=utf-8");
+			PrintWriter out = res.getWriter();
+			out.println("<script>");
+			out.println("alert('로그인해 주세요!')");
+			out.println("history.back()");
+			out.println("</script>");
+			
+		} else {
+			
+			forward= new ActionForward();	
+			ArrayList<ItemStockInout> itemStockList = new ArrayList<ItemStockInout>();
+			ItemStockInoutService itemStockInoutService = new ItemStockInoutService();
+			itemStockList = itemStockInoutService.getItemStockList();
 		
-		itemStockList = itemStockInoutService.getItemStockList();
-	
-		req.setAttribute("itemStockList", itemStockList);
+			req.setAttribute("itemStockList", itemStockList);
+			forward.setPath("/itemstock/itemstockInout.jsp");
 		
-		ActionForward forward = new ActionForward();
-	
-		forward.setPath("/itemstock/itemstockInout.jsp");
+			
+		}
 		return forward;
 	}
 

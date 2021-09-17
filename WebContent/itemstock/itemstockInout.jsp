@@ -1,8 +1,8 @@
+<%@page import="com.mes.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-   // MemberVO member = (MemberVO) session.getAttribute("login_info");
-   String member = null;
+   Member member = (Member) session.getAttribute("login_info");
 %>
 <!DOCTYPE html>
 <html>
@@ -60,7 +60,8 @@
             </a>
           </c:when>  
   	    <c:otherwise>
-	       <li ><a href="#" class='text-primary'>xxxxx님</a></li>  
+	        <li ><a href="#" class='text-primary'><%=member.getUserName()%>님</a></li>  
+	        <li ><a href="logout.do" class='text-success'>로그아웃</a></li>  
         </c:otherwise>
       </c:choose>	 
      </div>  
