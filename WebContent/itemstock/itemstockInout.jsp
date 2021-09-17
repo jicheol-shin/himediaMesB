@@ -68,15 +68,16 @@
 	</nav>
 	</div>
 	<br />
-	<div class="container" align="center">
+	<div class="container" align="center" style="height: 500px">
 	   <div align="left">
 		 <ul class="list-group" >
             <li class="list-group-item list-group-item-primary" align="center">자재 입출고 현황</li>
 		</ul>
 		</div>
 		<br />
-		<table class="table table-hover">
-			<tr class="table-dark ">
+		<table class="table table-striped table-condensed" style="font-size: 12px">
+		 <thead class="thead-dark">
+			<tr>
 				<th>순번</th>
 				<th>입출고 코드</th>
 				<th>부품코드</th>
@@ -86,20 +87,21 @@
 				<th>창고명</th>				
 				<th>구역명</th>				
 				<th>이동창고</th>				
-				<th>수량</th>				
+				<th>수량</th>							
 				<th>비고</th>				
 			</tr>
+			</thead>
 			<!-- 
-			<c:forEach var="board" items="${board_data}">
+			<c:forEach var="itemStock" items="${itemStockList}">
 			 -->
-				<tr>
-					<td><!--  ${board.getBoard_num()}--></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>	
-				</tr>
+			<tr>
+				<td><!--  ${itemStock.getNum()}--></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>	
+			</tr>
 			<!--	
 			</c:forEach>
 			-->

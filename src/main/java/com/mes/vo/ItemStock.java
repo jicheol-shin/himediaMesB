@@ -10,9 +10,8 @@ public class ItemStock {
 	private String localCd;       //구역명
 	private int    goodCnt;       //양품재고수량
 	private int    badCnt;        //불량재고수량
+	private String vendorCd;      //제조사
 	private String remark;        //비고
-
-	
 	
 	public int getNum() {
 		return num;
@@ -61,6 +60,12 @@ public class ItemStock {
 	}
 	public void setBadCnt(int badCnt) {
 		this.badCnt = badCnt;
+	}
+	public String getVendorCd() {
+		return vendorCd;
+	}
+	public void setVendorCd(String vendorCd) {
+		this.vendorCd = vendorCd;
 	}
 	public String getRemark() {
 		return remark;
