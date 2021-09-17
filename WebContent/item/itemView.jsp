@@ -9,6 +9,11 @@
 	ItemService itemdata = new ItemService();
 	ArrayList<Item> itemList = itemdata.getItemList();
 %>
+<%
+	String item = request.getParameter("item");
+	String itemName = request.getParameter("itemName");
+	String vendor = request.getParameter("vendor");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,50 +31,51 @@
 <title>ITEM_View</title>
 </head>
 <body>
-<!-- 항목선택 -->
 <div align="center">
 	<h3>ITEMS</h3>
 </div>
-<div class="container" align="center">                                     
+<!-- 항목선택 -->
+<div class="container" align="center">
+	<form action="">
 	<span class="dropdown">
     	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-			<select class="form-select" aria-label="Default select example" style="color: black">
+			<select name="item" class="form-select" aria-label="Default select example" style="color: black">
 		 		<option selected>ITEM_CD MENU</option>
-				<option value="1">ITEM1</option>
-		  		<option value="2">ITEM2</option>
-		  		<option value="3">ITEM3</option>
+				<option value="item1">ITEM1</option>
+		  		<option value="item2">ITEM2</option>
+		  		<option value="item3">ITEM3</option>
 			</select>
     	</button>
 	</span>
 	<span class="dropdown">
     	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-			<select class="form-select" aria-label="Default select example" style="color: black">
+			<select name="itemName" class="form-select" aria-label="Default select example" style="color: black">
 				<option selected>ITEM_NAME MENU</option>
-				<option value="1">드립커피바디</option>
-				<option value="2">드립커피뚜껑</option>
-				<option value="3">드림커피뚜껑_체결나사</option>
-				<option value="4">컵받침부</option>
-				<option value="5">원두필터</option>
-				<option value="6">원두필터컵</option>
-				<option value="7">원두필터컵_손잡이</option>
-				<option value="8">물컵</option>
-				<option value="9">원두컵</option>
+				<option value="itemName1">드립커피바디</option>
+				<option value="itemName2">드립커피뚜껑</option>
+				<option value="itemName3">드림커피뚜껑_체결나사</option>
+				<option value="itemName4">컵받침부</option>
+				<option value="itemName5">원두필터</option>
+				<option value="itemName6">원두필터컵</option>
+				<option value="itemName7">원두필터컵_손잡이</option>
+				<option value="itemName8">물컵</option>
+				<option value="itemName9">원두컵</option>
 			</select>
 		</button>
 	</span>
 	<span class="dropdown">
 		<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-			<select class="form-select" aria-label="Default select example" style="color: black">
-			  	<option selected>CUST_CD MENU</option>
-			  	<option value="1">AAA</option>
-				<option value="2">AAB</option>
-				<option value="3">AAC</option>
-				<option value="3">AAD</option>
+			<select name="vendor" class="form-select" aria-label="Default select example" style="color: black">
+			  	<option selected>VENDOR_CD MENU</option>
+			  	<option value="vendor1">AAA</option>
+				<option value="vendor2">AAB</option>
+				<option value="vendor3">AAC</option>
+				<option value="vendor4">AAD</option>
 			</select>
 	    </button>
 	</span>
 	<input type="button" value="SELECT" class="btn btn-primary">
-	<input type="button" value="ITEM 입력" class="btn btn-success" style="text-align: center">
+	</form>
 </div>
 <br>
 <hr>
@@ -110,6 +116,10 @@
 	</div>
 </div>
 <br>
+<div align="center">
+	<input type="button" value="HOME" class="btn btn-primary" onclick="index.do" />
+	<input type="button" value="ITEM 입력" class="btn btn-success" style="text-align: center">
+</div>
 <hr>
 </body>
 </html>

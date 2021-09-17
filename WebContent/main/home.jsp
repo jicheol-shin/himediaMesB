@@ -105,7 +105,7 @@
 	      <div> 
 		      <ul>
 				   <li><a href="item.do" >부품관리</a></li>
-				   <li><a href="#" >완제품관리</a></li>
+				   <li><a href="product.do" >완제품관리</a></li>
 				   <li><a href="#" >거래처관리</a></li>
 				   <li><a href="#" >BOM관리</a></li>
 				   <li><a href="#" >라인관리</a></li>
