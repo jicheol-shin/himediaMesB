@@ -61,7 +61,7 @@
           </c:when>  
   	    <c:otherwise>
 	        <li ><a href="#" class='text-primary'><%=member.getUserName()%>님</a></li>  
-	        <li ><a href="logout.do" class='text-success'>로그아웃</a></li>  
+	        <li ><a href="/logout.do" class='text-success'>로그아웃</a></li>  
         </c:otherwise>
       </c:choose>	 
      </div>  
