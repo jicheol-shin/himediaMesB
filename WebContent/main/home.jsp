@@ -135,10 +135,7 @@
 	      <div class="p-3 border bg-info font-weight-bold" align="center">생산관리</div>
 	      <div> 
 		      <ul>
-				   <li><a href="#" >생산관리1</a></li>
-				   <li><a href="#" >생산관리2</a></li>
-				   <li><a href="#" >생산관리3</a></li>
-				   <li><a href="#" >생산관리4</a></li>
+				   <li><a href="production.do" >생산관리1</a></li>
 		      </ul>
 		   </div>   
 	   	 </div>
