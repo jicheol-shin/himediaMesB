@@ -52,7 +52,7 @@
    <div class="bs-component">
    <br />
    <nav class="navbar navbar-expand-md bg-secondary navbar-dark  text-light">
-	 <a class="navbar-brand" href="index.do">Himedia MES</a>
+	 <a class="navbar-brand font-weight-bold" href="index.do">Himedia MES</a>
 	 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     	 <span class="navbar-toggler-icon"></span>
  	 </button>
@@ -101,7 +101,7 @@
 	<div class="main">
 	  <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-4">
 	    <div class="col">
-	      <div class="p-3 border bg-info" align="center">기본정보관리</div>
+	      <div class="p-3 border bg-info font-weight-bold" align="center">기본정보관리</div>
 	      <div> 
 		      <ul>
 				   <li><a href="item.do" >부품관리</a></li>
@@ -115,7 +115,7 @@
 		   </div>   
 	   	 </div>
 	    <div class="col">
-	      <div class="p-3 border bg-info" align="center">영업관리</div>
+	      <div class="p-3 border bg-info font-weight-bold" align="center">영업관리</div>
 	      <div> 
 		      <ul>
 				   <li><a href="#" >수주관리</a></li>
@@ -124,15 +124,15 @@
 		   </div>   
 	   	 </div>
 	    <div class="col">
-	      <div class="p-3 border bg-info"  align="center">구매관리</div>
+	      <div class="p-3 border bg-info font-weight-bold"  align="center">구매관리</div>
 	      <div> 
 		      <ul>
-				   <li><a href="#" >구매 발주 관리</a></li>
+				   <li><a href="takeOrderPurchase.do" >구매 발주 관리</a></li>
 		      </ul>
 		   </div>   
 	   	 </div>
 	    <div class="col">
-	      <div class="p-3 border bg-info" align="center">생산관리</div>
+	      <div class="p-3 border bg-info font-weight-bold" align="center">생산관리</div>
 	      <div> 
 		      <ul>
 				   <li><a href="#" >생산관리1</a></li>
@@ -147,7 +147,7 @@
 	   <br />
 	  <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-4">
 	      <div class="col">
-		      <div class="p-3 border bg-info" align="center">품질관리</div>
+		      <div class="p-3 border bg-info font-weight-bold" align="center">품질관리</div>
 		      	<div> 
 			      <ul>
 					   <li><a href="#" >품질관리1</a></li>
@@ -158,7 +158,7 @@
 			  </div>   
 		  </div>
 	      <div class="col">
-		      <div class="p-3 border bg-info" align="center">자재/창고관리</div>
+		      <div class="p-3 border bg-info font-weight-bold" align="center">자재/창고관리</div>
 		      	<div> 
 			      <ul>
 					   <li><a href="itemstockInout.do" >자재 입출고현황</a></li>
@@ -169,7 +169,7 @@
 			  </div>   
 		  </div>
 	      <div class="col">
-		      <div class="p-3 border bg-info" align="center">물류관리</div>
+		      <div class="p-3 border bg-info font-weight-bold" align="center">물류관리</div>
 		      	<div> 
 			      <ul>
 					   <li><a href="#" >제품 재고 관리</a></li>
