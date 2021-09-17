@@ -1,8 +1,9 @@
+<%@page import="com.mes.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-   // MemberVO member = (MemberVO) session.getAttribute("login_info");
-   String member = null;
+   Member member = (Member) session.getAttribute("login_info");
+  
 %>
 <!DOCTYPE html>
 <html>
@@ -26,6 +27,9 @@
 		padding: 0;
 		margin:  0;
 	}
+	li {
+		list-style-type: none;
+	}
 
 	li a {
 		text-decoration: none;
@@ -47,7 +51,7 @@
 <div class="container">
    <div class="bs-component">
    <br />
-   <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+   <nav class="navbar navbar-expand-md bg-secondary navbar-dark  text-light">
 	 <a class="navbar-brand" href="index.do">Himedia MES</a>
 	 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     	 <span class="navbar-toggler-icon"></span>
@@ -55,30 +59,33 @@
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
     	<c:choose>
           <c:when test="<%=member == null %>" > 
-    	    <a class="nav-link" href="#" data-toggle="modal" data-target="#login">
+    	    <a class="nav-link text-white" href="#" data-toggle="modal" data-target="#login">
         	  로그인
             </a>
           </c:when>  
   	    <c:otherwise>
-	       <li ><a href="#" class='text-primary'>xxxxx님</a></li>  
+
+	       <li ><a href="#" class='text-white'><%=member.getUserName()%>님</a></li>  
+	       <li ><a href="logout.do" class='text-info'>로그아웃</a></li>
+
         </c:otherwise>
       </c:choose>	 
      </div>  
 		<div class="modal" id="login">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
-		      <div class="modal-header">
+		      <div class="modal-header text-info">
 		        <h4 class="modal-title">로그인</h4>
 		      </div>
 		      <div class="modal-body">
-				<form action="" class="was-validated">
-					<div class="form-group">
+				<form action="login.do" method="post" class="was-validated">
+					<div class="form-group text-info">
 						<label for="userId">아이디  </label>
 						<input type="text" class="form-control" id="userId" placeholder="Enter ID" name="userId" required>
 					</div>
-					<div class="form-group">
+					<div class="form-group text-info">
 						<label for="userPw">비밀번호 </label>
-						<input type="password" class="form-control" id="userPw" placeholder="Enter Password" name="userPw" required>
+						<input type="password" class="form-control" id="password" placeholder="Enter Password" name="password" required>
 					</div>
 					<button type="submit" class="btn btn-primary" style="margin-left:50%;">로그인</button>
 					<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button> 

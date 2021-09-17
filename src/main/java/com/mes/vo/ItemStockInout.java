@@ -14,6 +14,7 @@ public class ItemStockInout {
 	private String localCd;       //구역명
 	private String inoutPlant;    //이동창고
 	private int    itemCnt;       //입출고 수량
+	private String vendorCd;      //제조사(납품처) 코드
 	private String remark;        //비고
 
 	
@@ -76,6 +77,12 @@ public class ItemStockInout {
 	}
 	public void setItemCnt(int itemCnt) {
 		this.itemCnt = itemCnt;
+	}
+	public String getVendorCd() {
+		return vendorCd;
+	}
+	public void setVendorCd(String vendorCd) {
+		this.vendorCd = vendorCd;
 	}
 	public String getRemark() {
 		return remark;

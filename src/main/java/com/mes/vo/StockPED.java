@@ -4,14 +4,11 @@ public class StockPED {
 	
 	private int num;              //순번
 	private String partNo;        //작업지시번호
-	private String finCd;         //제품코드
-	private String finName;       //제품명
+	private String productCd;         //제품코드
+	private String productName;       //제품명
 	private String lineNo;        //라인번호
 	private int    quantity;      //작업지시 수량
 	private String remark;        //비고
-
-	
-	
 	public int getNum() {
 		return num;
 	}
@@ -24,17 +21,17 @@ public class StockPED {
 	public void setPartNo(String partNo) {
 		this.partNo = partNo;
 	}
-	public String getFinCd() {
-		return finCd;
+	public String getProductCd() {
+		return productCd;
 	}
-	public void setFinCd(String finCd) {
-		this.finCd = finCd;
+	public void setProductCd(String productCd) {
+		this.productCd = productCd;
 	}
-	public String getFinName() {
-		return finName;
+	public String getProductName() {
+		return productName;
 	}
-	public void setFinName(String finName) {
-		this.finName = finName;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 	public String getLineNo() {
 		return lineNo;
