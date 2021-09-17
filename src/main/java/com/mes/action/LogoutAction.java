@@ -12,11 +12,10 @@ public class LogoutAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		ActionForward forward= null;
+		ActionForward forward= new ActionForward();
 		
 		HttpSession session = req.getSession();
 		session.invalidate();  
-		forward = new ActionForward();
 		forward.setRedirect(true);
 		forward.setPath("index.do");
 		return forward;
