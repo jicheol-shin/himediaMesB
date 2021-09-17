@@ -1,8 +1,9 @@
+<%@page import="com.mes.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-   // MemberVO member = (MemberVO) session.getAttribute("login_info");
-   String member = null;
+   Member member = (Member) session.getAttribute("login_info");
+  
 %>
 <!DOCTYPE html>
 <html>
@@ -60,7 +61,7 @@
             </a>
           </c:when>  
   	    <c:otherwise>
-	       <li ><a href="#" class='text-primary'>xxxxx님</a></li>  
+	       <li ><a href="#" class='text-primary'><%=member.getUserName()%>님</a></li>  
         </c:otherwise>
       </c:choose>	 
      </div>  
@@ -71,14 +72,14 @@
 		        <h4 class="modal-title">로그인</h4>
 		      </div>
 		      <div class="modal-body">
-				<form action="" class="was-validated">
+				<form action="login.do" method="post" class="was-validated">
 					<div class="form-group">
 						<label for="userId">아이디  </label>
 						<input type="text" class="form-control" id="userId" placeholder="Enter ID" name="userId" required>
 					</div>
 					<div class="form-group">
 						<label for="userPw">비밀번호 </label>
-						<input type="password" class="form-control" id="userPw" placeholder="Enter Password" name="userPw" required>
+						<input type="password" class="form-control" id="password" placeholder="Enter Password" name="password" required>
 					</div>
 					<button type="submit" class="btn btn-primary" style="margin-left:50%;">로그인</button>
 					<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button> 
