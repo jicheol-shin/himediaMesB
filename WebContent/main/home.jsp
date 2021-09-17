@@ -181,7 +181,7 @@
 	   </div>
 	</div>
 	<br /><br />
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+   <nav class="navbar navbar-expand-md bg-secondary navbar-dark  text-light">
     </nav>  
 </div>
 </body>
