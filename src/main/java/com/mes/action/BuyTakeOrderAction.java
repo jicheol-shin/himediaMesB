@@ -35,7 +35,7 @@ public class BuyTakeOrderAction implements Action{
 			
 			forward = new ActionForward();
 			ArrayList<OrderStatement> orderStatementList = new ArrayList<OrderStatement>();
-			OrderStatementService orderStatementService = new orderStatementService();
+			OrderStatementService orderStatementService = new OrderStatementService();
 		}
 		
 		return forward;
