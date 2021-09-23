@@ -6,21 +6,20 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.mes.dao.ItemStockDAO;
-import com.mes.vo.ItemStockInout;
-
-public class ItemStockInoutService {
+import com.mes.vo.ItemStockOutOrder;
 
 
-	public ArrayList<ItemStockInout> getItemStockList() {
-		ArrayList<ItemStockInout> itemStockInoutList = null;
+public class ItemStockOutOrderService {
+
+
+	public ArrayList<ItemStockOutOrder> getItemStockOutOrderList() {
+		ArrayList<ItemStockOutOrder> itemStockOutOrderList = null;
 		Connection conn = getConnection();
 		ItemStockDAO itemstockDAO = ItemStockDAO.getInstance();		
 		itemstockDAO.setConnection(conn);
-		itemStockInoutList = itemstockDAO.selectItemstockList();
+		itemStockOutOrderList = itemstockDAO.selectItemStockOutOrderList();
 		close(conn);
-		return itemStockInoutList; 
+		return itemStockOutOrderList; 
 	}
-	
-	
 	
 }

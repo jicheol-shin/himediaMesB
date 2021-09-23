@@ -10,14 +10,15 @@ import java.util.ArrayList;
 import javax.sql.DataSource;
 
 import com.mes.vo.ItemStockInout;
+import com.mes.vo.ItemStockOutOrder;
 
 
-public class ItemstockDAO {
+public class ItemStockDAO {
 
-	private ItemstockDAO() {}
-	private static ItemstockDAO itemstockDAO;
-	public static ItemstockDAO getInstance() {
-		if(itemstockDAO == null) itemstockDAO = new ItemstockDAO();
+	private ItemStockDAO() {}
+	private static ItemStockDAO itemstockDAO;
+	public static ItemStockDAO getInstance() {
+		if(itemstockDAO == null) itemstockDAO = new ItemStockDAO();
 		return itemstockDAO;
 	}
 
@@ -65,8 +66,41 @@ public class ItemstockDAO {
 		}		
 		return itemStorkInoutList; 	
 	}
-	
-	
+
+
+	public ArrayList<ItemStockOutOrder> selectItemStockOutOrderList() {
+		
+		ArrayList<ItemStockOutOrder> itemStockOutOrderList = new ArrayList<ItemStockOutOrder>();
+		ItemStockOutOrder itemStockOutOrder= null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from itemstock_outorder"; 
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				itemStockOutOrder = new ItemStockOutOrder();
+				itemStockOutOrder.setNum(rs.getInt("num"));
+				itemStockOutOrder.setWorkOrderDate(rs.getDate("work_order_date"));
+				itemStockOutOrder.setItemStockOutDate(rs.getDate("itemstock_out_date"));
+				itemStockOutOrder.setWorkOrderNo(rs.getString("work_order_no"));
+				itemStockOutOrder.setProductCd(rs.getString("item_cd"));
+				itemStockOutOrder.setLineNo(rs.getString("line_no"));
+				itemStockOutOrder.setWorkQty(rs.getInt("workQty"));
+				itemStockOutOrder.setIssue(rs.getString("issue"));
+				itemStockOutOrder.setRemark(rs.getString("remark"));
+				
+				itemStockOutOrderList.add(itemStockOutOrder);
+			}
+			
+		} catch (Exception e) {
+			System.out.println(" 작업지시 조회 실패 : " + e.getMessage());
+		} finally {
+			close(pstmt, rs);
+		}		
+		return itemStockOutOrderList; 	
+	}
 	
 	
 }

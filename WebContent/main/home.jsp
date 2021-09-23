@@ -19,7 +19,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <style type="text/css">
-
+    .btn{font-size: 10px;}
 	ul {
 		list-style-type: none;
 		background-color: #ccc;
@@ -159,7 +159,7 @@
 		      	<div> 
 			      <ul>
 					   <li><a href="itemstockInout.do" >자재 입출고현황</a></li>
-					   <li><a href="#" >자재 불출</a></li>
+					   <li><a href="itemstockOutOrder.do" >자재 불출</a></li>
 					   <li><a href="#" >자재 재고현황</a></li>
 					   <li><a href="#" ><span></span></a></li>
 			      </ul>

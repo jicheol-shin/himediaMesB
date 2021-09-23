@@ -13,11 +13,10 @@ import com.mes.utility.ActionForward;
 import com.mes.vo.ItemStockInout;
 import com.mes.vo.Member;
 
-public class ItemstockInoutAction implements Action{
+public class ItemStockInoutAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-
 		ActionForward forward= null;
 		
 		HttpSession session = req.getSession();
@@ -39,12 +38,11 @@ public class ItemstockInoutAction implements Action{
 			itemStockList = itemStockInoutService.getItemStockList();
 			
 			req.setAttribute("itemStockList", itemStockList);
-			forward.setPath("/itemstock/itemstockInout.jsp");
+			forward.setPath("/itemstock/itemStockInout.jsp");
 			
 		}
 		
 		return forward;
 	}
-
 
 }

@@ -18,7 +18,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <style type="text/css">
-
+    .logtext { font-size: 10px; width:70px;}
 	ul {
 		list-style-type: none;
 		background-color: #ccc;
@@ -46,15 +46,13 @@
 <title>Himedia MES_B</title>
 </head>
 <body>
-<h1></h1>
 <div class="container">
    <div class="bs-component">
    <br />
    <nav class="navbar navbar-expand-md bg-secondary navbar-dark text-light">
 	 <a class="navbar-brand" href="/index.do">Himedia MES</a>
-	 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    	 <span class="navbar-toggler-icon"></span>
- 	 </button>
+     <%@ include file="../main/menu.jsp"%>
+
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
     	<c:choose>
           <c:when test="<%=member == null %>" > 
@@ -64,8 +62,8 @@
           </c:when>  
   	    <c:otherwise>
 
-	       <li ><a href="#" class='text-white'><%=member.getUserName()%>님</a></li>  
-	       <li ><a href="/logout.do" class='text-info'>로그아웃</a></li>
+	       <li ><a href="#" class='text-white logtext'><%=member.getUserName()%>님</a></li>  
+	       <li ><a href="/logout.do" class='text-info logtext'>로그아웃</a></li>
 
         </c:otherwise>
       </c:choose>	 
