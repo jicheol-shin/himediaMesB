@@ -35,8 +35,8 @@ public class ItemstockDAO {
 		ItemStockInout itemStorkInout= null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from itemstock_inout" ;	
-		
+		String sql = "select a.*, b.vendor_name from itemstock_inout as a" ;	
+		       sql += " left join vendor as b  on a.vendor_cd = b.vendor_cd"; 
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -45,6 +45,16 @@ public class ItemstockDAO {
 				itemStorkInout = new ItemStockInout();
 				itemStorkInout.setNum(rs.getInt("num"));
 				itemStorkInout.setItemInoutCd(rs.getString("iteminout_cd"));
+				itemStorkInout.setItemCd(rs.getString("item_cd"));
+				itemStorkInout.setItemName(rs.getString("item_name"));
+				itemStorkInout.setIntoutDate(rs.getDate("iteminout_date"));
+				itemStorkInout.setInoutType(rs.getString("iteminout_type"));
+				itemStorkInout.setStoreCd(rs.getString("store_cd"));
+				itemStorkInout.setLocalCd(rs.getString("local_cd"));
+				itemStorkInout.setInoutPlant(rs.getString("inout_plant"));
+				itemStorkInout.setItemCnt(rs.getInt("item_cnt"));
+				itemStorkInout.setVendorName(rs.getString("vendor_name"));
+				itemStorkInout.setRemark(rs.getString("remark"));
 				itemStorkInoutList.add(itemStorkInout);
 			}
 			

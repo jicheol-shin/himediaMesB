@@ -17,6 +17,8 @@ public class ItemStockInout {
 	private String vendorCd;      //제조사(납품처) 코드
 	private String remark;        //비고
 
+	private String vendorName;    //제조사(납품처)명
+	
 	
 	public int getNum() {
 		return num;
@@ -83,6 +85,13 @@ public class ItemStockInout {
 	}
 	public void setVendorCd(String vendorCd) {
 		this.vendorCd = vendorCd;
+	}
+	
+	public String getVendorName() {
+		return vendorName;
+	}
+	public void setVendorName(String vendorName) {
+		this.vendorName = vendorName;
 	}
 	public String getRemark() {
 		return remark;

@@ -25,15 +25,15 @@ public class LoginAction implements Action{
 		
 		MemberService memberService = new MemberService();
 		member = memberService.loginMember(id,password);
-		
-		
-		if( member == null) {
+			
+		if( member.getUserId() == null) {
 			res.setContentType("text/html; charset=utf-8");
 			PrintWriter out = res.getWriter();
 			out.println("<script>");
 			out.println("alert('아이디나 패스워드를 확인해 주세요!')");
 			out.println("history.back()");
 			out.println("</script>");
+			
 		} else {
 			HttpSession session = req.getSession();
 			session.setAttribute("login_info", member);

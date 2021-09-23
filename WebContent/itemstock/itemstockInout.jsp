@@ -65,7 +65,7 @@
   	    <c:otherwise>
 
 	       <li ><a href="#" class='text-white'><%=member.getUserName()%>님</a></li>  
-	       <li ><a href="logout.do" class='text-info'>로그아웃</a></li>
+	       <li ><a href="/logout.do" class='text-info'>로그아웃</a></li>
 
         </c:otherwise>
       </c:choose>	 
@@ -92,24 +92,29 @@
 				<th>창고명</th>				
 				<th>구역명</th>				
 				<th>이동창고</th>				
-				<th>수량</th>							
+				<th>수량</th>
+				<th>수량</th>
+				<th>납품처</th>
 				<th>비고</th>				
 			</tr>
 			</thead>
-			<!-- 
+
 			<c:forEach var="itemStock" items="${itemStockList}">
-			 -->
 			<tr>
-				<td><!--  ${itemStock.getNum()}--></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>	
+				<td>${itemStock.getNum()}</td>
+				<td>${itemStock.getItemInoutCd()}</td>
+				<td>${itemStock.getItemCd()}</td>
+				<td>${itemStock.getItemName()}</td>
+				<td>${itemStock.getIntoutDate()}</td>
+				<td>${itemStock.getInoutType()}</td>
+				<td>${itemStock.getStoreCd()}</td>
+				<td>${itemStock.getLocalCd()}</td>
+				<td>${itemStock.getInoutPlant()}</td>
+				<td>${itemStock.getItemCnt()}</td>
+				<td>${itemStock.getVendorName()}</td>
+				<td>${itemStock.getRemark()}</td>
 			</tr>
-			<!--	
 			</c:forEach>
-			-->
 		</table>
 	</div>	
 	<br /><br />

@@ -37,12 +37,12 @@ public class ItemstockInoutAction implements Action{
 			ArrayList<ItemStockInout> itemStockList = new ArrayList<ItemStockInout>();
 			ItemStockInoutService itemStockInoutService = new ItemStockInoutService();
 			itemStockList = itemStockInoutService.getItemStockList();
-		
+			
 			req.setAttribute("itemStockList", itemStockList);
 			forward.setPath("/itemstock/itemstockInout.jsp");
-		
 			
 		}
+		
 		return forward;
 	}
 
