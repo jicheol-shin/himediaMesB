@@ -13,6 +13,8 @@ public class TakeOrder {
 	private int ordCnt;// 수주수량
 	private String remark;// 비고
 	
+	private String productName; // 제품명
+	
 	public String getOrdCd() {
 		return ordCd;
 	}
@@ -61,5 +63,11 @@ public class TakeOrder {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
 }

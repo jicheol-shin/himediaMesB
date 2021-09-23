@@ -13,6 +13,7 @@ import com.mes.utility.ActionForward;
 import com.mes.vo.Member;
 import com.mes.vo.TakeOrder;
 
+
 public class TakeOrderPurchaseAction implements Action{
 
 	@Override
