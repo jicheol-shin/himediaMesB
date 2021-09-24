@@ -8,9 +8,9 @@
 <%
 	Member member = (Member) session.getAttribute("login_info");
 
-	ReleaseProductViewService releaseProductdata = new ReleaseProductViewService();
-	ArrayList<ReleaseProduct> releaseProductList = releaseProductdata.getReleaseProductList();
+	ArrayList<ReleaseProduct> releaseProductList = (ArrayList<ReleaseProduct>) request.getAttribute("releaseProductList");
 %>
+<c:set var="releaseProduct_data" value="<%=releaseProductList%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,7 +79,7 @@
 </div>
 <br />
 <div align="center">
-	<h3>RELEASE_PRODUCT</h3>
+	<h3>출하관리</h3>
 </div>
 <br>
 <hr>
@@ -90,47 +90,44 @@
 		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;">
 			<thead>
 				<tr>
-					<th style="background-color: #eeeeee; text-align: center;">출고요청코드</th>
-					<th style="background-color: #eeeeee; text-align: center;">출하요청일자</th>
-					<th style="background-color: #eeeeee; text-align: center;">수주코드</th>
-					<th style="background-color: #eeeeee; text-align: center;">거래처</th>
-					<th style="background-color: #eeeeee; text-align: center;">제품코드</th>
-					<th style="background-color: #eeeeee; text-align: center;">진행상태</th>
-					<th style="background-color: #eeeeee; text-align: center;">요청수량</th>
-					<th style="background-color: #eeeeee; text-align: center;">출하수량</th>
-					<th style="background-color: #eeeeee; text-align: center;">요청잔량</th>
-					<th style="background-color: #eeeeee; text-align: center;">납품예정일</th>
-					<th style="background-color: #eeeeee; text-align: center;">비고</th>
+					<th>출고요청코드</th>
+					<th>출하요청일자</th>
+					<th>수주코드</th>
+					<th>거래처</th>
+					<th>제품코드</th>
+					<th>진행상태</th>
+					<th>요청수량</th>
+					<th>출하수량</th>
+					<th>재고수량</th>
+					<th>요청잔량</th>
+					<th>납품예정일</th>
+					<th>비고</th>
 				</tr>
 			</thead>
 			<tbody>
-				<%
-					for(int i = 0; i < releaseProductList.size(); i++) {
-				%>
-					<tr>
-						<td><%= releaseProductList.get(i).getReleCd() %></td>
-						<td><%= releaseProductList.get(i).getReleDate() %></td>
-						<td><%= releaseProductList.get(i).getOrdCd() %></td>
-						<td><%= releaseProductList.get(i).getCustomer() %></td>
-						<td><%= releaseProductList.get(i).getProductCd() %></td>
-						<td><%= releaseProductList.get(i).getProcess() %></td>
-						<td><%= releaseProductList.get(i).getReqCnt() %></td>
-						<td><%= releaseProductList.get(i).getReleCnt() %></td>
-						<td><%= releaseProductList.get(i).getBackCnt() %></td>
-						<td><%= releaseProductList.get(i).getReleDelDate() %></td>
-						<td><%= releaseProductList.get(i).getRemark() %></td>
-					</tr>
-					<%
-						}
-					%>
+			<c:forEach var="release" items="${releaseProduct_data}">
+               <tr>
+                  <td>${release.getReleCd()}</td>
+                  <td>${release.getReleDate()}</td>
+                  <td>${release.getOrdCd()}</td>
+                  <td>${release.getCustomer()}</td>
+                  <td>${release.getProductCd()}</td>
+                  <td>${release.getProcess()}</td>
+                  <td>${release.getReqCnt()}</td>
+                  <td>${release.getReleCnt()}</td>
+                  <td>${release.getGoodCount()}</td>
+                  <td>${release.getBackCnt()}</td>
+                  <td>${release.getReleDelDate()}</td>
+                  <td>${release.getRemark()}</td>
+               </tr>
+             </c:forEach>
 			</tbody>
 		</table>
 	</div>
 </div>
 <br>
 <div align="center">
-	<a href="/index.do"><input type="button" value="HOME" class="btn btn-primary"></a>
-	<a href="/releaseProductInputForm.do"><input type="button" value="RELEASE_PRODUCT 입력" class="btn btn-success" style="text-align: center"></a>
+	<a href="/releaseProductInputForm.do"><input type="button" value="출하 입력" class="btn btn-success" style="text-align: center"></a>
 </div>
 <hr>
 </body>

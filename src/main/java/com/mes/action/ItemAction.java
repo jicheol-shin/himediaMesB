@@ -38,6 +38,7 @@ public class ItemAction implements Action{
 			itemList = itemService.getItemList();
 			
 			req.setAttribute("itemList", itemList);
+			forward.setRedirect(true);
 			forward.setPath("/item/itemView.jsp");
 			
 		}

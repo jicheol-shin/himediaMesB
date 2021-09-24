@@ -38,6 +38,7 @@ public class ErrorProduceAction implements Action{
 			errorproduceList = errorProduceService.getErrorProduceList();
 			
 			req.setAttribute("errorproduceList", errorproduceList);
+			forward.setRedirect(true);
 			forward.setPath("/errorProduce/errorProduceView.jsp");
 		}
 		

@@ -38,6 +38,7 @@ public class LineAction implements Action {
 			lineList = lineService.getLineList();
 			
 			req.setAttribute("lineList", lineList);
+			forward.setRedirect(true);
 			forward.setPath("/line/lineView.jsp");
 			
 		}

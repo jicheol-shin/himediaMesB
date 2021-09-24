@@ -78,7 +78,7 @@
 </div>
 <br />
 <div align="center">
-	<h3>Product</h3>
+	<h3>완제품관리</h3>
 </div>
 <br>
 <hr>
@@ -112,8 +112,7 @@
 		</table>
 	</div>
 	<div class="container" align="center">
-		<a href="/index.do"><input type="button" value="HOME" class="btn btn-primary"></a>
-		<input type="button" value="PRODUCT 입력" class="btn btn-success" style="text-align: center">
+		<input type="button" value="완제품 입력" class="btn btn-success" style="text-align: center">
 	</div>
 </div>
 <br>

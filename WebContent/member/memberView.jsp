@@ -88,14 +88,14 @@
 		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;">
 			<thead>
 				<tr>
-					<th style="background-color: #eeeeee; text-align: center;">사용자ID</th>
-					<th style="background-color: #eeeeee; text-align: center;">사용자비밀번호</th>
-					<th style="background-color: #eeeeee; text-align: center;">사용자명</th>
-					<th style="background-color: #eeeeee; text-align: center;">이메일</th>
-					<th style="background-color: #eeeeee; text-align: center;">전화번호</th>
-					<th style="background-color: #eeeeee; text-align: center;">부서</th>
-					<th style="background-color: #eeeeee; text-align: center;">직급</th>
-					<th style="background-color: #eeeeee; text-align: center;">비고</th>
+					<th>사용자ID</th>
+					<th>사용자비밀번호</th>
+					<th>사용자명</th>
+					<th>이메일</th>
+					<th>전화번호</th>
+					<th>부서</th>
+					<th>직급</th>
+					<th>비고</th>
 				</tr>
 			</thead>
 			<tbody>

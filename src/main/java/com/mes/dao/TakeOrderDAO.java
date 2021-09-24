@@ -3,7 +3,6 @@ package com.mes.dao;
 import static com.mes.db.JDBCUtility.*;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -83,8 +82,7 @@ public class TakeOrderDAO {
 		// insertCount - 입력되는 행을 위한 변수
 		int insertCount = 0;
 		// String -> Date
-		SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
-		SimpleDateFormat reformat = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		
 		// prepareStatement - sql문 호출
 		try {
@@ -95,7 +93,8 @@ public class TakeOrderDAO {
 			pstmt.setString(2, takeOrder.getProcess());// 진행상태
 			pstmt.setString(3, takeOrder.getVendorCd());// 거래처코드
 			pstmt.setString(4, takeOrder.getProductCd());// 제품코드
-			pstmt.setDate(5, reformat.format(format.parse(takeOrder.getOrdDelDate().toString())));// 납품예정일
+			System.out.println("TakeOrder_DAO" + format.format(takeOrder.getOrdDelDate()));
+			pstmt.setDate(5, format.format(takeOrder.getOrdDelDate()));// 납품예정일
 			pstmt.setInt(6, takeOrder.getOrdCnt());// 수주수량
 			pstmt.setString(7, takeOrder.getRemark());// 비고
 			// executeUpdate - 리턴값이 int(n행을 리턴)

@@ -13,16 +13,16 @@ public class MemberViewService {
 
 	public ArrayList<Member> getMemberList(){
 		
-		ArrayList<Member> MemberList = null;
+		ArrayList<Member> memberList = null;
 		
 		Connection conn = getConnection();
 		MemberViewDAO memberViewDAO = MemberViewDAO.getInstance();
 		memberViewDAO.setConnection(conn);
-		MemberList = memberViewDAO.selectMemberList();
+		memberList = memberViewDAO.selectMemberList();
 		
 		close(conn);
 		
-		return MemberList;
+		return memberList;
 		
 	}
 	

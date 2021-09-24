@@ -77,7 +77,8 @@
 <div class="col-md-2"></div>
 	<br />
 	<div class="col-md-8">
-	<h2 class="text-center">BOM_INPUT</h2><p></p>
+	<br />
+	<h2 class="text-center">BOM입력</h2><p></p>
 	<br>
 	<hr>
 	<br>

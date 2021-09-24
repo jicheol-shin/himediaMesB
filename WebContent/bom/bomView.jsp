@@ -1,16 +1,14 @@
 <%@page import="com.mes.vo.Bom"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.mes.service.BomViewService"%>
 <%@page import="com.mes.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Member member = (Member) session.getAttribute("login_info");
-
-	BomViewService bomdata = new BomViewService();
-	ArrayList<Bom> bomList = bomdata.getBomList();
+	ArrayList<Bom> bomList = (ArrayList<Bom>) request.getAttribute("bomList");
 %>
+<c:set var="bom_data" value="<%=bomList%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,7 +77,7 @@
 </div>
 <br />
 <div align="center">
-	<h3>BOM</h3>
+	<h3>BOM관리</h3>
 </div>
 <br>
 <hr>
@@ -90,40 +88,35 @@
 		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;">
 			<thead>
 				<tr>
-					<th style="background-color: #eeeeee; text-align: center;">제품코드</th>
-					<th style="background-color: #eeeeee; text-align: center;">부품코드</th>
-					<th style="background-color: #eeeeee; text-align: center;">부품명</th>
-					<th style="background-color: #eeeeee; text-align: center;">소요량</th>
-					<th style="background-color: #eeeeee; text-align: center;">단위</th>
-					<th style="background-color: #eeeeee; text-align: center;">단가</th>
-					<th style="background-color: #eeeeee; text-align: center;">거래처코드</th>
-					<th style="background-color: #eeeeee; text-align: center;">비고</th>
+					<th>제품코드</th>
+					<th>부품코드</th>
+					<th>부품명</th>
+					<th>소요량</th>
+					<th>단위</th>
+					<th>단가</th>
+					<th>거래처코드</th>
+					<th>비고</th>
 				</tr>
 			</thead>
 			<tbody>
-				<%
-					for(int i = 0; i < bomList.size(); i++) {
-				%>
-					<tr>
-						<td><%= bomList.get(i).getProductCd() %></td>
-						<td><%= bomList.get(i).getItemCd() %></td>
-						<td><%= bomList.get(i).getItemName() %></td>
-						<td><%= bomList.get(i).getItemCnt() %></td>
-						<td><%= bomList.get(i).getUnit() %></td>
-						<td><%= bomList.get(i).getUnitPrice() %></td>
-						<td><%= bomList.get(i).getVendorCd() %></td>
-						<td><%= bomList.get(i).getRemark() %></td>
-					</tr>
-					<%
-						}
-					%>
+	         <c:forEach var="bom" items="${bom_data}">
+               <tr>
+                  <td>${bom.getProductCd()}</td>
+                  <td>${bom.getItemCd()}</td>
+                  <td>${bom.getItemName()}</td>
+                  <td>${bom.getItemCnt()}</td>
+                  <td>${bom.getUnit()}</td>
+                  <td>${bom.getUnitPrice()}</td>
+                  <td>${bom.getVendorCd()}</td>
+                  <td>${bom.getRemark()}</td>
+               </tr>
+             </c:forEach>
 			</tbody>
 		</table>
 	</div>
 </div>
 <br>
 <div align="center">
-	<a href="/index.do"><input type="button" value="HOME" class="btn btn-primary"></a>
 	<a href="/bomInputForm.do"><input type="button" value="BOM 입력" class="btn btn-success" style="text-align: center"></a>
 </div>
 <hr>

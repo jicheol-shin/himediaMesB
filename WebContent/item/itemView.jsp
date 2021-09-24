@@ -84,7 +84,7 @@
 </div>
 <br />
 <div align="center">
-	<h3>ITEMS</h3>
+	<h3>부품관리</h3>
 </div>
 <br>
 <hr>
@@ -172,8 +172,7 @@
 </div>
 <br>
 <div align="center">
-	<a href="/index.do"><input type="button" value="HOME" class="btn btn-primary"></a>
-	<input type="button" value="ITEM 입력" class="btn btn-success" style="text-align: center">
+	<input type="button" value="부품 입력" class="btn btn-success" style="text-align: center">
 </div>
 <hr>
 </body>

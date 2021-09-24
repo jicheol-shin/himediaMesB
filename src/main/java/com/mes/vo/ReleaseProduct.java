@@ -14,7 +14,10 @@ public class ReleaseProduct {
 	private int releCnt;// 출하수량
 	private int backCnt;// 요청잔량
 	private Date releDelDate;// 납품예정일
-	private String remark;
+	private String remark;// 비고
+	
+	private int goodCount;// 재고수량
+	
 	public String getReleCd() {
 		return releCd;
 	}
@@ -80,8 +83,14 @@ public class ReleaseProduct {
 	}
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+	public int getGoodCount() {
+		return goodCount;
+	}
+	public void setGoodCount(int goodCount) {
+		this.goodCount = goodCount;
 	}       	
 
-
+	
 
 }

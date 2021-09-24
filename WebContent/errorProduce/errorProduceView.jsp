@@ -1,16 +1,14 @@
 <%@page import="com.mes.vo.ErrorProduce"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.mes.service.ErrorProduceService"%>
 <%@page import="com.mes.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Member member = (Member) session.getAttribute("login_info");
-
-	ErrorProduceService errorproducedata = new ErrorProduceService();
-	ArrayList<ErrorProduce> errorProduceList = errorproducedata.getErrorProduceList();
+	ArrayList<ErrorProduce> errorProduceList = (ArrayList<ErrorProduce>) request.getAttribute("errorProduceList");
 %>
+<c:set var="errorProduce_data" value="<%=errorProduceList%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,7 +77,7 @@
 </div>
 <br />
 <div align="center">
-	<h3>ERROR_PRODUCE</h3>
+	<h3>불량관리</h3>
 </div>
 <br>
 <hr>
@@ -90,31 +88,26 @@
 		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;">
 			<thead>
 				<tr>
-					<th style="background-color: #eeeeee; text-align: center;">불량코드</th>
-					<th style="background-color: #eeeeee; text-align: center;">불량내용</th>
-					<th style="background-color: #eeeeee; text-align: center;">비고</th>
+					<th>불량코드</th>
+					<th>불량내용</th>
+					<th>비고</th>
 				</tr>
 			</thead>
 			<tbody>
-				<%
-					for(int i = 0; i < errorProduceList.size(); i++) {
-				%>
-					<tr>
-						<td><%= errorProduceList.get(i).getErrorCd() %></td>
-						<td><%= errorProduceList.get(i).getErrorName() %></td>
-						<td><%= errorProduceList.get(i).getRemark() %></td>
-					</tr>
-					<%
-						}
-					%>
+	         <c:forEach var="error" items="${errorProduce_data}">
+               <tr>
+					<td>${error.getErrorCd()}</td>
+					<td>${error.getErrorName()}</td>
+					<td>${error.getRemark()}</td>
+               </tr>
+             </c:forEach>
 			</tbody>
 		</table>
 	</div>
 </div>
 <br>
 <div align="center">
-	<a href="/index.do"><input type="button" value="HOME" class="btn btn-primary"></a>
-	<input type="button" value="ERROR_PRODUCE 입력" class="btn btn-success" style="text-align: center">
+	<input type="button" value="불량 입력" class="btn btn-success" style="text-align: center">
 </div>
 <hr>
 </body>

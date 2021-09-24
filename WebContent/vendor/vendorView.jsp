@@ -79,7 +79,7 @@
 </div>
 <br />
 <div align="center">
-	<h3>VENDOR</h3>
+	<h3>거래처관리</h3>
 </div>
 <br>
 <hr>
@@ -125,8 +125,7 @@
 </div>
 <br>
 <div align="center">
-	<a href="/index.do"><input type="button" value="HOME" class="btn btn-primary"></a>
-	<input type="button" value="VENDOR 입력" class="btn btn-success" style="text-align: center">
+	<input type="button" value="거래처 입력" class="btn btn-success" style="text-align: center">
 </div>
 <hr>
 </body>

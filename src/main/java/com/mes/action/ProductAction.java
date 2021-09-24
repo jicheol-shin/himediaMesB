@@ -39,6 +39,7 @@ public class ProductAction implements Action {
 			productList = productService.getProductList();
 			
 			req.setAttribute("productList", productList);
+			forward.setRedirect(true);
 			forward.setPath("/product/productView.jsp");
 		}
 		

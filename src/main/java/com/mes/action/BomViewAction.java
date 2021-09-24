@@ -38,6 +38,7 @@ public class BomViewAction implements Action{
 			bomList = bomViewService.getBomList();
 			
 			req.setAttribute("bomList", bomList);
+			forward.setRedirect(true);
 			forward.setPath("/bom/bomView.jsp");
 			
 		}

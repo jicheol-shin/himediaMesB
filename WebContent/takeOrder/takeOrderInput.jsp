@@ -77,7 +77,8 @@
 <div class="col-md-2"></div>
 	<br />
 	<div class="col-md-8">
-	<h2 class="text-center">TAKE_ORDER_INPUT</h2><p></p>
+	<br />
+	<h2 class="text-center">수주 입력</h2><p></p>
 	<br>
 	<hr>
 	<br>

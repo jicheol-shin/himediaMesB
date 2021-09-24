@@ -1,9 +1,15 @@
+<%@page import="com.mes.service.ReleaseProductViewService"%>
+<%@page import="com.mes.service.ReleaseProductInputService"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.mes.vo.ReleaseProduct"%>
 <%@page import="com.mes.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Member member = (Member) session.getAttribute("login_info");
+	ReleaseProductViewService releaseProductInputService = new ReleaseProductViewService();
+	ArrayList<ReleaseProduct> releaseProductList = releaseProductInputService.getReleaseProductList();
 %>
 <!DOCTYPE html>
 <html>
@@ -77,7 +83,8 @@
 <div class="col-md-2"></div>
 	<br />
 	<div class="col-md-8">
-	<h2 class="text-center">TAKE_ORDER_INPUT</h2><p></p>
+	<br />
+	<h2 class="text-center">출하 입력</h2><p></p>
 	<br>
 	<hr>
 	<br>
@@ -116,6 +123,16 @@
 				    <td>출하수량</td>
 				    <td><input type="number" name="releCnt" class="form-control" ></td>
 				</tr>
+				<%
+					for(int i = 0; i < 1; i++) {
+				%>
+				<tr>
+					<td>재고수량</td>
+					<td><%= releaseProductList.get(i).getGoodCount() %></td>
+				</tr>
+				<%
+					}
+				%>
 				<tr>
 				    <td>요청잔량</td>
 				    <td><input type="number" name="backCnt" class="form-control" ></td>

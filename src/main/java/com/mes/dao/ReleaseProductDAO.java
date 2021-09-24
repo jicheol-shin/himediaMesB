@@ -40,7 +40,9 @@ public class ReleaseProductDAO {
 		ReleaseProduct releaseProduct = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from release_product";
+//		String sql = "select * from release_product";
+		String sql = "select a.*, b.good_count from release_product as a" ;
+		   sql += " left join product_inventory as b on a.product_cd = b.product_cd";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -56,6 +58,7 @@ public class ReleaseProductDAO {
 				releaseProduct.setProcess(rs.getString("process"));// 진행상태
 				releaseProduct.setReqCnt(rs.getInt("req_cnt"));// 요청수량
 				releaseProduct.setReleCnt(rs.getInt("rele_cnt"));// 출하수량
+				releaseProduct.setReleCnt(rs.getInt("good_count"));// 재고수량
 				releaseProduct.setBackCnt(rs.getInt("back_cnt"));// 요청잔량
 				releaseProduct.setReleDelDate(rs.getDate("rele_del_date"));// 납품예정일
 				releaseProduct.setRemark(rs.getString("remark"));// 비고

@@ -79,7 +79,7 @@
 </div>
 <br />
 <div align="center">
-	<h3>TAKE_ORDER</h3>
+	<h3>수주관리</h3>
 </div>
 <br>
 <hr>
@@ -123,8 +123,7 @@
 </div>
 <br>
 <div align="center">
-	<a href="/index.do"><input type="button" value="HOME" class="btn btn-primary"></a>
-	<a href="/takeOrderInputForm.do"><input type="button" value="TAKE_ORDER 입력" class="btn btn-success" style="text-align: center"></a>
+	<a href="/takeOrderInputForm.do"><input type="button" value="수주 입력" class="btn btn-success" style="text-align: center"></a>
 </div>
 <hr>
 </body>

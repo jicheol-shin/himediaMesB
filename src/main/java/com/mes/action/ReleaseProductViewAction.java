@@ -40,6 +40,7 @@ public class ReleaseProductViewAction implements Action{
 			releaseProductList = releaseProductViewService.getReleaseProductList();
 			
 			req.setAttribute("releaseProductList", releaseProductList);
+			forward.setRedirect(true);
 			forward.setPath("/releaseProduct/releaseProductView.jsp");
 			
 		}

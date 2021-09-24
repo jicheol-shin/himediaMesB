@@ -39,6 +39,7 @@ public class VendorAction implements Action {
 			vendorList = vendorService.getVendorList();
 			
 			req.setAttribute("vendorList", vendorList);
+			forward.setRedirect(true);
 			forward.setPath("/vendor/vendorView.jsp");
 			
 		}

@@ -37,6 +37,7 @@ public class MemberViewAction implements Action{
 			memberList = memberViewService.getMemberList();
 			
 			req.setAttribute("memberList", memberList);
+			forward.setRedirect(true);
 			forward.setPath("/member/memberView.jsp");
 		
 		}	
