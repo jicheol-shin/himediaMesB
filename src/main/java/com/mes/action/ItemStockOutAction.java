@@ -11,7 +11,7 @@ import com.mes.utility.Action;
 import com.mes.utility.ActionForward;
 import com.mes.vo.Member;
 
-public class ItemStockOut  implements Action{
+public class ItemStockOutAction  implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
