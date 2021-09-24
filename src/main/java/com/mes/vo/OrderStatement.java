@@ -8,12 +8,12 @@ public class OrderStatement {
 	private String ordCd;      // 수주코드
 	private String itemCd;     // 부품코드
 	private String itemName;   // 부품명
-	private Date orderDate;    // 발주날짜
-	private int goodCnt;       // 재고량
+	private Date orderDate;    // 발주일
+	private int itemCnt;       // 재고량
 	private int orderCnt;      // 발주량
 	private double unitPrice;  // 단가
 	private double sumPrice;   // 합계
-	private String custCd;     // 거래처
+	private String vendorCd;   // 거래처
 	private int leadTime;      // 소요일
 	private String remark;     // 비고
 	
@@ -48,11 +48,11 @@ public class OrderStatement {
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
-	public int getGoodCnt() {
-		return goodCnt;
+	public int getitemCnt() {
+		return itemCnt;
 	}
-	public void setGoodCnt(int goodCnt) {
-		this.goodCnt = goodCnt;
+	public void setitemCnt(int itemCnt) {
+		this.itemCnt = itemCnt;
 	}
 	public int getOrderCnt() {
 		return orderCnt;
@@ -72,11 +72,11 @@ public class OrderStatement {
 	public void setSumPrice(double sumPrice) {
 		this.sumPrice = sumPrice;
 	}
-	public String getCustCd() {
-		return custCd;
+	public String getvendorCd() {
+		return vendorCd;
 	}
-	public void setCustCd(String custCd) {
-		this.custCd = custCd;
+	public void setvendorCd(String vendorCd) {
+		this.vendorCd = vendorCd;
 	}
 	public int getLeadTime() {
 		return leadTime;
