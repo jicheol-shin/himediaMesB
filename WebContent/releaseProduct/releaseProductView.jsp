@@ -1,14 +1,15 @@
-<%@page import="com.mes.service.ProductService"%>
-<%@page import="com.mes.vo.Member"%>
+<%@page import="com.mes.vo.ReleaseProduct"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.mes.vo.Product"%>
-<%@page import="com.mes.dao.ProductDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="com.mes.service.ReleaseProductViewService"%>
+<%@page import="com.mes.vo.Member"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Member member = (Member) session.getAttribute("login_info");
-	ProductService productdata = new ProductService();
-	ArrayList<Product> productList = productdata.getProductList();
+
+	ReleaseProductViewService releaseProductdata = new ReleaseProductViewService();
+	ArrayList<ReleaseProduct> releaseProductList = releaseProductdata.getReleaseProductList();
 %>
 <!DOCTYPE html>
 <html>
@@ -49,7 +50,7 @@
 	}
 
 </style>
-<title>Product_View</title>
+<title>RELEASE_PRODUCT_VIEW</title>
 </head>
 <body>
 <!-- 로그인바 -->
@@ -78,7 +79,7 @@
 </div>
 <br />
 <div align="center">
-	<h3>Product</h3>
+	<h3>RELEASE_PRODUCT</h3>
 </div>
 <br>
 <hr>
@@ -89,21 +90,35 @@
 		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;">
 			<thead>
 				<tr>
+					<th style="background-color: #eeeeee; text-align: center;">출고요청코드</th>
+					<th style="background-color: #eeeeee; text-align: center;">출하요청일자</th>
+					<th style="background-color: #eeeeee; text-align: center;">수주코드</th>
+					<th style="background-color: #eeeeee; text-align: center;">거래처</th>
 					<th style="background-color: #eeeeee; text-align: center;">제품코드</th>
-					<th style="background-color: #eeeeee; text-align: center;">제품명</th>
-					<th style="background-color: #eeeeee; text-align: center;">제품스펙</th>
+					<th style="background-color: #eeeeee; text-align: center;">진행상태</th>
+					<th style="background-color: #eeeeee; text-align: center;">요청수량</th>
+					<th style="background-color: #eeeeee; text-align: center;">출하수량</th>
+					<th style="background-color: #eeeeee; text-align: center;">요청잔량</th>
+					<th style="background-color: #eeeeee; text-align: center;">납품예정일</th>
 					<th style="background-color: #eeeeee; text-align: center;">비고</th>
 				</tr>
 			</thead>
 			<tbody>
 				<%
-					for(int i = 0; i < productList.size(); i++) {
+					for(int i = 0; i < releaseProductList.size(); i++) {
 				%>
 					<tr>
-						<td><%= productList.get(i).getProductCd() %></td>
-						<td><%= productList.get(i).getProductName() %></td>
-						<td><%= productList.get(i).getProductSpec() %></td>
-						<td><%= productList.get(i).getRemark()%></td>
+						<td><%= releaseProductList.get(i).getReleCd() %></td>
+						<td><%= releaseProductList.get(i).getReleDate() %></td>
+						<td><%= releaseProductList.get(i).getOrdCd() %></td>
+						<td><%= releaseProductList.get(i).getCustomer() %></td>
+						<td><%= releaseProductList.get(i).getProductCd() %></td>
+						<td><%= releaseProductList.get(i).getProcess() %></td>
+						<td><%= releaseProductList.get(i).getReqCnt() %></td>
+						<td><%= releaseProductList.get(i).getReleCnt() %></td>
+						<td><%= releaseProductList.get(i).getBackCnt() %></td>
+						<td><%= releaseProductList.get(i).getReleDelDate() %></td>
+						<td><%= releaseProductList.get(i).getRemark() %></td>
 					</tr>
 					<%
 						}
@@ -111,12 +126,16 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="container" align="center">
-		<a href="/index.do"><input type="button" value="HOME" class="btn btn-primary"></a>
-		<input type="button" value="PRODUCT 입력" class="btn btn-success" style="text-align: center">
-	</div>
 </div>
 <br>
+<div align="center">
+	<a href="/index.do"><input type="button" value="HOME" class="btn btn-primary"></a>
+	<a href="/releaseProductInputForm.do"><input type="button" value="RELEASE_PRODUCT 입력" class="btn btn-success" style="text-align: center"></a>
+</div>
 <hr>
+</body>
+</html>
+</body>
+</html>
 </body>
 </html>

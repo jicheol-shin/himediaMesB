@@ -14,8 +14,7 @@ public class ReleaseProduct {
 	private int releCnt;// 출하수량
 	private int backCnt;// 요청잔량
 	private Date releDelDate;// 납품예정일
-	private String remark;// 비고
-	
+	private String remark;
 	public String getReleCd() {
 		return releCd;
 	}
@@ -81,6 +80,8 @@ public class ReleaseProduct {
 	}
 	public void setRemark(String remark) {
 		this.remark = remark;
-	}
-	
+	}       	
+
+
+
 }

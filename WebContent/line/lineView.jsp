@@ -1,14 +1,15 @@
-<%@page import="com.mes.service.ProductService"%>
-<%@page import="com.mes.vo.Member"%>
+<%@page import="com.mes.vo.Line"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.mes.vo.Product"%>
-<%@page import="com.mes.dao.ProductDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="com.mes.service.LineService"%>
+<%@page import="com.mes.vo.Member"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Member member = (Member) session.getAttribute("login_info");
-	ProductService productdata = new ProductService();
-	ArrayList<Product> productList = productdata.getProductList();
+
+	LineService linedata = new LineService();
+	ArrayList<Line> lineList = linedata.getLineList();
 %>
 <!DOCTYPE html>
 <html>
@@ -49,7 +50,7 @@
 	}
 
 </style>
-<title>Product_View</title>
+<title>LINE_VIEW</title>
 </head>
 <body>
 <!-- 로그인바 -->
@@ -78,7 +79,7 @@
 </div>
 <br />
 <div align="center">
-	<h3>Product</h3>
+	<h3>LINE</h3>
 </div>
 <br>
 <hr>
@@ -89,21 +90,27 @@
 		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;">
 			<thead>
 				<tr>
-					<th style="background-color: #eeeeee; text-align: center;">제품코드</th>
-					<th style="background-color: #eeeeee; text-align: center;">제품명</th>
-					<th style="background-color: #eeeeee; text-align: center;">제품스펙</th>
+					<th style="background-color: #eeeeee; text-align: center;">라인코드</th>
+					<th style="background-color: #eeeeee; text-align: center;">라인명</th>
+					<th style="background-color: #eeeeee; text-align: center;">라인분류</th>
+					<th style="background-color: #eeeeee; text-align: center;">설비사용</th>
+					<th style="background-color: #eeeeee; text-align: center;">검사유무</th>
+					<th style="background-color: #eeeeee; text-align: center;">불량수</th>
 					<th style="background-color: #eeeeee; text-align: center;">비고</th>
 				</tr>
 			</thead>
 			<tbody>
 				<%
-					for(int i = 0; i < productList.size(); i++) {
+					for(int i = 0; i < lineList.size(); i++) {
 				%>
 					<tr>
-						<td><%= productList.get(i).getProductCd() %></td>
-						<td><%= productList.get(i).getProductName() %></td>
-						<td><%= productList.get(i).getProductSpec() %></td>
-						<td><%= productList.get(i).getRemark()%></td>
+						<td><%= lineList.get(i).getLineCd() %></td>
+						<td><%= lineList.get(i).getLineName() %></td>
+						<td><%= lineList.get(i).getLineType() %></td>
+						<td><%= lineList.get(i).getEquipment() %></td>
+						<td><%= lineList.get(i).getTest() %></td>
+						<td><%= lineList.get(i).getErrorCnt() %></td>
+						<td><%= lineList.get(i).getRemark() %></td>
 					</tr>
 					<%
 						}
@@ -111,12 +118,14 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="container" align="center">
-		<a href="/index.do"><input type="button" value="HOME" class="btn btn-primary"></a>
-		<input type="button" value="PRODUCT 입력" class="btn btn-success" style="text-align: center">
-	</div>
 </div>
 <br>
+<div align="center">
+	<a href="/index.do"><input type="button" value="HOME" class="btn btn-primary"></a>
+	<input type="button" value="LINE 입력" class="btn btn-success" style="text-align: center">
+</div>
 <hr>
+</body>
+</html>
 </body>
 </html>

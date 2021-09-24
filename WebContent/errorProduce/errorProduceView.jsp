@@ -1,14 +1,15 @@
-<%@page import="com.mes.service.ProductService"%>
-<%@page import="com.mes.vo.Member"%>
+<%@page import="com.mes.vo.ErrorProduce"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.mes.vo.Product"%>
-<%@page import="com.mes.dao.ProductDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="com.mes.service.ErrorProduceService"%>
+<%@page import="com.mes.vo.Member"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Member member = (Member) session.getAttribute("login_info");
-	ProductService productdata = new ProductService();
-	ArrayList<Product> productList = productdata.getProductList();
+
+	ErrorProduceService errorproducedata = new ErrorProduceService();
+	ArrayList<ErrorProduce> errorProduceList = errorproducedata.getErrorProduceList();
 %>
 <!DOCTYPE html>
 <html>
@@ -49,7 +50,7 @@
 	}
 
 </style>
-<title>Product_View</title>
+<title>ERROR_PEODUCE_VIEW</title>
 </head>
 <body>
 <!-- 로그인바 -->
@@ -78,7 +79,7 @@
 </div>
 <br />
 <div align="center">
-	<h3>Product</h3>
+	<h3>ERROR_PRODUCE</h3>
 </div>
 <br>
 <hr>
@@ -89,21 +90,19 @@
 		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;">
 			<thead>
 				<tr>
-					<th style="background-color: #eeeeee; text-align: center;">제품코드</th>
-					<th style="background-color: #eeeeee; text-align: center;">제품명</th>
-					<th style="background-color: #eeeeee; text-align: center;">제품스펙</th>
+					<th style="background-color: #eeeeee; text-align: center;">불량코드</th>
+					<th style="background-color: #eeeeee; text-align: center;">불량내용</th>
 					<th style="background-color: #eeeeee; text-align: center;">비고</th>
 				</tr>
 			</thead>
 			<tbody>
 				<%
-					for(int i = 0; i < productList.size(); i++) {
+					for(int i = 0; i < errorProduceList.size(); i++) {
 				%>
 					<tr>
-						<td><%= productList.get(i).getProductCd() %></td>
-						<td><%= productList.get(i).getProductName() %></td>
-						<td><%= productList.get(i).getProductSpec() %></td>
-						<td><%= productList.get(i).getRemark()%></td>
+						<td><%= errorProduceList.get(i).getErrorCd() %></td>
+						<td><%= errorProduceList.get(i).getErrorName() %></td>
+						<td><%= errorProduceList.get(i).getRemark() %></td>
 					</tr>
 					<%
 						}
@@ -111,12 +110,16 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="container" align="center">
-		<a href="/index.do"><input type="button" value="HOME" class="btn btn-primary"></a>
-		<input type="button" value="PRODUCT 입력" class="btn btn-success" style="text-align: center">
-	</div>
 </div>
 <br>
+<div align="center">
+	<a href="/index.do"><input type="button" value="HOME" class="btn btn-primary"></a>
+	<input type="button" value="ERROR_PRODUCE 입력" class="btn btn-success" style="text-align: center">
+</div>
 <hr>
+</body>
+</html>
+</body>
+</html>
 </body>
 </html>

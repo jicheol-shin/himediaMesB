@@ -6,6 +6,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
+	Member member = (Member) session.getAttribute("login_info");
+
 	ItemService itemdata = new ItemService();
 	ArrayList<Item> itemList = itemdata.getItemList();
 %>
@@ -27,13 +29,66 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<style type="text/css">
 
-<title>ITEM_View</title>
+	ul {
+		list-style-type: none;
+		background-color: #ccc;
+		width: 254px;
+		padding: 0;
+		margin:  0;
+	}
+	li {
+		list-style-type: none;
+	}
+
+	li a {
+		text-decoration: none;
+		display: block;
+		color: #000;
+		padding: 8px 15px 8px 15px;
+	}
+
+	li a:hover {
+		background-color: tomato;
+		color: #fff;
+	}
+
+</style>
+<title>ITEM_VIEW</title>
 </head>
 <body>
+<!-- 로그인바 -->
+<div class="bs-component">
+<br />
+<nav class="navbar navbar-expand-md bg-secondary navbar-dark text-light">
+	<a href="/index.do" class="navbar-brand">HIMIDIA MES</a>
+	<%@ include file="../main/menu.jsp"%>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<c:choose>
+			<c:when test="<%= member == null %>">
+				<a href="#" class="nav-link text-white" data-toggle="modal" data-target="#login">
+				로그인
+				</a>
+			</c:when>
+			<c:otherwise>
+				<li><a href="#" class="text-white"><%= member.getUserName() %>님</a></li>
+				<li><a href="/logout.do" class="text-info">로그아웃</a></li>
+			</c:otherwise>
+		</c:choose>
+	</div>
+</nav>
+</div>
+<br />
 <div align="center">
 	<h3>ITEMS</h3>
 </div>
+<br>
+<hr>
+<br>
 <!-- 항목선택 -->
 <div class="container" align="center">
 	<form action="">
@@ -117,7 +172,7 @@
 </div>
 <br>
 <div align="center">
-	<input type="button" value="HOME" class="btn btn-primary" onclick="index.do" />
+	<a href="/index.do"><input type="button" value="HOME" class="btn btn-primary"></a>
 	<input type="button" value="ITEM 입력" class="btn btn-success" style="text-align: center">
 </div>
 <hr>

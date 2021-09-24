@@ -1,14 +1,15 @@
-<%@page import="com.mes.service.ProductService"%>
-<%@page import="com.mes.vo.Member"%>
+<%@page import="com.mes.vo.Bom"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.mes.vo.Product"%>
-<%@page import="com.mes.dao.ProductDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="com.mes.service.BomViewService"%>
+<%@page import="com.mes.vo.Member"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Member member = (Member) session.getAttribute("login_info");
-	ProductService productdata = new ProductService();
-	ArrayList<Product> productList = productdata.getProductList();
+
+	BomViewService bomdata = new BomViewService();
+	ArrayList<Bom> bomList = bomdata.getBomList();
 %>
 <!DOCTYPE html>
 <html>
@@ -49,7 +50,7 @@
 	}
 
 </style>
-<title>Product_View</title>
+<title>BOM_VIEW</title>
 </head>
 <body>
 <!-- 로그인바 -->
@@ -78,7 +79,7 @@
 </div>
 <br />
 <div align="center">
-	<h3>Product</h3>
+	<h3>BOM</h3>
 </div>
 <br>
 <hr>
@@ -90,20 +91,28 @@
 			<thead>
 				<tr>
 					<th style="background-color: #eeeeee; text-align: center;">제품코드</th>
-					<th style="background-color: #eeeeee; text-align: center;">제품명</th>
-					<th style="background-color: #eeeeee; text-align: center;">제품스펙</th>
+					<th style="background-color: #eeeeee; text-align: center;">부품코드</th>
+					<th style="background-color: #eeeeee; text-align: center;">부품명</th>
+					<th style="background-color: #eeeeee; text-align: center;">소요량</th>
+					<th style="background-color: #eeeeee; text-align: center;">단위</th>
+					<th style="background-color: #eeeeee; text-align: center;">단가</th>
+					<th style="background-color: #eeeeee; text-align: center;">거래처코드</th>
 					<th style="background-color: #eeeeee; text-align: center;">비고</th>
 				</tr>
 			</thead>
 			<tbody>
 				<%
-					for(int i = 0; i < productList.size(); i++) {
+					for(int i = 0; i < bomList.size(); i++) {
 				%>
 					<tr>
-						<td><%= productList.get(i).getProductCd() %></td>
-						<td><%= productList.get(i).getProductName() %></td>
-						<td><%= productList.get(i).getProductSpec() %></td>
-						<td><%= productList.get(i).getRemark()%></td>
+						<td><%= bomList.get(i).getProductCd() %></td>
+						<td><%= bomList.get(i).getItemCd() %></td>
+						<td><%= bomList.get(i).getItemName() %></td>
+						<td><%= bomList.get(i).getItemCnt() %></td>
+						<td><%= bomList.get(i).getUnit() %></td>
+						<td><%= bomList.get(i).getUnitPrice() %></td>
+						<td><%= bomList.get(i).getVendorCd() %></td>
+						<td><%= bomList.get(i).getRemark() %></td>
 					</tr>
 					<%
 						}
@@ -111,12 +120,14 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="container" align="center">
-		<a href="/index.do"><input type="button" value="HOME" class="btn btn-primary"></a>
-		<input type="button" value="PRODUCT 입력" class="btn btn-success" style="text-align: center">
-	</div>
 </div>
 <br>
+<div align="center">
+	<a href="/index.do"><input type="button" value="HOME" class="btn btn-primary"></a>
+	<a href="/bomInputForm.do"><input type="button" value="BOM 입력" class="btn btn-success" style="text-align: center"></a>
+</div>
 <hr>
+</body>
+</html>
 </body>
 </html>

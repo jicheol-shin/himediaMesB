@@ -7,13 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mes.service.ProductService;
+import com.mes.service.BomViewService;
 import com.mes.utility.Action;
 import com.mes.utility.ActionForward;
-import com.mes.vo.Product;
+import com.mes.vo.Bom;
 import com.mes.vo.Member;
 
-public class ProductAction implements Action {
+public class BomViewAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res)
@@ -33,17 +33,16 @@ public class ProductAction implements Action {
 			out.println("</script>");
 		} else {
 			forward = new ActionForward();
-			ArrayList<Product> productList = new ArrayList<Product>();
-			ProductService productService = new ProductService();
+			ArrayList<Bom> bomList = new ArrayList<Bom>();
+			BomViewService bomViewService = new BomViewService();
+			bomList = bomViewService.getBomList();
 			
-			productList = productService.getProductList();
+			req.setAttribute("bomList", bomList);
+			forward.setPath("/bom/bomView.jsp");
 			
-			req.setAttribute("productList", productList);
-			forward.setPath("/product/productView.jsp");
 		}
 		
 		return forward;
 	}
 
-	
 }

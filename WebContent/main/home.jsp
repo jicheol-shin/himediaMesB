@@ -106,11 +106,11 @@
 		      <ul>
 				   <li><a href="item.do" >부품관리</a></li>
 				   <li><a href="product.do" >완제품관리</a></li>
-				   <li><a href="#" >거래처관리</a></li>
-				   <li><a href="#" >BOM관리</a></li>
-				   <li><a href="#" >라인관리</a></li>
-				   <li><a href="#" >사용자관리</a></li>
-				   <li><a href="#" >불량관리</a></li>
+				   <li><a href="vendor.do" >거래처관리</a></li>
+				   <li><a href="bomView.do" >BOM관리</a></li>
+				   <li><a href="line.do" >라인관리</a></li>
+				   <li><a href="memberView.do" >사용자관리</a></li>
+				   <li><a href="errorProduce.do" >불량관리</a></li>
 		      </ul>
 		   </div>   
 	   	 </div>
@@ -118,8 +118,8 @@
 	      <div class="p-3 border bg-info font-weight-bold" align="center">영업관리</div>
 	      <div> 
 		      <ul>
-				   <li><a href="#" >수주관리</a></li>
-				   <li><a href="#" >출하관리</a></li>
+				   <li><a href="takeOrderView.do" >수주관리</a></li>
+				   <li><a href="releaseProductView.do" >출하관리</a></li>
 		      </ul>
 		   </div>   
 	   	 </div>

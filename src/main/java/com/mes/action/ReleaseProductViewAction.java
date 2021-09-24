@@ -7,13 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mes.service.ProductService;
+import com.mes.service.ReleaseProductViewService;
+import com.mes.service.TakeOrderViewService;
 import com.mes.utility.Action;
 import com.mes.utility.ActionForward;
-import com.mes.vo.Product;
 import com.mes.vo.Member;
+import com.mes.vo.ReleaseProduct;
+import com.mes.vo.TakeOrder;
 
-public class ProductAction implements Action {
+public class ReleaseProductViewAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res)
@@ -33,17 +35,17 @@ public class ProductAction implements Action {
 			out.println("</script>");
 		} else {
 			forward = new ActionForward();
-			ArrayList<Product> productList = new ArrayList<Product>();
-			ProductService productService = new ProductService();
+			ArrayList<ReleaseProduct> releaseProductList = new ArrayList<ReleaseProduct>();
+			ReleaseProductViewService releaseProductViewService = new ReleaseProductViewService();
+			releaseProductList = releaseProductViewService.getReleaseProductList();
 			
-			productList = productService.getProductList();
+			req.setAttribute("releaseProductList", releaseProductList);
+			forward.setPath("/releaseProduct/releaseProductView.jsp");
 			
-			req.setAttribute("productList", productList);
-			forward.setPath("/product/productView.jsp");
 		}
 		
 		return forward;
+		
 	}
 
-	
 }

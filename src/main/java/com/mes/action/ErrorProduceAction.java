@@ -7,13 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mes.service.ProductService;
+import com.mes.service.ErrorProduceService;
 import com.mes.utility.Action;
 import com.mes.utility.ActionForward;
-import com.mes.vo.Product;
+import com.mes.vo.ErrorProduce;
 import com.mes.vo.Member;
 
-public class ProductAction implements Action {
+public class ErrorProduceAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res)
@@ -33,17 +33,15 @@ public class ProductAction implements Action {
 			out.println("</script>");
 		} else {
 			forward = new ActionForward();
-			ArrayList<Product> productList = new ArrayList<Product>();
-			ProductService productService = new ProductService();
+			ArrayList<ErrorProduce> errorproduceList = new ArrayList<ErrorProduce>();
+			ErrorProduceService errorProduceService = new ErrorProduceService();
+			errorproduceList = errorProduceService.getErrorProduceList();
 			
-			productList = productService.getProductList();
-			
-			req.setAttribute("productList", productList);
-			forward.setPath("/product/productView.jsp");
+			req.setAttribute("errorproduceList", errorproduceList);
+			forward.setPath("/errorProduce/errorProduceView.jsp");
 		}
 		
 		return forward;
 	}
 
-	
 }
