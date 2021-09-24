@@ -11,7 +11,7 @@ import com.mes.vo.ItemStockInout;
 public class ItemStockInoutService {
 
 
-	public ArrayList<ItemStockInout> getItemStockList() {
+	public ArrayList<ItemStockInout> getItemStockInoutList() {
 		ArrayList<ItemStockInout> itemStockInoutList = null;
 		Connection conn = getConnection();
 		ItemStockDAO itemstockDAO = ItemStockDAO.getInstance();		

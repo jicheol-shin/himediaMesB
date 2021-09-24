@@ -96,7 +96,7 @@
 			</tr>
 			</thead>
 
-			<c:forEach var="itemStock" items="${itemStockInoutList}">
+			<c:forEach var="itemStock" items="${itemStockList}">
 			<tr>
 				<td>${itemStock.getNum()}</td>
 				<td>${itemStock.getItemInoutCd()}</td>
