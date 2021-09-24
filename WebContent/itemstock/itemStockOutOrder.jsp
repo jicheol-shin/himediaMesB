@@ -1,9 +1,13 @@
+<%@page import="com.mes.vo.Production"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.mes.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
    Member member = (Member) session.getAttribute("login_info");
+   ArrayList<Production> itemStockOutOrderList = (ArrayList<Production>) request.getAttribute("itemStockOutOrderList");
 %>
+<c:set var="itemStockOut_data" value="<%=itemStockOutOrderList%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,10 +75,11 @@
 	<div class="container" align="center" style="height: 500px">
 	   <div align="left">
 		 <ul class="list-group" >
-            <li class="list-group-item list-group-item-primary" align="center">자재 불출</li>
+            <li class="list-group-item list-group-item-primary" align="center">자재 불출 처리</li>
 		</ul>
 		</div>
 		<br />
+<!-- 		
 		 <div class="container" align="right">
 	         <form action="" method="post">
 	             <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
@@ -84,33 +89,28 @@
 	         </form>
 	     </div>
 	     <br />
+ -->	     
 		<table class="table table-striped table-condensed" style="font-size: 12px">
 		 <thead class="thead-dark">
 			<tr>
-				<th>순번</th>
 				<th>작업지시일</th>
-				<th>자재불출일</th>
 				<th>작업지시번호</th>
 				<th>제품코드</th>
-				<th>제품명</th>
 				<th>LILE NO</th>
 				<th>생산수량</th>				
-				<th>불출여부</th>				
+				<th>불출지시</th>				
 				<th>비고</th>				
 			</tr>
 			</thead>
 
-			<c:forEach var="itemStockOutOrder" items="${itemStockOutOrderList}">
+			<c:forEach var="itemStockOutOrder" items="${itemStockOut_data}">
 			<tr>
-				<td>${itemStockOutOrder.getNum()}</td>
 				<td>${itemStockOutOrder.getWorkOrderDate()}</td>
-				<td>${itemStockOutOrder.getItemStockOutDate()}</td>
 				<td>${itemStockOutOrder.getWorkOrderNo()}</td>
 				<td>${itemStockOutOrder.getProductCd()}</td>
-				<td>${itemStockOutOrder.getProductName()}</td>
 				<td>${itemStockOutOrder.getLineNo()}</td>
 				<td>${itemStockOutOrder.getWorkQty()}</td>
-				<td>${itemStockOutOrder.getIssue()}</td>
+				<td><a href="itemstockOut.do?workOrderNo=${itemStockOutOrder.getWorkOrderNo()}">불출지시</a></td>
 				<td>${itemStockOutOrder.getRemark()}</td>
 			</tr>
 			</c:forEach>

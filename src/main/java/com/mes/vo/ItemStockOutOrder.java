@@ -77,8 +77,5 @@ public class ItemStockOutOrder {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-
-	
-	
 	
 }

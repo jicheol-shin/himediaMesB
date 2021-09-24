@@ -160,8 +160,8 @@
 		      	<div> 
 			      <ul>
 					   <li><a href="itemstockInout.do" >자재 입출고현황</a></li>
-					   <li><a href="itemstockOutOrder.do" >자재 불출</a></li>
-					   <li><a href="itemstock.do" >자재 재고현황</a></li>
+					   <li><a href="itemstockOutOrder.do" >자재불출관리</a></li>
+					   <li><a href="itemstock.do" >자재재고현황</a></li>
 			      </ul>
 			  </div>   
 		  </div>

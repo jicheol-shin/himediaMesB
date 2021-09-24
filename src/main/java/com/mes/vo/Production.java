@@ -1,77 +1,90 @@
 package com.mes.vo;
 
+import java.util.Date;
+
 public class Production {
-	private String OrdDate;  // 수주번호
-	private String PartNo;   // 작업지시번호
-	private String ItemCd;   // 제품코드
-	private String OrdCd;    // 수주코드
-	private String LineCd;   // 라인코드
-	private String InUsrId;  // 작업자
-	private int Quantity; // 생산수량
-	private int BackCnt;  // 수주수량
-	private String StartDate; //생산시작일
-	private String EndDate;   //생산완료일
+	private Date workOrderDate;  // 작업지시일
+	private String workOrderNo;  // 작업지시번호
+	private String productCd;    // 제품코드
+	private String ordCd;        // 수주코드
+	private String lineCd;       // 라인코드
+	private String inUsrId;      // 작업자
+	private int workQty;         // 생산수량
+	private int ordCnt;          // 수주수량
+	private String workProcess;  // 작업진행현황 
+	private Date startDate;      //생산시작일
+	private Date endDate;        //생산완료일
+
 	
-	public String getOrdDate() {
-		return OrdDate;
+	
+	public Date getWorkOrderDate() {
+		return workOrderDate;
 	}
-	public void setOrdDate(String ordDate) {
-		OrdDate = ordDate;
+	public void setWorkOrderDate(Date workOrderDate) {
+		this.workOrderDate = workOrderDate;
 	}
-	public String getPartNo() {
-		return PartNo;
+	public String getWorkOrderNo() {
+		return workOrderNo;
 	}
-	public void setPartNo(String partNo) {
-		PartNo = partNo;
+	public void setWorkOrderNo(String workOrderNo) {
+		this.workOrderNo = workOrderNo;
 	}
-	public String getItemCd() {
-		return ItemCd;
+	public String getProductCd() {
+		return productCd;
 	}
-	public void setItemCd(String itemCd) {
-		ItemCd = itemCd;
+	public void setProductCd(String productCd) {
+		this.productCd = productCd;
 	}
 	public String getOrdCd() {
-		return OrdCd;
+		return ordCd;
 	}
 	public void setOrdCd(String ordCd) {
-		OrdCd = ordCd;
+		this.ordCd = ordCd;
 	}
 	public String getLineCd() {
-		return LineCd;
+		return lineCd;
 	}
 	public void setLineCd(String lineCd) {
-		LineCd = lineCd;
+		this.lineCd = lineCd;
 	}
 	public String getInUsrId() {
-		return InUsrId;
+		return inUsrId;
 	}
 	public void setInUsrId(String inUsrId) {
-		InUsrId = inUsrId;
+		this.inUsrId = inUsrId;
 	}
-	public int getQuantity() {
-		return Quantity;
+	public int getWorkQty() {
+		return workQty;
 	}
-	public void setQuantity(int quantity) {
-		Quantity = quantity;
+	public void setWorkQty(int workQty) {
+		this.workQty = workQty;
 	}
-	public int getBackCnt() {
-		return BackCnt;
+	public int getOrdCnt() {
+		return ordCnt;
 	}
-	public void setBackCnt(int backCnt) {
-		BackCnt = backCnt;
+	public void setOrdCnt(int ordCnt) {
+		this.ordCnt = ordCnt;
 	}
-	public String getStartDate() {
-		return StartDate;
+	public String getWorkProcess() {
+		return workProcess;
 	}
-	public void setStartDate(String startDate) {
-		StartDate = startDate;
+	public void setWorkProcess(String workProcess) {
+		this.workProcess = workProcess;
 	}
-	public String getEndDate() {
-		return EndDate;
+	public Date getStartDate() {
+		return startDate;
 	}
-	public void setEndDate(String endDate) {
-		EndDate = endDate;
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
+	public Date getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+	
+	
 	
 	
 	

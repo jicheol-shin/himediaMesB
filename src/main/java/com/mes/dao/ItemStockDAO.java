@@ -74,21 +74,18 @@ public class ItemStockDAO {
 		ItemStockOutOrder itemStockOutOrder= null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from itemstock_outorder"; 
+		String sql = "select * from production where work_process='작업지시' "; 
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				itemStockOutOrder = new ItemStockOutOrder();
-				itemStockOutOrder.setNum(rs.getInt("num"));
 				itemStockOutOrder.setWorkOrderDate(rs.getDate("work_order_date"));
-				itemStockOutOrder.setItemStockOutDate(rs.getDate("itemstock_out_date"));
 				itemStockOutOrder.setWorkOrderNo(rs.getString("work_order_no"));
-				itemStockOutOrder.setProductCd(rs.getString("item_cd"));
-				itemStockOutOrder.setLineNo(rs.getString("line_no"));
-				itemStockOutOrder.setWorkQty(rs.getInt("workQty"));
-				itemStockOutOrder.setIssue(rs.getString("issue"));
+				itemStockOutOrder.setProductCd(rs.getString("product_cd"));
+				itemStockOutOrder.setLineNo(rs.getString("line_cd"));
+				itemStockOutOrder.setWorkQty(rs.getInt("work_qty"));
 				itemStockOutOrder.setRemark(rs.getString("remark"));
 				
 				itemStockOutOrderList.add(itemStockOutOrder);

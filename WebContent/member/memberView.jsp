@@ -6,10 +6,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Member member = (Member) session.getAttribute("login_info");
-
-	MemberViewService memberdata = new MemberViewService();
-	ArrayList<Member> memberList = memberdata.getMemberList();
+	ArrayList<Member> memberList = (ArrayList<Member>) request.getAttribute("memberList");
 %>
+<c:set var="member_data" value="<%=memberList%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +77,7 @@
 </div>
 <br />
 <div align="center">
-	<h3>MEMBER</h3>
+	<h3>사용자관리</h3>
 </div>
 <br>
 <hr>
@@ -89,45 +88,37 @@
 		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;">
 			<thead>
 				<tr>
-					<th style="background-color: #eeeeee; text-align: center;">라인코드</th>
-					<th style="background-color: #eeeeee; text-align: center;">라인명</th>
-					<th style="background-color: #eeeeee; text-align: center;">라인분류</th>
-					<th style="background-color: #eeeeee; text-align: center;">설비사용</th>
-					<th style="background-color: #eeeeee; text-align: center;">검사유무</th>
-					<th style="background-color: #eeeeee; text-align: center;">불량수</th>
+					<th style="background-color: #eeeeee; text-align: center;">사용자ID</th>
+					<th style="background-color: #eeeeee; text-align: center;">사용자비밀번호</th>
+					<th style="background-color: #eeeeee; text-align: center;">사용자명</th>
+					<th style="background-color: #eeeeee; text-align: center;">이메일</th>
+					<th style="background-color: #eeeeee; text-align: center;">전화번호</th>
+					<th style="background-color: #eeeeee; text-align: center;">부서</th>
+					<th style="background-color: #eeeeee; text-align: center;">직급</th>
 					<th style="background-color: #eeeeee; text-align: center;">비고</th>
 				</tr>
 			</thead>
 			<tbody>
-				<%
-					for(int i = 0; i < memberList.size(); i++) {
-				%>
-					<tr>
-						<td><%= memberList.get(i).getUserId() %></td>
-						<td><%= memberList.get(i).getPassword() %></td>
-						<td><%= memberList.get(i).getUserName() %></td>
-						<td><%= memberList.get(i).getEmail() %></td>
-						<td><%= memberList.get(i).getTel() %></td>
-						<td><%= memberList.get(i).getDep() %></td>
-						<td><%= memberList.get(i).getRank() %></td>
-						<td><%= memberList.get(i).getRemark() %></td>
-					</tr>
-					<%
-						}
-					%>
+	         <c:forEach var="mem" items="${member_data}">
+               <tr>
+                  <td>${mem.getUserId()}</td>
+                  <td>${mem.getPassword()}</td>
+                  <td>${mem.getUserName()}</td>
+                  <td>${mem.getEmail()}</td>
+                  <td>${mem.getTel()}</td>
+                  <td>${mem.getDep()}</td>
+                  <td>${mem.getRank()}</td>
+                  <td>${mem.getRemark()}</td>
+               </tr>
+             </c:forEach>
 			</tbody>
 		</table>
 	</div>
 </div>
 <br>
 <div align="center">
-	<a href="/index.do"><input type="button" value="HOME" class="btn btn-primary"></a>
-	<input type="button" value="MEMBER 등록" class="btn btn-success" style="text-align: center">
+	<input type="button" value="사용자 등록" class="btn btn-success" style="text-align: center">
 </div>
 <hr>
-</body>
-</html>
-</body>
-</html>
 </body>
 </html>

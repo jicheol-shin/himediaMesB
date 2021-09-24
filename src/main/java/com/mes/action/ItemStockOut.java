@@ -1,23 +1,20 @@
 package com.mes.action;
 
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mes.service.ItemStockOutOrderService;
+import com.mes.service.ItemStockOutService;
 import com.mes.utility.Action;
 import com.mes.utility.ActionForward;
-import com.mes.vo.ItemStockOutOrder;
 import com.mes.vo.Member;
 
-public class ItemStockOutOrderAction implements Action{
+public class ItemStockOut  implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-
 		ActionForward forward= null;
 		
 		HttpSession session = req.getSession();
@@ -32,20 +29,18 @@ public class ItemStockOutOrderAction implements Action{
 			out.println("</script>");
 			
 		} else {
+			String workOrderNo = req.getParameter("workOrderNo");
 			
 			forward= new ActionForward();	
-			ArrayList<ItemStockOutOrder> itemStockOutOrderList = new ArrayList<ItemStockOutOrder>();
-			ItemStockOutOrderService itemStockOutOrderService = new ItemStockOutOrderService();
-			itemStockOutOrderList = itemStockOutOrderService.getItemStockOutOrderList();
-			
-			req.setAttribute("itemStockOutOrderList", itemStockOutOrderList);
+			ItemStockOutService itemStockOutService = new ItemStockOutService();
+
+			itemStockOutService.registeItemStockOut(workOrderNo);
 			forward.setRedirect(true);
-			forward.setPath("/itemstock/itemStockOutOrder.jsp");
+			forward.setPath("/itemstockInout.do");
 			
 		}
 		
 		return forward;
 	}
-
 
 }

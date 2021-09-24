@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
-import com.mes.vo.Product;
 import com.mes.vo.Production;
 
 public class ProductionDAO {
@@ -41,24 +40,23 @@ public class ProductionDAO {
 			
 			while (rs.next()) {
 			production = new Production();
-			production.setOrdDate(rs.getString("OrdDate")); // 수주번호
-			production.setPartNo(rs.getString("PartNo"));// 작업지시번호
-			production.setItemCd(rs.getString("ItemCd"));// 제품코드
+			production.setWorkOrderNo(rs.getString("work_order_date")); // 작업지시번호
+			production.setWorkOrderNo(rs.getString("work_order_no"));// 작업지시번호
+			production.setProductCd(rs.getString("production_cd"));// 제품코드
 			production.setOrdCd(rs.getString("OrdCd"));// 수주코드
 			production.setLineCd(rs.getString("LineCd"));// 라인코드
 			production.setInUsrId(rs.getString("InUsrId"));// 작업자
-			production.setQuantity(rs.getInt("Quantity"));// 수량
-			production.setBackCnt(rs.getInt("BackCnt"));// 수주수량
-			production.setStartDate(rs.getString("StartDate"));// 생산시작일
-			production.setEndDate(rs.getString("EndDate"));// 생산완료일
+			production.setWorkQty(rs.getInt("work_qty"));// 수량
+			production.setOrdCnt(rs.getInt("ord_cnt"));// 수주수량
+			production.setWorkProcess(rs.getString("work_process")); 
+			production.setStartDate(rs.getDate("StartDate"));// 생산시작일
+			production.setEndDate(rs.getDate("EndDate"));// 생산완료일
 			}
 			}catch (Exception e) {
 				// TODO Auto-generated catch block
 				System.out.println("Product리스트 조회 실패!!" + e.getMessage());
 			}
-			
-			
-			
+				
 			
 		return productionList;
 		
