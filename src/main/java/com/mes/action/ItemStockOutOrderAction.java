@@ -41,6 +41,7 @@ public class ItemStockOutOrderAction implements Action{
 			itemStockOutOrderList = itemStockOutOrderService.getItemStockOutOrderList();
 			
 			req.setAttribute("itemStockOutOrderList", itemStockOutOrderList);
+			forward.setRedirect(true);
 			forward.setPath("/itemstock/itemStockOutOrder.jsp");
 			
 		}

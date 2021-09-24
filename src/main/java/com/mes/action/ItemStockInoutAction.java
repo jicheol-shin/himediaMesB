@@ -38,6 +38,7 @@ public class ItemStockInoutAction implements Action {
 			itemStockInoutList = itemStockInoutService.getItemStockInoutList();
 			
 			req.setAttribute("itemStockInoutList", itemStockInoutList);
+			forward.setRedirect(true);
 			forward.setPath("/itemstock/itemStockInout.jsp");
 			
 		}

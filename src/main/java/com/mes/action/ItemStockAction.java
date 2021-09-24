@@ -40,6 +40,7 @@ public class ItemStockAction implements Action{
 			itemStockList = itemStockService.getItemStockList();
 			
 			req.setAttribute("itemStockList", itemStockList);
+			forward.setRedirect(true);
 			forward.setPath("/itemstock/itemStock.jsp");
 			
 		}
