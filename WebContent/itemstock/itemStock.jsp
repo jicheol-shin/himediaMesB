@@ -74,7 +74,7 @@
 	<div class="container" align="center" style="height: 500px">
 	   <div align="left">
 		 <ul class="list-group" >
-            <li class="list-group-item list-group-item-primary" align="center">자재 입출고 현황</li>
+            <li class="list-group-item list-group-item-primary" align="center">자재 재고 현황</li>
 		</ul>
 		</div>
 		<br />
@@ -82,16 +82,14 @@
 		 <thead class="thead-dark">
 			<tr>
 				<th>순번</th>
-				<th>입출고 코드</th>
 				<th>부품코드</th>
 				<th>부품명</th>
-				<th>입출고시간</th>
-				<th>입출고유형</th>				
+				<th>단가</th>
 				<th>창고명</th>				
 				<th>구역명</th>				
 				<th>이동창고</th>				
-				<th>수량</th>
-				<th>납품처</th>
+				<th>양품수량</th>
+				<th>불량수량</th>
 				<th>비고</th>				
 			</tr>
 			</thead>
@@ -99,16 +97,13 @@
 			<c:forEach var="itemStock" items="${itemStockList}">
 			<tr>
 				<td>${itemStock.getNum()}</td>
-				<td>${itemStock.getItemInoutCd()}</td>
 				<td>${itemStock.getItemCd()}</td>
 				<td>${itemStock.getItemName()}</td>
-				<td>${itemStock.getIntoutDate()}</td>
-				<td>${itemStock.getInoutType()}</td>
+				<td>${itemStock.getUnitPrice()}</td>
 				<td>${itemStock.getStoreCd()}</td>
 				<td>${itemStock.getLocalCd()}</td>
-				<td>${itemStock.getInoutPlant()}</td>
-				<td>${itemStock.getItemCnt()}</td>
-				<td>${itemStock.getVendorName()}</td>
+				<td>${itemStock.getGoodCnt()}</td>
+				<td>${itemStock.getBadCnt()}</td>
 				<td>${itemStock.getRemark()}</td>
 			</tr>
 			</c:forEach>
