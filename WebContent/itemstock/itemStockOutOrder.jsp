@@ -110,7 +110,7 @@
 				<td>${itemStockOutOrder.getProductCd()}</td>
 				<td>${itemStockOutOrder.getLineNo()}</td>
 				<td>${itemStockOutOrder.getWorkQty()}</td>
-				<td><a href="itemstockOut.do?workOrderNo=${itemStockOutOrder.getWorkOrderNo()}">불출지시</a></td>
+				<td><a href="itemstockOut.do?workOrderNo=${itemStockOutOrder.getWorkOrderNo()}&productCd=${itemStockOutOrder.getProductCd()}">자재불출</a></td>
 				<td>${itemStockOutOrder.getRemark()}</td>
 			</tr>
 			</c:forEach>

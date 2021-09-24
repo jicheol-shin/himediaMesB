@@ -1,9 +1,13 @@
+<%@page import="com.mes.vo.ItemStock"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.mes.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
    Member member = (Member) session.getAttribute("login_info");
+   ArrayList<ItemStock> itemStockList = (ArrayList<ItemStock>) request.getAttribute("itemStockList");
 %>
+<c:set var="itemStock_data" value="<%=itemStockList%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,14 +91,13 @@
 				<th>단가</th>
 				<th>창고명</th>				
 				<th>구역명</th>				
-				<th>이동창고</th>				
 				<th>양품수량</th>
 				<th>불량수량</th>
 				<th>비고</th>				
 			</tr>
 			</thead>
 
-			<c:forEach var="itemStock" items="${itemStockList}">
+			<c:forEach var="itemStock" items="${itemStock_data}">
 			<tr>
 				<td>${itemStock.getNum()}</td>
 				<td>${itemStock.getItemCd()}</td>

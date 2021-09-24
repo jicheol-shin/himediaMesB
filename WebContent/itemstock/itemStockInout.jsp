@@ -91,7 +91,7 @@
 				<th>구역명</th>				
 				<th>이동창고</th>				
 				<th>수량</th>
-				<th>납품처</th>
+				<th>입고처</th>
 				<th>비고</th>				
 			</tr>
 			</thead>

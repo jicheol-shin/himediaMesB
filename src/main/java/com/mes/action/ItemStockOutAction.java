@@ -30,11 +30,12 @@ public class ItemStockOutAction  implements Action{
 			
 		} else {
 			String workOrderNo = req.getParameter("workOrderNo");
+			String productCd = req.getParameter("productCd");
 			
 			forward= new ActionForward();	
 			ItemStockOutService itemStockOutService = new ItemStockOutService();
 
-			itemStockOutService.registeItemStockOut(workOrderNo);
+			itemStockOutService.registeItemStockOut(workOrderNo,productCd);
 			forward.setRedirect(true);
 			forward.setPath("/itemstockInout.do");
 			
