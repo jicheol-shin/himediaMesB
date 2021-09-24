@@ -4,15 +4,14 @@ import java.sql.Date;
 
 public class ReleaseStatement {
 
-	private int num;         // 순번
-	private String finCd;    // 제품코드
-	private String finName;  // 제품명
-	private Date orderDate;  // 발주날짜
-	private int goodCnt;     // 재고량
-	private int orderCnt;    // 발주량
-	private double price;    // 단가
-	private double sumPrice; // 합계
-	private String remark;   // 비고
+	private int num;             // 순번
+	private String releCd;       // 출고요청코드
+	private String productCd;    // 제품코드
+	private String productName;  // 제품명
+	private int reqCnt;          // 수량
+	private String customer;     // 거래처
+	private Date releDelDate;    // 출고일
+	private String remark;       // 비고
 	
 	
 	public int getNum() {
@@ -21,47 +20,41 @@ public class ReleaseStatement {
 	public void setNum(int num) {
 		this.num = num;
 	}
-	public String getFinCd() {
-		return finCd;
+	public String getReleCd() {
+		return releCd;
 	}
-	public void setFinCd(String finCd) {
-		this.finCd = finCd;
+	public void setReleCd(String releCd) {
+		this.releCd = releCd;
 	}
-	public String getFinName() {
-		return finName;
+	public String getProductCd() {
+		return productCd;
 	}
-	public void setFinName(String finName) {
-		this.finName = finName;
+	public void setProductCd(String productCd) {
+		this.productCd = productCd;
 	}
-	public Date getOrderDate() {
-		return orderDate;
+	public String getProductName() {
+		return productName;
 	}
-	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
-	public int getGoodCnt() {
-		return goodCnt;
+	public int getReqCnt() {
+		return reqCnt;
 	}
-	public void setGoodCnt(int goodCnt) {
-		this.goodCnt = goodCnt;
+	public void setReqCnt(int reqCnt) {
+		this.reqCnt = reqCnt;
 	}
-	public int getOrderCnt() {
-		return orderCnt;
+	public String getCustomer() {
+		return customer;
 	}
-	public void setOrderCnt(int orderCnt) {
-		this.orderCnt = orderCnt;
+	public void setCustomer(String customer) {
+		this.customer = customer;
 	}
-	public double getPrice() {
-		return price;
+	public Date getReleDelDate() {
+		return releDelDate;
 	}
-	public void setPrice(double price) {
-		this.price = price;
-	}
-	public double getSumPrice() {
-		return sumPrice;
-	}
-	public void setSumPrice(double sumPrice) {
-		this.sumPrice = sumPrice;
+	public void setReleDelDate(Date releDelDate) {
+		this.releDelDate = releDelDate;
 	}
 	public String getRemark() {
 		return remark;

@@ -8,9 +8,9 @@
    Member member = (Member) session.getAttribute("login_info");
 
    TakeOrderPurchaseService takeOrderPurchaseService = new TakeOrderPurchaseService();
-   ArrayList<TakeOrder> takeOrderList = takeOrderPurchaseService.getTakeOrderList();
+   ArrayList<TakeOrder> takeOrderList = (ArrayList<TakeOrder>) request.getAttribute("takeOrderList");
 %>
-
+<c:set var="takeOrderPurchaseService" value="<%=takeOrderList%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,29 +25,42 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<style type="text/css">
+
+		.logtext { font-size: 12px; width:80px;}
 		
 		li {
-		list-style-type: none;
+			list-style-type: none;
 		}
 		
 		li a {
-		text-decoration: none;
-		display: block;
-		color: #000;
-		padding: 8px 15px 8px 15px;
+			text-decoration: none;
+			display: block;
+			color: #000;
+			padding: 8px 15px 8px 15px;
 		}
 		
 		li a:hover {
-		background-color: #002699;
-		color: #fff;
+			background-color: #b3b3ff;
+			color: #001a66;
 		}
 		
 		ul {
-		font-size: 25px
+			list-style-type: none;
+			font-size: 30px;
+			color: #4d2600;
 		}
 		
 		tbody {
-		font-size: 18px
+			font-size: 18px
+		}
+		
+		.btn-info {
+			background-color: #0073e6;
+			color:#ffffe6;
+			width: 100px;
+		}
+		.btn-info:hover {
+			background-color: #000066;
 		}
 		
 	</style>
@@ -57,8 +70,10 @@
 <div class="container">
    <div class="bs-component">
    <br />
-   <nav class="navbar navbar-expand-md bg-secondary navbar-dark text-light">
+   <nav class="navbar navbar-expand-md font-weight-bold" style="background-color: #e3f2fd;">
 	 <a class="navbar-brand" href="/index.do">Himedia MES</a>
+	 <%@ include file="../main/menu.jsp" %>
+	 
 	 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     	 <span class="navbar-toggler-icon"></span>
  	 </button>
@@ -71,8 +86,8 @@
           </c:when>  
   	    <c:otherwise>
 
-	       <li ><a href="#" class="text-white"><%=member.getUserName()%>님</a></li>  
-	       <li ><a href="logout.do" class="text-white">로그아웃</a></li>
+	       <li ><a href="#" class="font-weight-bold text-dark logtext"><%=member.getUserName()%>님</a></li>  
+	       <li ><a href="../logout.do" class="font-weight-bold text-dark logtext">로그아웃</a></li>
 
         </c:otherwise>
       </c:choose>	 
@@ -85,12 +100,12 @@
 	<div class="container" align="center">
 	  <div align="left">
 	    <ul class="list-group">
-	      <li class ="list-group-item list-group-item-info font-weight-bold" align="center">구매 발주 관리</li>
+	      <li class ="list-group-item font-weight-bold" align="center" style="background-color: #d1d1e0;">구매 발주 관리</li>
 	    </ul>
 	  </div>
 	  <br />
 	  <table class="table table-striped table-condensed" style="font-size: 12px">
-	  	<thead class="thead-dark lead" align="center">
+	  	<thead class="thead-dark lead" align="center" >
 	  		<tr>
 	  			<th>수주코드</th>
 	  			<th>제품코드</th>
@@ -102,30 +117,28 @@
 	  		</tr>
 	  	</thead>
 	  	<tbody align="center">
-	  		<% 
-	  			for(int i = 0; i < takeOrderList.size(); i++) { 
-	  		%>
+	  	
+	  		<c:forEach var="takeOrderList" items="${takeOrderPurchaseService}">
 	  		<tr>
-	  			<td><%= takeOrderList.get(i).getOrdCd() %></td>
-	  			<td><%= takeOrderList.get(i).getProductCd() %></td>
-	  			<td><%= takeOrderList.get(i).getProductName() %></td>
-	  			<td><%= takeOrderList.get(i).getProcess() %></td>
-	  			<td><%= takeOrderList.get(i).getOrdCnt() %></td>
-	  			<td><%= takeOrderList.get(i).getRemark() %></td>
-	  			<td><input type="button" class="btn btn-danger mx-auto link-hover-color" value="발주" onclick="buyTakeOrder.do"/></td>
+	  			<td>${takeOrderList.getOrdCd()}</td>
+	  			<td>${takeOrderList.getProductCd()}</td>
+	  			<td>${takeOrderList.getProductName()}</td>
+	  			<td>${takeOrderList.getProcess()}</td>
+	  			<td>${takeOrderList.getOrdCnt()}</td>
+	  			<td>${takeOrderList.getRemark()}</td>
+	  			<!-- <td><input type="button" class="btn btn-danger mx-auto link-hover-color" value="발주" onclick="../buyTakeOrder.do"/></td> -->
+	  			<td><a href="/buyTakeOrder.do?ordCd=${takeOrderList.getOrdCd()} }"><button type="button" class="btn btn-danger link-hover-color" onclick="location.href='buyTakeOrder.do';" >발주</button></a></td>
 	  		</tr>
-	  		<%
-	  			}
-	  		%>
+	  		</c:forEach>
 	  	</tbody>
 	  
 	  </table>
 	</div>
 	<br />
 	<br />
-	<nav class="justify-content-center navbar navbar-expand-md bg-secondary navbar-dark text-light" >
+	<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #e3f2fd;" >
 	  <div align="center">
-	    <input type="button" value="HOME" class="btn btn-info" onclick="index.do" />
+	    <!-- <a href="../index.do"><button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='index.do';" style="font-size: 20px;">HOME</button></a> -->
 	  </div>
     </nav> 
 </div>

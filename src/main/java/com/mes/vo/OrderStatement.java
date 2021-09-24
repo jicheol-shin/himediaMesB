@@ -11,7 +11,7 @@ public class OrderStatement {
 	private Date orderDate;    // 발주날짜
 	private int goodCnt;       // 재고량
 	private int orderCnt;      // 발주량
-	private double price;      // 단가
+	private double unitPrice;  // 단가
 	private double sumPrice;   // 합계
 	private String custCd;     // 거래처
 	private int leadTime;      // 소요일
@@ -60,11 +60,11 @@ public class OrderStatement {
 	public void setOrderCnt(int orderCnt) {
 		this.orderCnt = orderCnt;
 	}
-	public double getPrice() {
-		return price;
+	public double getUnitPrice() {
+		return unitPrice;
 	}
-	public void setPrice(double price) {
-		this.price = price;
+	public void setUnitPrice(double unitPrice) {
+		this.unitPrice = unitPrice;
 	}
 	public double getSumPrice() {
 		return sumPrice;

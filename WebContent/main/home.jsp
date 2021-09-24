@@ -128,6 +128,7 @@
 	      <div> 
 		      <ul>
 				   <li><a href="takeOrderPurchase.do" >구매 발주 관리</a></li>
+				   <li><a href="buyTakeOrder.do" >발주내역</a></li>
 		      </ul>
 		   </div>   
 	   	 </div>

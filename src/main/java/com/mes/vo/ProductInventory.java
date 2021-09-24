@@ -2,17 +2,16 @@ package com.mes.vo;
 
 import java.sql.Date;
 
-public class FinishedInventory {
+public class ProductInventory {
 
-	private int num;           // 순번
-	private String finCd;      // 제품코드
-	private String finName;    // 제품명
-	private int goodCnt;       // 양품수량
-	private int badCnt;        // 불량수량
-	private Date whgDate;      // 입고일
-	private String storeCd;    // 보관창고
-	private String remark;     // 비고
-	
+	private int num;            // 순번
+	private String productCd;   // 제품코드
+	private String productName; // 제품명
+	private int goodCnt;        // 양품수량
+	private int badCnt;         // 불량수량
+	private Date whgDate;       // 입고일
+	private String storeCd;     // 보관창고
+	private String remark;      // 비고
 	
 	public int getNum() {
 		return num;
@@ -20,17 +19,17 @@ public class FinishedInventory {
 	public void setNum(int num) {
 		this.num = num;
 	}
-	public String getFinCd() {
-		return finCd;
+	public String getProductCd() {
+		return productCd;
 	}
-	public void setFinCd(String finCd) {
-		this.finCd = finCd;
+	public void setProductCd(String productCd) {
+		this.productCd = productCd;
 	}
-	public String getFinName() {
-		return finName;
+	public String getProductName() {
+		return productName;
 	}
-	public void setFinName(String finName) {
-		this.finName = finName;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 	public int getGoodCnt() {
 		return goodCnt;
