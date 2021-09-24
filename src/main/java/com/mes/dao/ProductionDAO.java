@@ -1,6 +1,7 @@
 package com.mes.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -48,8 +49,8 @@ public class ProductionDAO {
 			production.setInUsrId(rs.getString("InUsrId"));// 작업자
 			production.setQuantity(rs.getInt("Quantity"));// 수량
 			production.setBackCnt(rs.getInt("BackCnt"));// 수주수량
-			production.setDelDate(rs.getString("DelDate"));// 납품예정일
-			
+			production.setStartDate(rs.getString("StartDate"));// 생산시작일
+			production.setEndDate(rs.getString("EndDate"));// 생산완료일
 			}
 			}catch (Exception e) {
 				// TODO Auto-generated catch block

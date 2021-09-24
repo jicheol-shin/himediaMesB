@@ -4,7 +4,7 @@ public class Quality {
 	
 	private String PartNo;// 작업지시번호
 	private String ItemCd;// 제품코드
-	private String Quantity;// 수량
+	private int Quantity;// 수량
 	private String InUsrId;// 검수자
 	private String FinCd;// 완제품코드
 	private String TestDate;// 검사일
@@ -20,10 +20,10 @@ public class Quality {
 	public void setItemCd(String itemCd) {
 		ItemCd = itemCd;
 	}
-	public String getQuantity() {
+	public int getQuantity() {
 		return Quantity;
 	}
-	public void setQuantity(String quantity) {
+	public void setQuantity(int quantity) {
 		Quantity = quantity;
 	}
 	public String getInUsrId() {

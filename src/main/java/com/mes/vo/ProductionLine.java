@@ -4,7 +4,7 @@ public class ProductionLine {
 
 		private String  partNo;   // 작업시지번호
 		private String  line;     // 공정라인
-		private String  Quantity; // 생산수량
+		private int  Quantity; // 생산수량
 		private String  InUsrId;  // 작업자
 		private String  StarDate; // 시작시간
 		private String  EndDate ; // 완료시간
@@ -20,10 +20,10 @@ public class ProductionLine {
 		public void setLine(String line) {
 			this.line = line;
 		}
-		public String getQuantity() {
+		public int getQuantity() {
 			return Quantity;
 		}
-		public void setQuantity(String quantity) {
+		public void setQuantity(int quantity) {
 			Quantity = quantity;
 		}
 		public String getInUsrId() {

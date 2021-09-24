@@ -7,9 +7,11 @@ public class Production {
 	private String OrdCd;    // 수주코드
 	private String LineCd;   // 라인코드
 	private String InUsrId;  // 작업자
-	private int Quantity; // 수량
-	private int BackCnt;  // 수주술량
-	private String DelDate;  // 납품예정일
+	private int Quantity; // 생산수량
+	private int BackCnt;  // 수주수량
+	private String StartDate; //생산시작일
+	private String EndDate;   //생산완료일
+	
 	public String getOrdDate() {
 		return OrdDate;
 	}
@@ -58,11 +60,17 @@ public class Production {
 	public void setBackCnt(int backCnt) {
 		BackCnt = backCnt;
 	}
-	public String getDelDate() {
-		return DelDate;
+	public String getStartDate() {
+		return StartDate;
 	}
-	public void setDelDate(String delDate) {
-		DelDate = delDate;
+	public void setStartDate(String startDate) {
+		StartDate = startDate;
+	}
+	public String getEndDate() {
+		return EndDate;
+	}
+	public void setEndDate(String endDate) {
+		EndDate = endDate;
 	}
 	
 	
