@@ -10,122 +10,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
-	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
-	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" 
-	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"/>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" 
-	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
+      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+	  crossorigin="anonymous">  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <style type="text/css">
 
-	ul {
-		list-style-type: none;
-		background-color: #ccc;
-		width: 254px;
-		padding: 0;
-		margin:  0;
-	}
+	.logtext { font-size: 12px; width:80px;}
+	
 	li {
 		list-style-type: none;
 	}
-
+	
 	li a {
 		text-decoration: none;
 		display: block;
 		color: #000;
 		padding: 8px 15px 8px 15px;
 	}
-
+	
 	li a:hover {
-		background-color: tomato;
-		color: #fff;
+		background-color: #b3b3ff;
+		color: #001a66;
 	}
-
+	
+	ul {
+		list-style-type: none;
+		font-size: 30px;
+		color: #4d2600;
+	}
+	
+	tbody {
+		font-size: 18px
+	}
+	
+	.btn-info {
+		background-color: #0073e6;
+		color:#ffffe6;
+		width: 100px;
+	}
+	.btn-info:hover {
+		background-color: #000066;
+	}
+	
+	table {
+	  width: 80%;
+	}
+	
 </style>
 <title>BOM_INPUT</title>
 </head>
 <body>
-<!-- 로그인바 -->
-<div class="bs-component">
-<br />
-<nav class="navbar navbar-expand-md bg-secondary navbar-dark text-light">
-	<a href="/index.do" class="navbar-brand">HIMIDIA MES</a>
-	<%@ include file="../main/menu.jsp"%>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		<c:choose>
-			<c:when test="<%= member == null %>">
-				<a href="#" class="nav-link text-white" data-toggle="modal" data-target="#login">
-				로그인
-				</a>
-			</c:when>
-			<c:otherwise>
-				<li><a href="#" class="text-white"><%= member.getUserName() %>님</a></li>
-				<li><a href="/logout.do" class="text-info">로그아웃</a></li>
-			</c:otherwise>
-		</c:choose>
-	</div>
-</nav>
-</div>
-<div class="row">
-<div class="col-md-2"></div>
+<div class="container">
+	<!-- 로그인바 -->
+	<div class="bs-component">
 	<br />
-	<div class="col-md-8">
-	<br />
-	<h2 class="text-center">BOM입력</h2><p></p>
-	<br>
-	<hr>
-	<br>
-	<form action="/bomInput.do" method="post">
-		<div class="table table-responsive">
-			<table class="table table-striped">
-				<tr>
-				    <td>제품코드</td>
-				    <td><input type="text" name="productCd" class="form-control" ></td>
-				</tr>
-				<tr>
-				    <td>부품코드</td>
-				    <td><input type="text" name="itemCd" class="form-control" ></td>
-				</tr>
-				<tr>
-				    <td>부품명</td>
-				    <td><input type="text" name="itemName" class="form-control" ></td>
-				</tr>
-				<tr>
-				    <td>소요량</td>
-				    <td><input type="text" name="itemCnt" class="form-control" ></td>
-				</tr>
-				<tr>
-				    <td>단위</td>
-				    <td><input type="text" name="unit" class="form-control" ></td>
-				</tr>
-				<tr>
-				    <td>단가</td>
-				    <td><input type="text" name="unitPrice" class="form-control" ></td>
-				</tr>
-				<tr>
-				    <td>거래처코드</td>
-				    <td><input type="text" name="vendorCd" class="form-control" ></td>
-				</tr>
-				<tr>
-				    <td>비고</td>
-				    <td><input type="text" name="remark" class="form-control" ></td>
-				</tr>
-				<tr>  
-				<td colspan="2"  class="text-center">
-				    <input type="submit" value="SUBMIT" class="btn btn-success">
-				    <input type="reset" value="RESET" class="btn btn-warning">
-				</td>
-				</tr>
-			</table>
+	<nav class="navbar navbar-expand-md font-weight-bold" style="background-color: #82C3F5;">
+		<a href="/index.do" class="navbar-brand">HIMIDIA MES</a>
+		<%@ include file="../main/menu.jsp"%>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<c:choose>
+				<c:when test="<%= member == null %>">
+					<a href="#" class="nav-link text-white" data-toggle="modal" data-target="#login">
+					로그인
+					</a>
+				</c:when>
+				<c:otherwise>
+					<li ><a href="#" class="font-weight-bold text-dark logtext"><%=member.getUserName()%>님</a></li>  
+	       			<li ><a href="../logout.do" class="font-weight-bold text-dark logtext">로그아웃</a></li>
+				</c:otherwise>
+			</c:choose>
 		</div>
-	</form>   
+	</nav>
+	</div>
+	<div class="row">
+		<br />
+		<div class="col-md-12">
+		<br>
+		<hr>
+		<br>
+		<div align="left">
+		  <ul class="list-group">
+		    <li class ="list-group-item font-weight-bold" align="center" style="background-color: #CDE5F7;">BOM입력</li>
+		  </ul>
+		</div>
+		<form action="/bomInput.do" method="post">
+			<div class="table table-responsive">
+				<table class="thead-dark lead" align="center" >
+					<tr>
+					    <td>제품코드</td>
+					    <td><input type="text" name="productCd" class="form-control" ></td>
+					</tr>
+					<tr>
+					    <td>부품코드</td>
+					    <td><input type="text" name="itemCd" class="form-control" ></td>
+					</tr>
+					<tr>
+					    <td>부품명</td>
+					    <td><input type="text" name="itemName" class="form-control" ></td>
+					</tr>
+					<tr>
+					    <td>소요량</td>
+					    <td><input type="text" name="itemCnt" class="form-control" ></td>
+					</tr>
+					<tr>
+					    <td>단위</td>
+					    <td><input type="text" name="unit" class="form-control" ></td>
+					</tr>
+					<tr>
+					    <td>단가</td>
+					    <td><input type="text" name="unitPrice" class="form-control" ></td>
+					</tr>
+					<tr>
+					    <td>거래처코드</td>
+					    <td><input type="text" name="vendorCd" class="form-control" ></td>
+					</tr>
+					<tr>
+					    <td>비고</td>
+					    <td><input type="text" name="remark" class="form-control" ></td>
+					</tr>
+					<tr>  
+					<td colspan="2"  class="text-center">
+					    <input type="submit" value="SUBMIT" class="btn btn-success">
+					    <input type="reset" value="RESET" class="btn btn-warning">
+					</td>
+					</tr>
+				</table>
+			</div>
+		</form>   
+		<hr>
+		<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #82C3F5;" >
+			<div align="center">
+		</nav>
+		</div>
 	</div>
 </div>
 </body>

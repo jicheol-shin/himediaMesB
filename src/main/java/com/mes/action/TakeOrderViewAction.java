@@ -38,6 +38,7 @@ public class TakeOrderViewAction implements Action{
 			takeOrderList = takeOrderViewService.getTakeOrderList();
 			
 			req.setAttribute("takeOrderList", takeOrderList);
+			forward.setRedirect(true);
 			forward.setPath("/takeOrder/takeOrderView.jsp");
 			
 		}

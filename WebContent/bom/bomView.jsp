@@ -72,8 +72,7 @@
 	<!-- 로그인바 -->
 	<div class="bs-component">
 	<br />
-	<nav class="navbar navbar-expand-md font-weight-bold" navbar-dark text-light" style="font">
-	<nav class="navbar navbar-expand-md font-weight-bold" style="background-color: #e3f2fd;">
+	<nav class="navbar navbar-expand-md font-weight-bold" style="background-color: #82C3F5;">
 		<a href="/index.do" class="navbar-brand">HIMIDIA MES</a>
 		<%@ include file="../main/menu.jsp"%>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -87,8 +86,6 @@
 					</a>
 				</c:when>
 				<c:otherwise>
-					<%-- <li><a href="#" class="text-white"><%= member.getUserName() %>님</a></li>
-					<li><a href="/logout.do" class="text-info">로그아웃</a></li> --%>
 					<li ><a href="#" class="font-weight-bold text-dark logtext"><%=member.getUserName()%>님</a></li>  
 	       			<li ><a href="../logout.do" class="font-weight-bold text-dark logtext">로그아웃</a></li>
 				</c:otherwise>
@@ -100,18 +97,14 @@
 	<hr>
 	<br>
 	<!-- 내용보기 -->
-<!-- 	<div class="contaner">
-		<div class="row">
-			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;">
-				<thead> -->
 	<div class="container" align="center">
 	  <div align="left">
 	    <ul class="list-group">
-	      <li class ="list-group-item font-weight-bold" align="center" style="background-color: #d1d1e0;">BOM관리</li>
+	      <li class ="list-group-item font-weight-bold" align="center" style="background-color: #CDE5F7;">BOM관리</li>
 	    </ul>
 	  </div>
 	  <br />
-	  <table class="table table-striped table-condensed" style="font-size: 12px">
+	  <table class="table table-striped table-condensed" style="font-size: 10px">
 	  	<thead class="thead-dark lead" align="center" >
 					<tr>
 						<th>제품코드</th>
@@ -144,7 +137,7 @@
 		<a href="/bomInputForm.do"><input type="button" value="BOM 입력" class="btn btn-success" style="text-align: center"></a>
 	</div>
 	<hr>
-	<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #e3f2fd;" >
+	<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #82C3F5;" >
 		<div align="center">
 	</nav>
 </div>
