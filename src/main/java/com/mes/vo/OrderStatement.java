@@ -9,7 +9,6 @@ public class OrderStatement {
 	private String itemCd;     // 부품코드
 	private String itemName;   // 부품명
 	private Date orderDate;    // 발주일
-	private int itemCnt;       // 재고량
 	private int orderCnt;      // 발주량
 	private double unitPrice;  // 단가
 	private double sumPrice;   // 합계
@@ -47,12 +46,6 @@ public class OrderStatement {
 	}
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
-	}
-	public int getitemCnt() {
-		return itemCnt;
-	}
-	public void setitemCnt(int itemCnt) {
-		this.itemCnt = itemCnt;
 	}
 	public int getOrderCnt() {
 		return orderCnt;
