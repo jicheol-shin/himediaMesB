@@ -1,7 +1,6 @@
-<%@page import="com.mes.service.ReleaseProductViewService"%>
-<%@page import="com.mes.service.ReleaseProductInputService"%>
-<%@page import="java.util.ArrayList"%>
 <%@page import="com.mes.vo.ReleaseProduct"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.mes.service.ReleaseProductViewService"%>
 <%@page import="com.mes.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -10,9 +9,8 @@
 	Member member = (Member) session.getAttribute("login_info");
 
 	ReleaseProductViewService releaseProductViewService = new ReleaseProductViewService();
-	ArrayList<ReleaseProduct> releaseProductList = (ArrayList<ReleaseProduct>) request.getAttribute("releaseProductList");
+	ArrayList<ReleaseProduct> releaseProductList = releaseProductViewService.getReleaseProductList();
 %>
-<c:set var="releaseProduct_data" value="<%=releaseProductList%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -147,12 +145,16 @@
 					    <td>출하수량</td>
 					    <td><input type="number" name="releCnt" class="form-control" ></td>
 					</tr>
-					<c:forEach var="release" items="${releaseProduct_data}">
-						<tr>
-							<td>재고수량</td>
-							<td>${release.getGoodCount()}</td>
-						</tr>
-					</c:forEach>
+ 					<%
+						for(int i=0;i<1; i++){
+					%>
+					<tr>
+						<td>재고수량</td>
+						<td><%=releaseProductList.get(i).getGoodCount()%></td>
+					</tr>
+					<%
+							}
+					%>
 					<tr>
 					    <td>요청잔량</td>
 					    <td><input type="number" name="backCnt" class="form-control" ></td>

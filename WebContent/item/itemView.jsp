@@ -106,7 +106,7 @@
 	  	<br />
 		<!-- 내용보기 -->
 		<table class="table table-striped table-condensed" style="font-size: 10px">
-		  	<thead class="thead-dark lead" align="center" >
+		  	<thead class="thead-dark lead" align="center" style="font-size: 17px" >
 				<tr>
 					<th>부품코드</th>
 					<th>부품명</th>

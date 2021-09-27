@@ -100,13 +100,13 @@
 		<!-- 제목박스 -->
 		<div align="left">
 	    	<ul class="list-group">
-	      		<li class ="list-group-item font-weight-bold" align="center" style="background-color: #CDE5F7;">BOM관리</li>
+	      		<li class ="list-group-item font-weight-bold" align="center" style="background-color: #CDE5F7;">출하관리</li>
 	    	</ul>
 		</div>
 	  	<br />
 		<!-- 내용보기 -->
 		<table class="table table-striped table-condensed" style="font-size: 10px">
-		  	<thead class="thead-dark lead" align="center" >
+		  	<thead class="thead-dark lead" align="center" style="font-size: 13px" >
 				<tr>
 					<th>출고요청코드</th>
 					<th>출하요청일자</th>
