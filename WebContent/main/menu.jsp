@@ -30,7 +30,7 @@
     <span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu" aria-labelledby="menu3">
       <li role="presentation"><a role="menuitem" tabindex="-1" href="takeOrderPurchase.do">구매발주관리</a></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="buyTakeOrder.do">구매발주관리</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="buyTakeOrder.do">발주내역</a></li>
     </ul>
   </div>
   <div class="dropdown">
@@ -38,7 +38,7 @@
     <span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu" aria-labelledby="menu4">
       <li role="presentation"><a role="menuitem" tabindex="-1" href="production.do">생산지시</a></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="prodcutionLine.do">생산지시</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="prodcutionLine.do">공정관리</a></li>
       <li role="presentation"><a role="menuitem" tabindex="-1" href="#">생산현황관리</a></li>
     </ul>
   </div>
