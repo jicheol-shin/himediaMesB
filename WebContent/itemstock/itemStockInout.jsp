@@ -1,11 +1,11 @@
-<%@page import="com.mes.vo.ItemStockOutOrder"%>
+<%@page import="com.mes.vo.ItemStockInout"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.mes.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
    Member member = (Member) session.getAttribute("login_info");
-   ArrayList<ItemStockOutOrder> itemStockInoutList = (ArrayList<ItemStockOutOrder>) request.getAttribute("itemStockOutOrderList");
+   ArrayList<ItemStockInout> itemStockInoutList = (ArrayList<ItemStockInout>) request.getAttribute("itemStockInoutList");
 %>
 <c:set var="itemStockInout_data" value="<%=itemStockInoutList%>"/>
 <!DOCTYPE html>
@@ -86,12 +86,12 @@
 		 <thead class="thead-dark">
 			<tr>
 				<th>순번</th>
+				<th>입출고분류</th>
 				<th>부품코드</th>
 				<th>부품명</th>
 				<th>입출고시간</th>
 				<th>입출고유형</th>				
 				<th>창고명</th>				
-				<th>구역명</th>				
 				<th>이동창고</th>				
 				<th>수량</th>
 				<th>입고처</th>
@@ -102,12 +102,12 @@
 			<c:forEach var="itemStock" items="${itemStockInout_data}">
 			<tr>
 				<td>${itemStock.getNum()}</td>
+				<td>${itemStock.getInoutCd()}</td>
 				<td>${itemStock.getItemCd()}</td>
 				<td>${itemStock.getItemName()}</td>
 				<td>${itemStock.getIntoutDate()}</td>
 				<td>${itemStock.getInoutType()}</td>
 				<td>${itemStock.getStoreCd()}</td>
-				<td>${itemStock.getLocalCd()}</td>
 				<td>${itemStock.getInoutPlant()}</td>
 				<td>${itemStock.getItemCnt()}</td>
 				<td>${itemStock.getVendorName()}</td>
