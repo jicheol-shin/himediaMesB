@@ -20,6 +20,8 @@ public class BuyTakeOrderAction implements Action{
 		
 		ActionForward forward = null;
 		
+		String ordCd = req.getParameter("ordCd");
+		
 		HttpSession session = req.getSession();
 		Member member = (Member) session.getAttribute("login_info");
 		
@@ -36,6 +38,11 @@ public class BuyTakeOrderAction implements Action{
 			forward = new ActionForward();
 			ArrayList<OrderStatement> orderStatementList = new ArrayList<OrderStatement>();
 			OrderStatementService orderStatementService = new OrderStatementService();
+			orderStatementList = orderStatementService.getOrderStatementList(ordCd);
+			
+			req.setAttribute("orderStatementList", orderStatementList);
+			forward.setRedirect(true);
+			forward.setPath("/purchase/buyTakeOrder.jsp");
 		}
 		
 		return forward;

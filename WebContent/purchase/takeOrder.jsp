@@ -112,8 +112,8 @@
 	  			<th>제품명</th>
 	  			<th>진행상태</th>
 	  			<th>수주수량</th>
-	  			<th>비고</th>
 	  			<th>발주</th>
+	  			<th>비고</th>
 	  		</tr>
 	  	</thead>
 	  	<tbody align="center">
@@ -125,9 +125,9 @@
 	  			<td>${takeOrderList.getProductName()}</td>
 	  			<td>${takeOrderList.getProcess()}</td>
 	  			<td>${takeOrderList.getOrdCnt()}</td>
-	  			<td>${takeOrderList.getRemark()}</td>
 	  			<!-- <td><input type="button" class="btn btn-danger mx-auto link-hover-color" value="발주" onclick="../buyTakeOrder.do"/></td> -->
-	  			<td><a href="/buyTakeOrder.do?ordCd=${takeOrderList.getOrdCd()} }"><button type="button" class="btn btn-danger link-hover-color" onclick="location.href='buyTakeOrder.do';" >발주</button></a></td>
+	  			<td><a href="/buyTakeOrder.do?ordCd=${takeOrderList.getOrdCd()}"><button type="button" class="btn btn-danger link-hover-color" >발주</button></a></td>
+	  			<td>${takeOrderList.getRemark()}</td>
 	  		</tr>
 	  		</c:forEach>
 	  	</tbody>

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
+import com.mes.vo.OrderStatement;
 import com.mes.vo.Product;
 import com.mes.vo.TakeOrder;
 
@@ -30,7 +31,7 @@ public class PurchaseDAO {
 		this.conn = conn;
 	}
 	
-	// Item 리스트 불러오기
+	// Take Order 리스트 불러오기
 	public ArrayList<TakeOrder> selectTakeOrderList() {
 		
 		ArrayList<TakeOrder> takeOrderList = new ArrayList<TakeOrder> ();
@@ -61,6 +62,47 @@ public class PurchaseDAO {
 		}
 		return takeOrderList;
 	}
+
+	
+	
+	// Order Statement 불러오기
+	public ArrayList<OrderStatement> selectOrderStatementList(String ordCd) {
+		
+		ArrayList<OrderStatement> orderStatementList = new ArrayList<OrderStatement> ();
+		OrderStatement orderStatement = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from order_statement where ord_cd='" + ordCd+"'";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				orderStatement = new OrderStatement();
+				orderStatement.setNum(rs.getInt("num"));                 // 순번
+				orderStatement.setOrdCd(rs.getString("ord_cd"));         // 수주코드
+				orderStatement.setItemCd(rs.getString("item_cd"));       // 부품코드
+				orderStatement.setItemName(rs.getString("item_name"));   // 부품명
+				orderStatement.setOrderDate(rs.getDate("order_date"));   // 발주일
+				orderStatement.setitemCnt(rs.getInt("item_cnt"));        // 재고량
+				orderStatement.setOrderCnt(rs.getInt("order_cnt"));      // 발주량
+				orderStatement.setUnitPrice(rs.getDouble("unit_price")); // 단가
+				orderStatement.setSumPrice(rs.getDouble("sum_price"));   // 합계
+				orderStatement.setvendorCd(rs.getString("vendor_cd"));   // 거래처코드
+				orderStatement.setLeadTime(rs.getInt("lead_time"));      // 소요일
+				orderStatement.setRemark(rs.getString("remark"));        // 비고
+				orderStatementList.add(orderStatement);
+			}
+		} catch (Exception e) {
+			System.out.println("Order Statement 리스트 조회 실패 : " + e.getMessage());
+		} finally {
+			close(pstmt, rs);
+		}
+		return orderStatementList;
+	}
+	
+	
 	
 
 }
