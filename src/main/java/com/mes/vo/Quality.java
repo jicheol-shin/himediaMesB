@@ -2,41 +2,42 @@ package com.mes.vo;
 
 public class Quality {
 	
-	private String PartNo;// 작업지시번호
-	private String ItemCd;// 제품코드
-	private int Quantity;// 수량
-	private String InUsrId;// 검수자
-	private String FinCd;// 완제품코드
+	private String workOrderNo;// 작업지시번호
+	private String productCd;// 제품코드
+	private int workQty;// 수량
+	private String inUserId;// 검수자
+	private String process;// 프로세스
 	private String TestDate;// 검사일
-	public String getPartNo() {
-		return PartNo;
+	
+	public String getWorkOrderNo() {
+		return workOrderNo;
 	}
-	public void setPartNo(String partNo) {
-		PartNo = partNo;
+	public void setWorkOrderNo(String workOrderNo) {
+		this.workOrderNo = workOrderNo;
 	}
-	public String getItemCd() {
-		return ItemCd;
+	public String getProductCd() {
+		return productCd;
 	}
-	public void setItemCd(String itemCd) {
-		ItemCd = itemCd;
+	public void setProductCd(String productCd) {
+		this.productCd = productCd;
 	}
-	public int getQuantity() {
-		return Quantity;
+	public int getWorkQty() {
+		return workQty;
 	}
-	public void setQuantity(int quantity) {
-		Quantity = quantity;
+	public void setWorkQty(int workQty) {
+		this.workQty = workQty;
 	}
-	public String getInUsrId() {
-		return InUsrId;
+	public String getInUserId() {
+		return inUserId;
 	}
-	public void setInUsrId(String inUsrId) {
-		InUsrId = inUsrId;
+	public void setInUserId(String inUserId) {
+		this.inUserId = inUserId;
 	}
-	public String getFinCd() {
-		return FinCd;
+	public String getProcess() {
+		return process;
 	}
-	public void setFinCd(String finCd) {
-		FinCd = finCd;
+	public void setProcess(String process) {
+		this.process = process;
 	}
 	public String getTestDate() {
 		return TestDate;
@@ -44,6 +45,7 @@ public class Quality {
 	public void setTestDate(String testDate) {
 		TestDate = testDate;
 	}
+	
 
 	
 	

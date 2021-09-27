@@ -47,7 +47,6 @@ public class ItemStockDAO {
 			while(rs.next()) {
 				itemStorkInout = new ItemStockInout();
 				itemStorkInout.setNum(rs.getInt("num"));
-				itemStorkInout.setItemInoutCd(rs.getString("iteminout_cd"));
 				itemStorkInout.setItemCd(rs.getString("item_cd"));
 				itemStorkInout.setItemName(rs.getString("item_name"));
 				itemStorkInout.setIntoutDate(rs.getDate("iteminout_date"));
@@ -76,7 +75,7 @@ public class ItemStockDAO {
 		ItemStockOutOrder itemStockOutOrder= null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from production where work_process='작업지시' "; 
+		String sql = "select * from production where process='작업지시' "; 
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -88,7 +87,7 @@ public class ItemStockDAO {
 				itemStockOutOrder.setProductCd(rs.getString("product_cd"));
 				itemStockOutOrder.setLineNo(rs.getString("line_cd"));
 				itemStockOutOrder.setWorkQty(rs.getInt("work_qty"));
-				itemStockOutOrder.setRemark(rs.getString("remark"));
+//				itemStockOutOrder.setRemark(rs.getString("remark"));
 				
 				itemStockOutOrderList.add(itemStockOutOrder);
 			}
@@ -138,7 +137,7 @@ public class ItemStockDAO {
 				}
 				
 				PreparedStatement pstmt2 = null;
-				String sql2 = "update itemStock set good_cnt = good_cnt - ?  where item_cd = "+rs.getString("item_cd");
+				String sql2 = "update itemStock set good_cnt = good_cnt - ?  where item_cd = '"+rs.getString("item_cd")+"'";
 				
 				try {
 					pstmt2 = conn.prepareStatement(sql2);

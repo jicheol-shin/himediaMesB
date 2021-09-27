@@ -136,8 +136,9 @@
 	      <div class="p-3 border bg-info font-weight-bold" align="center">생산관리</div>
 	      <div> 
 		      <ul>
-				   <li><a href="production.do" >생산관리1</a></li>
-				   <li><a href="prodcutionLine.do" >공정라인11</a></li>
+				   <li><a href="production.do" >생산지시</a></li>
+				   <li><a href="prodcutionLine.do" >공정관리</a></li>
+				   <li><a href="#" >생산지시현황</a></li>
 		      </ul>
 		   </div>   
 	   	 </div>
@@ -149,10 +150,8 @@
 		      <div class="p-3 border bg-info font-weight-bold" align="center">품질관리</div>
 		      	<div> 
 			      <ul>
-					    <li><a href="quality.do" >품질관리1</a></li>
-					   <li><a href="#" >품질관리2</a></li>
-					   <li><a href="#" >품질관리3</a></li>
-					   <li><a href="#" >품질관리4</a></li>
+					    <li><a href="quality.do" >품질관리</a></li>
+
 			      </ul>
 			  </div>   
 		  </div>

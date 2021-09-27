@@ -8,7 +8,9 @@ import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
+import com.mes.vo.Product;
 import com.mes.vo.Production;
+import com.mes.vo.TakeOrder;
 
 public class ProductionDAO {
 	
@@ -27,38 +29,38 @@ public class ProductionDAO {
 		this.conn = conn;
 	}
 	
-	public ArrayList<Production> selectProductionList(){
-		ArrayList<Production> productionList = new ArrayList<Production>();
-		Production production = null;
+	public ArrayList<TakeOrder> selectProductionList(){
+		ArrayList<TakeOrder> takeOrderList = new ArrayList<TakeOrder>();
+		TakeOrder takeOrder = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from production";
+		String sql = "select a.* from take_order as a ";
+		   		sql += " left join product as b on a.product_cd = b.product_cd";
+		   		sql += " where  a.process = '구매발주'";
+			
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
-			production = new Production();
-			production.setWorkOrderNo(rs.getString("work_order_date")); // 작업지시번호
-			production.setWorkOrderNo(rs.getString("work_order_no"));// 작업지시번호
-			production.setProductCd(rs.getString("production_cd"));// 제품코드
-			production.setOrdCd(rs.getString("OrdCd"));// 수주코드
-			production.setLineCd(rs.getString("LineCd"));// 라인코드
-			production.setInUsrId(rs.getString("InUsrId"));// 작업자
-			production.setWorkQty(rs.getInt("work_qty"));// 수량
-			production.setOrdCnt(rs.getInt("ord_cnt"));// 수주수량
-			production.setWorkProcess(rs.getString("work_process")); 
-			production.setStartDate(rs.getDate("StartDate"));// 생산시작일
-			production.setEndDate(rs.getDate("EndDate"));// 생산완료일
+				takeOrder = new TakeOrder();
+				takeOrder.setOrdCd(rs.getString("ord_cd")); // 수주번호
+				takeOrder.setProductCd(rs.getString("product_cd")); // 수주번호
+				takeOrder.setProductName(rs.getString("product_name")); // 수주번호
+				takeOrder.setProcess(rs.getString("process")); // 수주번호
+				takeOrder.setOrdCnt(rs.getInt("ord_cnt")); // 수주번호
+			takeOrderList.add(takeOrder);
 			}
 			}catch (Exception e) {
 				// TODO Auto-generated catch block
-				System.out.println("Product리스트 조회 실패!!" + e.getMessage());
+				System.out.println("Production리스트 조회 실패!!" + e.getMessage());
 			}
-				
 			
-		return productionList;
+			
+			
+			
+		return takeOrderList;
 		
 		
 	}

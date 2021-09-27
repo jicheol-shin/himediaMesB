@@ -98,8 +98,10 @@
 				<th>제품코드</th>
 				<th>LILE NO</th>
 				<th>생산수량</th>				
-				<th>불출지시</th>				
-				<th>비고</th>				
+				<th>불출지시</th>	
+<!-- 							
+				<th>비고</th>
+-->								
 			</tr>
 			</thead>
 
@@ -110,8 +112,10 @@
 				<td>${itemStockOutOrder.getProductCd()}</td>
 				<td>${itemStockOutOrder.getLineNo()}</td>
 				<td>${itemStockOutOrder.getWorkQty()}</td>
-				<td><a href="itemstockOut.do?workOrderNo=${itemStockOutOrder.getWorkOrderNo()}&productCd=${itemStockOutOrder.getProductCd()}">자재불출</a></td>
+				<td><a href="itemstockOut.do?workOrderNo=${itemStockOutOrder.getWorkOrderNo()}&productCd=${itemStockOutOrder.getProductCd()}"> <button type="button" class="btn btn-primary link-hover-color" >자재불출</button></a></td>
+<!-- 
 				<td>${itemStockOutOrder.getRemark()}</td>
+ -->				
 			</tr>
 			</c:forEach>
 		</table>
