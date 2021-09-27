@@ -19,7 +19,7 @@ public class JDBCUtility {
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 			DataSource ds = (DataSource) envCtx.lookup("jdbc/Mes");
 			conn = ds.getConnection();
-			conn.setAutoCommit(false);
+			conn.setAutoCommit(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("DB 접속에 실패했습니다.");

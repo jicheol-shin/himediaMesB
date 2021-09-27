@@ -101,63 +101,99 @@ public class ItemStockDAO {
 	}
 	
 	// 작업지시에 따라  자재 불출 및  불출내역 테이블 입력
-	@SuppressWarnings("resource")
-	public void insertItemstockOut(String workOrderNo,String productCd) throws SQLException {
-		
+	public void insertItemstockOut(String workOrderNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ResultSet rs_work = null;
+		String lineCd=null;
+		int workQty=0;
+		int updateCount=0;
 		
 		String sql_work = "select * from production where work_order_no = '"+ workOrderNo +"'";
-		System.out.println("sql_work  :"+sql_work);
-		pstmt = conn.prepareStatement(sql_work);
-		rs_work = pstmt.executeQuery();
+		try {
+			pstmt = conn.prepareStatement(sql_work);
+			rs_work = pstmt.executeQuery();
+			while(rs_work.next()) {
+				lineCd = rs_work.getString("line_cd");
+				workQty = rs_work.getInt("work_qty");
+				System.out.println(lineCd);
+				System.out.println(workQty);
+				System.out.println(rs_work.getString("process"));
+				System.out.println(rs_work.getString("work_order_no"));
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		} finally {
+			close(pstmt, rs_work);
+			
+		}				
+	
+
 		
+//		
+//		String sql = "select * from bom where product_cd = '"+ productCd +"'";
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			rs = pstmt.executeQuery();
+//			
+//			while(rs.next()) {
+//				
+//				String sql1 = "insert into itemstock_inout(inout_cd,item_cd, item_name, inout_date,inout_type,store_cd,inout_plant,item_cnt,vendor_cd) " + 
+//							  " values(?, ?, ?, now(), ?, ?, ?, ?, ?)";
+//				PreparedStatement pstmt1 = conn.prepareStatement(sql1);
+//				try {
+//					pstmt1.setString(1, workOrderNo);            // 작업지시번호
+//					pstmt1.setString(2, rs.getString("item_cd"));
+//					pstmt1.setString(3, rs.getString("item_name"));
+//					pstmt1.setString(4, "OUT");
+//					pstmt1.setString(5, "원부자재창고");
+//					pstmt1.setString(6, lineCd);
+//					pstmt1.setInt(7, rs.getInt("item_cnt") * workQty);
+//					pstmt1.setString(8, rs.getString("vendor_cd"));
+//					pstmt1.executeUpdate();
+//				
+//				} catch (SQLException e) {
+//					e.printStackTrace();
+//				} finally {
+//					close(pstmt1);
+//				}			
+//					
+//				String sql2 = "update itemStock set good_cnt = good_cnt - ?  where item_cd = '"+rs.getString("item_cd")+"'";
+//				PreparedStatement pstmt2 = conn.prepareStatement(sql2);
+//				try {
+//					pstmt2.setInt(1, rs.getInt("item_cnt")* workQty);     
+//					pstmt2.executeUpdate();
+//				} catch (SQLException e) {
+//					e.printStackTrace();
+//				} finally {
+//					close(pstmt2);
+//				}			
+//			}	
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			close(pstmt, rs);
+//		}	
 		
-		String sql = "select * from bom where product_cd = '"+ productCd +"'";
-		System.out.println("sql  :"+sql);
+		String sql = "update production set process='자재불출완료' where work_order_no='"+ workOrderNo+"'";
+		System.out.println(sql);
 		try {
 			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-						
-				String sql1 = "insert into itemstock_inout(inout_cd,item_cd, item_name, inout_date,inout_type,store_cd,local_cd,inout_plant,item_cnt,vendor_cd) " + 
-							  " values(?, ?, ?, now(), ?, ?, ?, ?, ?, ?)";
-				System.out.println("sql1  :"+sql1);
-				pstmt = conn.prepareStatement(sql1);
-				pstmt.setString(1, workOrderNo);            // 작업지시번호
-				pstmt.setString(2, rs.getString("item_cd"));
-				pstmt.setString(3, rs.getString("item_name"));
-				pstmt.setString(4, "OUT");
-				pstmt.setString(5, rs.getString("store_cd"));
-				pstmt.setString(6, rs.getString("local_cd"));
-				pstmt.setString(7, rs_work.getString("line_cd"));
-				pstmt.setInt(8, rs.getInt("item_cnt")*rs_work.getInt("work_qty"));
-				pstmt.setString(9, rs.getString("vendor_cd"));
-				pstmt.executeUpdate();
-				
-					
-				String sql2 = "update itemStock set good_cnt = good_cnt - ?  where item_cd = '"+rs.getString("item_cd")+"'";
-				pstmt = conn.prepareStatement(sql2);
-				pstmt.setInt(1, rs.getInt("item_cnt")*rs_work.getInt("work_qty"));     
-				pstmt.executeUpdate();
-		
-			}	
-				
-				String sql3 = "update production set process = '자재출고완료'  where work_order_no = '"+workOrderNo+"'";
-				pstmt = conn.prepareStatement(sql3);
-				pstmt.executeUpdate();
-					
+			updateCount = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("생산지시 UPDATE 실패 !!" + e.getMessage());
+			
 		} finally {
-			close(pstmt, rs);
-		}		
-	
+			close(pstmt);
+		}				
+	   
+		System.out.println("updateCount : " + updateCount);
 	}
 
+	
+	
 	//자재 재고 현황 조회
 	public ArrayList<ItemStock> selectItemStockList() {
 		

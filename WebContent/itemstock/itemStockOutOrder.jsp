@@ -98,7 +98,7 @@
 				<td>${itemStockOutOrder.getProductCd()}</td>
 				<td>${itemStockOutOrder.getLineNo()}</td>
 				<td>${itemStockOutOrder.getWorkQty()}</td>
-				<td><a href="itemstockOut.do?workOrderNo=${itemStockOutOrder.getWorkOrderNo()}&productCd=${itemStockOutOrder.getProductCd()}"> <button type="button" class="btn btn-primary link-hover-color" >자재불출</button></a></td>
+				<td><a href="itemstockOut.do?workOrderNo=${itemStockOutOrder.getWorkOrderNo()}"> <button type="button" class="btn btn-primary link-hover-color" >자재불출</button></a></td>
 			</tr>
 			</c:forEach>
 		</table>
