@@ -40,16 +40,17 @@ public class ProductionLineDAO {
 			
 			while (rs.next()) {
 				productionLine = new ProductionLine();
-				productionLine.setPartNo(rs.getString("partNo")); //작업지시번호
-				productionLine.setLine(rs.getString("line")); //공정라인
-				productionLine.setQuantity(rs.getInt("Quantity")); //생산수량
-				productionLine.setInUsrId(rs.getString("InUsrId")); // 작업자
-				productionLine.setStarDate(rs.getString("StarDate")); // 시작시간
-				productionLine.setEndDate(rs.getString("EndDate"));  // 완료
+				productionLine.setWorkOrderNo(rs.getString("work_order_no")); //작업지시번호
+				productionLine.setLineCd(rs.getString("line_cd")); //공정라인
+				productionLine.setWorkQty(rs.getInt("work_qty")); //생산수량
+				productionLine.setInUserId(rs.getString("in_user_id")); // 작업자
+				productionLine.setStarDate(rs.getString("start_date")); // 시작시간
+				productionLine.setEndDate(rs.getString("end_date"));  // 완료
+				productionLineList.add(productionLine);
 			}
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println("Product리스트 조회 실패!!" + e.getMessage());
+			System.out.println("Production Line리스트 조회 실패!!" + e.getMessage());
 		}
 				
 														

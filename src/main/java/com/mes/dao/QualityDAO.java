@@ -34,7 +34,7 @@ public class QualityDAO {
 		Quality quality = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from pro_line";
+		String sql = "select * from quality";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -42,12 +42,14 @@ public class QualityDAO {
 			
 			while (rs.next()) {
 				quality = new Quality();
-				quality.setPartNo(rs.getString("PartNo")); // 작업지시번호
-				quality.setItemCd(rs.getString("ItemCd")); // 제품코드
-				quality.setQuantity(rs.getInt("Quantity")); // 수량
-				quality.setInUsrId(rs.getString("InUsrId")); // 검수자
-				quality.setFinCd(rs.getString("FinCd")); // 완제품코드
-				quality.setTestDate(rs.getString("TestDate")); // 검사일
+				quality.setWorkOrderNo(rs.getString("work_order_no")); // 작업지시번호
+				quality.setProductCd(rs.getString("product_cd")); // 제품코드
+				quality.setWorkQty(rs.getInt("work_qty")); // 수량
+				quality.setInUserId(rs.getString("in_user_id")); // 검수자
+				quality.setFinCd(rs.getString("fin_cd")); // 완제품코드
+				quality.setProcess(rs.getString("process")); // 프로세스
+				quality.setTestDate(rs.getString("test_date")); // 검사일
+				qualityList.add(quality);
 			}
 		}catch (Exception e) {
 			// TODO Auto-generated catch block

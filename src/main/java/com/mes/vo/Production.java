@@ -1,26 +1,22 @@
 package com.mes.vo;
-
-import java.util.Date;
-
+//변수첫글자 소문자
 public class Production {
-	private Date workOrderDate;  // 작업지시일
-	private String workOrderNo;  // 작업지시번호
-	private String productCd;    // 제품코드
-	private String ordCd;        // 수주코드
-	private String lineCd;       // 라인코드
-	private String inUsrId;      // 작업자
-	private int workQty;         // 생산수량
-	private int ordCnt;          // 수주수량
-	private String workProcess;  // 작업진행현황 
-	private Date startDate;      //생산시작일
-	private Date endDate;        //생산완료일
-
+	private String workOrderDate;  // 수주일자
+	private String workOrderNo;   // 작업지시번호
+	private String productCd;   // 제품코드
+	private String orderCd;    // 수주코드
+	private String lineCd;   // 라인코드
+	private String inUserId;  // 작업자
+	private int workQty; // 생산수량
+	private int orderCnt;  // 수주수량
+	private String process;// 프로세스
+	private String startDate; //생산시작일
+	private String endDate;   //생산완료일
 	
-	
-	public Date getWorkOrderDate() {
+	public String getWorkOrderDate() {
 		return workOrderDate;
 	}
-	public void setWorkOrderDate(Date workOrderDate) {
+	public void setWorkOrderDate(String workOrderDate) {
 		this.workOrderDate = workOrderDate;
 	}
 	public String getWorkOrderNo() {
@@ -35,23 +31,23 @@ public class Production {
 	public void setProductCd(String productCd) {
 		this.productCd = productCd;
 	}
-	public String getOrdCd() {
-		return ordCd;
+	public String getOrderCd() {
+		return orderCd;
 	}
-	public void setOrdCd(String ordCd) {
-		this.ordCd = ordCd;
+	public void setOrderCd(String orderCd) {
+		this.orderCd = orderCd;
 	}
 	public String getLineCd() {
 		return lineCd;
 	}
 	public void setLineCd(String lineCd) {
-		this.lineCd = lineCd;
+		lineCd = lineCd;
 	}
-	public String getInUsrId() {
-		return inUsrId;
+	public String getInUserId() {
+		return inUserId;
 	}
-	public void setInUsrId(String inUsrId) {
-		this.inUsrId = inUsrId;
+	public void setInUserId(String inUserId) {
+		this.inUserId = inUserId;
 	}
 	public int getWorkQty() {
 		return workQty;
@@ -59,33 +55,32 @@ public class Production {
 	public void setWorkQty(int workQty) {
 		this.workQty = workQty;
 	}
-	public int getOrdCnt() {
-		return ordCnt;
+	public int getOrderCnt() {
+		return orderCnt;
 	}
-	public void setOrdCnt(int ordCnt) {
-		this.ordCnt = ordCnt;
+	public void setOrderCnt(int orderCnt) {
+		this.orderCnt = orderCnt;
 	}
-	public String getWorkProcess() {
-		return workProcess;
+	public String getProcess() {
+		return process;
 	}
-	public void setWorkProcess(String workProcess) {
-		this.workProcess = workProcess;
+	public void setProcess(String process) {
+		this.process = process;
 	}
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+	public void setStartDate(String startDate) {
+		startDate = startDate;
 	}
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
+	public void setEndDate(String endDate) {
+		endDate = endDate;
 	}
 	
-	
-	
+
 	
 	
 }

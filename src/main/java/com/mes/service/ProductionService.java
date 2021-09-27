@@ -8,24 +8,25 @@ import java.util.ArrayList;
 
 import com.mes.dao.ProductionDAO;
 import com.mes.vo.Production;
+import com.mes.vo.TakeOrder;
 
 public class ProductionService {
 	
-	public ArrayList<Production> getProductionList(){
+	public ArrayList<TakeOrder> gettakeOrderList(){
 		
-		ArrayList<Production> ProductionList = null;
+		ArrayList<TakeOrder> takeOrderList = null;
 		
 		Connection conn = getConnection();
 		ProductionDAO productionDAO = ProductionDAO.getInstance();
 		productionDAO.setConnection(conn);
-		ProductionList = productionDAO.selectProductionList();
+		takeOrderList = productionDAO.selectProductionList();
 		
 		close(conn); //jdbc임포트하기
 		
 		
 		
 		
-		return ProductionList;
+		return takeOrderList;
 		
 	}
 
