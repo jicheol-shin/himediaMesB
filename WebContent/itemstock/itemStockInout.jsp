@@ -1,9 +1,13 @@
+<%@page import="com.mes.vo.ItemStockOutOrder"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.mes.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
    Member member = (Member) session.getAttribute("login_info");
+   ArrayList<ItemStockOutOrder> itemStockInoutList = (ArrayList<ItemStockOutOrder>) request.getAttribute("itemStockOutOrderList");
 %>
+<c:set var="itemStockInout_data" value="<%=itemStockInoutList%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -82,7 +86,6 @@
 		 <thead class="thead-dark">
 			<tr>
 				<th>순번</th>
-				<th>입출고 코드</th>
 				<th>부품코드</th>
 				<th>부품명</th>
 				<th>입출고시간</th>
@@ -96,10 +99,9 @@
 			</tr>
 			</thead>
 
-			<c:forEach var="itemStock" items="${itemStockInoutList}">
+			<c:forEach var="itemStock" items="${itemStockInout_data}">
 			<tr>
 				<td>${itemStock.getNum()}</td>
-				<td>${itemStock.getItemInoutCd()}</td>
 				<td>${itemStock.getItemCd()}</td>
 				<td>${itemStock.getItemName()}</td>
 				<td>${itemStock.getIntoutDate()}</td>

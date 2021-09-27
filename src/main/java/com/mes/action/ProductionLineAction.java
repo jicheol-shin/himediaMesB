@@ -24,6 +24,7 @@ public class ProductionLineAction implements Action {
 		req.setAttribute("productionLineList", productionLineList);
 		
 		ActionForward forward = new ActionForward();
+		forward.setRedirect(true);
 		forward.setPath("/pro_line/productionline.jsp");
 		
 		return forward;
