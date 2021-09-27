@@ -46,7 +46,6 @@ public class QualityDAO {
 				quality.setProductCd(rs.getString("product_cd")); // 제품코드
 				quality.setWorkQty(rs.getInt("work_qty")); // 수량
 				quality.setInUserId(rs.getString("in_user_id")); // 검수자
-				quality.setFinCd(rs.getString("fin_cd")); // 완제품코드
 				quality.setProcess(rs.getString("process")); // 프로세스
 				quality.setTestDate(rs.getString("test_date")); // 검사일
 				qualityList.add(quality);

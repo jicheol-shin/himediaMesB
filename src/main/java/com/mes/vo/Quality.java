@@ -6,7 +6,6 @@ public class Quality {
 	private String productCd;// 제품코드
 	private int workQty;// 수량
 	private String inUserId;// 검수자
-	private String finCd;// 완제품코드
 	private String process;// 프로세스
 	private String TestDate;// 검사일
 	
@@ -33,12 +32,6 @@ public class Quality {
 	}
 	public void setInUserId(String inUserId) {
 		this.inUserId = inUserId;
-	}
-	public String getFinCd() {
-		return finCd;
-	}
-	public void setFinCd(String finCd) {
-		this.finCd = finCd;
 	}
 	public String getProcess() {
 		return process;

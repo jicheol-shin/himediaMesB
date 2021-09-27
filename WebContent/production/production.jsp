@@ -80,9 +80,13 @@
 <br />
 
 <!-- 제목 -->
-<div align="center">
-	<h3>Production</h3>
-</div>
+	<div class="container" align="center" style="height: 500px">
+	   <div align="left">
+		 <ul class="list-group" >
+            <li class="list-group-item list-group-item-primary" align="center">생산 지시</li>
+		</ul>
+		</div>
+		<br />
 <!-- 내용 -->
 <div class="contaner">
 	<div class="row">
