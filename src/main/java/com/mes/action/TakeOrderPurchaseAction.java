@@ -11,6 +11,7 @@ import com.mes.service.TakeOrderPurchaseService;
 import com.mes.utility.Action;
 import com.mes.utility.ActionForward;
 import com.mes.vo.Member;
+import com.mes.vo.OrderStatement;
 import com.mes.vo.TakeOrder;
 
 
@@ -40,6 +41,7 @@ public class TakeOrderPurchaseAction implements Action{
 			takeOrderList = takeOrderPurchaseService.getTakeOrderList();
 			
 			req.setAttribute("takeOrderList", takeOrderList);
+			forward.setRedirect(true);
 			forward.setPath("/purchase/takeOrder.jsp");
 		}
 		return forward;

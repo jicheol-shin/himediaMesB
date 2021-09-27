@@ -13,7 +13,7 @@ public class OrderStatement {
 	private int orderCnt;      // 발주량
 	private double unitPrice;  // 단가
 	private double sumPrice;   // 합계
-	private String vendorCd;   // 거래처
+	private String vendorCd;   // 거래처코드
 	private int leadTime;      // 소요일
 	private String remark;     // 비고
 	

@@ -7,8 +7,8 @@ public class ProductInventory {
 	private int num;            // 순번
 	private String productCd;   // 제품코드
 	private String productName; // 제품명
-	private int goodCnt;        // 양품수량
-	private int badCnt;         // 불량수량
+	private int goodCount;        // 양품수량
+	private int badCount;         // 불량수량
 	private Date whgDate;       // 입고일
 	private String storeCd;     // 보관창고
 	private String remark;      // 비고
@@ -31,17 +31,17 @@ public class ProductInventory {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public int getGoodCnt() {
-		return goodCnt;
+	public int getgoodCount() {
+		return goodCount;
 	}
-	public void setGoodCnt(int goodCnt) {
-		this.goodCnt = goodCnt;
+	public void setgoodCount(int goodCount) {
+		this.goodCount = goodCount;
 	}
-	public int getBadCnt() {
-		return badCnt;
+	public int getbadCount() {
+		return badCount;
 	}
-	public void setBadCnt(int badCnt) {
-		this.badCnt = badCnt;
+	public void setbadCount(int badCount) {
+		this.badCount = badCount;
 	}
 	public Date getWhgDate() {
 		return whgDate;
