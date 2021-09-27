@@ -47,7 +47,6 @@ public class ItemStockDAO {
 			while(rs.next()) {
 				itemStorkInout = new ItemStockInout();
 				itemStorkInout.setNum(rs.getInt("num"));
-				itemStorkInout.setItemInoutCd(rs.getString("iteminout_cd"));
 				itemStorkInout.setItemCd(rs.getString("item_cd"));
 				itemStorkInout.setItemName(rs.getString("item_name"));
 				itemStorkInout.setIntoutDate(rs.getDate("iteminout_date"));

@@ -5,7 +5,6 @@ import java.util.Date;
 public class ItemStockInout {
 	
 	private int num;              //순번
-	private String itemInoutCd;   //입출고코드
 	private String itemCd;        //부품 코드
 	private String itemName;      //부품명
 	private Date   intoutDate;    //입출고일자
@@ -25,12 +24,6 @@ public class ItemStockInout {
 	}
 	public void setNum(int num) {
 		this.num = num;
-	}
-	public String getItemInoutCd() {
-		return itemInoutCd;
-	}
-	public void setItemInoutCd(String itemInoutCd) {
-		this.itemInoutCd = itemInoutCd;
 	}
 	public String getItemCd() {
 		return itemCd;
@@ -99,10 +92,5 @@ public class ItemStockInout {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-
-	
-	
-	
-	
 
 }
