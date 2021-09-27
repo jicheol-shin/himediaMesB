@@ -91,9 +91,9 @@ public class TakeOrderDAO {
 			
 			// 값 넣기
 			pstmt.setString(1, takeOrder.getOrdCd());// 수주코드
-			pstmt.setString(2, takeOrder.getProcess());// 진행상태
-			pstmt.setString(3, takeOrder.getVendorCd());// 거래처코드
-			pstmt.setString(4, takeOrder.getProductCd());// 제품코드
+			pstmt.setString(2, takeOrder.getVendorCd());// 거래처코드
+			pstmt.setString(3, takeOrder.getProductCd());// 제품코드
+			pstmt.setString(4, takeOrder.getProcess());// 진행상태
 			System.out.println("TakeOrder_DAO - " + format.format(takeOrder.getOrdDelDate()));
 			// util -> sql
 			java.sql.Date date1 = java.sql.Date.valueOf(format.format(takeOrder.getOrdDelDate()));

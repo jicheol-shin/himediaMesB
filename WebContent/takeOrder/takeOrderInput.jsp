@@ -109,19 +109,24 @@
 				<table class="thead-dark lead" align="center" >
 					<tr>
 					    <td>수주코드</td>
-					    <td><input type="text" name="ordCd" class="form-control" ></td>
+					    <td><input type="text" name="ordCd" class="form-control" placeholder="ex) ORD..."></td>
 					</tr>
 					<tr>
 					    <td>거래처코드</td>
-					    <td><input type="text" name="vendorCd" class="form-control" ></td>
+					    <td><input type="text" name="vendorCd" class="form-control" placeholder="ex) AAA"></td>
 					</tr>
 					<tr>
 					    <td>제품코드</td>
-					    <td><input type="text" name="productCd" class="form-control" ></td>
+					    <td><input type="text" name="productCd" class="form-control" placeholder="ex) PRODUCT..."></td>
 					</tr>
 					<tr>
 					    <td>진행상태</td>
-					    <td><input type="text" name="process" class="form-control" ></td>
+ 					    <td>
+							<input type="radio" id="미결" name="process" value="미결">
+							<label for="미결">미결</label><br>
+							<input type="radio" id="체결" name="process" value="체결">
+							<label for="체결">체결</label><br>
+					    </td>
 					</tr>
 					<tr>
 					    <td>납품예정일</td>
@@ -129,7 +134,7 @@
 					</tr>
 					<tr>
 					    <td>수주수량</td>
-					    <td><input type="text" name="ordCnt" class="form-control" ></td>
+					    <td><input type="number" name="ordCnt" class="form-control" ></td>
 					</tr>
 					<tr>
 					    <td>비고</td>

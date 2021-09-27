@@ -109,31 +109,31 @@
 				<table class="thead-dark lead" align="center" >
 					<tr>
 					    <td>제품코드</td>
-					    <td><input type="text" name="productCd" class="form-control" ></td>
+					    <td><input type="text" name="productCd" class="form-control" placeholder="ex) PRODUCT..."></td>
 					</tr>
 					<tr>
 					    <td>부품코드</td>
-					    <td><input type="text" name="itemCd" class="form-control" ></td>
+					    <td><input type="text" name="itemCd" class="form-control" placeholder="ex) ITEM..."></td>
 					</tr>
 					<tr>
 					    <td>부품명</td>
-					    <td><input type="text" name="itemName" class="form-control" ></td>
+					    <td><input type="text" name="itemName" class="form-control" placeholder="ex) 물컵"></td>
 					</tr>
 					<tr>
 					    <td>소요량</td>
-					    <td><input type="text" name="itemCnt" class="form-control" ></td>
+					    <td><input type="number" name="itemCnt" class="form-control" ></td>
 					</tr>
 					<tr>
 					    <td>단위</td>
-					    <td><input type="text" name="unit" class="form-control" ></td>
+					    <td><input type="text" name="unit" class="form-control" placeholder="ex) EA"></td>
 					</tr>
 					<tr>
 					    <td>단가</td>
-					    <td><input type="text" name="unitPrice" class="form-control" ></td>
+					    <td><input type="number" name="unitPrice" class="form-control" ></td>
 					</tr>
 					<tr>
 					    <td>거래처코드</td>
-					    <td><input type="text" name="vendorCd" class="form-control" ></td>
+					    <td><input type="text" name="vendorCd" class="form-control" placeholder="ex) AAA"></td>
 					</tr>
 					<tr>
 					    <td>비고</td>
