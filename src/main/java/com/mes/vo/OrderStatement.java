@@ -13,7 +13,6 @@ public class OrderStatement {
 	private double unitPrice;  // 단가
 	private double sumPrice;   // 합계
 	private String vendorCd;   // 거래처코드
-	private int leadTime;      // 소요일
 	private String remark;     // 비고
 	
 	
@@ -70,12 +69,6 @@ public class OrderStatement {
 	}
 	public void setvendorCd(String vendorCd) {
 		this.vendorCd = vendorCd;
-	}
-	public int getLeadTime() {
-		return leadTime;
-	}
-	public void setLeadTime(int leadTime) {
-		this.leadTime = leadTime;
 	}
 	public String getRemark() {
 		return remark;
