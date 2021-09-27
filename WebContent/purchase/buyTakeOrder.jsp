@@ -339,12 +339,10 @@
 			  <th>부품코드</th>
 			  <th>부품명</th>
 			  <th>발주일</th>
-			  <th>재고량</th>
 			  <th>발주량</th>
 			  <th>단가</th>
 			  <th>합계</th>
 			  <th>거래처코드</th>
-			  <th>소요일</th>
 			  <th>비고</th>
 	  		</tr>
 	  	</thead>
@@ -357,12 +355,10 @@
 			  <td>${orderStatementList.getItemCd()}</td>
 			  <td>${orderStatementList.getItemName()}</td>
 			  <td>${orderStatementList.getOrderDate()}</td>
-			  <td>${orderStatementList.getItemCnt()}</td>
 			  <td>${orderStatementList.getOrderCnt()}</td>
 			  <td>${orderStatementList.getUnitPrice()}</td>
 			  <td>${orderStatementList.getSumPrice()}</td>
 			  <td>${orderStatementList.getVendorCd()}</td>
-			  <td>${orderStatementList.getLeadTime()}</td>
 			  <td>${orderStatementList.getRemark()}</td>
 			</tr>
 	  		</c:forEach>
@@ -373,7 +369,7 @@
 	<br />
 	<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #e3f2fd;" >
 	  <div align="center">
-	    <a href="../index.do"><button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='index.do';" style="font-size: 20px;">HOME</button></a>
+	    <a href="../index.do"><button type="button" class="btn btn-info btn-lg btn-block" style="font-size: 20px;">HOME</button></a>
 	  </div>
     </nav> 
 </div>
