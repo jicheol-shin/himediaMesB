@@ -8,14 +8,10 @@
 <%
 	Member member = (Member) session.getAttribute("login_info");
 
-	ItemService itemdata = new ItemService();
-	ArrayList<Item> itemList = itemdata.getItemList();
+	ItemService itemService = new ItemService();
+	ArrayList<Item> itemList = itemService.getItemList();
 %>
-<%
-	String item = request.getParameter("item");
-	String itemName = request.getParameter("itemName");
-	String vendor = request.getParameter("vendor");
-%>
+<c:set var="item_data" value="<%=itemList%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,149 +27,118 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <style type="text/css">
 
-	ul {
-		list-style-type: none;
-		background-color: #ccc;
-		width: 254px;
-		padding: 0;
-		margin:  0;
-	}
+	.logtext { font-size: 12px; width:80px;}
+	
 	li {
 		list-style-type: none;
 	}
-
+	
 	li a {
 		text-decoration: none;
 		display: block;
 		color: #000;
 		padding: 8px 15px 8px 15px;
 	}
-
+	
 	li a:hover {
-		background-color: tomato;
-		color: #fff;
+		background-color: #b3b3ff;
+		color: #001a66;
 	}
-
+	
+	ul {
+		list-style-type: none;
+		font-size: 30px;
+		color: #4d2600;
+	}
+	
+	tbody {
+		font-size: 18px
+	}
+	
+	.btn-info {
+		background-color: #0073e6;
+		color:#ffffe6;
+		width: 100px;
+	}
+	.btn-info:hover {
+		background-color: #000066;
+	}
+	
 </style>
 <title>ITEM_VIEW</title>
 </head>
 <body>
-<!-- 로그인바 -->
-<div class="bs-component">
-<br />
-<nav class="navbar navbar-expand-md bg-secondary navbar-dark text-light">
-	<a href="/index.do" class="navbar-brand">HIMIDIA MES</a>
-	<%@ include file="../main/menu.jsp"%>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		<c:choose>
-			<c:when test="<%= member == null %>">
-				<a href="#" class="nav-link text-white" data-toggle="modal" data-target="#login">
-				로그인
-				</a>
-			</c:when>
-			<c:otherwise>
-				<li><a href="#" class="text-white"><%= member.getUserName() %>님</a></li>
-				<li><a href="/logout.do" class="text-info">로그아웃</a></li>
-			</c:otherwise>
-		</c:choose>
-	</div>
-</nav>
-</div>
-<br />
-<div align="center">
-	<h3>부품관리</h3>
-</div>
-<br>
-<hr>
-<br>
-<!-- 항목선택 -->
-<div class="container" align="center">
-	<form action="">
-	<span class="dropdown">
-    	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-			<select name="item" class="form-select" aria-label="Default select example" style="color: black">
-		 		<option selected>ITEM_CD MENU</option>
-				<option value="item1">ITEM1</option>
-		  		<option value="item2">ITEM2</option>
-		  		<option value="item3">ITEM3</option>
-			</select>
-    	</button>
-	</span>
-	<span class="dropdown">
-    	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-			<select name="itemName" class="form-select" aria-label="Default select example" style="color: black">
-				<option selected>ITEM_NAME MENU</option>
-				<option value="itemName1">드립커피바디</option>
-				<option value="itemName2">드립커피뚜껑</option>
-				<option value="itemName3">드림커피뚜껑_체결나사</option>
-				<option value="itemName4">컵받침부</option>
-				<option value="itemName5">원두필터</option>
-				<option value="itemName6">원두필터컵</option>
-				<option value="itemName7">원두필터컵_손잡이</option>
-				<option value="itemName8">물컵</option>
-				<option value="itemName9">원두컵</option>
-			</select>
+<div class="container">
+	<!-- 로그인바 -->
+	<div class="bs-component">
+	<br />
+	<nav class="navbar navbar-expand-md font-weight-bold" style="background-color: #82C3F5;">
+		<a href="/index.do" class="navbar-brand">HIMIDIA MES</a>
+		<%@ include file="../main/menu.jsp"%>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
 		</button>
-	</span>
-	<span class="dropdown">
-		<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-			<select name="vendor" class="form-select" aria-label="Default select example" style="color: black">
-			  	<option selected>VENDOR_CD MENU</option>
-			  	<option value="vendor1">AAA</option>
-				<option value="vendor2">AAB</option>
-				<option value="vendor3">AAC</option>
-				<option value="vendor4">AAD</option>
-			</select>
-	    </button>
-	</span>
-	<input type="button" value="SELECT" class="btn btn-primary">
-	</form>
-</div>
-<br>
-<hr>
-<br>
-<!-- 내용보기 -->
-<div class="contaner">
-	<div class="row">
-		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;">
-			<thead>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<c:choose>
+				<c:when test="<%= member == null %>">
+					<a href="#" class="nav-link text-white" data-toggle="modal" data-target="#login">
+					로그인
+					</a>
+				</c:when>
+				<c:otherwise>
+					<li ><a href="#" class="font-weight-bold text-dark logtext"><%=member.getUserName()%>님</a></li>  
+	       			<li ><a href="../logout.do" class="font-weight-bold text-dark logtext">로그아웃</a></li>
+				</c:otherwise>
+			</c:choose>
+		</div>
+	</nav>
+	</div>
+	<br />
+	<hr>
+	<br>
+	<div class="container" align="center">
+		<!-- 제목박스 -->
+		<div align="left">
+	    	<ul class="list-group">
+	      		<li class ="list-group-item font-weight-bold" align="center" style="background-color: #CDE5F7;">부품관리</li>
+	   		</ul>
+	  	</div>
+	  	<br />
+		<!-- 내용보기 -->
+		<table class="table table-striped table-condensed" style="font-size: 10px">
+		  	<thead class="thead-dark lead" align="center" >
 				<tr>
-					<th style="background-color: #eeeeee; text-align: center;">부품코드</th>
-					<th style="background-color: #eeeeee; text-align: center;">부품명</th>
-					<th style="background-color: #eeeeee; text-align: center;">구분</th>
-					<th style="background-color: #eeeeee; text-align: center;">거래처코드</th>
-					<th style="background-color: #eeeeee; text-align: center;">표준단가</th>
-					<th style="background-color: #eeeeee; text-align: center;">유통기한(발주->납품)</th>
-					<th style="background-color: #eeeeee; text-align: center;">비고</th>
+					<th>부품코드</th>
+					<th>부품명</th>
+					<th>구분</th>
+					<th>거래처코드</th>
+					<th>표준단가</th>
+					<th>유통기한(발주->납품)</th>
+					<th>비고</th>
 				</tr>
 			</thead>
-			<tbody>
-				<%
-					for(int i = 0; i < itemList.size(); i++) {
-				%>
-					<tr>
-						<td><%= itemList.get(i).getItemCd() %></td>
-						<td><%= itemList.get(i).getItemName() %></td>
-						<td><%= itemList.get(i).getItemType() %></td>
-						<td><%= itemList.get(i).getVendorCd() %></td>
-						<td><%= itemList.get(i).getUnitPrice() %></td>
-						<td><%= itemList.get(i).getLeadTime() %></td>
-						<td><%= itemList.get(i).getRemark() %></td>
-					</tr>
-					<%
-						}
-					%>
+			<tbody align="center">
+				<c:forEach var="item" items="${item_data}">
+	     	       <tr>
+	 	              <td>${item.getItemCd()}</td>
+	 	              <td>${item.getItemName()}</td>
+	 	              <td>${item.getItemType()}</td>
+	 	              <td>${item.getVendorCd()}</td>
+	 	              <td>${item.getUnitPrice()}</td>
+	 	              <td>${item.getLeadTime()}</td>
+	 	              <td>${item.getRemark()}</td>
+	               </tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>
+	<div align="center">
+		<input type="button" value="부품 입력" class="btn btn-success" style="text-align: center">
+	</div>
+	<hr>
+		<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #82C3F5;" >
+		<div align="center"></div>
+	</nav>
 </div>
-<br>
-<div align="center">
-	<input type="button" value="부품 입력" class="btn btn-success" style="text-align: center">
-</div>
-<hr>
 </body>
 </html>

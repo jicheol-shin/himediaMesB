@@ -96,28 +96,29 @@
 	<br />
 	<hr>
 	<br>
-	<!-- 내용보기 -->
 	<div class="container" align="center">
-	  <div align="left">
-	    <ul class="list-group">
-	      <li class ="list-group-item font-weight-bold" align="center" style="background-color: #CDE5F7;">BOM관리</li>
-	    </ul>
-	  </div>
-	  <br />
+		<!-- 내용보기 -->
+		<div align="left">
+	    	<ul class="list-group">
+				<li class ="list-group-item font-weight-bold" align="center" style="background-color: #CDE5F7;">거래처관리</li>
+	   		</ul>
+	  	</div>
+	 	<br />
+		<!-- 내용보기 -->
 	  	<table class="table table-striped table-condensed" style="font-size: 10px">
 			<thead class="thead-dark lead" align="center" >
-					<tr>
-						<th>거래처코드</th>
-						<th>거래처명</th>
-						<th>거래처유형</th>
-						<th>사업자등록번호</th>
-						<th>대표자</th>
-						<th>업종</th>
-						<th>이메일</th>
-						<th>전화번호</th>
-						<th>비고</th>
-					</tr>
-				</thead>
+				<tr>
+					<th>거래처코드</th>
+					<th>거래처명</th>
+					<th>거래처유형</th>
+					<th>사업자등록번호</th>
+					<th>대표자</th>
+					<th>업종</th>
+					<th>이메일</th>
+					<th>전화번호</th>
+					<th>비고</th>
+				</tr>
+			</thead>
 				<tbody align="center">
 			         <c:forEach var="vendor" items="${vendor_data}">
 		               <tr>
@@ -142,7 +143,7 @@
 	</div>
 	<hr>
 	<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #82C3F5;" >
-		<div align="center">
+		<div align="center"></div>
 	</nav>
 </div>
 </body>

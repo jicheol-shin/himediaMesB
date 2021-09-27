@@ -96,11 +96,14 @@
 		<br>
 		<hr>
 		<br>
+		<!-- 제목박스 -->
 		<div align="left">
 		  <ul class="list-group">
 		    <li class ="list-group-item font-weight-bold" align="center" style="background-color: #CDE5F7;">BOM입력</li>
 		  </ul>
 		</div>
+		<br />
+		<!-- 내용입력 -->
 		<form action="/bomInput.do" method="post">
 			<div class="table table-responsive">
 				<table class="thead-dark lead" align="center" >
@@ -137,17 +140,17 @@
 					    <td><input type="text" name="remark" class="form-control" ></td>
 					</tr>
 					<tr>  
-					<td colspan="2"  class="text-center">
-					    <input type="submit" value="SUBMIT" class="btn btn-success">
-					    <input type="reset" value="RESET" class="btn btn-warning">
-					</td>
+						<td colspan="2"  class="text-center">
+						    <input type="submit" value="SUBMIT" class="btn btn-success">
+						    <input type="reset" value="RESET" class="btn btn-warning">
+						</td>
 					</tr>
 				</table>
 			</div>
 		</form>   
 		<hr>
 		<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #82C3F5;" >
-			<div align="center">
+			<div align="center"></div>
 		</nav>
 		</div>
 	</div>

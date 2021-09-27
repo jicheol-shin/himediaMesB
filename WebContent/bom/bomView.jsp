@@ -96,31 +96,32 @@
 	<br />
 	<hr>
 	<br>
-	<!-- 내용보기 -->
 	<div class="container" align="center">
-	  <div align="left">
-	    <ul class="list-group">
-	      <li class ="list-group-item font-weight-bold" align="center" style="background-color: #CDE5F7;">BOM관리</li>
-	    </ul>
-	  </div>
-	  <br />
-	  <table class="table table-striped table-condensed" style="font-size: 10px">
-	  	<thead class="thead-dark lead" align="center" >
-					<tr>
-						<th>제품코드</th>
-						<th>부품코드</th>
-						<th>부품명</th>
-						<th>소요량</th>
-						<th>단위</th>
-						<th>단가</th>
-						<th>거래처코드</th>
-						<th>비고</th>
-					</tr>
-				</thead>
-				<tbody align="center">
-		         <c:forEach var="bom" items="${bom_data}">
-	               <tr>
-	                  <td>${bom.getProductCd()}</td>
+		<!-- 제목박스 -->
+		<div align="left">
+	    	<ul class="list-group">
+	      		<li class ="list-group-item font-weight-bold" align="center" style="background-color: #CDE5F7;">BOM관리</li>
+	    	</ul>
+		</div>
+	  	<br />
+		<!-- 내용보기 -->
+		<table class="table table-striped table-condensed" style="font-size: 10px">
+		  	<thead class="thead-dark lead" align="center" >
+				<tr>
+					<th>제품코드</th>
+					<th>부품코드</th>
+					<th>부품명</th>
+					<th>소요량</th>
+					<th>단위</th>
+					<th>단가</th>
+					<th>거래처코드</th>
+					<th>비고</th>
+				</tr>
+			</thead>
+			<tbody align="center">
+				<c:forEach var="bom" items="${bom_data}">
+	     	       <tr>
+	 	              <td>${bom.getProductCd()}</td>
 	                  <td>${bom.getItemCd()}</td>
 	                  <td>${bom.getItemName()}</td>
 	                  <td>${bom.getItemCnt()}</td>
@@ -129,16 +130,16 @@
 	                  <td>${bom.getVendorCd()}</td>
 	                  <td>${bom.getRemark()}</td>
 	               </tr>
-	             </c:forEach>
-				</tbody>
-			</table>
-		</div>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
 	<div align="center">
 		<a href="/bomInputForm.do"><input type="button" value="BOM 입력" class="btn btn-success" style="text-align: center"></a>
 	</div>
 	<hr>
 	<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #82C3F5;" >
-		<div align="center">
+		<div align="center"></div>
 	</nav>
 </div>
 </body>
