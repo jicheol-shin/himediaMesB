@@ -129,7 +129,7 @@
 
 <div class="container" align=center>
 	<a href="../index.do"><input type="button" value="HOME" class="btn btn-primary" onclick="index.do"/></a>
-	<a href=""><input type="button" value="생산량 입력" class="btn btn-success" style="text-align: center"></a>
+	<a href="../pro_line/productionlineInput.jsp"><input type="button" value="생산량 입력" class="btn btn-success" style="text-align: center"></a>
 	
 </div>
 
