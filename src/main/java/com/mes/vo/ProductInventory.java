@@ -1,7 +1,5 @@
 package com.mes.vo;
 
-import java.sql.Date;
-
 public class ProductInventory {
 
 	private int num;            // 순번
@@ -9,7 +7,6 @@ public class ProductInventory {
 	private String productName; // 제품명
 	private int goodCount;        // 양품수량
 	private int badCount;         // 불량수량
-	private Date whgDate;       // 입고일
 	private String storeCd;     // 보관창고
 	private String remark;      // 비고
 	
@@ -42,12 +39,6 @@ public class ProductInventory {
 	}
 	public void setbadCount(int badCount) {
 		this.badCount = badCount;
-	}
-	public Date getWhgDate() {
-		return whgDate;
-	}
-	public void setWhgDate(Date whgDate) {
-		this.whgDate = whgDate;
 	}
 	public String getStoreCd() {
 		return storeCd;
