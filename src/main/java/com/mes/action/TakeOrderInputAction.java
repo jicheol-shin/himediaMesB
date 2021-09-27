@@ -28,7 +28,7 @@ public class TakeOrderInputAction implements Action{
 		takeOrder.setProductCd(req.getParameter("productCd"));// 제품코드
 		takeOrder.setProcess(req.getParameter("process"));// 진행상태
 		takeOrder.setOrdDelDate(format.parse(req.getParameter("ordDelDate")));// 납품예정일
-		System.out.println("TakeOrder_InputAction" + format.parse(req.getParameter("ordDelDate")));
+		System.out.println("TakeOrder_InputAction - " + format.parse(req.getParameter("ordDelDate")));
 		takeOrder.setOrdCnt(Integer.parseUnsignedInt(req.getParameter("ordCnt")));// 수주수량
 		takeOrder.setRemark(req.getParameter("remark"));// 비고
 		TakeOrderInputService takeOrderInputService = new TakeOrderInputService();

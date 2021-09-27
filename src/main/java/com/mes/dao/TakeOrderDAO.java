@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 
 import javax.sql.DataSource;
@@ -93,8 +94,10 @@ public class TakeOrderDAO {
 			pstmt.setString(2, takeOrder.getProcess());// 진행상태
 			pstmt.setString(3, takeOrder.getVendorCd());// 거래처코드
 			pstmt.setString(4, takeOrder.getProductCd());// 제품코드
-			System.out.println("TakeOrder_DAO" + format.format(takeOrder.getOrdDelDate()));
-			pstmt.setDate(5, format.format(takeOrder.getOrdDelDate()));// 납품예정일
+			System.out.println("TakeOrder_DAO - " + format.format(takeOrder.getOrdDelDate()));
+			// util -> sql
+			java.sql.Date date1 = java.sql.Date.valueOf(format.format(takeOrder.getOrdDelDate()));
+			pstmt.setDate(5, date1);// 납품예정일
 			pstmt.setInt(6, takeOrder.getOrdCnt());// 수주수량
 			pstmt.setString(7, takeOrder.getRemark());// 비고
 			// executeUpdate - 리턴값이 int(n행을 리턴)

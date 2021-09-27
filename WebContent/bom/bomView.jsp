@@ -1,3 +1,4 @@
+<%@page import="com.mes.service.BomViewService"%>
 <%@page import="com.mes.vo.Bom"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.mes.vo.Member"%>
@@ -6,6 +7,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Member member = (Member) session.getAttribute("login_info");
+
+	BomViewService bomViewService = new BomViewService();
 	ArrayList<Bom> bomList = (ArrayList<Bom>) request.getAttribute("bomList");
 %>
 <c:set var="bom_data" value="<%=bomList%>"/>
@@ -24,103 +27,126 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <style type="text/css">
 
-	ul {
-		list-style-type: none;
-		background-color: #ccc;
-		width: 254px;
-		padding: 0;
-		margin:  0;
-	}
+	.logtext { font-size: 12px; width:80px;}
+	
 	li {
 		list-style-type: none;
 	}
-
+	
 	li a {
 		text-decoration: none;
 		display: block;
 		color: #000;
 		padding: 8px 15px 8px 15px;
 	}
-
+	
 	li a:hover {
-		background-color: tomato;
-		color: #fff;
+		background-color: #b3b3ff;
+		color: #001a66;
 	}
-
+	
+	ul {
+		list-style-type: none;
+		font-size: 30px;
+		color: #4d2600;
+	}
+	
+	tbody {
+		font-size: 18px
+	}
+	
+	.btn-info {
+		background-color: #0073e6;
+		color:#ffffe6;
+		width: 100px;
+	}
+	.btn-info:hover {
+		background-color: #000066;
+	}
+	
 </style>
 <title>BOM_VIEW</title>
 </head>
 <body>
-<!-- 로그인바 -->
-<div class="bs-component">
-<br />
-<nav class="navbar navbar-expand-md bg-secondary navbar-dark text-light">
-	<a href="/index.do" class="navbar-brand">HIMIDIA MES</a>
-	<%@ include file="../main/menu.jsp"%>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		<c:choose>
-			<c:when test="<%= member == null %>">
-				<a href="#" class="nav-link text-white" data-toggle="modal" data-target="#login">
-				로그인
-				</a>
-			</c:when>
-			<c:otherwise>
-				<li><a href="#" class="text-white"><%= member.getUserName() %>님</a></li>
-				<li><a href="/logout.do" class="text-info">로그아웃</a></li>
-			</c:otherwise>
-		</c:choose>
+<div class="container">
+	<!-- 로그인바 -->
+	<div class="bs-component">
+	<br />
+	<nav class="navbar navbar-expand-md font-weight-bold" navbar-dark text-light" style="font">
+	<nav class="navbar navbar-expand-md font-weight-bold" style="background-color: #e3f2fd;">
+		<a href="/index.do" class="navbar-brand">HIMIDIA MES</a>
+		<%@ include file="../main/menu.jsp"%>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<c:choose>
+				<c:when test="<%= member == null %>">
+					<a href="#" class="nav-link text-white" data-toggle="modal" data-target="#login">
+					로그인
+					</a>
+				</c:when>
+				<c:otherwise>
+					<%-- <li><a href="#" class="text-white"><%= member.getUserName() %>님</a></li>
+					<li><a href="/logout.do" class="text-info">로그아웃</a></li> --%>
+					<li ><a href="#" class="font-weight-bold text-dark logtext"><%=member.getUserName()%>님</a></li>  
+	       			<li ><a href="../logout.do" class="font-weight-bold text-dark logtext">로그아웃</a></li>
+				</c:otherwise>
+			</c:choose>
+		</div>
+	</nav>
 	</div>
-</nav>
-</div>
-<br />
-<div align="center">
-	<h3>BOM관리</h3>
-</div>
-<br>
-<hr>
-<br>
-<!-- 내용보기 -->
-<div class="contaner">
-	<div class="row">
-		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;">
-			<thead>
-				<tr>
-					<th>제품코드</th>
-					<th>부품코드</th>
-					<th>부품명</th>
-					<th>소요량</th>
-					<th>단위</th>
-					<th>단가</th>
-					<th>거래처코드</th>
-					<th>비고</th>
-				</tr>
-			</thead>
-			<tbody>
-	         <c:forEach var="bom" items="${bom_data}">
-               <tr>
-                  <td>${bom.getProductCd()}</td>
-                  <td>${bom.getItemCd()}</td>
-                  <td>${bom.getItemName()}</td>
-                  <td>${bom.getItemCnt()}</td>
-                  <td>${bom.getUnit()}</td>
-                  <td>${bom.getUnitPrice()}</td>
-                  <td>${bom.getVendorCd()}</td>
-                  <td>${bom.getRemark()}</td>
-               </tr>
-             </c:forEach>
-			</tbody>
-		</table>
+	<br />
+	<hr>
+	<br>
+	<!-- 내용보기 -->
+<!-- 	<div class="contaner">
+		<div class="row">
+			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;">
+				<thead> -->
+	<div class="container" align="center">
+	  <div align="left">
+	    <ul class="list-group">
+	      <li class ="list-group-item font-weight-bold" align="center" style="background-color: #d1d1e0;">BOM관리</li>
+	    </ul>
+	  </div>
+	  <br />
+	  <table class="table table-striped table-condensed" style="font-size: 12px">
+	  	<thead class="thead-dark lead" align="center" >
+					<tr>
+						<th>제품코드</th>
+						<th>부품코드</th>
+						<th>부품명</th>
+						<th>소요량</th>
+						<th>단위</th>
+						<th>단가</th>
+						<th>거래처코드</th>
+						<th>비고</th>
+					</tr>
+				</thead>
+				<tbody align="center">
+		         <c:forEach var="bom" items="${bom_data}">
+	               <tr>
+	                  <td>${bom.getProductCd()}</td>
+	                  <td>${bom.getItemCd()}</td>
+	                  <td>${bom.getItemName()}</td>
+	                  <td>${bom.getItemCnt()}</td>
+	                  <td>${bom.getUnit()}</td>
+	                  <td>${bom.getUnitPrice()}</td>
+	                  <td>${bom.getVendorCd()}</td>
+	                  <td>${bom.getRemark()}</td>
+	               </tr>
+	             </c:forEach>
+				</tbody>
+			</table>
+		</div>
+	<div align="center">
+		<a href="/bomInputForm.do"><input type="button" value="BOM 입력" class="btn btn-success" style="text-align: center"></a>
 	</div>
+	<hr>
+	<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #e3f2fd;" >
+		<div align="center">
+	</nav>
 </div>
-<br>
-<div align="center">
-	<a href="/bomInputForm.do"><input type="button" value="BOM 입력" class="btn btn-success" style="text-align: center"></a>
-</div>
-<hr>
-</body>
-</html>
 </body>
 </html>
