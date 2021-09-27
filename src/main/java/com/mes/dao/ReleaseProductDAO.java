@@ -80,7 +80,7 @@ public class ReleaseProductDAO {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "insert into release_product(rele_cd, rele_date, ord_cd, customer, product_cd " + 
+		String sql = "insert into release_product(rele_cd, rele_date, ord_cd, customer, product_cd, " + 
 					" process, req_cnt, rele_cnt, back_cnt, rele_del_date, remark) " + 
 					" values(?,?,?,?,?,?,?,?,?,?,?)";
 

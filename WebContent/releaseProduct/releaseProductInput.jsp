@@ -110,7 +110,7 @@
 		</div>
 		<br />
 		<!-- 내용입력 -->
-		<form action="/bomInput.do" method="post">
+		<form action="/releaseProductInput.do" method="post">
 			<div class="table table-responsive">
 				<table class="thead-dark lead" align="center" >
 					<tr>
