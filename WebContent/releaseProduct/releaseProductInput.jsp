@@ -9,8 +9,9 @@
 	Member member = (Member) session.getAttribute("login_info");
 
 	ReleaseProductViewService releaseProductViewService = new ReleaseProductViewService();
-	ArrayList<ReleaseProduct> releaseProductList = releaseProductViewService.getReleaseProductList();
+	ArrayList<ReleaseProduct> releaseProductList = (ArrayList<ReleaseProduct>) request.getAttribute("releaseProductList");
 %>
+<c:set var="releaseProduct_data" value="<%=releaseProductList%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -118,6 +119,20 @@
 					    <td><input type="text" name="releCd" class="form-control" placeholder="ex) RELE..."></td>
 					</tr>
 					<tr>
+					    <td>출고요청코드</td>
+					    <td>
+							<select name="releCd">
+								<option value="">목록에 없는 값을 입력해주세요.</option>
+								<option value="direct">값입력</option>
+							    <c:forEach var="takeOrder" items="${takeOrder_data}">
+							    	<option value="${takeOrder.getOrdCd()}" disabled="disabled">${takeOrder.getOrdCd()}</option>
+							    </c:forEach>
+							</select>
+							<!-- 상단의 select box에서 '직접입력'을 선택하면 나타날 인풋박스 -->
+							<input type="text" id="selboxDirect" name="selboxDirect"/>
+					    </td>
+					</tr>
+					<tr>
 					    <td>출하요청일자</td>
 					    <td><input type="date" name="releDate" class="form-control" ></td>
 					</tr>
@@ -150,16 +165,6 @@
 					    <td>출하수량</td>
 					    <td><input type="number" name="releCnt" class="form-control" ></td>
 					</tr>
- 					<%
-						for(int i=0;i<1; i++){
-					%>
-					<tr>
-						<td>재고수량</td>
-						<td><%=releaseProductList.get(i).getGoodCount()%></td>
-					</tr>
-					<%
-							}
-					%>
 					<tr>
 					    <td>요청잔량</td>
 					    <td><input type="number" name="backCnt" class="form-control" ></td>

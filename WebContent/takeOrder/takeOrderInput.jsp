@@ -1,10 +1,23 @@
+<%@page import="com.mes.vo.TakeOrder"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.mes.service.TakeOrderViewService"%>
 <%@page import="com.mes.vo.Member"%>
+<%@page import="com.mes.service.ItemService"%>
+<%@page import="com.mes.vo.Item"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Member member = (Member) session.getAttribute("login_info");
+
+	TakeOrderViewService takeOrderViewService = new TakeOrderViewService();
+	ArrayList<TakeOrder> takeOrderList = takeOrderViewService.getTakeOrderList();
+	
+	ItemService itemService = new ItemService();
+	ArrayList<Item> itemList = itemService.getItemList();
 %>
+<c:set var="takeOrder_data" value="<%=takeOrderList%>"/>
+<c:set var="item_data" value="<%=itemList%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -109,15 +122,39 @@
 				<table class="thead-dark lead" align="center" >
 					<tr>
 					    <td>수주코드</td>
-					    <td><input type="text" name="ordCd" class="form-control" placeholder="ex) ORD..."></td>
+					    <td>
+							<select name="ordCd">
+								<option value="">목록에 없는 값을 입력해주세요.</option>
+								<option value="direct">값입력</option>
+							    <c:forEach var="takeOrder" items="${takeOrder_data}">
+							    	<option value="${takeOrder.getOrdCd()}" disabled="disabled">${takeOrder.getOrdCd()}</option>
+							    </c:forEach>
+							</select>
+							<!-- 상단의 select box에서 '직접입력'을 선택하면 나타날 인풋박스 -->
+							<input type="text" id="selboxDirect" name="selboxDirect"/>
+					    </td>
 					</tr>
 					<tr>
 					    <td>거래처코드</td>
-					    <td><input type="text" name="vendorCd" class="form-control" placeholder="ex) AAA"></td>
+					    <td>
+						    <select name="vendorCd">
+						    	<option value="">거래처코드를 선택해주세요.</option>
+							    <c:forEach var="item" items="${item_data}">
+							    	<option value="${item.getVendorCd()}">${item.getVendorCd()}</option>
+							    </c:forEach>
+						    </select>
+					    </td>
 					</tr>
 					<tr>
 					    <td>제품코드</td>
-					    <td><input type="text" name="productCd" class="form-control" placeholder="ex) PRODUCT..."></td>
+					    <td>
+						    <select name="productCd">
+						    	<option value="">제품코드를 선택해주세요.</option>
+							    <c:forEach var="takeOrder" items="${takeOrder_data}">
+							    	<option value="${takeOrder.getProductCd()}">${takeOrder.getProductCd()}</option>
+							    </c:forEach>
+						    </select>
+					    </td>
 					</tr>
 					<tr>
 					    <td>진행상태</td>

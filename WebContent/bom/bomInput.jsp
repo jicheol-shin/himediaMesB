@@ -1,10 +1,23 @@
+<%@page import="com.mes.service.ProductService"%>
+<%@page import="com.mes.service.ItemService"%>
 <%@page import="com.mes.vo.Member"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.mes.vo.Product"%>
+<%@page import="com.mes.dao.ProductDAO"%>
+<%@page import="com.mes.vo.Item"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Member member = (Member) session.getAttribute("login_info");
+	
+	ProductService productService = new ProductService();
+	ArrayList<Product> productList = productService.getProductList();
+	
+	ItemService itemService = new ItemService();
+	ArrayList<Item> itemList = itemService.getItemList();
 %>
+<c:set var="product_data" value="<%=productList%>"/>
+<c:set var="item_data" value="<%=itemList%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,7 +71,7 @@
 	}
 	
 	table {
-	  width: 80%;
+	  width: 90%;
 	}
 	
 </style>
@@ -109,15 +122,36 @@
 				<table class="thead-dark lead" align="center" >
 					<tr>
 					    <td>제품코드</td>
-					    <td><input type="text" name="productCd" class="form-control" placeholder="ex) PRODUCT..."></td>
+					    <td>
+						    <select name="productCd">
+						    	<option value="">제품코드를 선택해주세요.</option>
+							    <c:forEach var="product" items="${product_data}">
+							    	<option value="${product.getProductCd()}">${product.getProductCd()}</option>
+							    </c:forEach>
+						    </select>
+					    </td>
 					</tr>
 					<tr>
 					    <td>부품코드</td>
-					    <td><input type="text" name="itemCd" class="form-control" placeholder="ex) ITEM..."></td>
+					    <td>
+						    <select name="itemCd">
+						    	<option value="">부품코드를 선택해주세요.</option>
+							    <c:forEach var="item" items="${item_data}">
+							    	<option value="${item.getItemCd()}">${item.getItemCd()}</option>
+							    </c:forEach>
+						    </select>
+					    </td>
 					</tr>
 					<tr>
 					    <td>부품명</td>
-					    <td><input type="text" name="itemName" class="form-control" placeholder="ex) 물컵"></td>
+					    <td>
+						    <select name="itemName">
+						    	<option value="">부품명을 선택해주세요.</option>
+							    <c:forEach var="item" items="${item_data}">
+							    	<option value="${item.getItemName()}">${item.getItemName()}</option>
+							    </c:forEach>
+						    </select>
+					    </td>
 					</tr>
 					<tr>
 					    <td>소요량</td>
@@ -133,7 +167,14 @@
 					</tr>
 					<tr>
 					    <td>거래처코드</td>
-					    <td><input type="text" name="vendorCd" class="form-control" placeholder="ex) AAA"></td>
+					    <td>
+						    <select name="vendorCd">
+						    	<option value="">거래처코드를 선택해주세요.</option>
+							    <c:forEach var="item" items="${item_data}">
+							    	<option value="${item.getVendorCd()}">${item.getVendorCd()}</option>
+							    </c:forEach>
+						    </select>
+					    </td>
 					</tr>
 					<tr>
 					    <td>비고</td>
