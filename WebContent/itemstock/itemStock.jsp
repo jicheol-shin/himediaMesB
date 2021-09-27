@@ -3,6 +3,7 @@
 <%@page import="com.mes.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
    Member member = (Member) session.getAttribute("login_info");
    ArrayList<ItemStock> itemStockList = (ArrayList<ItemStock>) request.getAttribute("itemStockList");
@@ -102,11 +103,11 @@
 				<td>${itemStock.getNum()}</td>
 				<td>${itemStock.getItemCd()}</td>
 				<td>${itemStock.getItemName()}</td>
-				<td>${itemStock.getUnitPrice()}</td>
+				<td align="right"><fmt:formatNumber value="${itemStock.getUnitPrice()}" pattern="#,###.#"/>
 				<td>${itemStock.getStoreCd()}</td>
 				<td>${itemStock.getLocalCd()}</td>
-				<td>${itemStock.getGoodCnt()}</td>
-				<td>${itemStock.getBadCnt()}</td>
+				<td align="right"><fmt:formatNumber value="${itemStock.getGoodCnt()}" pattern="#,###"/>
+				<td align="right">${itemStock.getBadCnt()}</td>
 				<td>${itemStock.getRemark()}</td>
 			</tr>
 			</c:forEach>

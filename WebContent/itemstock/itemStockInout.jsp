@@ -3,6 +3,7 @@
 <%@page import="com.mes.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
    Member member = (Member) session.getAttribute("login_info");
    ArrayList<ItemStockInout> itemStockInoutList = (ArrayList<ItemStockInout>) request.getAttribute("itemStockInoutList");
@@ -109,7 +110,7 @@
 				<td>${itemStock.getInoutType()}</td>
 				<td>${itemStock.getStoreCd()}</td>
 				<td>${itemStock.getInoutPlant()}</td>
-				<td>${itemStock.getItemCnt()}</td>
+				<td align="right"><fmt:formatNumber value="${itemStock.getItemCnt()}" pattern="#,###"/>
 				<td>${itemStock.getVendorName()}</td>
 				<td>${itemStock.getRemark()}</td>
 			</tr>

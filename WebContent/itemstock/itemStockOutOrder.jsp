@@ -3,6 +3,7 @@
 <%@page import="com.mes.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
    Member member = (Member) session.getAttribute("login_info");
    ArrayList<Production> itemStockOutOrderList = (ArrayList<Production>) request.getAttribute("itemStockOutOrderList");
@@ -97,7 +98,7 @@
 				<td>${itemStockOutOrder.getWorkOrderNo()}</td>
 				<td>${itemStockOutOrder.getProductCd()}</td>
 				<td>${itemStockOutOrder.getLineNo()}</td>
-				<td>${itemStockOutOrder.getWorkQty()}</td>
+				<td align="right"><fmt:formatNumber value="${itemStockOutOrder.getWorkQty()}" pattern="#,###"/>
 				<td><a href="itemstockOut.do?workOrderNo=${itemStockOutOrder.getWorkOrderNo()}"> <button type="button" class="btn btn-primary link-hover-color" >자재불출</button></a></td>
 			</tr>
 			</c:forEach>
