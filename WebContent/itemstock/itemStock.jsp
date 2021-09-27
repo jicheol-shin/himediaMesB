@@ -46,6 +46,9 @@
 		background-color: tomato;
 		color: #fff;
 	}
+	tr :hover {
+		background-color: skyblue;
+	}
 
 </style>
 <title>Himedia MES_B</title>
