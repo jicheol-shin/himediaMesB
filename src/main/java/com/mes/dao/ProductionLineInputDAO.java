@@ -46,7 +46,7 @@ public class ProductionLineInputDAO {
 					}
 				}catch (Exception e) {
 					// TODO Auto-generated catch block
-					System.out.println("Production Line리스트 조회 실패!!" + e.getMessage());
+					System.out.println("Production Line input 리스트 조회 실패!!" + e.getMessage());
 				}
 			
 		return productionLineInputList;
