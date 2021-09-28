@@ -33,8 +33,8 @@ public class ProductionDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "select a.*, b.product_name from take_order as a ";
-		   		sql += " left join product as b on a.product_cd = b.product_cd";
-		   		sql += " where  a.process = '구매발주'";
+        sql += " left join product as b on a.product_cd = b.product_cd";
+        sql += " where  a.process = '구매발주'";
 			
 		
 		try {
