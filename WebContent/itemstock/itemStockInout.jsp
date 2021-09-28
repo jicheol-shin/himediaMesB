@@ -114,7 +114,7 @@
 				<td>${itemStock.getInoutType()}</td>
 				<td>${itemStock.getStoreCd()}</td>
 				<td>${itemStock.getInoutPlant()}</td>
-				<td align="right"><fmt:formatNumber value="${itemStock.getItemCnt()}" pattern="#,###"/>
+				<td align="center"><fmt:formatNumber value="${itemStock.getItemCnt()}" pattern="#,###"/>
 				<td>${itemStock.getVendorName()}</td>
 				<td>${itemStock.getRemark()}</td>
 			</tr>

@@ -106,11 +106,11 @@
 				<td>${itemStock.getNum()}</td>
 				<td>${itemStock.getItemCd()}</td>
 				<td>${itemStock.getItemName()}</td>
-				<td align="right"><fmt:formatNumber value="${itemStock.getUnitPrice()}" pattern="#,###.#"/>
+				<td align="center"><fmt:formatNumber value="${itemStock.getUnitPrice()}" pattern="#,###.#"/>
 				<td>${itemStock.getStoreCd()}</td>
 				<td>${itemStock.getLocalCd()}</td>
-				<td align="right"><fmt:formatNumber value="${itemStock.getGoodCnt()}" pattern="#,###"/>
-				<td align="right">${itemStock.getBadCnt()}</td>
+				<td align="center"><fmt:formatNumber value="${itemStock.getGoodCnt()}" pattern="#,###"/>
+				<td align="center">${itemStock.getBadCnt()}</td>
 				<td>${itemStock.getRemark()}</td>
 			</tr>
 			</c:forEach>

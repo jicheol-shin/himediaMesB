@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
-import com.mes.vo.Product;
-import com.mes.vo.Production;
 import com.mes.vo.TakeOrder;
 
 public class ProductionDAO {
@@ -34,7 +32,7 @@ public class ProductionDAO {
 		TakeOrder takeOrder = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select a.* from take_order as a ";
+		String sql = "select a.*, b.product_name from take_order as a ";
 		   		sql += " left join product as b on a.product_cd = b.product_cd";
 		   		sql += " where  a.process = '구매발주'";
 			

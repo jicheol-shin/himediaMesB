@@ -80,7 +80,7 @@
 		</ul>
 		</div>
 		<br />
-		<table class="table table-striped table-condensed" style="font-size: 12px">
+		<table class="table table-striped table-condensed" style="font-size: 13px">
 		 <thead class="thead-dark">
 			<tr>
 				<th>작업지시일</th>
@@ -98,7 +98,7 @@
 				<td>${itemStockOutOrder.getWorkOrderNo()}</td>
 				<td>${itemStockOutOrder.getProductCd()}</td>
 				<td>${itemStockOutOrder.getLineNo()}</td>
-				<td align="right"><fmt:formatNumber value="${itemStockOutOrder.getWorkQty()}" pattern="#,###"/>
+				<td align="center"><fmt:formatNumber value="${itemStockOutOrder.getWorkQty()}" pattern="#,###"/>
 				<td><a href="itemstockOut.do?workOrderNo=${itemStockOutOrder.getWorkOrderNo()}"> <button type="button" class="btn btn-primary link-hover-color" >자재불출</button></a></td>
 			</tr>
 			</c:forEach>
