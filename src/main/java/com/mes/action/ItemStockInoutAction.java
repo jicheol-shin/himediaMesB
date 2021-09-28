@@ -48,20 +48,20 @@ public class ItemStockInoutAction implements Action {
 			
 			itemStockInoutList = itemStockInoutService.getItemStockInoutList(page,limit,stockInout);
 			
-			// 총페이지수
-			int totalPage = (int)((double)listCount / limit + 0.95);
-			// 현재페이지의 시작페이지수(1, 11, 21...)
-			int stratPage = (((int) ((double)page / 10 + 0.9))-1) * 10 + 1;
-			// 현재페이지에 보여줄 마지막페이지수
-			int endPage = stratPage + 10 - 1;
-			if(endPage > totalPage) endPage = totalPage;
+//			// 총페이지수
+//			int totalPage = (int)((double)listCount / limit + 0.95);
+//			// 현재페이지의 시작페이지수(1, 11, 21...)
+//			int stratPage = (((int) ((double)page / 10 + 0.9))-1) * 10 + 1;
+//			// 현재페이지에 보여줄 마지막페이지수
+//			int endPage = stratPage + 10 - 1;
+//			if(endPage > totalPage) endPage = totalPage;
 			
 			
-			Pager pageInfo = new Pager(page,totalPage,10,10);
-			pageInfo.setEndPage(endPage);
-			pageInfo.setTotalPage(totalPage);
-			pageInfo.setPageNum(page);
-			pageInfo.setStartPage(stratPage);
+			Pager pageInfo = new Pager(page,listCount,10,10);
+//			pageInfo.setEndPage(endPage);
+//			pageInfo.setTotalPage(totalPage);
+//			pageInfo.setPageNum(page);
+//			pageInfo.setStartPage(stratPage);
 			
 			req.setAttribute("pageInfo", pageInfo);
 			req.setAttribute("itemStockInoutList", itemStockInoutList);

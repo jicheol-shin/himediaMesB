@@ -246,6 +246,6 @@ public class ItemStockDAO {
 		}
 		return listCount; 
 	}
-	
+
 	
 }
