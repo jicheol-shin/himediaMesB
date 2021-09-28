@@ -1,3 +1,5 @@
+<%@page import="com.mes.vo.TakeOrder"%>
+<%@page import="com.mes.service.TakeOrderViewService"%>
 <%@page import="com.mes.vo.ReleaseProduct"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.mes.service.ReleaseProductViewService"%>
@@ -9,7 +11,7 @@
 	Member member = (Member) session.getAttribute("login_info");
 
 	ReleaseProductViewService releaseProductViewService = new ReleaseProductViewService();
-	ArrayList<ReleaseProduct> releaseProductList = (ArrayList<ReleaseProduct>) request.getAttribute("releaseProductList");
+	ArrayList<ReleaseProduct> releaseProductList = releaseProductViewService.getReleaseProductList();
 %>
 <c:set var="releaseProduct_data" value="<%=releaseProductList%>"/>
 <!DOCTYPE html>
@@ -65,7 +67,7 @@
 	}
 	
 	table {
-	  width: 80%;
+	  width: 90%;
 	}
 	
 </style>
@@ -116,20 +118,14 @@
 				<table class="thead-dark lead" align="center" >
 					<tr>
 					    <td>출고요청코드</td>
-					    <td><input type="text" name="releCd" class="form-control" placeholder="ex) RELE..."></td>
-					</tr>
-					<tr>
-					    <td>출고요청코드</td>
 					    <td>
-							<select name="releCd">
+							<select name="releCd" >
 								<option value="">목록에 없는 값을 입력해주세요.</option>
-								<option value="direct">값입력</option>
-							    <c:forEach var="takeOrder" items="${takeOrder_data}">
-							    	<option value="${takeOrder.getOrdCd()}" disabled="disabled">${takeOrder.getOrdCd()}</option>
+							    <c:forEach var="release" items="${releaseProduct_data}">
+							    	<option value="${release.getReleCd()}" disabled="disabled">${release.getReleCd()}</option>
 							    </c:forEach>
 							</select>
-							<!-- 상단의 select box에서 '직접입력'을 선택하면 나타날 인풋박스 -->
-							<input type="text" id="selboxDirect" name="selboxDirect"/>
+							<input type="text" name="releCd"/>
 					    </td>
 					</tr>
 					<tr>
@@ -138,15 +134,38 @@
 					</tr>
 					<tr>
 					    <td>수주코드</td>
-					    <td><input type="text" name="ordCd" class="form-control" placeholder="ex) ORD..."></td>
+					    <td>
+							<select name="ordCd">
+								<option value="">수주코드를 입력해주세요.</option>
+							    <c:forEach var="release" items="${releaseProduct_data}">
+							    	<option value="${release.getOrdCd()}">${release.getOrdCd()}</option>
+							    </c:forEach>
+							</select>
+					    </td>
 					</tr>
 					<tr>
 					    <td>거래처</td>
-					    <td><input type="text" name="customer" class="form-control" placeholder="ex) xx유통"></td>
+					    <td>
+							<select name="customer">
+								<option value="">거래처를 입력해주세요.</option>
+								<option value="">새로운 거래처 입력</option>
+							    <c:forEach var="release" items="${releaseProduct_data}">
+							    	<option value="${release.getCustomer()}">${release.getCustomer()}</option>
+							    </c:forEach>
+							</select>
+							<input type="text" name="customer"/>
+					    </td>
 					</tr>
 					<tr>
 					    <td>제품코드</td>
-					    <td><input type="text" name="productCd" class="form-control" placeholder="ex) PRODUCT..."></td>
+					    <td>
+							<select name="productCd">
+								<option value="">제품코드를 입력해주세요.</option>
+							    <c:forEach var="release" items="${releaseProduct_data}">
+							    	<option value="${release.getProductCd()}">${release.getProductCd()}</option>
+							    </c:forEach>
+							</select>
+					    </td>
 					</tr>
 					<tr>
 					    <td>진행상태</td>

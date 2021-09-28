@@ -125,13 +125,12 @@
 					    <td>
 							<select name="ordCd">
 								<option value="">목록에 없는 값을 입력해주세요.</option>
-								<option value="direct">값입력</option>
+								<option value="">값입력</option>
 							    <c:forEach var="takeOrder" items="${takeOrder_data}">
 							    	<option value="${takeOrder.getOrdCd()}" disabled="disabled">${takeOrder.getOrdCd()}</option>
 							    </c:forEach>
 							</select>
-							<!-- 상단의 select box에서 '직접입력'을 선택하면 나타날 인풋박스 -->
-							<input type="text" id="selboxDirect" name="selboxDirect"/>
+							<input type="text" name="ordCd"/>
 					    </td>
 					</tr>
 					<tr>
