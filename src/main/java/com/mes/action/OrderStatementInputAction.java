@@ -1,6 +1,7 @@
 package com.mes.action;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +11,7 @@ import com.mes.service.OrderStatementInputService;
 import com.mes.utility.Action;
 import com.mes.utility.ActionForward;
 import com.mes.vo.Member;
+import com.mes.vo.OrderStatement;
 
 public class OrderStatementInputAction implements Action{
 
@@ -33,11 +35,15 @@ public class OrderStatementInputAction implements Action{
 			String ordCd = req.getParameter("ordCd");
 			
 			forward= new ActionForward();
+			ArrayList<OrderStatement> orderStatementList = new ArrayList<OrderStatement>();
 			OrderStatementInputService orderStatementInputService = new OrderStatementInputService();
 			
-			orderStatementInputService.registOrderStatement(ordCd);
+			orderStatementList = orderStatementInputService.getOrderStatementList(ordCd);
+			
+			/* orderStatementInputService.registOrderStatement(ordCd); */
+			
 			forward.setRedirect(true);
-			forward.setPath("/buyTakeOrder.do");
+			forward.setPath("/purchase/buyTakeOrder.jsp");
 		}
 		return forward;
 	}

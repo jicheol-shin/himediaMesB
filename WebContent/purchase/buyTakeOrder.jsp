@@ -6,8 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
    Member member = (Member) session.getAttribute("login_info");
-
-   ArrayList<OrderStatement> orderStatementList = (ArrayList<OrderStatement>) request.getAttribute("OrderStatementList");
+   ArrayList<OrderStatement> orderStatementList = (ArrayList<OrderStatement>) request.getAttribute("OrderStatementList"); 
 %>
 <c:set var="OrderStatementService" value="<%=orderStatementList %>"/>
 <!DOCTYPE html>

@@ -32,7 +32,7 @@ public class PurchaseDAO {
 		this.conn = conn;
 	}
 	
-	// Take Order 리스트 불러오기
+	// Take Order 리스트 불러오기(takeOrder.jsp)
 	public ArrayList<TakeOrder> selectTakeOrderList() {
 		
 		ArrayList<TakeOrder> takeOrderList = new ArrayList<TakeOrder> ();
@@ -66,7 +66,7 @@ public class PurchaseDAO {
 	}
 
 	
-	// Order Statement 불러오기
+	// Order Statement 불러오기(buyTakeOrder.jsp)
 	
 	public ArrayList<OrderStatement> selectOrderStatementList(String ordCd) {
 		
