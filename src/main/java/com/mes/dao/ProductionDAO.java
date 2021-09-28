@@ -43,23 +43,18 @@ public class ProductionDAO {
 			
 			while (rs.next()) {
 				takeOrder = new TakeOrder();
-				takeOrder.setOrdCd(rs.getString("ord_cd")); // 수주번호
-				takeOrder.setProductCd(rs.getString("product_cd")); // 수주번호
-				takeOrder.setProductName(rs.getString("product_name")); // 수주번호
-				takeOrder.setProcess(rs.getString("process")); // 수주번호
-				takeOrder.setOrdCnt(rs.getInt("ord_cnt")); // 수주번호
+				takeOrder.setOrdCd(rs.getString("ord_cd")); 
+				takeOrder.setProductCd(rs.getString("product_cd")); 
+				takeOrder.setProductName(rs.getString("product_name")); 
+				takeOrder.setProcess(rs.getString("process")); 
+				takeOrder.setOrdCnt(rs.getInt("ord_cnt")); 
 			takeOrderList.add(takeOrder);
 			}
 			}catch (Exception e) {
-				// TODO Auto-generated catch block
 				System.out.println("Production리스트 조회 실패!!" + e.getMessage());
 			}
 			
-			
-			
-			
 		return takeOrderList;
-		
 		
 	}
 	
