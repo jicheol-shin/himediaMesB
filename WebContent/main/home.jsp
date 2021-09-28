@@ -169,9 +169,9 @@
 		      <div class="p-3 border bg-info font-weight-bold" align="center">물류관리</div>
 		      	<div> 
 			      <ul>
-					   <li><a href="#" >제품 재고 관리</a></li>
-					   <li><a href="#" >출고 지시</a></li>
-					   <li><a href="#" >출고 내역</a></li>
+					   <li><a href="productInventory.do" >제품 재고 관리</a></li>
+					   <li><a href="releaseOrder.do" >출고 지시</a></li>
+					   <li><a href="releaseOut.do" >출고 내역</a></li>
 			      </ul>
 			  </div>   
 		  </div>
