@@ -100,7 +100,7 @@
 	   <div align="right">
 	    <form action="itemstockInout.do" method="post">
 		 <ul class="list-group" >
-            <li class="list-group-item list-group-item-primary" >
+            <li class="list-group-item">
              <select name="stockInout">
 				<option>입출고 선택</option>
 				<option value="IN">입고내역</option>
