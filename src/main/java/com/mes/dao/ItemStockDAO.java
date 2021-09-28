@@ -33,16 +33,23 @@ public class ItemStockDAO {
 	}
 
 	// 자재 재고현황 조회
-	public ArrayList<ItemStockInout> selectItemstockList() {
+	public ArrayList<ItemStockInout> selectItemstockList(int page, int limit, String stockInout) {
 		
 		ArrayList<ItemStockInout> itemStockInoutList = new ArrayList<ItemStockInout>();
 		ItemStockInout itemStockInout= null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "select a.*, b.vendor_name from itemstock_inout as a" ;	
-		       sql += " left join vendor as b  on a.vendor_cd = b.vendor_cd"; 
+		       sql += " left join vendor as b  on a.vendor_cd = b.vendor_cd";     
+		       if(stockInout != null) sql += " where inout_type = '"+stockInout +"'";       
+		       sql += " limit ?," + limit;
+		
+		int startRow = (page-1) * limit;       
+		       
+		       
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, startRow);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -122,7 +129,6 @@ public class ItemStockDAO {
 			e1.printStackTrace();
 		} finally {
 			close(pstmt, rs_work);
-			
 		}				
 	
 		String sql = "select * from bom where product_cd = '"+ productCd +"'";
@@ -219,7 +225,27 @@ public class ItemStockDAO {
 			close(pstmt, rs);
 		}		
 		return itemStockList; 	
-	}		
+	}
+
+	public int selectListCount(String stockInout) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select count(*) from itemstock_inout";
+		if(stockInout != null) sql += " where inout_type = '"+stockInout +"'";       
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) listCount = rs.getInt(1);
+		} catch (SQLException e) {
+			System.out.println("갯수 가져오기 실패!! " + e.getMessage());
+		} finally {
+			close(pstmt, rs);
+		}
+		return listCount; 
+	}
 	
 	
 }
