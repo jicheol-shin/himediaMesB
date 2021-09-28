@@ -329,7 +329,7 @@
  </form>
   <br />
 	  <table class="table table-striped table-condensed" style="font-size: 12px">
-	  	<thead class="thead-dark" align="center" style="font-size: 13px">
+	  	<thead class="thead-dark" align="center" style="font-size: 19px">
 	  		<tr>
 			  <th>순번</th>
 			  <th>수주코드</th>

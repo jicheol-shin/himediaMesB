@@ -117,17 +117,18 @@
 	  	</thead>
 	  	<tbody align="center">
 	  	
-	  		<%-- <c:forEach var="" items=""> --%>
+	  		<c:forEach var="releaseOutList" items="${releaseOutService}">
 	  		<tr>
-	  			<td></td>
-	  			<td></td>
-	  			<td></td>
-	  			<td></td>
-	  			<td></td>
-	  			<td></td>
-	  			<td></td>
+	  			<td>${releaseOutList.getNum()}</td>
+	  			<td>${releaseOutList.getReleCd()}</td>
+	  			<td>${releaseOutList.getProductCd()}</td>
+	  			<td>${releaseOutList.getProductName()}</td>
+	  			<td>${releaseOutList.getReqCnt()}</td>
+	  			<td>${releaseOutList.getCustomer()}</td>
+	  			<td>${releaseOutList.getReleDelDate()}</td>
+	  			<td>${releaseOutList.getRemark()}</td>
 	  		</tr>
-	  		<%-- </c:forEach> --%>
+	  		</c:forEach>
 	  	</tbody>
 	  
 	  </table>
@@ -136,7 +137,7 @@
 	<br />
 	<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #e3f2fd;" >
 	  <div align="center">
-	    <!-- <a href="../index.do"><button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='index.do';" style="font-size: 20px;">HOME</button></a> -->
+	    <a href="../index.do"><button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='index.do';" style="font-size: 20px;">HOME</button></a>
 	  </div>
     </nav> 
 </div>

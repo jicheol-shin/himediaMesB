@@ -105,28 +105,30 @@
 	  <table class="table table-striped table-condensed" style="font-size: 12px">
 	  	<thead class="thead-dark lead" align="center" >
 	  		<tr>
-	  			<th>순번</th>
 	  			<th>출고요청코드</th>
 	  			<th>출고요청일자</th>
 	  			<th>거래처</th>
 	  			<th>완제품코드</th>
+	  			<th>진행상태</th>
 	  			<th>요청수량</th>
+	  			<th>출고</th>
 	  			<th>비고</th>
 	  		</tr>
 	  	</thead>
 	  	<tbody align="center">
 	  	
-	  		<%-- <c:forEach var="" items=""> --%>
+	  		<c:forEach var="releaseOrderList" items="${releaseOrderService}">
 	  		<tr>
-	  			<td></td>
-	  			<td></td>
-	  			<td></td>
-	  			<td></td>
-	  			<td></td>
-	  			<td></td>
-	  			<td></td>
+	  			<td>${releaseOrderList.getReleDate()}</td>
+	  			<td>${releaseOrderList.getReleCd()}</td>
+	  			<td>${releaseOrderList.getCustomer()}</td>
+	  			<td>${releaseOrderList.getProductCd()}</td>
+	  			<td>${releaseOrderList.getProcess()}</td>
+	  			<td>${releaseOrderList.getReqCnt()}</td>
+	  			<td><a href="/releaseOut.do?releCd=${releaseOrderList.getReleCd()}"><button type="button" class="btn btn-success link-hover-color">출고</button></a></td>
+	  			<td>${releaseOrderList.getRemark}</td>
 	  		</tr>
-	  		<%-- </c:forEach> --%>
+	  		</c:forEach>
 	  	</tbody>
 	  
 	  </table>
@@ -135,7 +137,7 @@
 	<br />
 	<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #e3f2fd;" >
 	  <div align="center">
-	    <!-- <a href="../index.do"><button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='index.do';" style="font-size: 20px;">HOME</button></a> -->
+	    <a href="../index.do"><button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='index.do';" style="font-size: 20px;">HOME</button></a>
 	  </div>
     </nav> 
 </div>
