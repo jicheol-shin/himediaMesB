@@ -1,14 +1,12 @@
-
 <%@page import="com.mes.vo.OrderStatement"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.mes.service.OrderStatementService"%>
 <%@page import="com.mes.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
    Member member = (Member) session.getAttribute("login_info");
 
-   OrderStatementService orderStatementService = new OrderStatementService();
    ArrayList<OrderStatement> orderStatementList = (ArrayList<OrderStatement>) request.getAttribute("OrderStatementList");
 %>
 <c:set var="OrderStatementService" value="<%=orderStatementList %>"/>
@@ -30,7 +28,7 @@
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> <!-- 달력 -->
     <!-- datepicker 한국어로 -->
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/datepicker-ko.js"></script> <!-- 달력 -->
-	<script>                
+	<!-- <script>                
 
         $(document).ready(function() {
 
@@ -134,7 +132,7 @@
             $("#searchStartDate").datepicker( "option", "maxDate", endDate );
 
         }   
-	</script>
+	</script> -->
 	
 	<style type="text/css">
 
@@ -176,7 +174,7 @@
 		}
 		
 		/* 달력 */
-		input[type=text],input[type=password]{font-family:"Malgun Gothic","맑은 고딕",Dotum,"돋움",Arial,sans-serif}
+		/* input[type=text],input[type=password]{font-family:"Malgun Gothic","맑은 고딕",Dotum,"돋움",Arial,sans-serif}
         *{margin:0;padding:0;font-family:"Malgun Gothic","맑은 고딕",Dotum,"돋움",Arial,sans-serif}
         body{font-size:12px;color:#555;background:transparent;-webkit-user-select:none;-moz-user-select:none;-webkit-text-size-adjust:none;-moz-text-size-adjust:none;-ms-text-size-adjust:none}
         ol,ul{list-style:none} 
@@ -193,10 +191,10 @@
         header,footer,aside,nav,section,article{display:block}
 
         .clearfix{*zoom:1}
-        .clearfix:after{content:"";display:block;clear:both;overflow:hidden}
+        .clearfix:after{content:"";display:block;clear:both;overflow:hidden}*/
 
         /* Search */
-        .searchBox{border:none}
+        /* .searchBox{border:none}
         .searchBox tbody th{padding:20px 10px 20px 35px;font-size:14px;font-weight:bold;text-align:left;vertical-align:top;border:none;background:#e6e6e6 }
         .searchBox tbody td{padding:12px 10px 12px 25px;border:none;background-color:#efefef}
         
@@ -210,7 +208,7 @@
         
         .demi{display:inline-block;margin:0 1px;vertical-align:middle}
         .inpType{padding-left:6px;height:24px;line-height:24px;border:1px solid #dbdbdb}
-        .btncalendar{display:inline-block;width:22px;height:22px;background:url(images/btn_calendar.gif) center center no-repeat;text-indent:-999em}
+        .btncalendar{display:inline-block;width:22px;height:22px;background:url(images/btn_calendar.gif) center center no-repeat;text-indent:-999em} */
 	</style>
 	
 	<title>Himedia MES_B</title>
@@ -255,7 +253,7 @@
 	  <br />
 	  <form> 
   <!-- search -->
-  <table class="searchBox">
+  <%-- <table class="searchBox">
     <caption>조회</caption>
       <colgroup>
         <col width="123px">
@@ -325,7 +323,7 @@
            </span>
          </div>    
         </td>
-    </tr>
+    </tr> --%>
 
   <tbody>
   </table>
@@ -357,7 +355,7 @@
 			  <td>${orderStatementList.getOrderDate()}</td>
 			  <td>${orderStatementList.getOrderCnt()}</td>
 			  <td>${orderStatementList.getUnitPrice()}</td>
-			  <td>${orderStatementList.getSumPrice()}</td>
+			  <td align="center"><fmt:formatNumber value="${orderStatementList.getSumPrice()}" pattern="#,###"/> </td>
 			  <td>${orderStatementList.getVendorCd()}</td>
 			  <td>${orderStatementList.getRemark()}</td>
 			</tr>
