@@ -33,13 +33,13 @@ public class ReleaseOutAction implements Action{
 			
 		} else {
 			forward = new ActionForward();
-			ArrayList<ReleaseStatement> releaseStatementList = new ArrayList<ReleaseStatement>();
+			ArrayList<ReleaseStatement> releaseOutList = new ArrayList<ReleaseStatement>();
 			ReleaseOutService releaseOutService = new ReleaseOutService();
-			releaseStatementList = releaseOutService.getReleaseOutList();
+			releaseOutList = releaseOutService.getReleaseOutList();
 			
-			req.setAttribute("releaseStatementList", releaseStatementList);
+			req.setAttribute("releaseOutList", releaseOutList);
 			forward.setRedirect(true);
-			forward.setPath("/productFinish/ReleaseOut.jsp");
+			forward.setPath("/productFinish/releaseOut.jsp");
 		}
 		
 		return forward;
