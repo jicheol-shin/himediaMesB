@@ -14,21 +14,28 @@ import com.mes.vo.ProductionLineInput;
 
 public class ProductionLineInputService {
 	
-	public ArrayList<ProductionLineInput> getProductionLineInputList(){
-	
-	
-	ArrayList<ProductionLineInput> ProductionLineInputList = null;
-	
-	
-	Connection conn = getConnection();
-	ProductionLineInputDAO productionLineInputDAO = ProductionLineInputDAO.getInstance();
-	productionLineInputDAO.setConnection(conn);
-	ProductionLineInputList = productionLineInputDAO.selectProductionLineInputList();
-	
-	close(conn); //jdbc임포트하기
-	
-	
-	
-	return ProductionLineInputList;
-}
-}
+	public boolean registProductionInput(ProductionLineInput productionLineInput) {
+		
+		boolean isWriteSuccess = false;
+		
+		Connection conn = getConnection();
+		ProductionLineInputDAO productionLineInputDAO = ProductionLineInputDAO.getInstance();
+		productionLineInputDAO.setConnection(conn);
+		int insertCount = productionLineInputDAO.updateProduction(productionLineInput);
+		
+				if(insertCount>0) {
+					commit(conn);
+					isWriteSuccess = true;
+				} else {
+					rollback(conn);
+				}
+				
+				return isWriteSuccess;
+				
+			}
+		
+		
+		
+	}
+
+

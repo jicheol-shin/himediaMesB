@@ -1,12 +1,16 @@
 package com.mes.dao;
 
+import static com.mes.db.JDBCUtility.close;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
+import com.mes.vo.ProductionLine;
 import com.mes.vo.ProductionLineInput;
 
 public class ProductionLineInputDAO {
@@ -26,30 +30,23 @@ public class ProductionLineInputDAO {
 		this.conn = conn;
 	}
 	
-	public ArrayList<ProductionLineInput> selectProductionLineInputList(){
-		ArrayList<ProductionLineInput> productionLineInputList = new ArrayList<ProductionLineInput>();
-		ProductionLineInput productionLineInput = null;
+		public int updateProduction(ProductionLineInput productionLineInput) {
+		int updateCount = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from pro_line_input"	;
-				
-				try {
-					pstmt = conn.prepareStatement(sql);
-					rs = pstmt.executeQuery();
-					
-					while (rs.next()) {
-						productionLineInput = new ProductionLineInput();
-						productionLineInput.setWorkOrderNo(rs.getString("work_order_no")); //작업지시번호
-						productionLineInput.setProductCd(rs.getString("product_cd"));
-						productionLineInput.setWorkQty(rs.getInt("work_qty"));
-					
-					}
-				}catch (Exception e) {
-					// TODO Auto-generated catch block
-					System.out.println("Production Line input 리스트 조회 실패!!" + e.getMessage());
-				}
+		String sql ="update production set work_qty "+
+		        " where WORK_ORDER_NO = PARK_1" ;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, productionLineInput.getWorkQty());
+			updateCount = pstmt.executeUpdate();
 			
-		return productionLineInputList;
+		} catch (SQLException e) {
+			System.out.println("업데이트 실패 !!" + e.getMessage());
+		} finally {
+			close(pstmt, rs);
+		}
+		
+    	return updateCount; 
 	}
-
 }
