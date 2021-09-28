@@ -10,7 +10,7 @@ import com.mes.vo.Bom;
 
 public class BomViewService {
 
-	public ArrayList<Bom> getBomList(){
+	public ArrayList<Bom> getBomList(int page, int limit){
 
 		ArrayList<Bom> BomList = null;
 
@@ -22,6 +22,18 @@ public class BomViewService {
 		close(conn);	
 		
 		return BomList;
+		
+	}
+	
+	public int getListCount() {
+		
+		int listCount = 0;
+		Connection conn = getConnection();
+		BomDAO bomDAO = BomDAO.getInstance();
+		bomDAO.setConnection(conn);
+		listCount = bomDAO.selectListCount();
+		close(conn);
+		return listCount;
 		
 	}
 	

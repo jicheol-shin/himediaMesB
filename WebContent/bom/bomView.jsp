@@ -1,3 +1,4 @@
+<%@page import="com.mes.utility.Pager"%>
 <%@page import="com.mes.service.BomViewService"%>
 <%@page import="com.mes.vo.Bom"%>
 <%@page import="java.util.ArrayList"%>
@@ -10,8 +11,17 @@
 
 	BomViewService bomViewService = new BomViewService();
 	ArrayList<Bom> bomList = (ArrayList<Bom>) request.getAttribute("bomList");
+	
+	Pager pageInfo = (Pager) request.getAttribute("pageInfo");
+	int totalPage = pageInfo.getTotalPage();
+	int startPage = pageInfo.getStartPage();
+	int endPage = pageInfo.getEndPage();
+	int pageSize = 10; // 한 페이지에 출력할 갯수
 %>
 <c:set var="bom_data" value="<%=bomList%>"/>
+<c:set var="totalPage" value="<%=totalPage%>"/>
+<c:set var="startPage" value="<%=startPage%>"/>
+<c:set var="endPage" value="<%=endPage%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -141,6 +151,21 @@
 	<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #82C3F5;" >
 		<div align="center"></div>
 	</nav>
+</div>
+<div class="container">
+	<ul class="pagination justify-content-center">
+		<c:if test="${startPage != 1}">
+			<li class="page-item"><a href="bomView.do?page=1" class="page-link"><i class="fas fa-fast-backward"></i></a></li>
+			<li class="page-item"><a href="bomView.do?page=${startPage-10}" class="page-link"><i class="fas fa-backward"></i></a></li>
+		</c:if>
+			<c:forEach var="page_num" begin="${startPage}" end="${endPage}" step="1">
+				<li class="page-item"><a class="page-link" href="bomView.do?page=${page_num}" >${page_num}</a></li>
+			</c:forEach>
+		<c:if test="${endPage < totalPage}">
+			<li class="page-item"><a href="bomView.do?page=${endPage+1}" class="page-link"><i class="fas fa-forward"></i></a></li>
+			<li class="page-item"><a href="bomView.do?page=${totalPage}" class="page-link"><i class="fas fa-fast-forward"></i></a></li>
+		</c:if>
+	</ul>
 </div>
 </body>
 </html>

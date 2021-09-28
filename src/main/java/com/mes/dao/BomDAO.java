@@ -1,5 +1,6 @@
 package com.mes.dao;
 
+import static com.mes.db.JDBCUtility.close;
 import static com.mes.db.JDBCUtility.*;
 
 import java.sql.Connection;
@@ -39,23 +40,23 @@ public class BomDAO {
 		Bom bom = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from bom";
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
+		String sql = "select * from bom where product_cd = ?";
 			
-			while (rs.next()) {
-				bom = new Bom();
-				bom.setProductCd(rs.getString("product_cd"));// 제품코드
-				bom.setItemCd(rs.getString("item_cd"));// 부품코드
-				bom.setItemName(rs.getString("item_name"));// 부품명
-				bom.setItemCnt(rs.getInt("item_cnt"));// 소요량
-				bom.setUnit(rs.getString("unit"));// 단위
-				bom.setUnitPrice(rs.getDouble("unit_price"));// 단가
-				bom.setVendorCd(rs.getString("vendor_cd"));// 거래처코드
-				bom.setRemark(rs.getString("remark"));// 비고
-				bomList.add(bom);
+		try {
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				while (rs.next()) {
+					bom = new Bom();
+					bom.setProductCd(rs.getString("product_cd"));// 제품코드
+					bom.setItemCd(rs.getString("item_cd"));// 부품코드
+					bom.setItemName(rs.getString("item_name"));// 부품명
+					bom.setItemCnt(rs.getInt("item_cnt"));// 소요량
+					bom.setUnit(rs.getString("unit"));// 단위
+					bom.setUnitPrice(rs.getDouble("unit_price"));// 단가
+					bom.setVendorCd(rs.getString("vendor_cd"));// 거래처코드
+					bom.setRemark(rs.getString("remark"));// 비고
+					bomList.add(bom);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -103,6 +104,28 @@ public class BomDAO {
 		
 		return insertCount;
 		
+	}
+	
+	// Bom 글 갯수 구하기
+	public int selectListCount() {
+		
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select count(*) from bom";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) listCount = rs.getInt(1);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Bom갯수 가져오기 실패!! " + e.getMessage());
+		} finally {
+			close(pstmt, rs);
+		}
+		return listCount; 
 	}
 	
 }
