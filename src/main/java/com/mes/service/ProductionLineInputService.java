@@ -1,11 +1,7 @@
 package com.mes.service;
 
 import static com.mes.db.JDBCUtility.*;
-
-
-
 import java.sql.Connection;
-import java.util.ArrayList;
 
 import com.mes.dao.ProductionLineInputDAO;
 import com.mes.vo.ProductionLineInput;

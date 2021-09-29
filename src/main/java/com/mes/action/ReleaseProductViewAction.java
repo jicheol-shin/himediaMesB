@@ -8,12 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.mes.service.ReleaseProductViewService;
-import com.mes.service.TakeOrderViewService;
 import com.mes.utility.Action;
 import com.mes.utility.ActionForward;
 import com.mes.vo.Member;
 import com.mes.vo.ReleaseProduct;
-import com.mes.vo.TakeOrder;
 
 public class ReleaseProductViewAction implements Action{
 

@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import javax.sql.DataSource;
 
 import com.mes.vo.OrderStatement;
-import com.mes.vo.Product;
 import com.mes.vo.TakeOrder;
 
 public class PurchaseDAO {

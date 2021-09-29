@@ -6,11 +6,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
-import com.mes.vo.ProductionLine;
 import com.mes.vo.ProductionLineInput;
 
 public class ProductionLineInputDAO {

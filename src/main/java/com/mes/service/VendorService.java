@@ -6,9 +6,7 @@ import static com.mes.db.JDBCUtility.getConnection;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import com.mes.dao.ProductDAO;
 import com.mes.dao.VendorDAO;
-import com.mes.vo.Product;
 import com.mes.vo.Vendor;
 
 public class VendorService {

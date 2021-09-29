@@ -1,7 +1,6 @@
 package com.mes.action;
 
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +10,6 @@ import com.mes.service.OrderStatementInputService;
 import com.mes.utility.Action;
 import com.mes.utility.ActionForward;
 import com.mes.vo.Member;
-import com.mes.vo.OrderStatement;
 
 public class OrderStatementInputAction implements Action{
 

@@ -6,7 +6,6 @@ import static com.mes.db.JDBCUtility.getConnection;
 import java.sql.Connection;
 
 import com.mes.dao.ProductionDAO;
-import com.mes.dao.PurchaseDAO;
 
 public class PrudctionInputService {
 

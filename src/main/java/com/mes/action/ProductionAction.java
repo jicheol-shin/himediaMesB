@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.mes.service.ProductionService;
 import com.mes.utility.Action;
 import com.mes.utility.ActionForward;
-import com.mes.vo.Production;
 import com.mes.vo.TakeOrder;
 
 public class ProductionAction implements Action{

@@ -3,12 +3,10 @@ package com.mes.dao;
 import static com.mes.db.JDBCUtility.*;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Locale;
 
 import javax.sql.DataSource;
 
