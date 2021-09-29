@@ -123,7 +123,9 @@ public class ProductInventoryDAO {
 //			}
 			
 			// release_statement 테이블에 insert
-			String sql1 = "select * from release_product where rele_cd='" + releCd + "'";
+			String sql1 = "select a.*, b.product_name from release_product as a";
+			       sql1 += " left join product as b on a.product_cd = b.product_cd";
+				   sql1	+= " where rele_cd='" + releCd + "'";
 			try {
 				pstmt = conn.prepareStatement(sql1);
 				rs = pstmt.executeQuery();
@@ -159,7 +161,7 @@ public class ProductInventoryDAO {
 						close(pstmt3);
 					}	
 					
-					String sql4 = "update release_product set process='출고완료'";				
+					String sql4 = "update release_product set process='출고완료' where rele_cd='" + releCd + "'";				
 					PreparedStatement pstmt4 = conn.prepareStatement(sql4);
 					try {    
 						pstmt4.executeUpdate();
