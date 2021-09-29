@@ -14,8 +14,6 @@ public class OrderStatement {
 	private double sumPrice;   // 합계
 	private String vendorCd;   // 거래처코드
 	private String remark;     // 비고
-	
-	
 	public int getNum() {
 		return num;
 	}
@@ -64,10 +62,10 @@ public class OrderStatement {
 	public void setSumPrice(double sumPrice) {
 		this.sumPrice = sumPrice;
 	}
-	public String getvendorCd() {
+	public String getVendorCd() {
 		return vendorCd;
 	}
-	public void setvendorCd(String vendorCd) {
+	public void setVendorCd(String vendorCd) {
 		this.vendorCd = vendorCd;
 	}
 	public String getRemark() {
@@ -76,5 +74,8 @@ public class OrderStatement {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+	
+	
+
 	
 }

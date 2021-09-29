@@ -18,7 +18,7 @@ public class OrderStatementInputService {
 		purchaseDAO.setConnection(conn);
 		orderStatementList = purchaseDAO.selectOrderStatementList(ordCd);
 		close(conn);
-		
+
 		return orderStatementList;
 	}
 

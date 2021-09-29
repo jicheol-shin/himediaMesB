@@ -68,14 +68,14 @@ public class PurchaseDAO {
 	
 	// Order Statement 불러오기(buyTakeOrder.jsp)
 	
-	public ArrayList<OrderStatement> selectOrderStatementList(String ordCd) {
+	public ArrayList<OrderStatement> selectOrderStatementList() {
 		
 		ArrayList<OrderStatement> orderStatementList = new ArrayList<OrderStatement> ();
 		OrderStatement orderStatement = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from order_statement where ord_cd='" + ordCd+ "'";
-		
+		String sql = "select * from order_statement";
+		System.out.println(sql);
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -90,7 +90,7 @@ public class PurchaseDAO {
 				orderStatement.setOrderCnt(rs.getInt("order_cnt"));      // 발주량
 				orderStatement.setUnitPrice(rs.getDouble("unit_price")); // 단가
 				orderStatement.setSumPrice(rs.getDouble("sum_price"));   // 합계
-				orderStatement.setvendorCd(rs.getString("vendor_cd"));   // 거래처코드
+				orderStatement.setVendorCd(rs.getString("vendor_cd"));   // 거래처코드
 				orderStatement.setRemark(rs.getString("remark"));        // 비고
 				orderStatementList.add(orderStatement);
 			}
@@ -114,7 +114,6 @@ public class PurchaseDAO {
 		
 		// take order 테이블 컬럼 불러오기(product_cd, ord_cnt)
 		String sql_ord = "select * from take_order where ord_cd='" + ordCd + "'";
-		
 		try {
 			pstmt = conn.prepareStatement(sql_ord);
 			rs_ord = pstmt.executeQuery();
@@ -131,25 +130,23 @@ public class PurchaseDAO {
 		
 		// OrderStatement 테이블에 insert
 		String sql = "select * from bom where product_cd = '" + productCd + "'";
-		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				String sql1 = "insert into order_statement(ord_cd, item_cd, item_name, order_date, order_cnt, unit_price, sum_price, vendor_cd, remark) " +
-						" values(?, ?, ?, now(), ?, ?, ?, ?, ?)";
+				String sql1 = "insert into order_statement(ord_cd, item_cd, item_name, order_date, order_cnt, unit_price, sum_price, vendor_cd) " +
+						" values(?, ?, ?, now(), ?, ?, ?, ?)";
 				
 				PreparedStatement pstmt1 = conn.prepareStatement(sql1);
 				try {
 					pstmt1.setString(1, ordCd);
 					pstmt1.setString(2, rs.getString("item_cd"));
 					pstmt1.setString(3, rs.getString("item_name"));
-					pstmt1.setInt(4, ordCnt);
+					pstmt1.setInt(4, rs.getInt("item_cnt")* ordCnt);
 					pstmt1.setDouble(5, rs.getDouble("unit_price"));
 					pstmt1.setDouble(6, rs.getInt("item_cnt")* ordCnt * rs.getDouble("unit_price"));
 					pstmt1.setString(7, rs.getString("vendor_cd"));
-					pstmt1.setInt(8, rs.getInt("lead_time"));
 					pstmt1.executeUpdate();
 					
 				} catch (SQLException e) {
@@ -157,28 +154,63 @@ public class PurchaseDAO {
 				} finally {
 					close(pstmt1);
 				}
+		      }
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt, rs);
+		}	
+		    
+ 		PreparedStatement pstmta = null;
+		String sql1 = "select * from bom where product_cd = '" + productCd + "'";
+		try {
+			pstmta = conn.prepareStatement(sql1);
+			rs = pstmta.executeQuery();
+			
+			while(rs.next()) {
 				
-				String sql2 = "insert into itemstock_inout(inout_cd,item_cd, item_name, inout_date, inout_type, store_cd, inout_plant, item_cnt, vendor_cd)" +
-							  " values(?, ?, ?, now(), ?, ?, ?, ?, ?)";
+				String sql2 = "insert into itemstock_inout(inout_cd,item_cd, item_name, inout_date, inout_type, store_cd, item_cnt, vendor_cd)" +
+							  " values(?, ?, ?, now(), ?, ?, ?, ?)";
 				
 				PreparedStatement pstmt2 = conn.prepareStatement(sql2);
+
 				try {
-					pstmt2.setString(1, rs.getString("inout_cd"));
+					pstmt2.setString(1, ordCd);
 					pstmt2.setString(2, rs.getString("item_cd"));
 					pstmt2.setString(3, rs.getString("item_name"));
 					pstmt2.setString(4, "IN");
+					pstmt2.setString(5, "원부자재창고");
+					pstmt2.setInt(6, rs.getInt("item_cnt")* ordCnt);
+					pstmt2.setString(7, rs.getString("vendor_cd"));
+					pstmt2.executeUpdate();
 				} catch (SQLException e) {
 					System.out.println(" IN 입력 실패 : " + e.getMessage());
 				} finally {
 					close(pstmt2);
 				}
+				
+				String sql3 = "update itemstock set good_cnt = good_cnt + ?  where item_cd = ?";				
+				PreparedStatement pstmt3 = conn.prepareStatement(sql3);
+				try {
+					pstmt3.setInt(1, rs.getInt("item_cnt") * ordCnt);
+					pstmt3.setString(2, rs.getString("item_cd"));    
+					pstmt3.executeUpdate();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					close(pstmt3);
+				}			
+				
+				
 			}
-			
+		
 		} catch (SQLException e) {
 				e.printStackTrace();
 		} finally {
-			close(pstmt, rs);
+			close(pstmta, rs);
 		}
+			
 		// 영업table - Process : 구매발주완료 로 업데이트 
 		String sql_update = "update take_order set process ='구매발주완료' where ord_cd='" + ordCd+ "'";
 		try {

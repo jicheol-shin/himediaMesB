@@ -6,9 +6,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
    Member member = (Member) session.getAttribute("login_info");
-   ArrayList<OrderStatement> orderStatementList = (ArrayList<OrderStatement>) request.getAttribute("OrderStatementList"); 
+   ArrayList<OrderStatement> orderStatementList = (ArrayList<OrderStatement>) request.getAttribute("orderStatementList"); 
+   System.out.println(orderStatementList);
 %>
-<c:set var="OrderStatementService" value="<%=orderStatementList %>"/>
+<c:set var="orderStatement_data" value="<%=orderStatementList %>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -345,7 +346,7 @@
 	  	</thead>
 	  	<tbody align="center">
 	  	
-	  		<c:forEach var="orderStatementList" items="${orderStatementService}">
+	  		<c:forEach var="orderStatementList" items="${orderStatement_data}">
 			<tr>
 			  <td>${orderStatementList.getNum()}</td>
 			  <td>${orderStatementList.getOrdCd()}</td>
@@ -353,7 +354,7 @@
 			  <td>${orderStatementList.getItemName()}</td>
 			  <td>${orderStatementList.getOrderDate()}</td>
 			  <td>${orderStatementList.getOrderCnt()}</td>
-			  <td>${orderStatementList.getUnitPrice()}</td>
+			  <td align="center"><fmt:formatNumber value="${orderStatementList.getUnitPrice()}" pattern="#,###"/> </td>
 			  <td align="center"><fmt:formatNumber value="${orderStatementList.getSumPrice()}" pattern="#,###"/> </td>
 			  <td>${orderStatementList.getVendorCd()}</td>
 			  <td>${orderStatementList.getRemark()}</td>

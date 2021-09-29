@@ -35,13 +35,8 @@ public class OrderStatementInputAction implements Action{
 			String ordCd = req.getParameter("ordCd");
 			
 			forward= new ActionForward();
-			ArrayList<OrderStatement> orderStatementList = new ArrayList<OrderStatement>();
 			OrderStatementInputService orderStatementInputService = new OrderStatementInputService();
-			
-			orderStatementList = orderStatementInputService.getOrderStatementList(ordCd);
-			
-			/* orderStatementInputService.registOrderStatement(ordCd); */
-			
+			orderStatementInputService.registOrderStatement(ordCd);
 			forward.setRedirect(true);
 			forward.setPath("/purchase/buyTakeOrder.jsp");
 		}
