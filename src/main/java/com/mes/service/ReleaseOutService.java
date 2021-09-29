@@ -12,12 +12,12 @@ public class ReleaseOutService {
 
 	public ArrayList<ReleaseStatement> getReleaseOutList() {
 		
-		ArrayList<ReleaseStatement> ReleaseOutList = null;
+		ArrayList<ReleaseStatement> releaseOutList = null;
 		Connection conn = getConnection();
 		ProductInventoryDAO productInventoryDAO = ProductInventoryDAO.getInstance();
 		productInventoryDAO.setConnection(conn);
-		ReleaseOutList = productInventoryDAO.selectReleaseOutList();
+		releaseOutList = productInventoryDAO.selectReleaseOutList();
 		close(conn);
-		return ReleaseOutList;
+		return releaseOutList;
 	}
 }

@@ -6,10 +6,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
    Member member = (Member) session.getAttribute("login_info");
-
-   ReleaseOutService releaseOutService = new ReleaseOutService();
    ArrayList<ReleaseStatement> releaseOutList = (ArrayList<ReleaseStatement>) request.getAttribute("releaseOutList");
 %>
+<c:set var="releaseOut_data" value="<%=releaseOutList %>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -117,7 +116,7 @@
 	  	</thead>
 	  	<tbody align="center">
 	  	
-	  		<c:forEach var="releaseOutList" items="${releaseOutService}">
+	  		<c:forEach var="releaseOutList" items="${releaseOut_data}">
 	  		<tr>
 	  			<td>${releaseOutList.getNum()}</td>
 	  			<td>${releaseOutList.getReleCd()}</td>
