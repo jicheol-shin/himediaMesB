@@ -1,17 +1,18 @@
-<%@page import="com.mes.vo.TakeOrder"%>
+<%@page import="com.mes.vo.Production"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="com.mes.vo.Member"%>
-<%@page import="com.mes.service.ProductionService" %>
-<%@page import="com.mes.vo.Production" %>
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.mes.dao.ProductionDAO"%>
+<%@page import="com.mes.service.ProductionViewService"%>
+<%@page import="com.mes.vo.ProductionView" %>
+<%@page import="java.util.ArrayList" %>
+<%@page import="com.mes.dao.ProductionViewDAO" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Member member = (Member) session.getAttribute("login_info");
-    ArrayList<TakeOrder> takeOrderList = (ArrayList<TakeOrder>) request.getAttribute("takeOrderList"); 
+    ArrayList<Production> productionViewList = (ArrayList<Production>) request.getAttribute("productionViewList");
+    System.out.println(productionViewList);
 %>
-<c:set var="takeOrder_data" value="<%=takeOrderList %>"/>
+<c:set var="productionView_data" value="<%=productionViewList%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,8 +50,9 @@
 		background-color: tomato;
 		color: #fff;
 	}
+
 </style>
-<title>Production</title>
+<title>Production View</title>
 </head>
 <body>
 <!-- 로그인바 -->
@@ -75,53 +77,60 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
-</nav>
+	</nav>
 </div>
 <br />
-
-<!-- 제목 -->
+<!-- 제목  -->
 	<div class="container" align="center" style="height: 500px">
 	   <div align="left">
 		 <ul class="list-group" >
-            <li class="list-group-item list-group-item-primary" align="center">생산 지시</li>
+            <li class="list-group-item list-group-item-primary" align="center">생산지시현황</li>
 		</ul>
 		</div>
 		<br />
-<!-- 내용 -->
+		<!-- 내용 -->
 <div class="contaner">
 	<div class="row">
 		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;">
 			<thead>
 				<tr>
-					<th style="background-color: #eeeeee; text-align: center;">수주코드</th>
+					<th style="background-color: #eeeeee; text-align: center;">수주일자</th>
+					<th style="background-color: #eeeeee; text-align: center;">작업지시번호</th>
 					<th style="background-color: #eeeeee; text-align: center;">제품코드</th>
-					<th style="background-color: #eeeeee; text-align: center;">제품이름</th>
-					<th style="background-color: #eeeeee; text-align: center;">진행상태</th>
+					<th style="background-color: #eeeeee; text-align: center;">수주코드</th>
+					<th style="background-color: #eeeeee; text-align: center;">라인코드</th>
+					<th style="background-color: #eeeeee; text-align: center;">작업자</th>
+					<th style="background-color: #eeeeee; text-align: center;">생산수량</th>
 					<th style="background-color: #eeeeee; text-align: center;">수주수량</th>
-					<th style="background-color: #eeeeee; text-align: center;">프로세스</th>	
+					<th style="background-color: #eeeeee; text-align: center;">프로세스</th>
+					<th style="background-color: #eeeeee; text-align: center;">생산시작일</th>
+					<th style="background-color: #eeeeee; text-align: center;">생산완료일</th>
+
 				</tr>
 				</thead>
-				<tbody>
-  				 <c:forEach var="takeOrder" items="${takeOrder_data}">
-               <tr>
-                  <td>${takeOrder.getOrdCd()}</td>
-                  <td>${takeOrder.getProductCd()}</td>
-                  <td>${takeOrder.getProductName()}</td>
-                  <td>${takeOrder.getProcess()}</td>
-                  <td>${takeOrder.getOrdCnt()}</td>
-				<td><a href="/productionInput.do?ordCd=${takeOrder.getOrdCd()}"><button type="button" class="btn btn-danger link-hover-color" >작업지시</button></a></td>	
-               </tr>
-               
-               
-             </c:forEach>
-				</tbody>		
-		</table>
+					<tbody>
+				<c:forEach var="production" items="${productionView_data}">
+					<tr>
+						<td>${production.getWorkOrderDate()}</td>
+						<td>${production.getWorkOrderNo()}</td>
+						<td>${production.getProductCd()}</td>
+						<td>${production.getOrderCd()}</td>
+						<td>${production.getLineCd()}</td>
+						<td>${production.getInUserId()}</td>
+						<td>${production.getWorkQty()}</td>
+						<td>${production.getOrderCnt()}</td>
+						<td>${production.getProcess()}</td>
+						<td>${production.getStartDate()}</td>
+						<td>${production.getEndDate()}</td>
+						
+				
+				</tr>
+				</c:forEach>
+							
+				</table>
 	</div>
 </div>
-<div class="container" align=center>
-	<a href="../index.do"><input type="button" value="HOME" class="btn btn-primary" onclick="index.do"/></a>
-</div>
-			
-<hr>
+<br>
+	
 </body>
 </html>

@@ -138,7 +138,7 @@
 		      <ul>
 				   <li><a href="production.do" >생산지시</a></li>
 				   <li><a href="prodcutionLine.do" >공정관리</a></li>
-				   <li><a href="prodcutioncurrent.do" >생산지시현황</a></li>
+				   <li><a href="productionView.do" >생산지시현황</a></li>
 		      </ul>
 		   </div>   
 	   	 </div>
