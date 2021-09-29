@@ -161,7 +161,8 @@ public class PurchaseDAO {
 		} finally {
 			close(pstmt, rs);
 		}	
-		    
+		
+		// itemstock_inout 테이블에 in/out 타입 IN으로 바꾸기
  		PreparedStatement pstmta = null;
 		String sql1 = "select * from bom where product_cd = '" + productCd + "'";
 		try {

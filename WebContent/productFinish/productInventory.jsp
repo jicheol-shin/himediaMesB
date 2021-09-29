@@ -10,6 +10,7 @@
    ProductInventoryService productInventoryService = new ProductInventoryService();
    ArrayList<ProductInventory> productInventoryList = (ArrayList<ProductInventory>) request.getAttribute("productInventoryList");
 %>
+<c:set var="productInventory_data" value="<%= productInventoryList%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -117,7 +118,7 @@
 	  	</thead>
 	  	<tbody align="center">
 	  
-	  		<c:forEach var="productInventoryList" items="${productInventoryService}">
+	  		<c:forEach var="productInventoryList" items="${productInventory_data}">
 	  		<tr>
 	  			<td>${productInventoryList.getNum()}</td>
 	  			<td>${productInventoryList.getProductCd()}</td>

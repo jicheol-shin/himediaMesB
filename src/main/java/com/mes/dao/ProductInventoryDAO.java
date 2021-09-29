@@ -5,6 +5,7 @@ import static com.mes.db.JDBCUtility.close;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.sql.DataSource;
@@ -31,7 +32,7 @@ public class ProductInventoryDAO {
 	}
 	
 	
-	// ProductInventory 리스트 불러오기
+	// ProductInventory 리스트 불러오기(ProductInventory.jsp)
 	public ArrayList<ProductInventory> selectProductInventoryList() {
 		
 		ArrayList<ProductInventory> productInventoryList = new ArrayList<ProductInventory>();
@@ -49,8 +50,8 @@ public class ProductInventoryDAO {
 				productInventory.setNum(rs.getInt("num"));
 				productInventory.setProductCd(rs.getString("product_cd"));
 				productInventory.setProductName(rs.getString("product_name"));
-				productInventory.setgoodCount(rs.getInt("good_count"));
-				productInventory.setbadCount(rs.getInt("bad_count"));
+				productInventory.setGoodCount(rs.getInt("good_count"));
+				productInventory.setBadCount(rs.getInt("bad_count"));
 				productInventory.setStoreCd(rs.getString("store_cd"));
 				productInventory.setRemark(rs.getString("remark"));
 				productInventoryList.add(productInventory);
@@ -63,6 +64,10 @@ public class ProductInventoryDAO {
 		return productInventoryList;
 	}
 	
+	
+	
+	
+	
 	// ReleaseOrder리스트(영업관리- Release Product 테이블 불러오기)
 	public ArrayList<ReleaseProduct> selectReleaseOrderList() {
 		
@@ -71,7 +76,7 @@ public class ProductInventoryDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "select * from release_product";
-			   sql += " where process='출하준비완료'";
+			   sql += " where process='미결'";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -95,6 +100,84 @@ public class ProductInventoryDAO {
 		}
 		return releaseOrderList;
 	}
+	
+	
+	// ReleaseStatement에 내용 입력 하기
+		public void insertReleaseOutList(String releCd) {
+			
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			// releaseProduct 테이블 칼럼 불러오기(rele_cd)
+//			String sql = "select * from release_product where rele_cd='" + releCd + "'";
+//			try {
+//				pstmt = conn.prepareStatement(sql);
+//				rs = pstmt.executeQuery();
+//				while(rs.next()) {
+//					releCd1 = rs.getString("rele_cd");
+//				}
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			} finally {
+//				close(pstmt, rs);
+//			}
+			
+			// release_statement 테이블에 insert
+			String sql1 = "select * from release_product where rele_cd='" + releCd + "'";
+			try {
+				pstmt = conn.prepareStatement(sql1);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					String sql2 = "insert into release_statement(rele_cd, product_cd, product_name, req_cnt, customer, rele_del_date) " +
+							    " values(?, ?, ?, ?, ?, now())" ;
+					
+					PreparedStatement pstmt1 = conn.prepareStatement(sql2);
+					try {
+						pstmt1.setString(1, releCd);
+						pstmt1.setString(2, rs.getString("product_cd"));
+						pstmt1.setString(3, rs.getString("product_name"));
+						pstmt1.setInt(4, rs.getInt("req_cnt"));
+						pstmt1.setString(5, rs.getString("customer"));
+						pstmt1.executeUpdate();
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt1);
+					}
+					
+					String sql3 = "update product_inventory set good_count = good_count - ?  where product_cd = ?";				
+					PreparedStatement pstmt3 = conn.prepareStatement(sql3);
+					try {
+						pstmt3.setInt(1, rs.getInt("req_cnt"));
+						pstmt3.setString(2, rs.getString("product_cd"));    
+						pstmt3.executeUpdate();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt3);
+					}	
+					
+					String sql4 = "update release_product set process='출고완료'";				
+					PreparedStatement pstmt4 = conn.prepareStatement(sql4);
+					try {    
+						pstmt4.executeUpdate();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt4);
+					}	
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+		}
+	
+	
 	
 	// ReleaseOut(Release Statement 테이블 불러오기)
 	public ArrayList<ReleaseStatement> selectReleaseOutList() {
@@ -128,6 +211,8 @@ public class ProductInventoryDAO {
 		}
 		return releaseOutList;
 	}
+
+	
 	
 	
 	

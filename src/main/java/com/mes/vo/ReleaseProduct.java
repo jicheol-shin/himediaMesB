@@ -17,6 +17,7 @@ public class ReleaseProduct {
 	private String remark;// 비고
 	
 	private int goodCount;// 재고수량
+	private String productName;
 	
 	public String getReleCd() {
 		return releCd;
@@ -89,8 +90,13 @@ public class ReleaseProduct {
 	}
 	public void setGoodCount(int goodCount) {
 		this.goodCount = goodCount;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}       	
 
-	
 
 }
