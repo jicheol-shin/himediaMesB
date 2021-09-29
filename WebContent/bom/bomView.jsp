@@ -18,7 +18,6 @@
 	int totalPage = pager.getTotalPage();
 	int startPage = pager.getStartPage();
 	int endPage = pager.getEndPage();
-	
 %>
 <c:set var="bom_data" value="<%=bomList%>"/>
 <c:set var="curPage" value="<%=curPage%>"/>
@@ -33,17 +32,25 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
       integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
-	  crossorigin="anonymous">  
+	  crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/d460482c18.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script>
-	var foundedinputs = [];
-	$("select[name=productCd] option").each(function() {
-	  if($.inArray(this.value, foundedinputs) != -1) $(this).remove();
-	  foundedinputs.push(this.value);
-	});
+<script type="text/javascript">
+	$(function(){
+	    //직접입력 인풋박스 기존에는 숨어있다가
+	$("#selboxDirect").hide();
+	$("#selbox").change(function() {
+	        //직접입력을 누를 때 나타남
+	      if($("#selbox").val() == "직접입력") {
+	          $("#selboxDirect").show();
+	      }  else {
+	          $("#selboxDirect").hide();
+	      }
+	  }) 
+	});​
 </script>
 <style type="text/css">
 
@@ -131,20 +138,26 @@
 			<form action="bomView.do" method="post">
 			<ul class="list-group list-group-flush" >
 		        <li class="list-group-item" style="font-size: 20px">
-			    <%-- <select name="productCd">
-			    	<option>제품코드선택</option>
-					<c:forEach var="bom" items="${bom_data}">
-				    	<option value="${bom.getProductCd()}">${bom.getProductCd()}</option>
-				    </c:forEach>
-			    </select> --%>
-				    <select name="productCd">
+		        <!-- c:foreach 활용 -->
+ 				    <%-- <select name="productCd">
+				    	<option>제품코드선택</option>
+						<c:forEach var="bom" items="${bom_data}">
+					    	<option value="${bom.getProductCd()}">${bom.getProductCd()}</option>
+					    </c:forEach>
+				    </select> --%>
+		        
+		        <!-- 직접 넣기 -->
+					<select id="selbox" name="productCd">
 						<option>제품코드선택</option>
 				    	<option value="PRODUCT1">PRODUCT1</option>
 				    	<option value="PRODUCT2">PRODUCT2</option>
 				    	<option value="PRODUCT3">PRODUCT3</option>
-				    	<option value="">직접입력</option>
+				    	<!-- 직접입력시 input값이 아닌 "직접입력"값이 들어가는 현상 오류 찾는중.. -->
+						<!-- <option value="직접입력">직접입력</option> -->
 					</select>
-			    	<input type="text" name="productCd" placeholder="직접입력"/>
+			    	<!-- 직접입력시 input값이 아닌 "직접입력"값이 들어가는 현상 오류 찾는중.. -->
+					<!-- 상단의 select box에서 '직접입력'을 선택하면 나타날 인풋박스 -->
+					<!-- <input type="text" id="selboxDirect" name="productCd" placeholder="직접입력"/> -->
 					<input type="submit"  value="조회"/>
 		        </li>
 			</ul>
@@ -181,15 +194,20 @@
 			</tbody>
 		</table>
 	</div>
+	<!-- 페이지번호 -->
+	<!-- 페이지번호 버튼 안보이는 오류 찾는중... -->
 	<div class="container">
 		<ul class="pagination justify-content-center" style="font-size: 20px">
+			<!-- 페이지번호버튼(앞으로) -->
 			<c:if test="${startPage != 1}">
 				<li class="page-item"><a href="bomView.do?page=1" class="page-link"><i class="fas fa-fast-backward"></i></a></li>
 				<li class="page-item"><a href="bomView.do?page=${page_num-10}" class="page-link"><i class="fas fa-backward"></i></a></li>
 			</c:if>
+			<!-- 페이지번호버튼(숫자) -->
 				<c:forEach var="page_num" begin="${startPage}" end="${endPage}" step="1">
 					<li class="page-item"><a class="page-link" href="bomView.do?page=${page_num}" >${page_num}</a></li>
 				</c:forEach>
+			<!-- 페이지번호버튼(뒤로) -->
 			<c:if test="${endPage < totalPage}">
 				<li class="page-item"><a href="bomView.do?page=${endPage+1}" class="page-link"><i class="fas fa-forward"></i></a></li>
 				<li class="page-item"><a href="bomView.do?page=${totalPage}" class="page-link"><i class="fas fa-fast-forward"></i></a></li>

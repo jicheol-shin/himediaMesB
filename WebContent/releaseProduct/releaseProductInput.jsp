@@ -120,12 +120,11 @@
 					    <td>출고요청코드</td>
 					    <td>
 							<select name="releCd" >
-								<option value="">목록에 없는 값을 입력해주세요.</option>
 							    <c:forEach var="release" items="${releaseProduct_data}">
 							    	<option value="${release.getReleCd()}" disabled="disabled">${release.getReleCd()}</option>
 							    </c:forEach>
 							</select>
-							<input type="text" name="releCd" placeholder="직접입력"/>
+							<input type="text" name="releCd" placeholder="목록에 없는 값을 입력해주세요."/>
 					    </td>
 					</tr>
 					<tr>
@@ -147,13 +146,10 @@
 					    <td>거래처</td>
 					    <td>
 							<select name="customer">
-								<option value="">거래처를 입력해주세요.</option>
-								<option value="">새로운 거래처 입력</option>
 							    <c:forEach var="release" items="${releaseProduct_data}">
 							    	<option value="${release.getCustomer()}">${release.getCustomer()}</option>
 							    </c:forEach>
 							</select>
-							<input type="text" name="customer" placeholder="직접입력"/>
 					    </td>
 					</tr>
 					<tr>

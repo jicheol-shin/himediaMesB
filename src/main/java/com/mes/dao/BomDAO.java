@@ -47,7 +47,7 @@ public class BomDAO {
 
 		int startRow = (page-1) * limit;   
 
-		System.out.println("productCd = " + productCd);
+		System.out.println("BomDAO = productCd: " + productCd);
 			
 		try {
 				pstmt = conn.prepareStatement(sql);

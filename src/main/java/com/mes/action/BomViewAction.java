@@ -1,6 +1,7 @@
 package com.mes.action;
 
 import java.io.PrintWriter;
+import java.text.Format;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -47,6 +48,17 @@ public class BomViewAction implements Action{
 			int listCount = bomViewService.getListCount();
 			
 			bomList = bomViewService.getBomList(page, limit, productCd);
+			
+			// 총페이지수
+			int totalPage = (int)((double)listCount / limit + 0.95);
+			// 현재페이지의 시작페이지수(1, 11, 21 ...)
+			int startPage = (((int)((double)page / 10 + 0.9))-1) * 10 +1;
+			// 현재페이지에 보여줄 마지막페이지수
+			int endPage = startPage + 10 -1;
+			if(endPage > totalPage) endPage = totalPage;
+			
+			System.out.println("BomViewAction = startPage: " + startPage + "/ endPage: " + endPage + "/totalPage: " + totalPage);
+			System.out.println("BomViewAction = productCd: " + productCd);
 			
 			Pager pageInfo = new Pager(page,listCount,10,10);
 			

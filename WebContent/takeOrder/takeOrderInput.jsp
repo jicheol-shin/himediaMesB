@@ -124,13 +124,11 @@
 					    <td>수주코드</td>
 					    <td>
 							<select name="ordCd">
-								<option value="">목록에 없는 값을 입력해주세요.</option>
-								<option value="">값입력</option>
 							    <c:forEach var="takeOrder" items="${takeOrder_data}">
 							    	<option value="${takeOrder.getOrdCd()}" disabled="disabled">${takeOrder.getOrdCd()}</option>
 							    </c:forEach>
 							</select>
-							<input type="text" name="ordCd" placeholder="직접입력"/>
+							<input type="text" name="ordCd" placeholder="목록에 없는 값을 입력해주세요."/>
 					    </td>
 					</tr>
 					<tr>
