@@ -83,7 +83,7 @@ public class ItemStockDAO {
 		ItemStockOutOrder itemStockOutOrder= null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from production where process='작업지시서' "; 
+		String sql = "select * from production where process='작업지시' "; 
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
