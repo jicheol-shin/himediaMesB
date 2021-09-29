@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="com.mes.vo.Member"%>
-<%@page import="com.mes.service.ProductionService" %>
 <%@page import="com.mes.vo.Production" %>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.mes.dao.ProductionDAO"%>
