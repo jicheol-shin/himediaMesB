@@ -38,7 +38,7 @@ public class OrderStatementInputAction implements Action{
 			OrderStatementInputService orderStatementInputService = new OrderStatementInputService();
 			orderStatementInputService.registOrderStatement(ordCd);
 			forward.setRedirect(true);
-			forward.setPath("/purchase/buyTakeOrder.jsp");
+			forward.setPath("buyTakeOrder.do");
 		}
 		return forward;
 	}

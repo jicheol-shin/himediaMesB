@@ -10,13 +10,13 @@ import com.mes.vo.OrderStatement;
 
 public class OrderStatementInputService {
 	
-	public ArrayList<OrderStatement> getOrderStatementList(String ordCd) {
+	public ArrayList<OrderStatement> getOrderStatementList() {
 		
 		ArrayList<OrderStatement> orderStatementList = null;
 		Connection conn = getConnection();
 		PurchaseDAO purchaseDAO = PurchaseDAO.getInstance();
 		purchaseDAO.setConnection(conn);
-		orderStatementList = purchaseDAO.selectOrderStatementList(ordCd);
+		orderStatementList = purchaseDAO.selectOrderStatementList();
 		close(conn);
 
 		return orderStatementList;
