@@ -130,7 +130,7 @@
 							    	<option value="${takeOrder.getOrdCd()}" disabled="disabled">${takeOrder.getOrdCd()}</option>
 							    </c:forEach>
 							</select>
-							<input type="text" name="ordCd"/>
+							<input type="text" name="ordCd" placeholder="직접입력"/>
 					    </td>
 					</tr>
 					<tr>

@@ -125,7 +125,7 @@
 							    	<option value="${release.getReleCd()}" disabled="disabled">${release.getReleCd()}</option>
 							    </c:forEach>
 							</select>
-							<input type="text" name="releCd"/>
+							<input type="text" name="releCd" placeholder="직접입력"/>
 					    </td>
 					</tr>
 					<tr>
@@ -153,7 +153,7 @@
 							    	<option value="${release.getCustomer()}">${release.getCustomer()}</option>
 							    </c:forEach>
 							</select>
-							<input type="text" name="customer"/>
+							<input type="text" name="customer" placeholder="직접입력"/>
 					    </td>
 					</tr>
 					<tr>

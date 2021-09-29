@@ -34,16 +34,24 @@ public class BomDAO {
 	}	
 	
 	// 리스트를 불러오기
-	public ArrayList<Bom> selectBomList(){
+	public ArrayList<Bom> selectBomList(int page, int limit, String productCd){
 		
 		ArrayList<Bom> bomList = new ArrayList<Bom>();
 		Bom bom = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from bom where product_cd = ?";
+		String sql = "select * from bom";
+ 
+		if(productCd != null) sql += " where product_cd = '"+productCd +"'";       
+								sql += " limit ?," + limit;
+
+		int startRow = (page-1) * limit;   
+
+		System.out.println("productCd = " + productCd);
 			
 		try {
 				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, startRow);
 				rs = pstmt.executeQuery();
 				
 				while (rs.next()) {
