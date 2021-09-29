@@ -126,7 +126,7 @@
 	  			<td>${takeOrderList.getProcess()}</td>
 	  			<td>${takeOrderList.getOrdCnt()}</td>
 	  			<!-- <td><input type="button" class="btn btn-danger mx-auto link-hover-color" value="발주" onclick="../buyTakeOrder.do"/></td> -->
-	  			<td><a href="/orderStatementInput.do?ordCd=${takeOrderList.getOrdCd()}"><button type="button" class="btn btn-danger link-hover-color" >발주</button></a></td>
+	  			<td><a href="/orderStatementInput.do?ordCd=${takeOrderList.getOrdCd()}"><button type="button" class="btn btn-danger link-hover-color" style="font-size: 17px">발주하기</button></a></td>
 	  			<td>${takeOrderList.getRemark()}</td>
 	  		</tr>
 	  		</c:forEach>

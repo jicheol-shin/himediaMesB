@@ -28,16 +28,16 @@ public class ProductInventory {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public int getgoodCount() {
+	public int getGoodCount() {
 		return goodCount;
 	}
-	public void setgoodCount(int goodCount) {
+	public void setGoodCount(int goodCount) {
 		this.goodCount = goodCount;
 	}
-	public int getbadCount() {
+	public int getBadCount() {
 		return badCount;
 	}
-	public void setbadCount(int badCount) {
+	public void setBadCount(int badCount) {
 		this.badCount = badCount;
 	}
 	public String getStoreCd() {

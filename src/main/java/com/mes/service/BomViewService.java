@@ -10,14 +10,14 @@ import com.mes.vo.Bom;
 
 public class BomViewService {
 
-	public ArrayList<Bom> getBomList(int page, int limit){
+	public ArrayList<Bom> getBomList(int page, int limit, String productCd){
 
 		ArrayList<Bom> BomList = null;
 
 		Connection conn = getConnection();
 		BomDAO bomDAO = BomDAO.getInstance();
 		bomDAO.setConnection(conn);
-		BomList = bomDAO.selectBomList();
+		BomList = bomDAO.selectBomList(page, limit, productCd);
 		
 		close(conn);	
 		

@@ -152,9 +152,9 @@
 				<li class="page-item"><a href="itemstockInout.do?page=1" class="page-link"><i class="fas fa-fast-backward"></i></a></li>
 				<li class="page-item"><a href="itemstockInout.do?page=${page_num-10}" class="page-link"><i class="fas fa-backward"></i></a></li>
 			</c:if>
-				<c:forEach var="page_num" begin="${startPage}" end="${endPage}">
-				<li class="page-item"><a class="page-link" href="itemstockInout.do?page=${page_num}" >${page_num}</a></li>
-			</c:forEach>
+				<c:forEach var="page_num" begin="${startPage}" end="${endPage}" step="1">
+					<li class="page-item"><a class="page-link" href="itemstockInout.do?page=${page_num}" >${page_num}</a></li>
+				</c:forEach>
 			<c:if test="${endPage < totalPage}">
 				<li class="page-item"><a href="itemstockInout.do?page=${endPage+1}" class="page-link"><i class="fas fa-forward"></i></a></li>
 				<li class="page-item"><a href="itemstockInout.do?page=${totalPage}" class="page-link"><i class="fas fa-fast-forward"></i></a></li>

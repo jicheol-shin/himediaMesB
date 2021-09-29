@@ -12,13 +12,16 @@
 	BomViewService bomViewService = new BomViewService();
 	ArrayList<Bom> bomList = (ArrayList<Bom>) request.getAttribute("bomList");
 	
-	Pager pageInfo = (Pager) request.getAttribute("pageInfo");
-	int totalPage = pageInfo.getTotalPage();
-	int startPage = pageInfo.getStartPage();
-	int endPage = pageInfo.getEndPage();
-	int pageSize = 10; // 한 페이지에 출력할 갯수
+	Pager pager = (Pager) request.getAttribute("pageInfo");
+	
+	int curPage = pager.getPageNum();	
+	int totalPage = pager.getTotalPage();
+	int startPage = pager.getStartPage();
+	int endPage = pager.getEndPage();
+	
 %>
 <c:set var="bom_data" value="<%=bomList%>"/>
+<c:set var="curPage" value="<%=curPage%>"/>
 <c:set var="totalPage" value="<%=totalPage%>"/>
 <c:set var="startPage" value="<%=startPage%>"/>
 <c:set var="endPage" value="<%=endPage%>"/>
@@ -35,6 +38,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+	var foundedinputs = [];
+	$("select[name=productCd] option").each(function() {
+	  if($.inArray(this.value, foundedinputs) != -1) $(this).remove();
+	  foundedinputs.push(this.value);
+	});
+</script>
 <style type="text/css">
 
 	.logtext { font-size: 12px; width:80px;}
@@ -55,10 +65,13 @@
 		color: #001a66;
 	}
 	
-	ul {
+	#titleBox{
 		list-style-type: none;
 		font-size: 30px;
 		color: #4d2600;
+		width: 300px;
+		padding: 0;
+		margin:  0;
 	}
 	
 	tbody {
@@ -106,12 +119,36 @@
 	<br />
 	<hr>
 	<br>
-	<div class="container" align="center">
+	<div class="container" align="center" style="height: 100%">
 		<!-- 제목박스 -->
 		<div align="left">
-	    	<ul class="list-group">
+	    	<ul id="titleBox" class="list-group">
 	      		<li class ="list-group-item font-weight-bold" align="center" style="background-color: #CDE5F7;">BOM관리</li>
 	    	</ul>
+		</div>
+		<!-- Select박스 -->
+		<div align="right">
+			<form action="bomView.do" method="post">
+			<ul class="list-group list-group-flush" >
+		        <li class="list-group-item" style="font-size: 20px">
+			    <%-- <select name="productCd">
+			    	<option>제품코드선택</option>
+					<c:forEach var="bom" items="${bom_data}">
+				    	<option value="${bom.getProductCd()}">${bom.getProductCd()}</option>
+				    </c:forEach>
+			    </select> --%>
+				    <select name="productCd">
+						<option>제품코드선택</option>
+				    	<option value="PRODUCT1">PRODUCT1</option>
+				    	<option value="PRODUCT2">PRODUCT2</option>
+				    	<option value="PRODUCT3">PRODUCT3</option>
+				    	<option value="">직접입력</option>
+					</select>
+			    	<input type="text" name="productCd" placeholder="직접입력"/>
+					<input type="submit"  value="조회"/>
+		        </li>
+			</ul>
+			</form>
 		</div>
 	  	<br />
 		<!-- 내용보기 -->
@@ -144,6 +181,21 @@
 			</tbody>
 		</table>
 	</div>
+	<div class="container">
+		<ul class="pagination justify-content-center" style="font-size: 20px">
+			<c:if test="${startPage != 1}">
+				<li class="page-item"><a href="bomView.do?page=1" class="page-link"><i class="fas fa-fast-backward"></i></a></li>
+				<li class="page-item"><a href="bomView.do?page=${page_num-10}" class="page-link"><i class="fas fa-backward"></i></a></li>
+			</c:if>
+				<c:forEach var="page_num" begin="${startPage}" end="${endPage}" step="1">
+					<li class="page-item"><a class="page-link" href="bomView.do?page=${page_num}" >${page_num}</a></li>
+				</c:forEach>
+			<c:if test="${endPage < totalPage}">
+				<li class="page-item"><a href="bomView.do?page=${endPage+1}" class="page-link"><i class="fas fa-forward"></i></a></li>
+				<li class="page-item"><a href="bomView.do?page=${totalPage}" class="page-link"><i class="fas fa-fast-forward"></i></a></li>
+			</c:if>
+		</ul>
+	</div>
 	<div align="center">
 		<a href="/bomInputForm.do"><input type="button" value="BOM 입력" class="btn btn-success" style="text-align: center"></a>
 	</div>
@@ -151,21 +203,6 @@
 	<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #82C3F5;" >
 		<div align="center"></div>
 	</nav>
-</div>
-<div class="container">
-	<ul class="pagination justify-content-center">
-		<c:if test="${startPage != 1}">
-			<li class="page-item"><a href="bomView.do?page=1" class="page-link"><i class="fas fa-fast-backward"></i></a></li>
-			<li class="page-item"><a href="bomView.do?page=${startPage-10}" class="page-link"><i class="fas fa-backward"></i></a></li>
-		</c:if>
-			<c:forEach var="page_num" begin="${startPage}" end="${endPage}" step="1">
-				<li class="page-item"><a class="page-link" href="bomView.do?page=${page_num}" >${page_num}</a></li>
-			</c:forEach>
-		<c:if test="${endPage < totalPage}">
-			<li class="page-item"><a href="bomView.do?page=${endPage+1}" class="page-link"><i class="fas fa-forward"></i></a></li>
-			<li class="page-item"><a href="bomView.do?page=${totalPage}" class="page-link"><i class="fas fa-fast-forward"></i></a></li>
-		</c:if>
-	</ul>
 </div>
 </body>
 </html>

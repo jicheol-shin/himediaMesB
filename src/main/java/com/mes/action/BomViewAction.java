@@ -22,10 +22,6 @@ public class BomViewAction implements Action{
 		// TODO Auto-generated method stub
 		ActionForward forward = null;
 		
-		int page = 1;
-		int limit = 10;
-		if(req.getParameter("page") != null) page = Integer.parseInt(req.getParameter("page"));
-		
 		HttpSession session = req.getSession();
 		Member member = (Member) session.getAttribute("login_info");
 		
@@ -37,26 +33,22 @@ public class BomViewAction implements Action{
 			out.println("history.back()");
 			out.println("</script>");
 		} else {
+			
+			int page = 1;
+			int limit = 10;
+			String productCd = null;
+			if(req.getParameter("page") != null) page = Integer.parseInt(req.getParameter("page"));
+			if(req.getParameter("productCd") != null) productCd = req.getParameter("productCd");
+			
 			forward = new ActionForward();
 			ArrayList<Bom> bomList = new ArrayList<Bom>();
 			BomViewService bomViewService = new BomViewService();
+			
 			int listCount = bomViewService.getListCount();
-			bomList = bomViewService.getBomList(page, limit);
 			
-			// 총페이지수
-			int totalPage = (int)((double)listCount / limit + 0.95);
-			// 현재페이지의 시작페이지수(1, 11, 21...)
-			int stratPage = (((int) ((double)page / 10 + 0.9))-1) * 10 + 1;
-			// 현재페이지에 보여줄 마지막페이지수
-			int endPage = stratPage + 10 - 1;
-			if(endPage > totalPage) endPage = totalPage;
+			bomList = bomViewService.getBomList(page, limit, productCd);
 			
-			System.out.println("endPage" + endPage + " / " + "totalPage"+totalPage);
-			
-			Pager pageInfo = new Pager(page, stratPage, page, endPage);
-			pageInfo.setEndPage(endPage);
-			pageInfo.setTotalPage(totalPage);
-			pageInfo.setStartPage(stratPage);
+			Pager pageInfo = new Pager(page,listCount,10,10);
 			
 			req.setAttribute("pageInfo", pageInfo);
 			
