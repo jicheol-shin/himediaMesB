@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.mes.dao.ProductionDAO;
-import com.mes.vo.Production;
 import com.mes.vo.TakeOrder;
 
 public class ProductionService {

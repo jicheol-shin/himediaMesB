@@ -9,10 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
-import com.mes.vo.Member;
 import com.mes.vo.TakeOrder;
 
 public class ProductionDAO {

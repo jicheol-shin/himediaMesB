@@ -12,7 +12,6 @@ public class Production {
 	private String process;// 프로세스
 	private String startDate; //생산시작일
 	private String endDate;   //생산완료일
-	
 	public String getWorkOrderDate() {
 		return workOrderDate;
 	}
@@ -41,7 +40,7 @@ public class Production {
 		return lineCd;
 	}
 	public void setLineCd(String lineCd) {
-		lineCd = lineCd;
+		this.lineCd = lineCd;
 	}
 	public String getInUserId() {
 		return inUserId;
@@ -71,14 +70,16 @@ public class Production {
 		return startDate;
 	}
 	public void setStartDate(String startDate) {
-		startDate = startDate;
+		this.startDate = startDate;
 	}
 	public String getEndDate() {
 		return endDate;
 	}
 	public void setEndDate(String endDate) {
-		endDate = endDate;
+		this.endDate = endDate;
 	}
+	
+	
 	
 
 	

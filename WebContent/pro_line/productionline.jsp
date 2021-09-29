@@ -121,11 +121,6 @@
 	</div>
 </div>
 <br>
-		
-		</table>
-	</div>
-</div>
-
 
 <div class="container" align=center>
 	<a href="../index.do"><input type="button" value="HOME" class="btn btn-primary" onclick="index.do"/></a>
