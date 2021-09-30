@@ -39,8 +39,9 @@
 		color: #000;
 		padding: 8px 15px 8px 15px;
 	}
-	a:link {color: #fff;}
-	a:hover{color:#ffcc00;}
+	a:nav-link {color: #fff;}
+	a:nav-link hover{color:#ffcc00;}
+	a:nav-link visited {color: #fff;}
 	
 	.p-3 {                               /* 제목 배경 */
 		background-color: #33334d;
@@ -75,7 +76,7 @@
   	    <c:otherwise>
 
 	       <li ><a href="#" class='text-white'><%=member.getUserName()%>님</a></li>  
-	       <li ><a href="logout.do" class='text-info'>로그아웃</a></li>
+	       <li ><a href="logout.do" class='text-primary'>로그아웃</a></li>
 
         </c:otherwise>
       </c:choose>	 
