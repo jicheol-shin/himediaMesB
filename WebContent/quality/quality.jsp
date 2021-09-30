@@ -96,7 +96,7 @@
 	<div class="container" align="center">
 		<div align="left">
 		 <ul class="list-group" >
-            <li class="list-group-item list-group-item-primary" align="center">생산 지시</li>
+            <li class="list-group-item list-group-item-primary" align="center">품질검사현황</li>
 		</ul>
 	  </div>
 	  <br />
