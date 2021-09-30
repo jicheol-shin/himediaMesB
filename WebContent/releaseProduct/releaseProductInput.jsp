@@ -39,45 +39,48 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <style type="text/css">
 
-	.logtext { font-size: 12px; width:80px;}
+	.logtext {                         /* 로그아웃, 관리자 글자크기 */
+		font-size: 12px; 
+		width:80px;
+		color: #fff;
+	} 
 	
-	li {
+	li {                               /* 제목 테이블 정렬 */
 		list-style-type: none;
+		display: table;
+       	margin-left: auto;
+      		margin-right: auto;
 	}
 	
-	li a {
+	li a {                             /* 메뉴 상단 관리자, 로그아웃 사이 간격 */
 		text-decoration: none;
 		display: block;
 		color: #000;
 		padding: 8px 15px 8px 15px;
 	}
-	
-	li a:hover {
-		background-color: #b3b3ff;
-		color: #001a66;
+			
+	li a:hover {                        /* 상단메뉴(드롭다운시 마우스 메뉴 이름에 올리면 보이는 색깔) */
+		background-color: #e6ffff;
+		color: #008080;
 	}
 	
-	ul {
+	ul {                                /* 테이블 제목  */
 		list-style-type: none;
-		font-size: 30px;
-		color: #4d2600;
+		font-size: 26px;
+		color: #fff;                    /* 글자색 */
+		width: 254px;
+		padding: 0;
+		display: table;
+       	margin-left: auto;
+   		margin-right: auto;
 	}
 	
-	tbody {
-		font-size: 18px
-	}
-	
-	.btn-info {
-		background-color: #0073e6;
-		color:#ffffe6;
-		width: 100px;
-	}
-	.btn-info:hover {
-		background-color: #000066;
+	tbody {                             /* 출력DB 테이블 데이터 글씨크기 */
+		font-size: 15px
 	}
 	
 	table {
-	  width: 90%;
+	  width: 80%;
 	}
 	
 </style>
@@ -88,8 +91,8 @@
 	<!-- 로그인바 -->
 	<div class="bs-component">
 	<br />
-	<nav class="navbar navbar-expand-md font-weight-bold" style="background-color: #82C3F5;">
-		<a href="/index.do" class="navbar-brand">HIMIDIA MES</a>
+	<nav class="navbar navbar-expand-md font-weight-bold" style="background-color: #008080;">
+		<a href="/index.do" class="navbar-brand" style="color: #fff">HIMIDIA MES</a>
 		<%@ include file="../main/menu.jsp"%>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 			<span class="navbar-toggler-icon"></span>
@@ -102,8 +105,8 @@
 					</a>
 				</c:when>
 				<c:otherwise>
-					<li ><a href="#" class="font-weight-bold text-dark logtext"><%=member.getUserName()%>님</a></li>  
-	       			<li ><a href="../logout.do" class="font-weight-bold text-dark logtext">로그아웃</a></li>
+					<li ><a href="#" class="font-weight-bold logtext"><%=member.getUserName()%>님</a></li>  
+	       			<li ><a href="../logout.do" class="font-weight-bold logtext">로그아웃</a></li>
 				</c:otherwise>
 			</c:choose>
 		</div>
@@ -112,13 +115,11 @@
 	<div class="row">
 		<br />
 		<div class="col-md-12">
-		<br>
 		<hr>
-		<br>
 		<!-- 제목박스 -->
 		<div align="left">
 		  <ul class="list-group">
-		    <li class ="list-group-item font-weight-bold" align="center" style="background-color: #CDE5F7;">출하입력</li>
+		    <li class ="list-group-item font-weight-bold" style="background-color: #33334d;">출하입력</li>
 		  </ul>
 		</div>
 		<br />
@@ -213,7 +214,7 @@
 			</div>
 		</form>   
 		<hr>
-		<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #82C3F5;" >
+		<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #008080;" >
 			<div align="center"></div>
 		</nav>
 		</div>
