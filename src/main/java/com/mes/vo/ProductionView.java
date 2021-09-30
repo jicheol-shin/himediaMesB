@@ -4,14 +4,15 @@ public class ProductionView {
 	private String workOrderDate;  // 수주일자
 	private String workOrderNo;   // 작업지시번호
 	private String productCd;   // 제품코드
-	private String orderCd;    // 수주코드
 	private String lineCd;   // 라인코드
 	private String inUserId;  // 작업자
-	private int workQty; // 생산수량
-	private int orderCnt;  // 수주수량
-	private String process;// 프로세스
-	private String startDate; //생산시작일
+	private int workQty; 
+	private int productionQty; 
+	private Double progress;
 	private String endDate;   //생산완료일
+	
+	
+	
 	public String getWorkOrderDate() {
 		return workOrderDate;
 	}
@@ -29,12 +30,6 @@ public class ProductionView {
 	}
 	public void setProductCd(String productCd) {
 		this.productCd = productCd;
-	}
-	public String getOrderCd() {
-		return orderCd;
-	}
-	public void setOrderCd(String orderCd) {
-		this.orderCd = orderCd;
 	}
 	public String getLineCd() {
 		return lineCd;
@@ -54,23 +49,17 @@ public class ProductionView {
 	public void setWorkQty(int workQty) {
 		this.workQty = workQty;
 	}
-	public int getOrderCnt() {
-		return orderCnt;
+	public int getProductionQty() {
+		return productionQty;
 	}
-	public void setOrderCnt(int orderCnt) {
-		this.orderCnt = orderCnt;
+	public void setProductionQty(int productionQty) {
+		this.productionQty = productionQty;
 	}
-	public String getProcess() {
-		return process;
+	public Double getProgress() {
+		return progress;
 	}
-	public void setProcess(String process) {
-		this.process = process;
-	}
-	public String getStartDate() {
-		return startDate;
-	}
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
+	public void setProgress(Double progress) {
+		this.progress = progress;
 	}
 	public String getEndDate() {
 		return endDate;
@@ -78,7 +67,6 @@ public class ProductionView {
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
-	
 
 	
 	

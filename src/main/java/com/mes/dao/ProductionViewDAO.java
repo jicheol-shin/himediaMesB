@@ -30,9 +30,9 @@ public class ProductionViewDAO {
 		ProductionView productionView = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from production";		
-	
-
+		String sql = "select a.*, b.production_qty, b.end_date from production as a";
+		       sql += " inner join  pro_line as b";
+		       sql += " where a.work_order_no = b.work_order_no";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -42,18 +42,15 @@ public class ProductionViewDAO {
 				productionView.setWorkOrderDate(rs.getString("work_order_date"));
 				productionView.setWorkOrderNo(rs.getString("work_order_no"));
 				productionView.setProductCd(rs.getString("product_cd"));
-				productionView.setOrderCd(rs.getString("order_Cd"));
 				productionView.setLineCd(rs.getString("line_cd"));
 				productionView.setInUserId(rs.getString("in_usr_id"));
 				productionView.setWorkQty(rs.getInt("work_qty"));
-				productionView.setOrderCnt(rs.getInt("ord_cnt"));
-				productionView.setProcess(rs.getString("process"));
-				productionView.setStartDate(rs.getString("start_date"));
+				productionView.setProductionQty(rs.getInt("production_qty"));
+				productionView.setProgress(rs.getDouble("production_qty")/rs.getInt("work_qty"));
 				productionView.setEndDate(rs.getString("end_date"));
 				productionViewList.add(productionView);
-			
 			}
-	}catch (Exception e) {
+	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		System.out.println("Production 리스트 조회 실패!!" + e.getMessage());
 	}
