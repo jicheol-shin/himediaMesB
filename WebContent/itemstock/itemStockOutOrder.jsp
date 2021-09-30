@@ -105,6 +105,7 @@
 		</table>
 	</div>	
 	<br /><br />
+	<hr />
     <nav class="navbar navbar-expand-md bg-secondary navbar-dark  text-light">
     </nav>  
 </div>
