@@ -69,7 +69,7 @@
 		.btn-danger {                       /* 발주하기 버튼 */
 			background-color: #ff4d4d;      /* 버튼배경 */
 			color:#fff;                     /* 글씨색 */
-			width: 100px;                   /* 버튼크기 */
+			width: 90px;                   /* 버튼크기 */
 		}
 		.btn-danger:hover {                 /* 버튼 마우스 토글시 보이는 색 */
 			background-color: #ff9999;
@@ -138,7 +138,7 @@
 	  			<td>${takeOrderList.getProcess()}</td>
 	  			<td>${takeOrderList.getOrdCnt()}</td>
 	  			<!-- <td><input type="button" class="btn btn-danger mx-auto link-hover-color" value="발주" onclick="../buyTakeOrder.do"/></td> -->
-	  			<td><a href="/orderStatementInput.do?ordCd=${takeOrderList.getOrdCd()}"><button type="button" class="btn btn-danger link-hover-color" style="font-size: 15px">발주하기</button></a></td>
+	  			<td><a href="/orderStatementInput.do?ordCd=${takeOrderList.getOrdCd()}"><button type="button" class="btn btn-danger btn-sm link-hover-color" style="font-size: 15px">발주하기</button></a></td>
 	  			<td>${takeOrderList.getRemark()}</td>
 	  		</tr>
 	  		</c:forEach>

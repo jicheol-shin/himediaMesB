@@ -67,12 +67,12 @@
 		}
 		
 		.btn-primary {                       /* 발주하기 버튼 */
-			background-color: #ff4d4d;      /* 버튼배경 */
+			background-color: #0080ff;      /* 버튼배경 */
 			color:#fff;                     /* 글씨색 */
-			width: 100px;                   /* 버튼크기 */
+			width: 90px;                   /* 버튼크기 */
 		}
 		.btn-primary:hover {                 /* 버튼 마우스 토글시 보이는 색 */
-			background-color: #ff9999;
+			background-color: #b3d9ff;
 		}
 		
 	</style>
@@ -141,7 +141,7 @@
 	  			<td>${releaseOrderList.getReqCnt()}</td>
 	  			<td>
 	  			  <a href="/releaseOrderInput.do?releCd=${releaseOrderList.getReleCd()}">
-	  			   <button type="button" class="btn btn-primary link-hover-color-success" style="font-size: 15px">출고하기</button>
+	  			   <button type="button" class="btn btn-primary btn-sm link-hover-color" style="font-size: 15px">출고하기</button>
 	  			  </a>
 	  			</td>
 	  			<td>${releaseOrderList.getRemark()}</td>
