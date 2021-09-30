@@ -23,7 +23,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <style type="text/css">
-    .logtext { font-size: 10px; width:70px;}
+    .logtext {                         
+			font-size: 12px; 
+			width:80px;
+			color: #fff;
+		} 
 	ul {
 		list-style-type: none;
 		background-color: #ccc;
@@ -54,8 +58,8 @@
 <div class="container">
    <div class="bs-component">
    <br />
-   <nav class="navbar navbar-expand-md bg-secondary navbar-dark text-light">
-	 <a class="navbar-brand" href="/index.do">Himedia MES</a>
+    <nav class="navbar navbar-expand-md font-weight-bold" style="background-color: #008080;">
+	 <a class="navbar-brand" href="/index.do" style="color: #fff">Himedia MES</a>
       <%@ include file="../main/menu.jsp"%>
      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     	 <span class="navbar-toggler-icon"></span>
@@ -69,7 +73,7 @@
           </c:when>  
   	    <c:otherwise>
 	       <li ><a href="#" class='text-white logtext'><%=member.getUserName()%>님</a></li>  
-	       <li ><a href="/logout.do" class='text-info logtext'>로그아웃</a></li>
+	       <li ><a href="../logout.do" class="font-weight-bold logtext">로그아웃</a></li>
         </c:otherwise>
       </c:choose>	 
      </div>  
@@ -91,7 +95,7 @@
 				<th>제품코드</th>
 				<th>LILE NO</th>
 				<th>생산수량</th>				
-				<th>불출지시</th>	
+				<th>자재불출</th>	
 			</tr>
 			</thead>
 
@@ -102,14 +106,14 @@
 				<td>${itemStockOutOrder.getProductCd()}</td>
 				<td>${itemStockOutOrder.getLineNo()}</td>
 				<td align="center"><fmt:formatNumber value="${itemStockOutOrder.getWorkQty()}" pattern="#,###"/>
-				<td><a href="itemstockOut.do?workOrderNo=${itemStockOutOrder.getWorkOrderNo()}"> <button type="button" class="btn btn-primary link-hover-color" >자재불출</button></a></td>
+				<td><a href="itemstockOut.do?workOrderNo=${itemStockOutOrder.getWorkOrderNo()}"> <button type="button" class="btn btn-primary link-hover-color" >자재불출하기</button></a></td>
 			</tr>
 			</c:forEach>
 		</table>
 	</div>	
 	<br /><br />
 	<hr />
-    <nav class="navbar navbar-expand-md bg-secondary navbar-dark  text-light">
+  	<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #008080;" >
     </nav>  
 </div>
 </body>

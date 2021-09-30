@@ -23,7 +23,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <style type="text/css">
-    .logtext { font-size: 10px; width:70px;}
+    .logtext {                         
+			font-size: 12px; 
+			width:80px;
+			color: #fff;
+		} 
 	ul {
 		list-style-type: none;
 		background-color: #ccc;
@@ -57,8 +61,8 @@
 <div class="container">
    <div class="bs-component">
    <br />
-   <nav class="navbar navbar-expand-md bg-secondary navbar-dark text-light">
-	 <a class="navbar-brand" href="/index.do">Himedia MES</a>
+   <nav class="navbar navbar-expand-md font-weight-bold" style="background-color: #008080;">
+	 <a class="navbar-brand" href="/index.do" style="color: #fff">Himedia MES</a>
      <%@ include file="../main/menu.jsp"%>
      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     	 <span class="navbar-toggler-icon"></span>
@@ -73,7 +77,7 @@
   	    <c:otherwise>
 
 	       <li ><a href="#" class='text-white logtext'><%=member.getUserName()%>님</a></li>  
-	       <li ><a href="/logout.do" class='text-info logtext'>로그아웃</a></li>
+	       <li ><a href="../logout.do" class="font-weight-bold logtext">로그아웃</a></li>
 
         </c:otherwise>
       </c:choose>	 
@@ -120,7 +124,7 @@
 	</div>	
 	<br /><br />
 	<hr />
-    <nav class="navbar navbar-expand-md bg-secondary navbar-dark  text-light">
+   	<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #008080;" >
     </nav>  
 </div>
 </body>
