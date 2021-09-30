@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <style>
-.btn{font-size: 14px;}
+.btn{font-size: 14px; color: #fff;}
 .dropdown-menu{width:20px; font-size:13px}
 </style>
 <div class="container" >
