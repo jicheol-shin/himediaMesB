@@ -92,6 +92,20 @@ public class QualityDAO {
 				}
 		      }
 			
+			
+			// 완제품 재고에 수량 추가 
+			String sql_update = "update product_inventory  set good_count = good_count + ?  where product_cd = ?";
+			try {
+				PreparedStatement pstmt2 = conn.prepareStatement(sql_update);
+				pstmt2.setInt(1, rs.getInt("production_qty"));
+				pstmt2.setInt(2, rs.getInt("product_cd"));
+				pstmt2.executeUpdate();
+			} catch (SQLException e) {
+				System.out.println("품질검사완료 UPDATE 실패 !!" + e.getMessage());
+			} finally {
+				close(pstmt);
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -100,9 +114,9 @@ public class QualityDAO {
 		
 		
 		// pro_line 테이블에  생산완료를  품질검사완료로 변경 
-		String sql_update = "update pro_line set process ='품질검사완료' where work_order_no='" + workOrderNo + "'";
+		String sql_update1 = "update pro_line set process ='품질검사완료' where work_order_no='" + workOrderNo + "'";
 		try {
-			pstmt = conn.prepareStatement(sql_update);
+			pstmt = conn.prepareStatement(sql_update1);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("품질검사완료 UPDATE 실패 !!" + e.getMessage());
