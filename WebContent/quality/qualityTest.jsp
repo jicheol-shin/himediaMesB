@@ -114,10 +114,10 @@
 			<tbody>
 				 <c:forEach var="qualityTest" items="${qualityTest_data}">
 			<tr>
-				<td>${qualityTest.getWorkOrderNo()}</td>
-				<td>${qualityTest.getProductCd()}</td>
-				<td>${qualityTest.getProductionQty()}</td>
-				<td>${qualityTest.getEndDate()}</td>
+				<td align="center">${qualityTest.getWorkOrderNo()}</td>
+				<td align="center">${qualityTest.getProductCd()}</td>
+				<td align="center">${qualityTest.getProductionQty()}</td>
+				<td align="center">${qualityTest.getEndDate()}</td>
 				<td align="center"><a href="/qualityTestInput.do?workOrderNo=${qualityTest.getWorkOrderNo()}"><button type="button" class="btn btn-danger link-hover-color" >제품검사하기</button></a></td>	
 			</tr>
 		</c:forEach>
