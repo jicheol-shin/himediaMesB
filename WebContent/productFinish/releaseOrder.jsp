@@ -141,6 +141,7 @@
 	</div>
 	<br />
 	<br />
+	<hr>
 	<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #e3f2fd;" >
 	  <div align="center">
 	    <a href="../index.do">

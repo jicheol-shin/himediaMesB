@@ -134,6 +134,7 @@
 	</div>
 	<br />
 	<br />
+	<hr>
 	<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #e3f2fd;" >
 	  <div align="center">
 	    <!-- <a href="../index.do"><button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='index.do';" style="font-size: 20px;">HOME</button></a> -->
