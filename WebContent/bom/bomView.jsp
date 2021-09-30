@@ -1,3 +1,5 @@
+<%@page import="com.mes.vo.Product"%>
+<%@page import="com.mes.service.ProductService"%>
 <%@page import="com.mes.utility.Pager"%>
 <%@page import="com.mes.service.BomViewService"%>
 <%@page import="com.mes.vo.Bom"%>
@@ -12,6 +14,9 @@
 	BomViewService bomViewService = new BomViewService();
 	ArrayList<Bom> bomList = (ArrayList<Bom>) request.getAttribute("bomList");
 	
+	ProductService productService = new ProductService();
+	ArrayList<Product> productList = productService.getProductList();
+	
 	Pager pager = (Pager) request.getAttribute("pageInfo");
 	
 	int curPage = pager.getPageNum();	
@@ -20,6 +25,7 @@
 	int endPage = pager.getEndPage();
 %>
 <c:set var="bom_data" value="<%=bomList%>"/>
+<c:set var="product_data" value="<%=productList%>"/>
 <c:set var="curPage" value="<%=curPage%>"/>
 <c:set var="totalPage" value="<%=totalPage%>"/>
 <c:set var="startPage" value="<%=startPage%>"/>
@@ -139,21 +145,14 @@
 			<ul class="list-group list-group-flush" >
 		        <li class="list-group-item" style="font-size: 20px">
 		        <!-- c:foreach 활용 -->
- 				    <%-- <select name="productCd">
+ 				    <select name="productCd">
 				    	<option>제품코드선택</option>
-						<c:forEach var="bom" items="${bom_data}">
-					    	<option value="${bom.getProductCd()}">${bom.getProductCd()}</option>
-					    </c:forEach>
-				    </select> --%>
-		        
-		        <!-- 직접 넣기 -->
-					<select id="selbox" name="productCd">
-						<option>제품코드선택</option>
-				    	<option value="PRODUCT1">PRODUCT1</option>
-				    	<option value="PRODUCT2">PRODUCT2</option>
-				    	<option value="PRODUCT3">PRODUCT3</option>
+						<c:forEach var="product" items="${product_data}">
+					    	<option value="${product.getProductCd()}">${product.getProductCd()}</option>
 				    	<!-- 직접입력시 input값이 아닌 "직접입력"값이 들어가는 현상 오류 찾는중.. -->
 						<!-- <option value="직접입력">직접입력</option> -->
+					    </c:forEach>
+				    </select>
 					</select>
 			    	<!-- 직접입력시 input값이 아닌 "직접입력"값이 들어가는 현상 오류 찾는중.. -->
 					<!-- 상단의 select box에서 '직접입력'을 선택하면 나타날 인풋박스 -->

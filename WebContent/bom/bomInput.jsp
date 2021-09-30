@@ -1,3 +1,5 @@
+<%@page import="com.mes.vo.Vendor"%>
+<%@page import="com.mes.service.VendorService"%>
 <%@page import="com.mes.service.ProductService"%>
 <%@page import="com.mes.service.ItemService"%>
 <%@page import="com.mes.vo.Member"%>
@@ -15,9 +17,13 @@
 	
 	ItemService itemService = new ItemService();
 	ArrayList<Item> itemList = itemService.getItemList();
+	
+	VendorService vendorService = new VendorService();
+	ArrayList<Vendor> vendorList = vendorService.getVendorList();
 %>
 <c:set var="product_data" value="<%=productList%>"/>
 <c:set var="item_data" value="<%=itemList%>"/>
+<c:set var="vendor_data" value="<%=vendorList%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -170,8 +176,8 @@
 					    <td>
 						    <select name="vendorCd">
 						    	<option value="">거래처코드를 선택해주세요.</option>
-							    <c:forEach var="item" items="${item_data}">
-							    	<option value="${item.getVendorCd()}">${item.getVendorCd()}</option>
+							    <c:forEach var="vendor" items="${vendor_data}">
+							    	<option value="${vendor.getVendorCd()}">${vendor.getVendorCd()}</option>
 							    </c:forEach>
 						    </select>
 					    </td>

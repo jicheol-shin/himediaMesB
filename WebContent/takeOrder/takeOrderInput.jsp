@@ -1,3 +1,7 @@
+<%@page import="com.mes.vo.Product"%>
+<%@page import="com.mes.service.ProductService"%>
+<%@page import="com.mes.vo.Vendor"%>
+<%@page import="com.mes.service.VendorService"%>
 <%@page import="com.mes.vo.TakeOrder"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.mes.service.TakeOrderViewService"%>
@@ -13,11 +17,19 @@
 	TakeOrderViewService takeOrderViewService = new TakeOrderViewService();
 	ArrayList<TakeOrder> takeOrderList = takeOrderViewService.getTakeOrderList();
 	
+	VendorService vendorService = new VendorService();
+	ArrayList<Vendor> vendorList = vendorService.getVendorList();
+	
 	ItemService itemService = new ItemService();
 	ArrayList<Item> itemList = itemService.getItemList();
+	
+	ProductService productService = new ProductService();
+	ArrayList<Product> productList = productService.getProductList();
 %>
 <c:set var="takeOrder_data" value="<%=takeOrderList%>"/>
+<c:set var="vendor_data" value="<%=vendorList%>"/>
 <c:set var="item_data" value="<%=itemList%>"/>
+<c:set var="product_data" value="<%=productList%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -128,7 +140,7 @@
 							    	<option value="${takeOrder.getOrdCd()}" disabled="disabled">${takeOrder.getOrdCd()}</option>
 							    </c:forEach>
 							</select>
-							<input type="text" name="ordCd" placeholder="목록에 없는 값을 입력해주세요."/>
+							<input type="text" name="ordCd" class="form-control" placeholder="목록에 없는 값을 입력해주세요."/>
 					    </td>
 					</tr>
 					<tr>
@@ -136,8 +148,8 @@
 					    <td>
 						    <select name="vendorCd">
 						    	<option value="">거래처코드를 선택해주세요.</option>
-							    <c:forEach var="item" items="${item_data}">
-							    	<option value="${item.getVendorCd()}">${item.getVendorCd()}</option>
+							    <c:forEach var="vendor" items="${vendor_data}">
+							    	<option value="${vendor.getVendorCd()}">${vendor.getVendorCd()}</option>
 							    </c:forEach>
 						    </select>
 					    </td>
@@ -147,8 +159,8 @@
 					    <td>
 						    <select name="productCd">
 						    	<option value="">제품코드를 선택해주세요.</option>
-							    <c:forEach var="takeOrder" items="${takeOrder_data}">
-							    	<option value="${takeOrder.getProductCd()}">${takeOrder.getProductCd()}</option>
+							    <c:forEach var="product" items="${product_data}">
+							    	<option value="${product.getProductCd()}">${product.getProductCd()}</option>
 							    </c:forEach>
 						    </select>
 					    </td>

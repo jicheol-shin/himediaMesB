@@ -1,3 +1,5 @@
+<%@page import="com.mes.vo.Product"%>
+<%@page import="com.mes.service.ProductService"%>
 <%@page import="com.mes.vo.TakeOrder"%>
 <%@page import="com.mes.service.TakeOrderViewService"%>
 <%@page import="com.mes.vo.ReleaseProduct"%>
@@ -12,8 +14,16 @@
 
 	ReleaseProductViewService releaseProductViewService = new ReleaseProductViewService();
 	ArrayList<ReleaseProduct> releaseProductList = releaseProductViewService.getReleaseProductList();
+	
+	TakeOrderViewService takeOrderViewService = new TakeOrderViewService();
+	ArrayList<TakeOrder> takeOrderList = takeOrderViewService.getTakeOrderList();
+	
+	ProductService productService = new ProductService();
+	ArrayList<Product> productList = productService.getProductList();
 %>
 <c:set var="releaseProduct_data" value="<%=releaseProductList%>"/>
+<c:set var="takeOrder_data" value="<%=takeOrderList%>"/>
+<c:set var="product_data" value="<%=productList%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,7 +134,7 @@
 							    	<option value="${release.getReleCd()}" disabled="disabled">${release.getReleCd()}</option>
 							    </c:forEach>
 							</select>
-							<input type="text" name="releCd" placeholder="목록에 없는 값을 입력해주세요."/>
+							<input type="text" name="releCd" class="form-control" placeholder="목록에 없는 값을 입력해주세요."/>
 					    </td>
 					</tr>
 					<tr>
@@ -135,9 +145,9 @@
 					    <td>수주코드</td>
 					    <td>
 							<select name="ordCd">
-								<option value="">수주코드를 입력해주세요.</option>
-							    <c:forEach var="release" items="${releaseProduct_data}">
-							    	<option value="${release.getOrdCd()}">${release.getOrdCd()}</option>
+								<option value="">수주코드를 선택해주세요.</option>
+							    <c:forEach var="takeOrder" items="${takeOrder_data}">
+							    	<option value="${takeOrder.getOrdCd()}">${takeOrder.getOrdCd()}</option>
 							    </c:forEach>
 							</select>
 					    </td>
@@ -146,6 +156,7 @@
 					    <td>거래처</td>
 					    <td>
 							<select name="customer">
+								<option value="">거래처를 선택해주세요.</option>
 							    <c:forEach var="release" items="${releaseProduct_data}">
 							    	<option value="${release.getCustomer()}">${release.getCustomer()}</option>
 							    </c:forEach>
@@ -156,9 +167,9 @@
 					    <td>제품코드</td>
 					    <td>
 							<select name="productCd">
-								<option value="">제품코드를 입력해주세요.</option>
-							    <c:forEach var="release" items="${releaseProduct_data}">
-							    	<option value="${release.getProductCd()}">${release.getProductCd()}</option>
+								<option value="">제품코드를 선택해주세요.</option>
+							    <c:forEach var="product" items="${product_data}">
+							    	<option value="${product.getProductCd()}">${product.getProductCd()}</option>
 							    </c:forEach>
 							</select>
 					    </td>
