@@ -19,28 +19,37 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <style type="text/css">
-    .btn{font-size: 10px;}
-	ul {
+    .btn{font-size: 12px;}               /* 로그인창 - 로그인버튼 글자크기 */
+    
+	ul { 							     /* 메뉴 백그라운드 설정 */
 		list-style-type: none;
-		background-color: #ccc;
+		background-color: #d1d1e0;
 		width: 254px;
 		padding: 0;
 		margin:  0;
 	}
-	li {
+	
+	li {                                 /* 제목테이블 */
 		list-style-type: none;
 	}
 
-	li a {
+	li a {                               /* 메뉴 상단  */
 		text-decoration: none;
 		display: block;
 		color: #000;
 		padding: 8px 15px 8px 15px;
 	}
-
-	li a:hover {
-		background-color: tomato;
+	a:link {color: #fff;}
+	a:hover{color:#ffcc00;}
+	
+	.p-3 {                               /* 제목 배경 */
+		background-color: #33334d;
 		color: #fff;
+	}
+
+	li a:hover {                         /* 메뉴 토글시 보이는 색 설정 */
+			background-color: #ffffcc;
+			color: #008080;
 	}
 
 </style>
@@ -51,15 +60,15 @@
 <div class="container">
    <div class="bs-component">
    <br />
-   <nav class="navbar navbar-expand-md bg-secondary navbar-dark  text-light">
-	 <a class="navbar-brand font-weight-bold" href="index.do">Himedia MES</a>
+   <nav class="navbar navbar-expand-md font-weight-bold" style="background-color: #008080;">
+	 <a class="navbar-brand font-weight-bold" href="index.do" style="color: #fff">Himedia MES</a>
 	 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     	 <span class="navbar-toggler-icon"></span>
  	 </button>
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
     	<c:choose>
           <c:when test="<%=member == null %>" > 
-    	    <a class="nav-link text-white" href="#" data-toggle="modal" data-target="#login">
+    	    <a class="nav-link link-hover-color" href="#" data-toggle="modal" data-target="#login">
         	  로그인
             </a>
           </c:when>  
@@ -70,7 +79,8 @@
 
         </c:otherwise>
       </c:choose>	 
-     </div>  
+     </div>
+     
 		<div class="modal" id="login">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
@@ -87,21 +97,21 @@
 						<label for="userPw">비밀번호 </label>
 						<input type="password" class="form-control" id="password" placeholder="Enter Password" name="password" required>
 					</div>
-					<button type="submit" class="btn btn-primary" style="margin-left:50%;">로그인</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button> 
+					<button type="submit" class="btn btn-primary btn-lg" style="margin-left:36%;">로그인</button>
+					<button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">취소</button> 
 				</form>
 		      </div>
-		
 		    </div>
 		  </div>
 		</div>
+		
 	</nav>
 	</div>
 	<br />
 	<div class="main">
 	  <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-4">
 	    <div class="col">
-	      <div class="p-3 border bg-info font-weight-bold" align="center">기본정보관리</div>
+	      <div class="p-3 border font-weight-bold" align="center">기본정보관리</div>
 	      <div> 
 		      <ul>
 				   <li><a href="item.do" >부품관리</a></li>
@@ -115,7 +125,7 @@
 		   </div>   
 	   	 </div>
 	    <div class="col">
-	      <div class="p-3 border bg-info font-weight-bold" align="center">영업관리</div>
+	      <div class="p-3 border font-weight-bold" align="center">영업관리</div>
 	      <div> 
 		      <ul>
 				   <li><a href="takeOrderView.do" >수주관리</a></li>
@@ -124,7 +134,7 @@
 		   </div>   
 	   	 </div>
 	    <div class="col">
-	      <div class="p-3 border bg-info font-weight-bold"  align="center">구매관리</div>
+	      <div class="p-3 border font-weight-bold"  align="center">구매관리</div>
 	      <div> 
 		      <ul>
 				   <li><a href="takeOrderPurchase.do" >구매 발주 관리</a></li>
@@ -133,7 +143,7 @@
 		   </div>   
 	   	 </div>
 	    <div class="col">
-	      <div class="p-3 border bg-info font-weight-bold" align="center">생산관리</div>
+	      <div class="p-3 border font-weight-bold" align="center">생산관리</div>
 	      <div> 
 		      <ul>
 				   <li><a href="production.do" >생산지시</a></li>
@@ -147,7 +157,7 @@
 	   <br />
 	  <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-4">
 	      <div class="col">
-		      <div class="p-3 border bg-info font-weight-bold" align="center">품질관리</div>
+		      <div class="p-3 border font-weight-bold" align="center">품질관리</div>
 		      	<div> 
 			      <ul>
 					    <li><a href="quality.do" >품질관리</a></li>
@@ -156,7 +166,7 @@
 			  </div>   
 		  </div>
 	      <div class="col">
-		      <div class="p-3 border bg-info font-weight-bold" align="center">자재/창고관리</div>
+		      <div class="p-3 border font-weight-bold" align="center">자재/창고관리</div>
 		      	<div> 
 			      <ul>
 					   <li><a href="itemstockInout.do" >자재 입출고현황</a></li>
@@ -166,7 +176,7 @@
 			  </div>   
 		  </div>
 	      <div class="col">
-		      <div class="p-3 border bg-info font-weight-bold" align="center">물류관리</div>
+		      <div class="p-3 border font-weight-bold" align="center">물류관리</div>
 		      	<div> 
 			      <ul>
 					   <li><a href="productInventory.do" >제품 재고 관리</a></li>
@@ -178,7 +188,7 @@
 	   </div>
 	</div>
 	<br /><br />
-   <nav class="navbar navbar-expand-md bg-secondary navbar-dark  text-light">
+   <nav class="navbar navbar-expand-md" style="background-color: #008080;" ">
     </nav>  
 </div>
 </body>
