@@ -51,7 +51,7 @@
 		}
 		
 		tbody {
-			font-size: 18px
+			font-size: 15px
 		}
 		
 		.btn-info {
@@ -104,8 +104,8 @@
 	    </ul>
 	  </div>
 	  <br />
-	  <table class="table table-striped table-condensed" style="font-size: 12px">
-	  	<thead class="thead-dark lead" align="center" >
+	  <table class="table table-striped table-condensed" style="font-size: 15px">
+	  	<thead class="thead-dark" align="center" >
 	  		<tr>
 	  			<th>출고요청일자</th>
 	  			<th>출고요청코드</th>
@@ -129,7 +129,7 @@
 	  			<td>${releaseOrderList.getReqCnt()}</td>
 	  			<td>
 	  			  <a href="/releaseOrderInput.do?releCd=${releaseOrderList.getReleCd()}">
-	  			   <button type="button" class="btn btn-primary link-hover-color-success" style="font-size: 17px">출고하기</button>
+	  			   <button type="button" class="btn btn-primary link-hover-color-success" style="font-size: 15px">출고하기</button>
 	  			  </a>
 	  			</td>
 	  			<td>${releaseOrderList.getRemark()}</td>
@@ -144,7 +144,7 @@
 	<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #e3f2fd;" >
 	  <div align="center">
 	    <a href="../index.do">
-	      <button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='index.do';" style="font-size: 20px;">HOME</button>
+	     <!--  <button type="button" class="btn btn-info btn-lg btn-block" onclick="location.href='index.do';" style="font-size: 20px;">HOME</button> -->
 	    </a>
 	  </div>
     </nav> 

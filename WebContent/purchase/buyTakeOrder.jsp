@@ -161,7 +161,7 @@
 		}
 		
 		tbody {
-			font-size: 18px
+			font-size: 15px
 		}
 		
 		.btn-info {
@@ -329,8 +329,8 @@
   </table>
  </form>
   <br />
-	  <table class="table table-striped table-condensed" style="font-size: 12px">
-	  	<thead class="thead-dark" align="center" style="font-size: 19px">
+	  <table class="table table-striped table-condensed" style="font-size: 15px">
+	  	<thead class="thead-dark" align="center" style="font-size: 15px">
 	  		<tr>
 			  <th>순번</th>
 			  <th>수주코드</th>
@@ -367,7 +367,7 @@
 	<br />
 	<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #e3f2fd;" >
 	  <div align="center">
-	    <a href="../index.do"><button type="button" class="btn btn-info btn-lg btn-block" style="font-size: 20px;">HOME</button></a>
+	    <!-- <a href="../index.do"><button type="button" class="btn btn-info btn-lg btn-block" style="font-size: 20px;">HOME</button></a> -->
 	  </div>
     </nav> 
 </div>
