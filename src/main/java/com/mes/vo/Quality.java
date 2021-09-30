@@ -1,5 +1,7 @@
 package com.mes.vo;
 
+import java.sql.Date;
+
 public class Quality {
 	
 	private String workOrderNo;// 작업지시번호
@@ -7,7 +9,8 @@ public class Quality {
 	private String inUserId;// 검수자
 	private int goodCnt;
 	private int badCnt;
-	private String TestDate;// 검사일
+	private Date TestDate;// 검사일
+	
 	public String getWorkOrderNo() {
 		return workOrderNo;
 	}
@@ -38,14 +41,12 @@ public class Quality {
 	public void setBadCnt(int badCnt) {
 		this.badCnt = badCnt;
 	}
-	public String getTestDate() {
+	public Date getTestDate() {
 		return TestDate;
 	}
-	public void setTestDate(String testDate) {
+	public void setTestDate(Date testDate) {
 		TestDate = testDate;
 	}
-	
-	
-	
+
 	
 }

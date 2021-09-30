@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.sql.DataSource;
 
 import com.mes.vo.ProductionLine;
+import com.mes.vo.Quality;
 
 public class QualityDAO {
 	
@@ -62,28 +63,25 @@ public class QualityDAO {
 		
 	}
 
-	public void insertQualityTestInput(String workOrderNo) {
+	public void insertQualityTestInput(String workOrderNo, String userId) {
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String productCd = null;
-		int ordCnt = 0;
 		
 		String sql = "select * from pro_line where work_order_no='" + workOrderNo + "'";
-
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				String sql1 = "insert into quality(work_order_no,product_cd,in_user_id, good_cnt, test_date) " +
-						" values(?, ?, ?, ?, ?, now())";
+						" values(?, ?, ?, ?, now())";
 				
 				PreparedStatement pstmt1 = conn.prepareStatement(sql1);
 				try {
 					pstmt1.setString(1, rs.getString("work_order_no"));
 					pstmt1.setString(2, rs.getString("product_cd"));
-					pstmt1.setString(3, rs.getString("item_name"));
+					pstmt1.setString(3, userId);
 					pstmt1.setInt(4, rs.getInt("production_qty"));
 					pstmt1.executeUpdate();
 					
@@ -112,18 +110,36 @@ public class QualityDAO {
 			close(pstmt);
 		}
    }
+
+	public ArrayList<Quality> selectQualityList() {
+		ArrayList<Quality> qualityList = new ArrayList<Quality>();
+		Quality quality = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from quality";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				quality = new Quality();
+				quality.setWorkOrderNo(rs.getString("work_order_no")); 
+				quality.setProductCd(rs.getString("product_cd"));
+				quality.setInUserId(rs.getString("in_user_id")); 
+				quality.setGoodCnt(rs.getInt("good_cnt")); 
+				quality.setBadCnt(rs.getInt("bad_cnt")); 
+				quality.setTestDate(rs.getDate("test_date")); 
+				qualityList.add(quality);
+			}
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Quality 조회 실패!!" + e.getMessage());
+		}
+		
+		return qualityList;
+		
+	}
 		
 		
 }
-
-
-
-
-
-
-
-
-
-
-
-

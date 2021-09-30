@@ -13,6 +13,7 @@ import com.mes.vo.Member;
 
 public class QualityTestInputAction implements Action{
 
+	@SuppressWarnings("unused")
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		
@@ -20,6 +21,8 @@ public class QualityTestInputAction implements Action{
 		
 		HttpSession session = req.getSession();
 		Member member = (Member) session.getAttribute("login_info");
+		
+		String userId = member.getUserId();
 		
 		if(member== null) {
 			res.setContentType("text/html; charset=utf-8");
@@ -35,9 +38,9 @@ public class QualityTestInputAction implements Action{
 			
 			forward= new ActionForward();
 			QualityTestService qualityService = new QualityTestService();
-			qualityService.registrQualityTest(workOrderNo);
+			qualityService.registrQualityTest(workOrderNo,userId);
 			forward.setRedirect(true);
-			forward.setPath("qualty.do");
+			forward.setPath("/quality.do");
 			
 		}	
 			
