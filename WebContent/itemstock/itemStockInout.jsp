@@ -111,7 +111,7 @@
 		</ul>
 		</form>
 	  </div>
-      <table class="table table-striped table-condensed" style="font-size: 14px">
+      <table class="table table-striped table-condensed" style="font-size: 12px">
 		 <thead class="thead-dark">
 			<tr>
 				<th>순번</th>
