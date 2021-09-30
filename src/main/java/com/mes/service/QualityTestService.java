@@ -8,24 +8,38 @@ import java.util.ArrayList;
 
 import com.mes.dao.QualityDAO;
 import com.mes.vo.ProductionLine;
-import com.mes.vo.Quality;
 
 public class QualityTestService {
 	
-	public ArrayList<ProductionLine> getQualityList() {
+	public ArrayList<ProductionLine> getQualityTestList() {
 		
-		ArrayList<ProductionLine> QualityList = null;
+		ArrayList<ProductionLine> qualityTestList = null;
 		
 		Connection conn = getConnection();
 		QualityDAO qualityDAO = QualityDAO.getInstance();
 		qualityDAO.setConnection(conn);
-		QualityList = qualityDAO.selectQualityList();
+		qualityTestList = qualityDAO.selectQualityTestList();
 		
 		close(conn);
-		
-				
-		
-		return QualityList;
+		return qualityTestList;
 
 	}
+
+	public void registrQualityTest(String workOrderNo) {
+		Connection conn = getConnection();
+		QualityDAO qualityDAO = QualityDAO.getInstance();
+		qualityDAO.setConnection(conn);
+		qualityDAO.insertQualityTestInput(workOrderNo);
+		close(conn);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

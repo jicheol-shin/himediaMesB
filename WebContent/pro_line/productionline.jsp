@@ -108,9 +108,9 @@
 					<tr>
 						<td><%= productionLineList.get(i).getWorkOrderNo() %></td>
 						<td><%= productionLineList.get(i).getLineCd() %></td>
-						<td><%= productionLineList.get(i).getWorkQty() %></td>
+						<td><%= productionLineList.get(i)%></td>
 						<td><%= productionLineList.get(i).getInUserId() %></td>
-						<td><%= productionLineList.get(i).getStarDate() %></td>
+						<td><%= productionLineList.get(i) %></td>
 						<td><%= productionLineList.get(i).getEndDate() %></td>
 					</tr>
 					<%

@@ -160,8 +160,8 @@
 		      <div class="p-3 border font-weight-bold" align="center">품질관리</div>
 		      	<div> 
 			      <ul>
-					    <li><a href="quality.do" >품질관리</a></li>
-
+					    <li><a href="qualityTest.do" >제품품질검사</a></li>
+					    <li><a href="Quality.do" >품질검사현황</a></li>
 			      </ul>
 			  </div>   
 		  </div>
