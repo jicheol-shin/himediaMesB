@@ -57,6 +57,9 @@
    <nav class="navbar navbar-expand-md bg-secondary navbar-dark text-light">
 	 <a class="navbar-brand" href="/index.do">Himedia MES</a>
       <%@ include file="../main/menu.jsp"%>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    	 <span class="navbar-toggler-icon"></span>
+ 	 </button>
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
     	<c:choose>
           <c:when test="<%=member == null %>" > 
