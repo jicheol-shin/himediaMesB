@@ -67,16 +67,21 @@ public class PurchaseDAO {
 	
 	// Order Statement 불러오기(buyTakeOrder.jsp)
 	
-	public ArrayList<OrderStatement> selectOrderStatementList() {
+	public ArrayList<OrderStatement> selectOrderStatementList(int page, int limit, String ordCd) {
 		
 		ArrayList<OrderStatement> orderStatementList = new ArrayList<OrderStatement> ();
 		OrderStatement orderStatement = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "select * from order_statement";
-		System.out.println(sql);
+			   sql += " limit ?," + limit;
+		// System.out.println(sql);
+			   
+		int startRow = (page-1) * limit;
+			   
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, startRow);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -222,6 +227,27 @@ public class PurchaseDAO {
 			close(pstmt);
 		}
    }
+
+	public int selectListCount(String ordCd) {
+		
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select count(*) from order_statement";
+		if(ordCd != null) sql += " where ord_cd = '" + ordCd + "'";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) listCount = rs.getInt(1);
+		} catch (SQLException e) {
+			System.out.println("갯수 가져오기 실패!! " + e.getMessage());
+		} finally {
+			close(pstmt, rs);
+		}
+		return listCount;
+	}
 	
 	
 	

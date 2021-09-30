@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import com.mes.service.OrderStatementService;
 import com.mes.utility.Action;
 import com.mes.utility.ActionForward;
+import com.mes.utility.Pager;
 import com.mes.vo.Member;
 import com.mes.vo.OrderStatement;
 
@@ -33,11 +34,23 @@ public class BuyTakeOrderAction implements Action{
 			
 		} else {
 			
+			int page = 1;
+			int limit = 10;
+			String ordCd = null;
+			if(req.getParameter("page") != null) page = Integer.parseInt(req.getParameter("page"));
+			if(req.getParameter("ordCd") != null) ordCd = req.getParameter("ordCd");
+			
 			forward = new ActionForward();
 			ArrayList<OrderStatement> orderStatementList = new ArrayList<OrderStatement>();
 			OrderStatementService orderStatementService = new OrderStatementService();
-			orderStatementList = orderStatementService.getOrderStatementList();
 			
+			int listCount = orderStatementService.getListCount(ordCd);
+			
+			orderStatementList = orderStatementService.getOrderStatementList(page, limit, ordCd);
+			
+			Pager pageInfo = new Pager(page, listCount, 10, 10);
+			
+			req.setAttribute("pageInfo", pageInfo);
 			req.setAttribute("orderStatementList", orderStatementList);
 			forward.setRedirect(true);
 			forward.setPath("/purchase/buyTakeOrder.jsp");
