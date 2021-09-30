@@ -46,9 +46,9 @@ public class ProductionLineDAO {
 				productionLine = new ProductionLine();
 				productionLine.setWorkOrderNo(rs.getString("work_order_no")); //작업지시번호
 				productionLine.setLineCd(rs.getString("line_cd")); //공정라인
-				productionLine.setWorkQty(rs.getInt("work_qty")); //생산수량
+//				productionLine.setWorkQty(rs.getInt("work_qty")); //생산수량
 				productionLine.setInUserId(rs.getString("in_user_id")); // 작업자
-				productionLine.setStarDate(rs.getString("start_date")); // 시작시간
+//				productionLine.setStarDate(rs.getString("start_date")); // 시작시간
 				productionLine.setEndDate(rs.getString("end_date"));  // 완료
 				productionLineList.add(productionLine);
 			}

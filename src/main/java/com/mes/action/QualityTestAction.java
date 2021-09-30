@@ -5,22 +5,21 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mes.service.QualityService;
+import com.mes.service.QualityTestService;
 import com.mes.utility.Action;
 import com.mes.utility.ActionForward;
-import com.mes.vo.Quality;
+import com.mes.vo.ProductionLine;
 
-public class QualityAction implements Action{
+public class QualityTestAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		// TODO Auto-generated method stub
-		ArrayList<Quality> qualityList = new ArrayList<Quality>();
-		QualityService qualityService = new QualityService();
+		ArrayList<ProductionLine> qualityTestList = new ArrayList<ProductionLine>();
+		QualityTestService qualityService = new QualityTestService();
 		
-		qualityList = qualityService.getQualityList();
+		qualityTestList = qualityService.getQualityList();
 		
-		req.setAttribute("qualityList", qualityList);
+		req.setAttribute("qualityTestList", qualityTestList);
 		ActionForward forward = new ActionForward();
 		forward.setPath("/quality/qulity.jsp");
 		

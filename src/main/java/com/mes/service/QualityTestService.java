@@ -7,13 +7,14 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.mes.dao.QualityDAO;
+import com.mes.vo.ProductionLine;
 import com.mes.vo.Quality;
 
-public class QualityService {
+public class QualityTestService {
 	
-	public ArrayList<Quality> getQualityList() {
+	public ArrayList<ProductionLine> getQualityList() {
 		
-		ArrayList<Quality> QualityList = null;
+		ArrayList<ProductionLine> QualityList = null;
 		
 		Connection conn = getConnection();
 		QualityDAO qualityDAO = QualityDAO.getInstance();

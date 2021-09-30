@@ -46,7 +46,8 @@
     <button class="btn btn-default dropdown-toggle" type="button" id="menu5" data-toggle="dropdown">품질관리
     <span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu" aria-labelledby="menu5">
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">품질관리</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="qualityTest.do">제품품질검사</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="QualityInspectionStatu.do">제품품질현현황</a></li>
     </ul>
   </div>
   <div class="dropdown">
