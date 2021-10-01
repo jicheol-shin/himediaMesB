@@ -41,7 +41,8 @@ public class ItemStockDAO {
 		ResultSet rs = null;
 		String sql = "select a.*, b.vendor_name from itemstock_inout as a" ;	
 		       sql += " left join vendor as b  on a.vendor_cd = b.vendor_cd";     
-		       if(stockInout != null) sql += " where inout_type = '"+stockInout +"'";       
+		       if(stockInout != null) sql += " where inout_type = '"+stockInout +"'"; 
+		       sql += " order by num desc";
 		       sql += " limit ?," + limit;
 		
 		int startRow = (page-1) * limit;       
