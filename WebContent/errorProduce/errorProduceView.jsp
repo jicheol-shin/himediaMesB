@@ -1,17 +1,14 @@
-<%@page import="com.mes.service.ErrorProduceService"%>
 <%@page import="com.mes.vo.ErrorProduce"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.mes.vo.Member"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	Member member = (Member) session.getAttribute("login_info");
-
-	ErrorProduceService errorProduceService = new ErrorProduceService();
 	ArrayList<ErrorProduce> errorproduceList = (ArrayList<ErrorProduce>) request.getAttribute("errorproduceList");
 %>
-<c:set var="errorProduce_data" value="<%=errorproduceList%>"/>
+<c:set var="errorproduce_data" value="<%=errorproduceList%>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,7 +117,7 @@
 				</tr>
 			</thead>
 			<tbody align="center">
-				<c:forEach var="error" items="${errorProduce_data}">
+				<c:forEach var="error" items="${errorproduce_data}">
 		          	<tr>
 						<td>${error.getErrorCd()}</td>
 						<td>${error.getErrorName()}</td>

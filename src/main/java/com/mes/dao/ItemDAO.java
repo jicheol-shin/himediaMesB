@@ -52,7 +52,7 @@ public class ItemDAO {
 				item.setItemType(rs.getString("item_type"));// 구분
 				item.setVendorCd(rs.getString("vendor_cd"));// 거래처코드
 				item.setUnitPrice(rs.getInt("unit_price"));// 표준단가
-				item.setLeadTime(rs.getInt("lead_time"));// 유통기한
+				item.setLeadTime(rs.getInt("lead_time"));// 소요기간
 				item.setRemark(rs.getString("remark"));// 비고
 				itemList.add(item);
 			}

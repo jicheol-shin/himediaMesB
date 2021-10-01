@@ -7,7 +7,7 @@ public class Item {
 	private String itemType;// 구분
 	private String vendorCd;// 거래처코드
 	private double unitPrice;// 표준단가
-	private int leadTime;// 유통기한
+	private int leadTime;// 소요기간
 	private String remark;// 비고
 	
 	public String getItemCd() {

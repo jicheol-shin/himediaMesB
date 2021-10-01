@@ -9,11 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.mes.service.BomViewService;
+import com.mes.service.ItemStockInoutService;
+import com.mes.service.ProductService;
 import com.mes.utility.Action;
 import com.mes.utility.ActionForward;
 import com.mes.utility.Pager;
 import com.mes.vo.Bom;
+import com.mes.vo.ItemStockInout;
 import com.mes.vo.Member;
+import com.mes.vo.Product;
 
 public class BomViewAction implements Action{
 
@@ -45,31 +49,27 @@ public class BomViewAction implements Action{
 			ArrayList<Bom> bomList = new ArrayList<Bom>();
 			BomViewService bomViewService = new BomViewService();
 			
-			int listCount = bomViewService.getListCount();
+			int listCount = bomViewService.getListCount(productCd);
 			
 			bomList = bomViewService.getBomList(page, limit, productCd);
 			
-			// 총페이지수
-			int totalPage = (int)((double)listCount / limit + 0.95);
-			// 현재페이지의 시작페이지수(1, 11, 21 ...)
-			int startPage = (((int)((double)page / 10 + 0.9))-1) * 10 +1;
-			// 현재페이지에 보여줄 마지막페이지수
-			int endPage = startPage + 10 -1;
-			if(endPage > totalPage) endPage = totalPage;
-			
-			System.out.println("BomViewAction = startPage: " + startPage + "/ endPage: " + endPage + "/totalPage: " + totalPage);
 			System.out.println("BomViewAction = productCd: " + productCd);
+			
+			// Product 불러오기
+			ArrayList<Product> productList = new ArrayList<Product>();
+			ProductService productService = new ProductService();
+			productList = productService.getProductList();
 			
 			Pager pageInfo = new Pager(page,listCount,10,10);
 			
+			req.setAttribute("productList", productList);
 			req.setAttribute("pageInfo", pageInfo);
-			
 			req.setAttribute("bomList", bomList);
 			forward.setRedirect(true);
 			forward.setPath("/bom/bomView.jsp");
 			
 		}
-		
+
 		return forward;
 	}
 

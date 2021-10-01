@@ -1,24 +1,16 @@
 <%@page import="com.mes.vo.Product"%>
-<%@page import="com.mes.service.ProductService"%>
 <%@page import="com.mes.utility.Pager"%>
-<%@page import="com.mes.service.BomViewService"%>
 <%@page import="com.mes.vo.Bom"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.mes.vo.Member"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	Member member = (Member) session.getAttribute("login_info");
-
-	BomViewService bomViewService = new BomViewService();
-	ArrayList<Bom> bomList = (ArrayList<Bom>) request.getAttribute("bomList");
-	
-	ProductService productService = new ProductService();
-	ArrayList<Product> productList = productService.getProductList();
-	
 	Pager pager = (Pager) request.getAttribute("pageInfo");
-	
+	ArrayList<Bom> bomList = (ArrayList<Bom>) request.getAttribute("bomList");
+	ArrayList<Product> productList = (ArrayList<Product>) request.getAttribute("productList");
 	int curPage = pager.getPageNum();	
 	int totalPage = pager.getTotalPage();
 	int startPage = pager.getStartPage();
@@ -66,11 +58,32 @@
 		color: #fff;
 	} 
 	
+	ul {                                /* 테이블 제목  */
+		list-style-type: none;
+		color: #fff;                    /* 글자색 */
+		width: 254px;
+		padding: 0;
+   		margin: 0;
+/* 		font-size: 26px; */
+/* 		display: table;
+       	margin-left: auto;
+   		margin-right: auto; */
+	}
+	
+	/* 제목박스 */
+	.titleBox{
+ 		font-size: 26px;
+ 		display: table;
+       	margin-left: auto;
+   		margin-right: auto;
+	
+	}
+	
 	li {                               /* 제목 테이블 정렬 */
 		list-style-type: none;
-		display: table;
+/* 		display: table;
        	margin-left: auto;
-      		margin-right: auto;
+   		margin-right: auto; */
 	}
 	
 	li a {                             /* 메뉴 상단 관리자, 로그아웃 사이 간격 */
@@ -85,20 +98,9 @@
 		color: #008080;
 	}
 	
-	ul {                                /* 테이블 제목  */
-		list-style-type: none;
-		font-size: 26px;
-		color: #fff;                    /* 글자색 */
-		width: 254px;
-		padding: 0;
-		display: table;
-       	margin-left: auto;
-      		margin-right: auto;
-	}
-	
 	tbody {                             /* 출력DB 테이블 데이터 글씨크기 */
 		font-size: 15px
-	}
+	}    		
 	
 </style>
 <title>BOM_VIEW</title>
@@ -122,19 +124,19 @@
 					</a>
 				</c:when>
 				<c:otherwise>
-					<li ><a href="#" class="font-weight-bold logtext"><%=member.getUserName()%>님</a></li>  
-	       			<li ><a href="../logout.do" class="font-weight-bold logtext">로그아웃</a></li>
+					<li><a href="#" class="font-weight-bold logtext"><%=member.getUserName()%>님</a></li>  
+	       			<li><a href="../logout.do" class="font-weight-bold logtext">로그아웃</a></li>
 				</c:otherwise>
 			</c:choose>
 		</div>
 	</nav>
 	</div>
 	<hr>
-	<div class="container" align="center">
+	<div class="container" align="center" style="height: 100%">
 		<!-- 제목박스 -->
-		<div align="left">
+		<div class="titleBox" align="left">
 	    	<ul class="list-group">
-	      		<li class ="list-group-item font-weight-bold" style="background-color: #33334d;">BOM관리</li>
+	      		<li class ="list-group-item font-weight-bold" align="center" style="background-color: #33334d;">BOM관리</li>
 	    	</ul>
 		</div>
 		<br />
@@ -186,29 +188,30 @@
 			</thead>
 			<tbody align="center">
 				<c:forEach var="bom" items="${bom_data}">
-	     	       <tr>
-	 	              <td>${bom.getProductCd()}</td>
-	                  <td>${bom.getItemCd()}</td>
-	                  <td>${bom.getItemName()}</td>
-	                  <td>${bom.getItemCnt()}</td>
-	                  <td>${bom.getUnit()}</td>
-	                  <td>${bom.getUnitPrice()}</td>
-	                  <td>${bom.getVendorCd()}</td>
-	                  <td>${bom.getRemark()}</td>
-	               </tr>
+					<tr>
+						<td>${bom.getProductCd()}</td>
+	                    <td>${bom.getItemCd()}</td>
+	                    <td>${bom.getItemName()}</td>
+					  	<td align="center"><fmt:formatNumber value="${bom.getItemCnt()}" pattern="#,###"/>
+					  	<td>${bom.getUnit()}</td>
+					  	<td align="center"><fmt:formatNumber value="${bom.getUnitPrice()}" pattern="#,###"/>
+	                    <td>${bom.getVendorCd()}</td>
+	                    <td>${bom.getRemark()}</td>
+	                </tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
+	<br />
 	<!-- 페이지번호 -->
-	<!-- 페이지번호 버튼 안보이는 오류 찾는중... -->
+	<!-- 페이지번호 버튼 ◀ 1~10 ▶ -->
 	<div class="container" align="center">
-		<ul class="pagination justify-content-center" style="font-size: 20px">
+		<ul class="pagination justify-content-center">
 			<!-- 페이지번호버튼(앞으로) -->
-			<c:if test="${startPage != 1}">
+			<%-- <c:if test="${startPage ne 1}"> --%>
 				<li class="page-item"><a href="bomView.do?page=1" class="page-link"><i class="fas fa-fast-backward"></i></a></li>
 				<li class="page-item"><a href="bomView.do?page=${page_num-10}" class="page-link"><i class="fas fa-backward"></i></a></li>
-			</c:if>
+			<%-- </c:if> --%>
 			<!-- 페이지번호버튼(숫자) -->
 				<c:forEach var="page_num" begin="${startPage}" end="${endPage}" step="1">
 					<li class="page-item"><a class="page-link" href="bomView.do?page=${page_num}" >${page_num}</a></li>

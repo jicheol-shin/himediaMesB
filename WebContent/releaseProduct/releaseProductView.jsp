@@ -1,14 +1,13 @@
 <%@page import="com.mes.vo.ReleaseProduct"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.mes.service.ReleaseProductViewService"%>
 <%@page import="com.mes.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	Member member = (Member) session.getAttribute("login_info");
 
-	ReleaseProductViewService releaseProductViewService = new ReleaseProductViewService();
 	ArrayList<ReleaseProduct> releaseProductList = (ArrayList<ReleaseProduct>) request.getAttribute("releaseProductList");
 %>
 <c:set var="releaseProduct_data" value="<%=releaseProductList%>"/>
@@ -137,10 +136,10 @@
 						<td>${release.getCustomer()}</td>
 						<td>${release.getProductCd()}</td>
 						<td>${release.getProcess()}</td>
-						<td>${release.getReqCnt()}</td>
-						<td>${release.getReleCnt()}</td>
-						<td>${release.getGoodCount()}</td>
-						<td>${release.getBackCnt()}</td>
+						<td align="center"><fmt:formatNumber value="${release.getReqCnt()}" pattern="#,###"/>
+						<td align="center"><fmt:formatNumber value="${release.getReleCnt()}" pattern="#,###"/>
+						<td align="center"><fmt:formatNumber value="${release.getGoodCount()}" pattern="#,###"/>
+						<td align="center"><fmt:formatNumber value="${release.getBackCnt()}" pattern="#,###"/>
 						<td>${release.getReleDelDate()}</td>
 						<td>${release.getRemark()}</td>
 					</tr>

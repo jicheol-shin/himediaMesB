@@ -8,8 +8,7 @@
 <%
 	Member member = (Member) session.getAttribute("login_info");
 
-	VendorService vendorService = new VendorService();
-	ArrayList<Vendor> vendorList = vendorService.getVendorList();
+	ArrayList<Vendor> vendorList = (ArrayList<Vendor>) request.getAttribute("vendorList");
 %>
 <c:set var="vendor_data" value="<%=vendorList%>"/>
 <!DOCTYPE html>
@@ -140,9 +139,7 @@
 		             </c:forEach>
 					</tbody>
 			</table>
-		</div>
 	</div>
-	<br>
 	<hr>
 	<nav class="justify-content-center navbar navbar-expand-md" style="background-color: #008080;" >
 		<div align="center"></div>

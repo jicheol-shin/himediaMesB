@@ -1,15 +1,12 @@
-<%@page import="com.mes.service.ProductService"%>
 <%@page import="com.mes.vo.Member"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.mes.vo.Product"%>
-<%@page import="com.mes.dao.ProductDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Member member = (Member) session.getAttribute("login_info");
-	
-	ProductService productService = new ProductService();
-	ArrayList<Product> productList = productService.getProductList();
+
+	ArrayList<Product> productList = (ArrayList<Product>) request.getAttribute("productList");
 %>
 <c:set var="product_data" value="<%=productList%>"/>
 <!DOCTYPE html>

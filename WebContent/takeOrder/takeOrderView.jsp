@@ -1,15 +1,14 @@
 <%@page import="com.mes.vo.TakeOrder"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.mes.service.TakeOrderViewService"%>
 <%@page import="com.mes.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	Member member = (Member) session.getAttribute("login_info");
 
-	TakeOrderViewService takeOrderViewService = new TakeOrderViewService();
-	ArrayList<TakeOrder> takeOrderList = takeOrderViewService.getTakeOrderList();
+	ArrayList<TakeOrder> takeOrderList = (ArrayList<TakeOrder>) request.getAttribute("takeOrderList");
 %>
 <c:set var="takeOrder_data" value="<%=takeOrderList%>"/>
 <!DOCTYPE html>
@@ -133,7 +132,7 @@
 						<td>${takeOrder.getProductCd()}</td>
 						<td>${takeOrder.getProcess()}</td>
 						<td>${takeOrder.getOrdDelDate()}</td>
-						<td>${takeOrder.getOrdCnt()}</td>
+						<td align="center"><fmt:formatNumber value="${takeOrder.getOrdCnt()}" pattern="#,###"/>
 						<td>${takeOrder.getRemark()}</td>
 					</tr>
 				</c:forEach>

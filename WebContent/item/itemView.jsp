@@ -1,15 +1,13 @@
 <%@page import="com.mes.vo.Member"%>
-<%@page import="com.mes.service.ItemService"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.mes.vo.Item"%>
-<%@page import="com.mes.dao.ItemDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	Member member = (Member) session.getAttribute("login_info");
 
-	ItemService itemService = new ItemService();
-	ArrayList<Item> itemList = itemService.getItemList();
+	ArrayList<Item> itemList = (ArrayList<Item>) request.getAttribute("itemList");
 %>
 <c:set var="item_data" value="<%=itemList%>"/>
 <!DOCTYPE html>
@@ -33,11 +31,32 @@
 		color: #fff;
 	} 
 	
+	ul {                                /* 테이블 제목  */
+		list-style-type: none;
+		color: #fff;                    /* 글자색 */
+		width: 254px;
+		padding: 0;
+   		margin: 0;
+/* 		font-size: 26px; */
+/* 		display: table;
+       	margin-left: auto;
+   		margin-right: auto; */
+	}
+	
+	/* 제목박스 */	
+	.titleBox{
+ 		font-size: 26px;
+ 		display: table;
+       	margin-left: auto;
+   		margin-right: auto;
+	
+	}
+	
 	li {                               /* 제목 테이블 정렬 */
 		list-style-type: none;
-		display: table;
+/* 		display: table;
        	margin-left: auto;
-      		margin-right: auto;
+   		margin-right: auto; */
 	}
 	
 	li a {                             /* 메뉴 상단 관리자, 로그아웃 사이 간격 */
@@ -52,20 +71,9 @@
 		color: #008080;
 	}
 	
-	ul {                                /* 테이블 제목  */
-		list-style-type: none;
-		font-size: 26px;
-		color: #fff;                    /* 글자색 */
-		width: 254px;
-		padding: 0;
-		display: table;
-       	margin-left: auto;
-      		margin-right: auto;
-	}
-	
 	tbody {                             /* 출력DB 테이블 데이터 글씨크기 */
 		font-size: 15px
-	}
+	}    		
 	
 </style>
 <title>ITEM_VIEW</title>
@@ -99,9 +107,9 @@
 	<hr>
 	<div class="container" align="center">
 		<!-- 제목박스 -->
-		<div align="left">
+		<div class="titleBox" align="left">
 	    	<ul class="list-group">
-	      		<li class ="list-group-item font-weight-bold" style="background-color: #33334d;">부품관리</li>
+	      		<li class ="list-group-item font-weight-bold" align="center" style="background-color: #33334d;">부품관리</li>
 	   		</ul>
 	  	</div>
 	  	<br />
@@ -119,21 +127,21 @@
 					<th>구분</th>
 					<th>거래처코드</th>
 					<th>표준단가</th>
-					<th>유통기한(발주->납품)</th>
+					<th>소요기간</th>
 					<th>비고</th>
 				</tr>
 			</thead>
 			<tbody align="center">
 				<c:forEach var="item" items="${item_data}">
-	     	       <tr>
-	 	              <td>${item.getItemCd()}</td>
-	 	              <td>${item.getItemName()}</td>
-	 	              <td>${item.getItemType()}</td>
-	 	              <td>${item.getVendorCd()}</td>
-	 	              <td>${item.getUnitPrice()}</td>
-	 	              <td>${item.getLeadTime()}</td>
-	 	              <td>${item.getRemark()}</td>
-	               </tr>
+					<tr>
+	 	                <td>${item.getItemCd()}</td>
+	 	                <td>${item.getItemName()}</td>
+	 	                <td>${item.getItemType()}</td>
+	 	                <td>${item.getVendorCd()}</td>
+				    	<td align="center"><fmt:formatNumber value="${item.getUnitPrice()}" pattern="#,###"/>
+	 	                <td>${item.getLeadTime()}</td>
+	 	                <td>${item.getRemark()}</td>
+	                </tr>
 				</c:forEach>
 			</tbody>
 		</table>

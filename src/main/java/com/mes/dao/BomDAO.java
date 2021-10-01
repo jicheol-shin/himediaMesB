@@ -115,13 +115,14 @@ public class BomDAO {
 	}
 	
 	// Bom 글 갯수 구하기
-	public int selectListCount() {
+	public int selectListCount(String productCd) {
 		
 		int listCount = 0;
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "select count(*) from bom";
+		if(productCd != null) sql += " where inout_type = '"+productCd +"'";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);

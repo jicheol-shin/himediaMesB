@@ -25,13 +25,13 @@ public class BomViewService {
 		
 	}
 	
-	public int getListCount() {
+	public int getListCount(String productCd) {
 		
 		int listCount = 0;
 		Connection conn = getConnection();
 		BomDAO bomDAO = BomDAO.getInstance();
 		bomDAO.setConnection(conn);
-		listCount = bomDAO.selectListCount();
+		listCount = bomDAO.selectListCount(productCd);
 		close(conn);
 		return listCount;
 		

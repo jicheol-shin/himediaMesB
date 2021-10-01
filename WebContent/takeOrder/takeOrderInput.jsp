@@ -1,12 +1,8 @@
 <%@page import="com.mes.vo.Product"%>
-<%@page import="com.mes.service.ProductService"%>
 <%@page import="com.mes.vo.Vendor"%>
-<%@page import="com.mes.service.VendorService"%>
 <%@page import="com.mes.vo.TakeOrder"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.mes.service.TakeOrderViewService"%>
 <%@page import="com.mes.vo.Member"%>
-<%@page import="com.mes.service.ItemService"%>
 <%@page import="com.mes.vo.Item"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -14,17 +10,13 @@
 <%
 	Member member = (Member) session.getAttribute("login_info");
 
-	TakeOrderViewService takeOrderViewService = new TakeOrderViewService();
-	ArrayList<TakeOrder> takeOrderList = takeOrderViewService.getTakeOrderList();
+	ArrayList<TakeOrder> takeOrderList = (ArrayList<TakeOrder>) request.getAttribute("takeOrderList");
 	
-	VendorService vendorService = new VendorService();
-	ArrayList<Vendor> vendorList = vendorService.getVendorList();
+	ArrayList<Vendor> vendorList = (ArrayList<Vendor>) request.getAttribute("vendorList");
 	
-	ItemService itemService = new ItemService();
-	ArrayList<Item> itemList = itemService.getItemList();
+	ArrayList<Item> itemList = (ArrayList<Item>) request.getAttribute("itemList");
 	
-	ProductService productService = new ProductService();
-	ArrayList<Product> productList = productService.getProductList();
+	ArrayList<Product> productList = (ArrayList<Product>) request.getAttribute("productList");
 %>
 <c:set var="takeOrder_data" value="<%=takeOrderList%>"/>
 <c:set var="vendor_data" value="<%=vendorList%>"/>
@@ -150,7 +142,9 @@
 						    <select name="vendorCd">
 						    	<option value="">거래처코드를 선택해주세요.</option>
 							    <c:forEach var="vendor" items="${vendor_data}">
-							    	<option value="${vendor.getVendorCd()}">${vendor.getVendorCd()}</option>
+							    	<c:if test="${ vendor.getVendorType() eq '제품거래처' }">
+								    	<option value="${vendor.getVendorCd()}">${vendor.getVendorCd()}</option>
+							    	</c:if>
 							    </c:forEach>
 						    </select>
 					    </td>

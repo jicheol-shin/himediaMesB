@@ -12,10 +12,6 @@ public class ReleaseProductInputFormAction implements Action{
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		
-		
-		
-		
-		
 		ActionForward actionForward = new ActionForward();
 		actionForward.setRedirect(true);
 		actionForward.setPath("/releaseProduct/releaseProductInput.jsp");

@@ -1,3 +1,5 @@
+<%@page import="com.mes.vo.Vendor"%>
+<%@page import="com.mes.service.VendorService"%>
 <%@page import="com.mes.vo.Product"%>
 <%@page import="com.mes.service.ProductService"%>
 <%@page import="com.mes.vo.TakeOrder"%>
@@ -18,11 +20,15 @@
 	TakeOrderViewService takeOrderViewService = new TakeOrderViewService();
 	ArrayList<TakeOrder> takeOrderList = takeOrderViewService.getTakeOrderList();
 	
+	VendorService vendorService = new VendorService();
+	ArrayList<Vendor> vendorList = vendorService.getVendorList();
+	
 	ProductService productService = new ProductService();
 	ArrayList<Product> productList = productService.getProductList();
 %>
 <c:set var="releaseProduct_data" value="<%=releaseProductList%>"/>
 <c:set var="takeOrder_data" value="<%=takeOrderList%>"/>
+<c:set var="vendor_data" value="<%=vendorList%>"/>
 <c:set var="product_data" value="<%=productList%>"/>
 <!DOCTYPE html>
 <html>
@@ -156,12 +162,14 @@
 					<tr>
 					    <td>거래처</td>
 					    <td>
-							<select name="customer">
-								<option value="">거래처를 선택해주세요.</option>
-							    <c:forEach var="release" items="${releaseProduct_data}">
-							    	<option value="${release.getCustomer()}">${release.getCustomer()}</option>
+						    <select name="customer">
+						    	<option value="">거래처를 선택해주세요.</option>
+							    <c:forEach var="vendor" items="${vendor_data}">
+							    	<c:if test="${ vendor.getVendorType() eq '제품거래처' }">
+								    	<option value="${vendor.getVendorName()}">${vendor.getVendorName()}</option>
+							    	</c:if>
 							    </c:forEach>
-							</select>
+						    </select>
 					    </td>
 					</tr>
 					<tr>
