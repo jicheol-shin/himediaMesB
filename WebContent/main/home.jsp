@@ -27,6 +27,7 @@
 		width: 254px;
 		padding: 0;
 		margin:  0;
+		border-radius: 7px;
 	}
 	
 	li {                                   /* 제목테이블 */
@@ -48,6 +49,7 @@
 	.p-3 {                                 /* 제목 배경 */
 		background-color: #33334d;
 		color: #fff;
+		border-radius: 7px;
 	}
 
 	li a:hover {                           /* 메뉴 토글시 보이는 색 설정 */

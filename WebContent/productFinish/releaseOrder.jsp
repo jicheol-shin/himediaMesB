@@ -63,12 +63,13 @@
 			font-size: 15px
 		}
 		
-		.btn-primary {                       /* 발주하기 버튼 */
+		.btn-primary {                      /* 발주하기 버튼 */
 			background-color: #0080ff;      /* 버튼배경 */
 			color:#fff;                     /* 글씨색 */
-			width: 90px;                   /* 버튼크기 */
+			width: 90px;                    /* 버튼크기 */
+			border-radius: 5px;             /* 버튼 라운딩 처리 */
 		}
-		.btn-primary:hover {                 /* 버튼 마우스 토글시 보이는 색 */
+		.btn-primary:hover {                /* 버튼 마우스 토글시 보이는 색 */
 			background-color: #b3d9ff;
 		}
 		

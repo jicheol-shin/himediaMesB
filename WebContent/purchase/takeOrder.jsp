@@ -67,6 +67,7 @@
 			background-color: #ff4d4d;      /* 버튼배경 */
 			color:#fff;                     /* 글씨색 */
 			width: 90px;                    /* 버튼크기 */
+			border-radius: 5px;             /* 버튼 라운딩 처리 */
 		}
 		.btn-danger:hover {                 /* 버튼 마우스 토글시 보이는 색 */
 			background-color: #ff9999;
