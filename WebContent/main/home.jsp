@@ -19,9 +19,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <style type="text/css">
-    .btn{font-size: 12px;}               /* 로그인창 - 로그인버튼 글자크기 */
+    .btn{font-size: 12px;}                 /* 로그인창 - 로그인버튼 글자크기 */
     
-	ul { 							     /* 메뉴 백그라운드 설정 */
+	ul { 							       /* 메뉴 백그라운드 설정 */
 		list-style-type: none;
 		background-color: #d1d1e0;
 		width: 254px;
@@ -29,27 +29,29 @@
 		margin:  0;
 	}
 	
-	li {                                 /* 제목테이블 */
+	li {                                   /* 제목테이블 */
 		list-style-type: none;
 	}
 
-	li a {                               /* 메뉴 상단  */
+	li a {                                 /* 메뉴 상단  */
 		text-decoration: none;
 		display: block;
 		color: #000;
 		padding: 8px 15px 8px 15px;
 	}
-	a:nav-link {color: #fff;}
-	a:nav-link hover{color:#ffcc00;}
-	a:nav-link visited {color: #fff;}
 	
-	.p-3 {                               /* 제목 배경 */
+	.nav-link {color: #fff;}               /* 메뉴상단 로그인시 보이는 로그인 글자색 */
+	.nav-link:hover {color:#ffcc00;}       /* 메뉴상단 로그인 시 로그인 부분 마우스 토글시 변하는 글자색 */
+	li a.nav-link:hover {color : #000099;} /* 로그인 화면 후 로그아웃 부분 마우스 토글하면 보이는 글자색(관리자, 로그아웃) */
+
+	
+	.p-3 {                                 /* 제목 배경 */
 		background-color: #33334d;
 		color: #fff;
 	}
 
-	li a:hover {                         /* 메뉴 토글시 보이는 색 설정 */
-			background-color: #ffffcc;
+	li a:hover {                           /* 메뉴 토글시 보이는 색 설정 */
+			background-color: #ccffff;
 			color: #008080;
 	}
 
@@ -75,8 +77,8 @@
           </c:when>  
   	    <c:otherwise>
 
-	       <li ><a href="#" class='text-white'><%=member.getUserName()%>님</a></li>  
-	       <li ><a href="logout.do" class='text-primary'>로그아웃</a></li>
+	       <li ><a href="#" class='nav-link'><%=member.getUserName()%>님</a></li>  
+	       <li ><a href="logout.do" class='nav-link'>로그아웃</a></li>
 
         </c:otherwise>
       </c:choose>	 
