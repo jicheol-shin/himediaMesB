@@ -1,12 +1,8 @@
 <%@page import="com.mes.vo.Vendor"%>
-<%@page import="com.mes.service.VendorService"%>
 <%@page import="com.mes.vo.Product"%>
-<%@page import="com.mes.service.ProductService"%>
 <%@page import="com.mes.vo.TakeOrder"%>
-<%@page import="com.mes.service.TakeOrderViewService"%>
 <%@page import="com.mes.vo.ReleaseProduct"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.mes.service.ReleaseProductViewService"%>
 <%@page import="com.mes.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -14,17 +10,13 @@
 <%
 	Member member = (Member) session.getAttribute("login_info");
 
-	ReleaseProductViewService releaseProductViewService = new ReleaseProductViewService();
-	ArrayList<ReleaseProduct> releaseProductList = releaseProductViewService.getReleaseProductList();
+	ArrayList<ReleaseProduct> releaseProductList = (ArrayList<ReleaseProduct>) request.getAttribute("releaseProductList");
 	
-	TakeOrderViewService takeOrderViewService = new TakeOrderViewService();
-	ArrayList<TakeOrder> takeOrderList = takeOrderViewService.getTakeOrderList();
+	ArrayList<TakeOrder> takeOrderList = (ArrayList<TakeOrder>) request.getAttribute("takeOrderList");
 	
-	VendorService vendorService = new VendorService();
-	ArrayList<Vendor> vendorList = vendorService.getVendorList();
+	ArrayList<Vendor> vendorList = (ArrayList<Vendor>) request.getAttribute("vendorList");
 	
-	ProductService productService = new ProductService();
-	ArrayList<Product> productList = productService.getProductList();
+	ArrayList<Product> productList = (ArrayList<Product>) request.getAttribute("productList");
 %>
 <c:set var="releaseProduct_data" value="<%=releaseProductList%>"/>
 <c:set var="takeOrder_data" value="<%=takeOrderList%>"/>
