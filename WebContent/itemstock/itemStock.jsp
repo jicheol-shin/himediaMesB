@@ -23,36 +23,46 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <style type="text/css">
-    .logtext {                         
+    .logtext {                         /* 로그아웃, 관리자 글자크기 */
 			font-size: 12px; 
 			width:80px;
 			color: #fff;
 		} 
-	ul {
-		list-style-type: none;
-		background-color: #ccc;
-		width: 254px;
-		padding: 0;
-		margin:  0;
-	}
-	li {
-		list-style-type: none;
-	}
-
-	li a {
-		text-decoration: none;
-		display: block;
-		color: #000;
-		padding: 8px 15px 8px 15px;
-	}
-
-	li a:hover {
-		background-color: tomato;
-		color: #fff;
-	}
-	tr :hover {
+		
+	li {                               /* 제목 테이블 정렬 */
+			list-style-type: none;
+		}
+		
+	li a {                             /* 메뉴 상단 관리자, 로그아웃 사이 간격 */
+			text-decoration: none;
+			display: block;
+			color: #000;
+			padding: 8px 15px 8px 15px;
+		}
+		
+	li a:hover {                        /* 상단메뉴(드롭다운시 마우스 메뉴 이름에 올리면 보이는 색깔) */
+			background-color: #e6ffff;
+			color: #008080;
+		}
+	
+	/* tr :hover {
 		background-color: skyblue;
+	} */
+
+	ul.class-box {
+		list-style-type: none;
+			font-size: 26px;
+			color: #fff;                    /* 글자색 */
+			width: 254px;
+			padding: 0;
+			display: table;
+        	margin-left: auto;
+       		margin-right: auto;
 	}
+	
+	tbody {                             /* 출력DB 테이블 데이터 글씨크기 */
+			font-size: 15px
+		}
 
 </style>
 <title>Himedia MES_B</title>
@@ -86,9 +96,9 @@
 	</div>
 	<br />
 	<div class="container" align="center" style="height: 500px">
-	   <div align="left">
-		 <ul class="list-group" >
-            <li class="list-group-item list-group-item-primary" align="center">자재 재고 현황</li>
+	   <div align="center">
+		 <ul class="list-group class-box" >
+            <li class="list-group-item font-weight-bold" style="background-color: #33334d;">자재 재고 현황</li>
 		</ul>
 		</div>
 		<br />

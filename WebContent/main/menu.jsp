@@ -1,7 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <style>
-.btn{font-size: 14px; color: #fff;}
-.dropdown-menu{width:20px; font-size:13px}
+.btn {                                 /* 버튼 크기 */
+ 	font-size: 14px; 
+ 	color: #fff;
+ 	}
+ 	
+.dropdown-menu {                       /* 드롭다운 메뉴 글씨크기 */
+	width:20px; 
+	font-size:13px;
+	}
+.dropdown-menu > li > a {              /* 드롭다운 메뉴 텍스트 가운데 정렬 */
+             text-align:center;
+   }
 </style>
 <div class="container" >
   <div class="dropdown">

@@ -34,9 +34,6 @@
 		
 		li {                               /* 제목 테이블 정렬 */
 			list-style-type: none;
-			display: table;
-        	margin-left: auto;
-       		margin-right: auto;
 		}
 		
 		li a {                             /* 메뉴 상단 관리자, 로그아웃 사이 간격 */
@@ -51,7 +48,7 @@
 			color: #008080;
 		}
 		
-		ul {                                /* 테이블 제목  */
+		ul.class-box {                      /* 테이블 제목  */
 			list-style-type: none;
 			font-size: 26px;
 			color: #fff;                    /* 글자색 */
@@ -69,7 +66,7 @@
 		.btn-danger {                       /* 발주하기 버튼 */
 			background-color: #ff4d4d;      /* 버튼배경 */
 			color:#fff;                     /* 글씨색 */
-			width: 90px;                   /* 버튼크기 */
+			width: 90px;                    /* 버튼크기 */
 		}
 		.btn-danger:hover {                 /* 버튼 마우스 토글시 보이는 색 */
 			background-color: #ff9999;
@@ -110,8 +107,8 @@
 	
 	<!-- 목록 보이기 -->
 	<div class="container" align="center">
-	  <div align="left">
-	    <ul class="list-group">
+	  <div align="center">
+	    <ul class="list-group class-box">
 	      <li class ="list-group-item font-weight-bold" style="background-color: #33334d;">구매 발주 관리</li>
 	    </ul>
 	  </div>

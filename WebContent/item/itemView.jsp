@@ -25,55 +25,42 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <style type="text/css">
 
-	.logtext {                         /* 로그아웃, 관리자 글자크기 */
-		font-size: 12px; 
-		width:80px;
-		color: #fff;
-	} 
-	
-	ul {                                /* 테이블 제목  */
-		list-style-type: none;
-		color: #fff;                    /* 글자색 */
-		width: 254px;
-		padding: 0;
-   		margin: 0;
-/* 		font-size: 26px; */
-/* 		display: table;
-       	margin-left: auto;
-   		margin-right: auto; */
-	}
-	
-	/* 제목박스 */	
-	.titleBox{
- 		font-size: 26px;
- 		display: table;
-       	margin-left: auto;
-   		margin-right: auto;
-	
-	}
-	
-	li {                               /* 제목 테이블 정렬 */
-		list-style-type: none;
-/* 		display: table;
-       	margin-left: auto;
-   		margin-right: auto; */
-	}
-	
-	li a {                             /* 메뉴 상단 관리자, 로그아웃 사이 간격 */
-		text-decoration: none;
-		display: block;
-		color: #000;
-		padding: 8px 15px 8px 15px;
-	}
-			
-	li a:hover {                        /* 상단메뉴(드롭다운시 마우스 메뉴 이름에 올리면 보이는 색깔) */
-		background-color: #e6ffff;
-		color: #008080;
-	}
-	
-	tbody {                             /* 출력DB 테이블 데이터 글씨크기 */
-		font-size: 15px
-	}    		
+.logtext {                         /* 로그아웃, 관리자 글자크기 */
+			font-size: 12px; 
+			width:80px;
+			color: #fff;
+		} 
+		
+		li {                               /* 제목 테이블 정렬 */
+			list-style-type: none;
+		}
+		
+		li a {                             /* 메뉴 상단 관리자, 로그아웃 사이 간격 */
+			text-decoration: none;
+			display: block;
+			color: #000;
+			padding: 8px 15px 8px 15px;
+		}
+		
+		li a:hover {                        /* 상단메뉴(드롭다운시 마우스 메뉴 이름에 올리면 보이는 색깔) */
+			background-color: #e6ffff;
+			color: #008080;
+		}
+		
+		ul.class-box {                      /* 테이블 제목  */
+			list-style-type: none;
+			font-size: 26px;
+			color: #fff;                    /* 글자색 */
+			width: 254px;
+			padding: 0;
+			display: table;
+        	margin-left: auto;
+       		margin-right: auto;
+		}
+		
+		tbody {                             /* 출력DB 테이블 데이터 글씨크기 */
+			font-size: 15px
+		}    		
 	
 </style>
 <title>ITEM_VIEW</title>
@@ -107,8 +94,8 @@
 	<hr>
 	<div class="container" align="center">
 		<!-- 제목박스 -->
-		<div class="titleBox" align="left">
-	    	<ul class="list-group">
+		<div align="center">
+	    	<ul class="list-group class-box">
 	      		<li class ="list-group-item font-weight-bold" align="center" style="background-color: #33334d;">부품관리</li>
 	   		</ul>
 	  	</div>

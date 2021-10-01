@@ -32,9 +32,6 @@
 		
 		li {                               /* 제목 테이블 정렬 */
 			list-style-type: none;
-			display: table;
-        	margin-left: auto;
-       		margin-right: auto;
 		}
 		
 		li a {                             /* 메뉴 상단 관리자, 로그아웃 사이 간격 */
@@ -49,7 +46,7 @@
 			color: #008080;
 		}
 		
-		ul {                                /* 테이블 제목  */
+		ul.class-box {                      /* 테이블 제목  */
 			list-style-type: none;
 			font-size: 26px;
 			color: #fff;                    /* 글자색 */
@@ -98,9 +95,9 @@
 	
 	<!-- 목록 보이기 -->
 	<div class="container" align="center">
-	  <div align="left">
-	    <ul class="list-group">
-	      <li class ="list-group-item font-weight-bold" align="center" style="background-color: #33334d;">출고 내역</li>
+	  <div align="center">
+	    <ul class="list-group class-box">
+	      <li class ="list-group-item font-weight-bold" style="background-color: #33334d;">출고 내역</li>
 	    </ul>
 	  </div>
 	  <br />
