@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.mes.service.ProductionLineService;
 import com.mes.utility.Action;
 import com.mes.utility.ActionForward;
+import com.mes.vo.Production;
 import com.mes.vo.ProductionLine;
 
 public class ProductionLineAction implements Action {
@@ -16,12 +17,12 @@ public class ProductionLineAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
-		ArrayList<ProductionLine> productionLineList = new ArrayList<ProductionLine>();
+		ArrayList<Production> productionList = new ArrayList<Production>();
 		ProductionLineService productionLineService  = new ProductionLineService();
 		
-		productionLineList = productionLineService.getProductionLineList();
+		productionList = productionLineService.getProductionList();
 		
-		req.setAttribute("productionLineList", productionLineList);
+		req.setAttribute("productionList", productionList);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(true);

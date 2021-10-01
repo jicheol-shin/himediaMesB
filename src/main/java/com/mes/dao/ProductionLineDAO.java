@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
+import com.mes.vo.Production;
 import com.mes.vo.ProductionLine;
 import com.mes.vo.ProductionLineInput;
 
@@ -30,12 +31,12 @@ public class ProductionLineDAO {
 		this.conn = conn;
 	}
 	
-	public ArrayList<ProductionLine> selectProductionLineList(){
-		ArrayList<ProductionLine> productionLineList = new ArrayList<ProductionLine>();
-		ProductionLine productionLine = null;
+	public ArrayList<Production> selectProductionList(){
+		ArrayList<Production> productionList = new ArrayList<Production>();
+		Production production = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from pro_line";
+		String sql = "select * from production where process ='자재불출완료'";
 		
 		
 		try {
@@ -43,24 +44,22 @@ public class ProductionLineDAO {
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
-				productionLine = new ProductionLine();
-				productionLine.setWorkOrderNo(rs.getString("work_order_no")); //작업지시번호
-				productionLine.setLineCd(rs.getString("line_cd")); //공정라인
-//				productionLine.setWorkQty(rs.getInt("work_qty")); //생산수량
-				productionLine.setInUserId(rs.getString("in_user_id")); // 작업자
-//				productionLine.setStarDate(rs.getString("start_date")); // 시작시간
-				productionLine.setEndDate(rs.getString("end_date"));  // 완료
-				productionLineList.add(productionLine);
+				production = new Production();
+				production.setWorkOrderNo(rs.getString("work_order_no")); //작업지시번호
+				production.setProductCd(rs.getString("product_cd")); 
+				production.setLineCd(rs.getString("line_cd")); //공정라인
+				production.setWorkQty(rs.getInt("work_qty")); //생산수량
+				production.setProcess(rs.getString("process")); //
+				production.setStartDate(rs.getString("start_date")); 
+				production.setEndDate(rs.getString("end_date"));  // 완료
+				productionList.add(production);
 			}
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println("Production Line리스트 조회 실패!!" + e.getMessage());
 		}
-				
-														
-
-		
-		return productionLineList;
+	
+		return productionList;
 		
 	}
 	public int updateProduction(ProductionLineInput productionLineInput) {
