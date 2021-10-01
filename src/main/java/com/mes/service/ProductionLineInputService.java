@@ -1,37 +1,21 @@
 package com.mes.service;
 
-import static com.mes.db.JDBCUtility.*;
+import static com.mes.db.JDBCUtility.close;
+import static com.mes.db.JDBCUtility.getConnection;
+
 import java.sql.Connection;
 
 import com.mes.dao.ProductionLineDAO;
-import com.mes.vo.ProductionLineInput;
-
-
 
 public class ProductionLineInputService {
 	
-	public boolean registProductionInput(ProductionLineInput productionLineInput) {
-		
-		boolean isWriteSuccess = false;
+	public void registPrudctionLineInput(String workOrderNo, String userId) {
 		
 		Connection conn = getConnection();
 		ProductionLineDAO productionLineDAO = ProductionLineDAO.getInstance();
 		productionLineDAO.setConnection(conn);
-		int insertCount = productionLineDAO.updateProduction(productionLineInput);
-		
-				if(insertCount>0) {
-					commit(conn);
-					isWriteSuccess = true;
-				} else {
-					rollback(conn);
-				}
-				
-				return isWriteSuccess;
-				
-			}
-		
-		
-		
+		productionLineDAO.insertProductionLineInput(workOrderNo,userId);
+		close(conn);
 	}
 
-
+}

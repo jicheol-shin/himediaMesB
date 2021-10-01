@@ -51,11 +51,11 @@ public class ProductionDAO {
 				takeOrder.setProductName(rs.getString("product_name")); 
 				takeOrder.setProcess(rs.getString("process")); 
 				takeOrder.setOrdCnt(rs.getInt("ord_cnt")); 
-			takeOrderList.add(takeOrder);
+		    	takeOrderList.add(takeOrder);
 			}
-			}catch (Exception e) {
-				System.out.println("Production리스트 조회 실패!!" + e.getMessage());
-			}
+		}catch (Exception e) {
+			System.out.println("Production리스트 조회 실패!!" + e.getMessage());
+		}
 			
 		return takeOrderList;
 		
@@ -85,7 +85,7 @@ public class ProductionDAO {
 		}
 		
 		String sql1 = "insert into production(work_order_date, work_order_no, product_cd, order_cd, line_cd, in_usr_id, work_qty, ord_cnt,process,start_date, end_date) "+
-				" values(now(), ?, ?, ?, ?, ?, ?, ?, ?, now(), now()+20)";
+				" values(now(), ?, ?, ?, ?, ?, ?, ?, ?, now(), DATE_ADD(NOW(), INTERVAL 1 MONTH) )";
 		try {
 			PreparedStatement pstmt1 = conn.prepareStatement(sql1);
 			pstmt1.setString(1, "WO_"+ordCd);

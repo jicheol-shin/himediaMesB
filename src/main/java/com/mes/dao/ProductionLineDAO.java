@@ -11,8 +11,7 @@ import java.util.ArrayList;
 import javax.sql.DataSource;
 
 import com.mes.vo.Production;
-import com.mes.vo.ProductionLine;
-import com.mes.vo.ProductionLineInput;
+
 
 public class ProductionLineDAO {
 	
@@ -62,29 +61,54 @@ public class ProductionLineDAO {
 		return productionList;
 		
 	}
-	public int updateProduction(ProductionLineInput productionLineInput) {
-		int updateCount = 0;
+	
+
+	public void insertProductionLineInput(String workOrderNo, String useId) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql ="update production set work_qty "+
-		        " where WORK_ORDER_NO = PARK_1" ;
+		
+		String sql = "select * from production where work_order_no = '"+ workOrderNo +"'";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, productionLineInput.getWorkQty());
-			updateCount = pstmt.executeUpdate();
+			rs = pstmt.executeQuery();
 			
+			while(rs.next()) {
+					
+				String sql1 = "insert into pro_line( work_order_no, product_cd, line_cd,production_qty,in_user_id,process, end_date) "+
+						" values( ?, ?, ?, ?, ?, ?, now())";
+				PreparedStatement pstmt1 = conn.prepareStatement(sql1);
+				try {
+					pstmt1.setString(1, workOrderNo);
+					pstmt1.setString(2, rs.getString("product_cd"));
+					pstmt1.setString(3, rs.getString("line_cd"));
+					pstmt1.setInt(4, rs.getInt("work_qty"));
+					pstmt1.setString(5, useId);
+					pstmt1.setString(6, "생산완료");
+					pstmt1.executeUpdate();
+					
+				} catch (SQLException e) {
+					System.out.println("생산공정 등록 실패 !!" + e.getMessage());
+				} finally {
+					close(pstmt1);
+				}
+			}
+		
+			String sql_update = "update production set process ='생산완료' where work_order_no='" + workOrderNo+ "'";
+			PreparedStatement  pstmt2 = conn.prepareStatement(sql_update);
+			try {
+				pstmt2.executeUpdate();
+			} catch (SQLException e) {
+				System.out.println("생산지시 UPDATE 실패 !!" + e.getMessage());
+			} finally {
+				close(pstmt2);
+			}
+		
 		} catch (SQLException e) {
-			System.out.println("업데이트 실패 !!" + e.getMessage());
+			System.out.println("생산완료 등록 실패 !!" + e.getMessage());
 		} finally {
-			close(pstmt, rs);
+			close(pstmt,rs);
 		}
 		
-    	return updateCount; 
 	}
-	
-	
-	
-	
-	
 	
 }

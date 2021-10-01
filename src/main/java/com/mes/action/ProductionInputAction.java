@@ -12,6 +12,7 @@ import com.mes.vo.Member;
 
 public class ProductionInputAction  implements Action{
 
+	@SuppressWarnings("unused")
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
@@ -37,7 +38,7 @@ public class ProductionInputAction  implements Action{
 			prudctionInputService.registPrudctionInput(ordCd,name);
 			
 			forward.setRedirect(true);
-			forward.setPath("/prodcutionView.do");
+			forward.setPath("prodcutionLine.do");
 		}
 		return forward;
 	}

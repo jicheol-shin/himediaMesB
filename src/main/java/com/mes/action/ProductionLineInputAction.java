@@ -4,46 +4,45 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mes.service.ProductionLineInputService;
 import com.mes.utility.Action;
 import com.mes.utility.ActionForward;
-import com.mes.vo.ProductionLineInput;
-
+import com.mes.vo.Member;
 
 public class ProductionLineInputAction implements Action{
 
+	@SuppressWarnings("unused")
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		// TODO Auto-generated method stub
-ActionForward forward = null;
+
+		ActionForward forward = null;
 		
-		ProductionLineInput productionLineInput = new ProductionLineInput();
+		HttpSession session = req.getSession();
+		Member member = (Member) session.getAttribute("login_info");
+		String userId = member.getUserId();
 		
-		productionLineInput.setWorkOrderNo(req.getParameter("workOrderNo"));
-		productionLineInput.setProductCd(req.getParameter("productCd"));
-		productionLineInput.setWorkQty(Integer.parseUnsignedInt("workQty"));
-		ProductionLineInputService productionLineInputService = new ProductionLineInputService();
-		boolean isWriteSuccess = productionLineInputService.registProductionInput(productionLineInput);
-		
-		
-				if(!isWriteSuccess) {
-					// isWriteSuccess가 true가 아니라면
-					res.setContentType("text/html; charset=utf-8");
-					PrintWriter out = res.getWriter();
-					out.println("<script>");
-					out.println("alert('prodcutionLine 등록 실패!!')");
-					out.println("history.back()");
-					out.println("</script>");
-				} else {
-					forward = new ActionForward();
-					forward.setRedirect(true);
-					forward.setPath("prodcutionLine.do");
-				}
-		
-		
-		
+		if(member== null) {
+			res.setContentType("text/html; charset=utf-8");
+			PrintWriter out = res.getWriter();
+			out.println("<script>");
+			out.println("alert('로그인해 주세요!')");
+			out.println("history.back()");
+			out.println("</script>");
+			
+		} else {
+			String workOrderNo = req.getParameter("workOrderNo");
+			
+			forward= new ActionForward();
+			ProductionLineInputService productionLineInputService = new ProductionLineInputService();
+			productionLineInputService.registPrudctionLineInput(workOrderNo,userId);
+			
+			forward.setRedirect(true);
+			forward.setPath("/prodcutionView.do");
+		}
 		return forward;
 	}
+	
 
 }

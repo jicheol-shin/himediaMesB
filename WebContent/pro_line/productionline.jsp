@@ -95,7 +95,7 @@
 	<div class="container" align="center">
 		<div align="left">
 		 <ul class="list-group" >
-            <li class="list-group-item list-group-item-primary" align="center">생산 지시</li>
+            <li class="list-group-item list-group-item-primary" align="center">공정 관리</li>
 		</ul>
 	  </div>
 	  <br />
@@ -121,7 +121,7 @@
 						<td>${production.getProcess()}</td>
 						<td>${production.getStartDate()}</td>
 						<td>${production.getEndDate()}</td>
-						<td><a href="/productionLineInput.do?workOrderNo=${productionLineList.getWorkOrderNo()}"><button type="button" class="btn btn-danger link-hover-color" >생산완료</button></a></td>
+						<td><a href="/productionLineInput.do?workOrderNo=${production.getWorkOrderNo()}"><button type="button" class="btn btn-danger link-hover-color" >생산완료</button></a></td>
 					</tr>
 					</c:forEach>
 			</tbody>
