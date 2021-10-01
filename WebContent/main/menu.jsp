@@ -38,7 +38,7 @@
     <span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu" aria-labelledby="menu4">
       <li role="presentation"><a role="menuitem" tabindex="-1" href="production.do">생산지시</a></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="prodcutionLine.do">공정관리</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="productionLine.do">공정관리</a></li>
       <li role="presentation"><a role="menuitem" tabindex="-1" href="productionView.do">생산현황관리</a></li>
     </ul>
   </div>

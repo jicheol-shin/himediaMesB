@@ -1,8 +1,11 @@
 package com.mes.dao;
 
+import static com.mes.db.JDBCUtility.close;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.sql.DataSource;
@@ -50,12 +53,14 @@ public class ProductionViewDAO {
 				productionView.setEndDate(rs.getString("end_date"));
 				productionViewList.add(productionView);
 			}
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		System.out.println("Production 리스트 조회 실패!!" + e.getMessage());
-	}
 
-	return productionViewList;
+		} catch (SQLException e) {
+			System.out.println("조회 실패 !!" + e.getMessage());
+		} finally {
+			close(pstmt,rs);
+		}
+
+		return productionViewList;
 
 	}
 	

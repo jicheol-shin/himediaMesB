@@ -39,7 +39,7 @@ public class ProductionLineInputAction implements Action{
 			productionLineInputService.registPrudctionLineInput(workOrderNo,userId);
 			
 			forward.setRedirect(true);
-			forward.setPath("/prodcutionView.do");
+			forward.setPath("productionView.do");
 		}
 		return forward;
 	}

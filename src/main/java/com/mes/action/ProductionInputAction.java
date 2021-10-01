@@ -38,7 +38,7 @@ public class ProductionInputAction  implements Action{
 			prudctionInputService.registPrudctionInput(ordCd,name);
 			
 			forward.setRedirect(true);
-			forward.setPath("prodcutionLine.do");
+			forward.setPath("productionLine.do");
 		}
 		return forward;
 	}
