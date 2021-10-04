@@ -159,7 +159,7 @@
 			</c:forEach>
 		</table>
 	</div>	
-	<br /><br />
+
 	<div class="container" align="center">
 		<ul class="pagination justify-content-center">
 			<c:if test="${startPage ne 1}">
