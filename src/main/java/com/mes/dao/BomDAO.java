@@ -122,7 +122,7 @@ public class BomDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "select count(*) from bom";
-		if(productCd != null) sql += " where inout_type = '"+productCd +"'";
+		if(productCd != null) sql += " where product_cd = '"+productCd +"'";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
