@@ -40,7 +40,8 @@ public class ReleaseProductDAO {
 		ResultSet rs = null;
 //		String sql = "select * from release_product";
 		String sql = "select a.*, b.good_count from release_product as a" ;
-		   sql += " left join product_inventory as b on a.product_cd = b.product_cd";
+		   sql += " left join product_inventory as b on a.product_cd = b.product_cd " + 
+				   	" order by rele_cd";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
