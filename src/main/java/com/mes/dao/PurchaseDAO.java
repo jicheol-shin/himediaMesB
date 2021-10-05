@@ -74,7 +74,8 @@ public class PurchaseDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "select * from order_statement";
-		if(ordCd != null) sql += " where ord_cd = '" + ordCd + "'";
+		       if(ordCd != null) sql += " where ord_cd = '" + ordCd + "'";
+		       sql += " order by num desc";
 			   sql += " limit ?," + limit;
 		// System.out.println(sql);
 			   
