@@ -74,6 +74,7 @@ public class PurchaseDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "select * from order_statement";
+		if(ordCd != null) sql += " where ord_cd = '" + ordCd + "'";
 			   sql += " limit ?," + limit;
 		// System.out.println(sql);
 			   
@@ -234,6 +235,7 @@ public class PurchaseDAO {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		
 		String sql = "select count(*) from order_statement";
 		if(ordCd != null) sql += " where ord_cd = '" + ordCd + "'";
 		
